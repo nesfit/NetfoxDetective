@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="Netfox.Detective.Views.Exports.ExportsControls.EmailsResultsUc"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:converters="clr-namespace:Netfox.Detective.Views.Converters"
+             xmlns:exports="clr-namespace:Netfox.Detective.ViewModelsDataEntity.Exports"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="600"
+             d:DataContext="{d:DesignInstance exports:ExportGroupVm, d:IsDesignTimeCreatable=False}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+                    <converters:ExporterTypeToColorConverter x:Key="Converter.ExporterTypeToColorConverter" />
+                </ResourceDictionary>
+    </UserControl.Resources>
+    <telerik:RadGridView EnableRowVirtualization="True"
+                         x:Name="EmailGridView"
+                         ItemsSource="{Binding Path=Emails}"
+                         SelectedItem="{Binding Path=SelectedExportResult, Mode=TwoWay, Converter={StaticResource Converter.ExportObjectToExportResultVm}}"
+                         AutoGenerateColumns="False" IsReadOnly="True"
+                         Style="{StaticResource Style.DataGridView}">
+
+        <telerik:EventToCommandBehavior.EventBindings>
+            <telerik:EventBinding Command="{Binding CNavigateToExportDetail}" EventName="MouseDoubleClick"
+                                  CommandParameter="{Binding ElementName=EmailGridView, Path=SelectedItem.ExportVm}" />
+            <telerik:EventBinding Command="{Binding CSelectExport}" EventName="SelectionChanged"
+                                  CommandParameter="{Binding  ElementName=EmailGridView, Path=SelectedItem.ExportVm}" />
+        </telerik:EventToCommandBehavior.EventBindings>
+
+        <telerik:RadGridView.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground"
+                        Value="{Binding ExporterType, Converter={StaticResource Converter.ExporterTypeToColorConverter}}" />
+            </Style>
+        </telerik:RadGridView.Resources>
+
+        <telerik:RadGridView.Columns>
+            <telerik:GridViewDataColumn DataMemberBinding="{Binding Email.TimeStamp, Mode=OneWay}" Header="Period" />
+            <telerik:GridViewDataColumn DataMemberBinding="{Binding Email.SourceEndPoint, Mode=OneWay}" Header="Source" />
+            <telerik:GridViewDataColumn DataMemberBinding="{Binding Email.DestinationEndPoint, Mode=OneWay}"
+                                        Header="Destination" />
+            <telerik:GridViewDataColumn DataMemberBinding="{Binding Email.From , Mode=OneWay}" Header="From" />
+            <telerik:GridViewDataColumn DataMemberBinding="{Binding Email.To, Mode=OneWay}" Header="To" />
+            <telerik:GridViewDataColumn DataMemberBinding="{Binding Email.Bcc, Mode=OneWay}" Header="Bcc" />
+            <telerik:GridViewDataColumn DataMemberBinding="{Binding Email.Cc, Mode=OneWay}" Header="Cc" />
+            <telerik:GridViewDataColumn DataMemberBinding="{Binding Email.Subject, Mode=OneWay}" Header="Subject" />
+        </telerik:RadGridView.Columns>
+    </telerik:RadGridView>
+</UserControl>

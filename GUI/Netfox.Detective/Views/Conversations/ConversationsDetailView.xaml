@@ -1,0 +1,76 @@
+﻿<views:DetectiveDataEntityPaneViewBase x:Class="Netfox.Detective.Views.Conversations.ConversationsDetailView"
+                                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                       xmlns:views="clr-namespace:Netfox.Detective.Views"
+                                       xmlns:conversations="clr-namespace:Netfox.Detective.Views.Conversations"
+                                       xmlns:conversations1="clr-namespace:Netfox.Detective.ViewModelsDataEntity.Conversations"
+                                       mc:Ignorable="d"
+                                       d:DataContext="{d:DesignInstance conversations1:ConversationsDetailVm, IsDesignTimeCreatable=False}"
+                                       d:DesignHeight="600" d:DesignWidth="750">
+    <views:DetectiveDataEntityPaneViewBase.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <DataTemplate x:Key="trackBallTemplate">
+                        <Ellipse Height="8" Width="8" Stroke="White" StrokeThickness="1" Fill="#1B9DDE" />
+                    </DataTemplate>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </views:DetectiveDataEntityPaneViewBase.Resources>
+
+    <Grid DataContext="{Binding ConversationsVm}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="5 5 5 0" Orientation="Vertical" Background="White">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Image
+                    Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/Icons/cube.png"
+                    Width="25" Height="25" Grid.Column="0"
+                    Margin="0 0 5 0" />
+
+                <Border Grid.Column="1" Style="{StaticResource Style.Border.Header}" VerticalAlignment="Center">
+
+                    <TextBlock Margin="4 1 0 0" Style="{StaticResource Style.TextBlock.Header}"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Text="Conversations detail" />
+                </Border>
+
+                <TextBox Grid.Column="2" FontWeight="Bold" Margin="10,5,6,3" Text="{Binding Path=Data.Name}" />
+
+                <!--<plugins1:PluginsActivator Grid.Column="3" />-->
+
+            </Grid>
+
+
+        </StackPanel>
+
+        <conversations:ConversationsDetailViewUc Grid.Row="1" x:Name="ConversationsDetail" />
+
+        <!--<telerik:RadExpander
+			Visibility="{Binding Path=AnyPluginsView, ElementName=EntityPluginsViewsControl, Converter={StaticResource Converter.BoolToVisibilityConverter}}"
+			Style="{StaticResource ResourceKey=Style.RadExpander}" Grid.Row="2" IsExpanded="True">
+			<telerik:RadExpander.Header>
+				<TextBlock Text="Plugins" />
+			</telerik:RadExpander.Header>
+			<telerik:RadExpander.Content>
+				<plugins1:EntityPluginsViewsControl x:Name="EntityPluginsViewsControl" EntityType="ConversationsGroup" />
+			</telerik:RadExpander.Content>
+		</telerik:RadExpander>-->
+    </Grid>
+
+</views:DetectiveDataEntityPaneViewBase>

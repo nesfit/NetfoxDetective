@@ -1,0 +1,156 @@
+﻿<views:DetectiveExportDetailPaneViewBase
+    x:Class="Netfox.Detective.Views.Exports.ExportObjectDetailViews.VoIPSummaryView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    xmlns:ig="http://schemas.infragistics.com/xaml"
+    xmlns:views="clr-namespace:Netfox.Detective.Views"
+    xmlns:detail="clr-namespace:Netfox.Detective.ViewModelsDataEntity.Exports.Detail"
+    xmlns:exports="clr-namespace:Netfox.Core.Interfaces.Model.Exports;assembly=Netfox.Core"
+    mc:Ignorable="d"
+    d:DesignHeight="342" d:DesignWidth="562"
+    Visibility="{Binding Path=IsHidden, Converter={StaticResource Converter.BoolToVisibilityConverterInvert}}"
+    d:DataContext="{d:DesignInstance detail:VoIPSummaryVm}">
+    <views:DetectiveExportDetailPaneViewBase.Resources>
+        <DataTemplate x:Key="TimeLineToolTipTemplate">
+            <Grid d:DataContext="{d:DesignInstance exports:ICall}">
+                <Rectangle Margin="0" RadiusY="2" RadiusX="2" Fill="Gainsboro" Opacity="0.7" />
+                <StackPanel Margin="10">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=From}" />
+                        <TextBlock Margin="10 0 0 0" Text="{Binding Path=Start}" />
+                    </StackPanel>
+                    <TextBlock Margin="0 10 0 0" Text="{Binding Path=To}" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="InstantItemTemplate">
+            <Border Width="50" Height="50" Margin="0,0,0,5">
+                <Rectangle Height="25"
+                           Width="25"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Fill="LightSkyBlue" />
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ItemWithDurationTemplate">
+            <Border Height="50" Margin="0, 0, 0, 5">
+                <Grid d:DataContext="{d:DesignInstance exports:ICall}">
+                    <Rectangle Height="25" VerticalAlignment="Center"
+                               Fill="Gainsboro" />
+                    <StackPanel VerticalAlignment="Center" Margin="10 0 0 0" Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=From}" />
+                        <TextBlock Text=" - " />
+                        <TextBlock Text="{Binding Path=To}" />
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Center" Margin="10 0 0 0" Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Start}" />
+                        <TextBlock Text=" - " />
+                        <TextBlock Text="{Binding Path=End}" />
+                    </StackPanel>
+
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+    </views:DetectiveExportDetailPaneViewBase.Resources>
+    <Grid>
+        <telerik:RadTabControl>
+            <telerik:RadTabItem Header="VoIP Events Overview">
+
+                <telerik:RadListBox Name="voipListBox" ItemsSource="{Binding Calls}"
+                                    SelectedItem="{Binding SelectedCall, Mode=TwoWay}"
+                                    Margin="10 5 10 5">
+                    <!--MouseDoubleClick="VoipListBox_OnMouseDoubleClick"-->
+                    <telerik:RadListBox.Resources>
+                        <Style TargetType="telerik:RadListBoxItem">
+                            <Setter Property="BorderThickness" Value="0 0 0 1" />
+                            <Setter Property="BorderBrush" Value="Gray" />
+                        </Style>
+                    </telerik:RadListBox.Resources>
+                    <telerik:RadListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="10">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=Start}" />
+                                    <TextBlock Text=" - " />
+                                    <TextBlock Text="{Binding Path=End}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=From}" />
+                                    <TextBlock Text=" - " />
+                                    <TextBlock Text="{Binding Path=To}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Path=Duration}" />
+                                    <TextBlock Text=": " />
+                                    <TextBlock Text="{Binding Path=Duration}" />
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </telerik:RadListBox.ItemTemplate>
+                </telerik:RadListBox>
+
+
+            </telerik:RadTabItem>
+
+            <telerik:RadTabItem Header="Communication map">
+
+                <ig:XamNetworkNode x:Name="xamComMapView" Margin="10"
+                                   ItemsSource="{Binding Path=CommunicationNodes, Mode=OneWay}"
+                                   LineStartCap="Ellipse"
+                                   LineEndCap="Arrow"
+                                   LineEndCapSize="5"
+                                   LineStartCapSize="5"
+                                   ExpansionIndicatorVisibility="Visible">
+
+                    <ig:XamNetworkNode.GlobalNodeLayouts>
+                        <ig:NetworkNodeNodeLayout
+                            TargetTypeName="NodeModel"
+                            DisplayMemberPath="Label"
+                            ToolTipMemberPath="ToolTip"
+                            ConnectionsMemberPath="Connections"
+                            ConnectionTargetMemberPath="Target" />
+
+                    </ig:XamNetworkNode.GlobalNodeLayouts>
+                </ig:XamNetworkNode>
+
+            </telerik:RadTabItem>
+
+            <telerik:RadTabItem Header="Timeline">
+
+                <telerik:RadTimeline
+                    Margin="10"
+                    Name="EventsTimeline"
+                    StartPath="Start"
+                    DurationPath="Duration"
+                    Foreground="Black"
+                    Padding="20"
+                    ToolTipTemplate="{StaticResource TimeLineToolTipTemplate}"
+                    ItemsSource="{Binding Path=Calls}"
+                    TimelineItemTemplate="{StaticResource ItemWithDurationTemplate}"
+                    TimelineInstantItemTemplate="{StaticResource InstantItemTemplate}"
+                    PeriodStart="{Binding TimeStampFirst}"
+                    VisiblePeriodStart="{Binding TimeStampFirst}"
+                    PeriodEnd="{Binding TimeStampLast}"
+                    VisiblePeriodEnd="{Binding TimeStampLast}">
+                    <telerik:RadTimeline.Intervals>
+                        <telerik:YearInterval />
+                        <telerik:MonthInterval />
+                        <telerik:WeekInterval />
+                        <telerik:DayInterval />
+                        <telerik:MinuteInterval />
+                    </telerik:RadTimeline.Intervals>
+                </telerik:RadTimeline>
+
+            </telerik:RadTabItem>
+
+        </telerik:RadTabControl>
+
+
+    </Grid>
+</views:DetectiveExportDetailPaneViewBase>

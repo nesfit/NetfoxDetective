@@ -1,0 +1,47 @@
+﻿<views1:DetectiveWindowBase x:Class="Netfox.Detective.Views.Windows.QueryableHelper"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                            xmlns:views1="clr-namespace:Netfox.Detective.Core.BaseTypes.Views"
+                            Header="Query Helper" Height="400" Width="500">
+	<views1:DetectiveWindowBase.Resources>
+		<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+		<HierarchicalDataTemplate x:Key="PropertyTemplate"
+		                          ItemsSource="{Binding Path=Info.Properties}">
+			<StackPanel Orientation="Horizontal">
+				<telerik:RadContextMenu.ContextMenu>
+					<telerik:RadContextMenu InheritDataContext="False">
+						<telerik:RadMenuItem
+							Header="Copy property and type"
+							Click="CopyPathAndTypeClick"
+							CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}" />
+						<telerik:RadMenuItem
+							Header="Copy property path"
+							Click="CopyPathClick"
+							CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent}" />
+					</telerik:RadContextMenu>
+				</telerik:RadContextMenu.ContextMenu>
+				<TextBlock FontWeight="Bold" Text="{Binding Path=Name}" />
+				<TextBlock Margin="10 0 0 0" Text="{Binding Path=Info.Type}" />
+				<TextBlock Margin="2 0 0 0" Text="[]"
+				           Visibility="{Binding Path=IsCollection, Converter={StaticResource BooleanToVisibilityConverter}}" />
+			</StackPanel>
+		</HierarchicalDataTemplate>
+
+
+	</views1:DetectiveWindowBase.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+		<TextBlock Text="Available properties to query :" Margin="10 10 5 10" />
+		<telerik:RadTreeView Margin="10" Grid.Row="1"
+		                     telerik:AnimationManager.IsAnimationEnabled="False"
+		                     x:Name="QueryHelperTreeView"
+		                     ItemsIndent="10"
+		                     IsExpandOnDblClickEnabled="False"
+		                     ItemsSource="{Binding Path=Properties}"
+		                     ItemTemplate="{StaticResource PropertyTemplate}" />
+	</Grid>
+</views1:DetectiveWindowBase>

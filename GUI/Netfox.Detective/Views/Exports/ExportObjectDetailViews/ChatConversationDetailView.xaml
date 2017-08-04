@@ -1,0 +1,28 @@
+﻿<views:DetectiveExportDetailPaneViewBase
+    x:Class="Netfox.Detective.Views.Exports.ExportObjectDetailViews.ChatConversationDetailView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:views="clr-namespace:Netfox.Detective.Views"
+    xmlns:detail="clr-namespace:Netfox.Detective.ViewModelsDataEntity.Exports.Detail"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="300" d:DataContext="{d:DesignInstance detail:ChatConversationDetailVm}">
+    <Grid>
+        <DataGrid Name="dgUsers" AutoGenerateColumns="False"
+                  ItemsSource="{Binding ExportVm.SelectedChatConversation.Value, Mode=OneWay}"
+                  RowDetailsVisibilityMode="Visible"
+                  SelectedItem="{Binding ExportVm.SelectedSnooperExportObject, Mode=TwoWay}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Sender" Binding="{Binding Sender}" />
+                <DataGridTextColumn Header="Receiver" Binding="{Binding Receiver}" />
+            </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Message}" Margin="10" />
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+        </DataGrid>
+
+    </Grid>
+</views:DetectiveExportDetailPaneViewBase>

@@ -1,0 +1,709 @@
+﻿<UserControl x:Class="Netfox.Detective.Views.Conversations.ConversationsDetailViewUc"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:ig="http://schemas.infragistics.com/xaml"
+             xmlns:converters="clr-namespace:Netfox.Detective.Views.Converters"
+             xmlns:conversationsCollections="clr-namespace:Netfox.Detective.ViewModelsDataEntity.ConversationsCollections"
+             mc:Ignorable="d"
+             x:Name="ThisControl"
+             d:DesignHeight="600" d:DesignWidth="700"
+             d:DataContext="{d:DesignInstance conversationsCollections:MockConversationsVm, d:IsDesignTimeCreatable=False}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary
+                    Source="pack://application:,,,/Netfox.Detective;component/Views/Styles/DetectiveMainStyle.xaml" />
+
+                <ResourceDictionary>
+                    <Style x:Key="conversationstrackBallInfoStyle" TargetType="telerik:TrackBallInfoControl">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="telerik:TrackBallInfoControl" />
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+
+                    <Style x:Key="yaxisLabelStyle" TargetType="TextBlock">
+                        <Setter Property="Width" Value="50" />
+                        <Setter Property="Foreground" Value="Black" />
+                        <Setter Property="TextAlignment" Value="Center" />
+                    </Style>
+
+                    <converters:NullToVisibilityConverter x:Key="Converter.NullToVisibility" />
+                    <converters:NullToVisibilityConverterInvert x:Key="Converter.NullToVisibilityInvert" />
+                    <converters:NonZeroToRedConverter x:Key="Converter.NonZeroToRedConverter" />
+                    <DataTemplate x:Key="trackBallTemplate">
+                        <Ellipse Height="8" Width="8" Stroke="White" StrokeThickness="1" Fill="#1B9DDE" />
+                    </DataTemplate>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+
+        <telerik:RadExpander Background="White" Margin="5,5,5,0" Grid.Row="0"
+                             Style="{StaticResource ResourceKey=Style.RadExpander}" IsExpanded="True">
+            <telerik:RadExpander.Header>
+                <TextBlock Style="{StaticResource ResourceKey=Style.TextBlock.Header}"
+                           Text="Statistics" Margin="5" />
+            </telerik:RadExpander.Header>
+
+            <telerik:RadExpander.Content>
+
+                <StackPanel Grid.IsSharedSizeScope="True" DataContext="{Binding ConversationsStatisticsVm}">
+                    <StackPanel x:Name="Statistics">
+                        <Grid Margin="5 0 5 0" >
+                            <Grid.RowDefinitions>
+
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition SharedSizeGroup="column1" Width="Auto" />
+                                <ColumnDefinition SharedSizeGroup="column2" MinWidth="100" Width="Auto" />
+                                <ColumnDefinition SharedSizeGroup="column3" Width="Auto" />
+                                <ColumnDefinition SharedSizeGroup="column4" MinWidth="100" Width="Auto" />
+                                <ColumnDefinition SharedSizeGroup="column5" Width="Auto" />
+                                <ColumnDefinition SharedSizeGroup="column6" MinWidth="100" Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+
+                            <TextBlock Style="{StaticResource Style.TextBlock.Label}" VerticalAlignment="Center"
+                                       Grid.Row="0" Grid.Column="0" Margin="5,3,3,3" Text="Conversations:" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Content}" VerticalAlignment="Center"
+                                       Grid.Row="0" Grid.Column="1" Margin="5,3,3,3"
+                                       Text="{Binding ConversationsStatistics.TotalConversations}" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Label}" VerticalAlignment="Center"
+                                       Grid.Row="0" Grid.Column="2" Margin="5,3,3,3" Text="Total Frames:" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Content}" VerticalAlignment="Center"
+                                       Grid.Row="0" Grid.Column="3" Margin="5,3,3,3"
+                                       Text="{Binding ConversationsStatistics.Frames}" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Label}" VerticalAlignment="Center"
+                                       Grid.Row="0" Grid.Column="4" Margin="5,3,4,3" Text="Period:" />
+                            <TextBox IsReadOnly="True" VerticalAlignment="Center"
+                                     Grid.Row="0" Grid.Column="5" Margin="5,3,3,3"
+                                     Text="{Binding ConversationsStatistics.Period, Mode=OneWay}" />
+
+                            <TextBlock Style="{StaticResource Style.TextBlock.Label}"
+                                       Grid.Row="1" Grid.Column="0" Margin="5,3,29,3" Text="Recognized Protocols" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Content}"
+                                       Grid.Row="1" Grid.Column="1" Margin="5,3,4,3"
+                                       Text="{Binding ConversationsStatistics.ReckognizedProtocolsCount}" />
+
+                            <TextBlock Style="{StaticResource Style.TextBlock.Label}"
+                                       Grid.Row="1" Grid.Column="2" Margin="6,3,4,3" Text="Unique Hosts:" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Content}"
+                                       Grid.Row="1" Grid.Column="3" Margin="6,3,3,3"
+                                       Text="{Binding ConversationsStatistics.UniqueHostsCount}" />
+
+                        </Grid>
+
+                        <Grid Margin="5 5 5 10"
+                              Visibility="{Binding Path=ConversationsStatistics, Converter={StaticResource Converter.NullToVisibility}}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition Height="22" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition SharedSizeGroup="column1" />
+                                <ColumnDefinition SharedSizeGroup="column2" />
+                                <ColumnDefinition SharedSizeGroup="column3" />
+                                <ColumnDefinition SharedSizeGroup="column4" />
+                                <ColumnDefinition SharedSizeGroup="column5" />
+                                <ColumnDefinition SharedSizeGroup="column6" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Style="{StaticResource Style.TextBlock.Label}"
+                                       Grid.Row="0" Grid.Column="0" Margin="6,3,3,3" Text="Up Flow Frames:" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Content}"
+                                       Grid.Row="0" Grid.Column="1" Margin="6,3,3,3"
+                                       Text="{Binding Path=ConversationsStatistics.UpFlowFrames}" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Label}"
+                                       Grid.Row="1" Grid.Column="0" Margin="6,3,3,3" Text="Down Flow Frames:" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Content}"
+                                       Grid.Row="1" Grid.Column="1" Margin="6,3,3,3"
+                                       Text="{Binding Path=ConversationsStatistics.DownFlowFrames}" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Label}"
+                                       Grid.Row="0" Grid.Column="2" Margin="6,3,3,3" Text="Up Flow Bytes:" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Content}"
+                                       Grid.Row="0" Grid.Column="3" Margin="6,3,3,3"
+                                       Text="{Binding Path=ConversationsStatistics.UpFlowBytes}" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Label}"
+                                       Grid.Row="2" Grid.Column="0" Margin="6,3,3,3" Text="Total Flow Frames:" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Content}"
+                                       Grid.Row="2" Grid.Column="1" Margin="6,3,3,3"
+                                       Text="{Binding Path=ConversationsStatistics.TotalFlowFrames}" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Label}"
+                                       Grid.Row="1" Grid.Column="2" Margin="6,3,3,3" Text="Down Flow Bytes:" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Content}"
+                                       Grid.Row="1" Grid.Column="3" Margin="6,3,3,3"
+                                       Text="{Binding Path=ConversationsStatistics.DownFlowBytes}" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Label}"
+                                       Grid.Row="2" Grid.Column="2" Margin="6,3,3,3" Text="Total Flow Bytes:" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Content}"
+                                       Grid.Row="2" Grid.Column="3" Margin="6,3,3,3"
+                                       Text="{Binding Path=ConversationsStatistics.TotalFlowBytes}" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Label}"
+                                       Grid.Row="0" Grid.Column="4" Margin="6,3,3,3" Text="Up Flow TCP Lost Bytes:" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Content}"
+                                       Grid.Row="0" Grid.Column="5" Margin="6,3,3,3"
+                                       Text="{Binding Path=ConversationsStatistics.UpFlowTcpLostBytes}" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Label}"
+                                       Grid.Row="1" Grid.Column="4" Margin="6,3,3,3" Text="Down Flow TCP Lost Bytes:" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Content}"
+                                       Grid.Row="1" Grid.Column="5" Margin="6,3,3,3"
+                                       Text="{Binding Path=ConversationsStatistics.DownFlowTcpLostBytes}" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Label}"
+                                       Grid.Row="3" Grid.Column="0" Margin="6,3,3,3" Text="IPv4 Conversations:" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Content}"
+                                       Grid.Row="3" Grid.Column="1" Margin="6,3,3,3"
+                                       Text="{Binding Path=ConversationsStatistics.IPv4Conversations}" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Label}"
+                                       Grid.Row="4" Grid.Column="0" Margin="6,3,3,3" Text="IPv6 Conversations:" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Content}"
+                                       Grid.Row="4" Grid.Column="1" Margin="6,3,3,3"
+                                       Text="{Binding Path=ConversationsStatistics.IPv6Conversations}" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Label}"
+                                       Grid.Row="3" Grid.Column="2" Margin="6,3,3,3" Text="TCP Conversations:" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Content}"
+                                       Grid.Row="3" Grid.Column="3" Margin="6,3,3,3"
+                                       Text="{Binding Path=ConversationsStatistics.TcpConversations}" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Label}"
+                                       Grid.Row="4" Grid.Column="2" Margin="6,3,3,3" Text="UDP Conversations:" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Content}"
+                                       Grid.Row="4" Grid.Column="3" Margin="6,3,3,3"
+                                       Text="{Binding Path=ConversationsStatistics.UdpConversations}" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Label}"
+                                       Grid.Row="2" Grid.Column="4" Margin="6,3,3,3" Text="Total TCP Lost Bytes:" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Content}"
+                                       Grid.Row="2" Grid.Column="5" Margin="6,3,3,3"
+                                       Text="{Binding Path=ConversationsStatistics.TotalFlowTcpLostBytes}" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Label}"
+                                       Grid.Row="3" Grid.Column="4" Margin="6,3,3,3" Text="Total TCP Bytes:" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Content}"
+                                       Grid.Row="3" Grid.Column="5" Margin="6,3,3,3"
+                                       Text="{Binding Path=ConversationsStatistics.TotalTcpBytes}" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Label}"
+                                       Grid.Row="4" Grid.Column="4" Margin="6,3,3,3" Text="Total Lost (TCP) %:" />
+                            <TextBlock Style="{StaticResource Style.TextBlock.Content}"
+                                       Grid.Row="4" Grid.Column="5" Margin="6,3,3,3"
+                                       Text="{Binding Path=ConversationsStatistics.TotalFlowTcpLostBytePerc}"
+                                       Foreground="{Binding Path=ConversationsStatistics.TotalFlowTcpLostBytePerc,  Converter={StaticResource Converter.NonZeroToRedConverter}}" />
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Margin="10 5 10 10"
+                                Content="Show VoIP overview"
+                                Command="{Binding CShowVoIPOverView}"
+                                Style="{StaticResource LinkButton}"
+                                HorizontalAlignment="Left" VerticalAlignment="Center" Width="80" />
+
+                        <!--<Button Margin="10 5 10 10"
+						        Content="Advanced protocols recognition"
+						        Command="{Binding CProtocolsRecognition}"
+						        Style="{StaticResource LinkButton}"
+						        HorizontalAlignment="Left" VerticalAlignment="Center" Width="180" />-->
+                    </StackPanel>
+                </StackPanel>
+            </telerik:RadExpander.Content>
+        </telerik:RadExpander>
+
+        <!-- CAPTURE STRUCTURE -->
+        <Grid Background="White" Grid.Row="1" Margin="5 5 5 0" Height="Auto">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Border Style="{StaticResource Style.Border.Header}">
+                <TextBlock Margin="5" TextWrapping="Wrap" Style="{StaticResource Style.TextBlock.Header}"
+                           HorizontalAlignment="Left"
+                           Text="Structure" />
+            </Border>
+            <telerik:RadTabControl Grid.Row="1" Margin="5">
+
+
+                <!-- PIE CHARTS-->
+
+                <telerik:RadTabItem Header="Application protocols" DataContext="{Binding ConversationsStatisticsVm}">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200*" />
+                            <ColumnDefinition Width="80*" />
+                            <ColumnDefinition Width="300*" />
+                        </Grid.ColumnDefinitions>
+
+                        <telerik:RadPieChart x:Name="PieChartAppProtocols" Palette="Summer" Foreground="Black">
+
+                            <telerik:PieSeries
+                                ValueBinding="Value"
+                                ItemsSource="{Binding Path=ConversationsStatistics.AppProtocolsDistribution}"
+                                RadiusFactor="0.8">
+
+
+                                <telerik:PieSeries.LegendSettings>
+                                    <telerik:DataPointLegendSettings TitleBinding="Key" />
+                                </telerik:PieSeries.LegendSettings>
+
+                                <telerik:PieSeries.LabelDefinitions>
+                                    <telerik:ChartSeriesLabelDefinition Margin="-20,0,0,0" />
+                                </telerik:PieSeries.LabelDefinitions>
+
+                                <telerik:PieSeries.AngleRange>
+                                    <telerik:AngleRange StartAngle="270" SweepAngle="360" />
+                                </telerik:PieSeries.AngleRange>
+                            </telerik:PieSeries>
+
+                        </telerik:RadPieChart>
+
+                        <telerik:RadLegend Grid.Column="1" x:Name="PieLegendProtocols" VerticalAlignment="Center"
+                                           Margin="5"
+                                           Foreground="Black"
+                                           Items="{Binding LegendItems, ElementName=PieChartAppProtocols}" />
+
+                        <DataGrid Grid.Column="2" x:Name="ProtocolsDataGrid" Width="Auto" Margin="5"
+                                  Style="{StaticResource ResourceKey=Style.DataGrid}"
+                                  ColumnHeaderStyle="{StaticResource ResourceKey=Style.GridView.Header}"
+                                  IsReadOnly="True" IsManipulationEnabled="False"
+                                  ItemsSource="{Binding Path=ConversationsStatistics.AppProtocolsSummary, Mode=OneWay}"
+                                  SelectionMode="Single" AutoGenerateColumns="False" EnableRowVirtualization="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Name, Mode=OneWay}" CanUserResize="False"
+                                                    Header="Protocol" />
+                                <DataGridTextColumn Binding="{Binding TotalBytes, Mode=OneWay}" CanUserResize="False"
+                                                    Header="Total Bytes" />
+                                <DataGridTextColumn Binding="{Binding Percent, Mode=OneWay}" CanUserResize="False"
+                                                    Header="  %  " />
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+
+                    </Grid>
+                </telerik:RadTabItem>
+
+                <telerik:RadTabItem Header="Transport protocols" DataContext="{Binding ConversationsStatisticsVm}"
+                                    Visibility="{Binding ConversationsStatistics.TransportProtocolsDistribution, Converter={StaticResource Converter.NullToVisibility}}">
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200*" />
+                            <ColumnDefinition Width="80*" />
+                            <ColumnDefinition Width="300*" />
+                        </Grid.ColumnDefinitions>
+
+                        <telerik:RadPieChart x:Name="PieChartTransportProtocols" Palette="Summer" Foreground="Black">
+
+                            <telerik:PieSeries
+                                ValueBinding="Value"
+                                ItemsSource="{Binding Path=ConversationsStatistics.TransportProtocolsDistribution}"
+                                RadiusFactor="0.8">
+
+
+                                <telerik:PieSeries.LegendSettings>
+                                    <telerik:DataPointLegendSettings TitleBinding="Key" />
+                                </telerik:PieSeries.LegendSettings>
+
+                                <telerik:PieSeries.LabelDefinitions>
+                                    <telerik:ChartSeriesLabelDefinition Margin="-20,0,0,0" />
+                                </telerik:PieSeries.LabelDefinitions>
+
+                                <telerik:PieSeries.AngleRange>
+                                    <telerik:AngleRange StartAngle="270" SweepAngle="360" />
+                                </telerik:PieSeries.AngleRange>
+                            </telerik:PieSeries>
+
+                        </telerik:RadPieChart>
+
+                        <telerik:RadLegend Grid.Column="1" VerticalAlignment="Center" Margin="5"
+                                           Foreground="Black"
+                                           Items="{Binding LegendItems, ElementName=PieChartTransportProtocols}" />
+
+                        <DataGrid Grid.Column="2" Width="Auto" Margin="5"
+                                  Style="{StaticResource ResourceKey=Style.DataGrid}"
+                                  ColumnHeaderStyle="{StaticResource ResourceKey=Style.GridView.Header}"
+                                  IsReadOnly="True" IsManipulationEnabled="False"
+                                  ItemsSource="{Binding Path=ConversationsStatistics.TransportProtocolsSummary, Mode=OneWay}"
+                                  SelectionMode="Single" AutoGenerateColumns="False" EnableRowVirtualization="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Name, Mode=OneWay}" CanUserResize="False"
+                                                    Header="Protocol" />
+                                <DataGridTextColumn Binding="{Binding TotalBytes, Mode=OneWay}" CanUserResize="False"
+                                                    Header="Total Bytes" />
+                                <DataGridTextColumn Binding="{Binding Percent, Mode=OneWay}" CanUserResize="False"
+                                                    Header="  %  " />
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+
+                    </Grid>
+
+                </telerik:RadTabItem>
+
+
+                <!--TIMELINE-->
+                <telerik:RadTabItem Header="Timeline" DataContext="{Binding ConversationsStatisticsVm}">
+
+                    <Grid Background="White" Margin="5 5 5 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" Grid.Row="0">
+                            <TextBlock Text="TIME: " />
+                            <TextBlock x:Name="radTimelineTimeInfo" Text="        " />
+                            <TextBlock Text="  VOLUME: " />
+                            <TextBlock x:Name="radTimelineBytesInfo" Text="       " />
+                        </StackPanel>
+
+
+                        <telerik:RadCartesianChart Grid.Row="1" x:Name="conversationchart" Palette="Windows8"
+                                                   Margin="5"
+
+                                                   TrackBallLineStyle="{StaticResource TrackBallLineStyle}"
+                                                   TrackBallInfoStyle="{StaticResource TrackBallInfoStyle}"
+                                                   Zoom="{Binding Path=Zoom, ElementName=CaptureViewControl,Mode=TwoWay}">
+                            <!--MouseDoubleClick="Conversationchart_OnMouseDoubleClick"-->
+
+                            <telerik:RadCartesianChart.InputBindings>
+                                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding CConversationChartDClick}" />
+                            </telerik:RadCartesianChart.InputBindings>
+
+
+                            <telerik:RadCartesianChart.Behaviors>
+
+                                <telerik:ChartPanAndZoomBehavior ZoomMode="Horizontal" />
+                                <!--<telerik:ChartTrackBallBehavior
+									TrackInfoUpdated="ChartTrackBallBehavior_TrackInfoUpdated"
+									ShowIntersectionPoints="True" />-->
+                                <!--<telerik:ChartSelectionBehavior DataPointSelectionMode="Single"
+								                                HitTestMargin="10"
+								                                SelectionChanged="Conversationchart_SelectionChanged" />-->
+                            </telerik:RadCartesianChart.Behaviors>
+
+                            <telerik:RadCartesianChart.SelectionPalette>
+                                <telerik:ChartPalette>
+                                    <telerik:ChartPalette.GlobalEntries>
+                                        <telerik:PaletteEntry Fill="Red" />
+                                    </telerik:ChartPalette.GlobalEntries>
+                                </telerik:ChartPalette>
+                            </telerik:RadCartesianChart.SelectionPalette>
+
+                            <telerik:RadCartesianChart.HorizontalAxis>
+                                <telerik:DateTimeContinuousAxis
+                                    LabelFitMode="Rotate"
+                                    Title="Time"
+                                    MajorStepUnit="Second"
+                                    LabelInterval="5"
+                                    LabelFormat="HH:mm:ss.f" FontFamily="Segoe UI"
+                                    FontSize="11" />
+                            </telerik:RadCartesianChart.HorizontalAxis>
+
+                            <telerik:RadCartesianChart.VerticalAxis>
+                                <telerik:LinearAxis Title="Traffic [B]" FontSize="11" />
+                            </telerik:RadCartesianChart.VerticalAxis>
+
+                            <telerik:RadCartesianChart.Grid>
+                                <telerik:CartesianChartGrid MajorLinesVisibility="XY" MajorYLineDashArray="3,4" />
+                            </telerik:RadCartesianChart.Grid>
+
+                            <telerik:AreaSeries ItemsSource="{Binding Path=ConversationsStatistics.TrafficErrors}"
+                                                x:Name="trafficErrorsChart"
+                                                Visibility="{Binding Path=ConversationsStatistics.TrafficErrors, Converter={StaticResource Converter.NullToVisibility}}"
+                                                Stroke="Red"
+                                                Fill="Red"
+                                                ValueBinding="Value"
+                                                CategoryBinding="Key" />
+
+                            <telerik:LineSeries ItemsSource="{Binding Path=ConversationsStatistics.TrafficHistory}"
+                                                x:Name="trafficChart"
+                                                Stroke="{StaticResource BlueBrush}"
+                                                Foreground="{StaticResource BlueBrush}"
+                                                StrokeThickness="1"
+                                                ValueBinding="Value"
+                                                CategoryBinding="Key" />
+
+
+                        </telerik:RadCartesianChart>
+                    </Grid>
+
+                </telerik:RadTabItem>
+
+                <!--HOSTS-->
+                <telerik:RadTabItem Header="Hosts Traffic" DataContext="{Binding ConversationsStatisticsVm}">
+
+                    <telerik:RadCartesianChart x:Name="Hostschart"
+                                               Palette="Windows8"
+
+                                               Margin="5">
+
+
+                        <telerik:RadCartesianChart.VerticalAxis>
+                            <telerik:LinearAxis Title="Traffic [B]" FontSize="11" />
+                        </telerik:RadCartesianChart.VerticalAxis>
+
+                        <telerik:RadCartesianChart.Grid>
+                            <telerik:CartesianChartGrid MajorLinesVisibility="XY" MajorYLineDashArray="3,4" />
+                        </telerik:RadCartesianChart.Grid>
+
+                        <telerik:RadCartesianChart.HorizontalAxis>
+                            <telerik:CategoricalAxis LabelFitMode="Rotate" Title="Hosts" />
+                        </telerik:RadCartesianChart.HorizontalAxis>
+
+                        <telerik:RadCartesianChart.Behaviors>
+                            <telerik:ChartPanAndZoomBehavior ZoomMode="Horizontal" />
+                        </telerik:RadCartesianChart.Behaviors>
+
+                        <telerik:BarSeries ItemsSource="{Binding Path=ConversationsStatistics.HostsTraffic}"
+                                           CombineMode="Stack"
+                                           CategoryBinding="Host"
+                                           ValueBinding="UpTraffic" />
+
+                        <telerik:BarSeries ItemsSource="{Binding Path=ConversationsStatistics.HostsTraffic}"
+                                           CombineMode="Stack"
+                                           CategoryBinding="Host"
+                                           ValueBinding="DownTraffic" />
+
+                    </telerik:RadCartesianChart>
+
+                </telerik:RadTabItem>
+
+
+                <telerik:RadTabItem Header="Conversations">
+
+
+                    <Grid Background="White" Margin="5 5 5 0" x:Name="CGrid">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+
+                        <Grid>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                                <TextBlock Text="CONVERSATION: " />
+                                <TextBlock x:Name="converationsInfo" />
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+                                <TextBlock Text="UP:" Margin="0 0 10 0" />
+                                <TextBlock x:Name="converationsInfoUpBytes" Text="0" />
+                                <TextBlock Text="B" Margin="5 0 10 0" />
+                                <TextBlock Text="DOWN:" Margin="0 0 10 0" />
+                                <TextBlock x:Name="converationsInfoDownBytes" Text="0" />
+                                <TextBlock Text="B" Margin="5 0 10 0" />
+                                <TextBlock Text="DURATION:" Margin="0 0 10 0" />
+                                <TextBlock x:Name="converationsInfoDuration" Text="0" />
+                                <TextBlock Text="ms" Margin="5 0 10 0" />
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right"
+                                        Orientation="Horizontal">
+                                <TextBlock Text="Show : " VerticalAlignment="Center" />
+                                <CheckBox Content="Traffic"
+                                          IsChecked="{Binding ElementName=ThisControl, Path=ShowConversationsTraffic}"
+                                          VerticalAlignment="Center" />
+                                <CheckBox Content="Duration"
+                                          IsChecked="{Binding ElementName=ThisControl, Path=ShowConversationsDuration}"
+                                          VerticalAlignment="Center" />
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right"
+                                        Orientation="Horizontal">
+                                <TextBlock Text="Order by : " VerticalAlignment="Center" />
+                                <RadioButton Content="Traffic"
+                                             IsChecked="{Binding ElementName=ThisControl, Path=ConversationsOrderByTraffic}"
+                                             VerticalAlignment="Center" />
+                                <RadioButton Content="Duration"
+                                             IsChecked="{Binding ElementName=ThisControl, Path=ConversationsOrderByDuration}"
+                                             VerticalAlignment="Center" />
+                            </StackPanel>
+
+                        </Grid>
+                        <StackPanel Grid.Row="1">
+                            <!--Busy indicator-->
+                            <Label
+                                Visibility="{Binding ElementName=ThisControl, Path=ConversationsByTrafficOrDuration.IsNotCompleted,
+      Converter={StaticResource Converter.BoolToVisibilityConverter}}"
+                                Content="Loading..." HorizontalAlignment="Center" Foreground="DarkGreen" />
+
+                            <!--Error details-->
+                            <Label
+                                Content="{Binding ElementName=ThisControl, Path=ConversationsByTrafficOrDuration.ErrorMessagesAll}"
+                                Visibility="{Binding ElementName=ThisControl, Path=ConversationsByTrafficOrDuration.IsFaulted,
+      Converter={StaticResource Converter.BoolToVisibilityConverter}}"
+                                Foreground="Red" />
+
+                            <telerik:RadCartesianChart x:Name="Conversationschart"
+                                                       Palette="Windows8"
+                                                       TrackBallInfoStyle="{StaticResource conversationstrackBallInfoStyle}"
+                                                       Margin="5"
+                                                       ClipToBounds="True"
+                                                       PanOffset="{Binding Path=PanOffset, ElementName=ThisControl, Mode=TwoWay}"
+                                                       Visibility="{Binding ElementName=ThisControl, Path=ShowConversationsTraffic, Converter={StaticResource Converter.BoolToVisibilityConverter}}">
+                                <!--ZoomChanged="Conversationschart_OnZoomChanged"-->
+                                <!--MouseDoubleClick="Conversations_OnMouseDoubleClick"-->
+
+
+                                <telerik:RadCartesianChart.VerticalAxis>
+                                    <telerik:LinearAxis Title="Traffic [B]"
+                                                        LabelStyle="{StaticResource yaxisLabelStyle}">
+                                        <telerik:LinearAxis.TitleTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding}" Foreground="Black" />
+                                            </DataTemplate>
+                                        </telerik:LinearAxis.TitleTemplate>
+                                    </telerik:LinearAxis>
+                                </telerik:RadCartesianChart.VerticalAxis>
+
+                                <telerik:RadCartesianChart.Grid>
+                                    <telerik:CartesianChartGrid
+                                        MajorLinesVisibility="XY"
+                                        MajorYLineDashArray="3,4" />
+                                </telerik:RadCartesianChart.Grid>
+
+                                <telerik:RadCartesianChart.HorizontalAxis>
+                                    <telerik:CategoricalAxis
+                                        ShowLabels="False"
+                                        x:Name="conversationsAxis1" Title="Conversations">
+                                        <telerik:CategoricalAxis.Resources>
+                                            <Style TargetType="telerik:PanZoomBar">
+                                                <Setter Property="SelectionStart"
+                                                        Value="{Binding ElementName=ThisControl,  Path=HorizontalRangeStart, Mode=TwoWay}" />
+                                                <Setter Property="SelectionEnd"
+                                                        Value="{Binding ElementName=ThisControl,  Path=HorizontalRangeEnd, Mode=TwoWay}" />
+                                            </Style>
+                                        </telerik:CategoricalAxis.Resources>
+                                    </telerik:CategoricalAxis>
+                                </telerik:RadCartesianChart.HorizontalAxis>
+
+                                <telerik:RadCartesianChart.Behaviors>
+                                    <telerik:ChartPanAndZoomBehavior ZoomMode="Horizontal" />
+
+                                    <!--<telerik:ChartTrackBallBehavior
+									TrackInfoUpdated="Conversations_OnTrackInfoUpdated"
+									ShowIntersectionPoints="True" />-->
+
+                                    <!--<telerik:ChartSelectionBehavior
+									SelectionChanged="ChartSelectionBehavior_OnSelectionChanged"
+
+									DataPointSelectionMode="Single" />-->
+
+
+                                </telerik:RadCartesianChart.Behaviors>
+
+
+                                <telerik:BarSeries
+                                    ItemsSource="{Binding ElementName=ThisControl, Path=ConversationsByTrafficOrDuration.Result}"
+                                    CombineMode="Stack"
+                                    CategoryBinding="Name"
+                                    ValueBinding="UpFlowBytes" />
+
+                                <telerik:BarSeries
+                                    ItemsSource="{Binding ElementName=ThisControl, Path=ConversationsByTrafficOrDuration.Result}"
+                                    CombineMode="Stack"
+                                    CategoryBinding="Name"
+                                    ValueBinding="DownFlowBytes" />
+
+
+                            </telerik:RadCartesianChart>
+
+                            <telerik:RadCartesianChart x:Name="Conversationschart2"
+                                                       Palette="Windows8"
+                                                       TrackBallInfoStyle="{StaticResource conversationstrackBallInfoStyle}"
+                                                       Margin="5"
+                                                       PanOffset="{Binding Path=PanOffset, ElementName=ThisControl, Mode=TwoWay}"
+                                                       ClipToBounds="True"
+
+                                                       Visibility="{Binding ElementName=ThisControl, Path=ShowConversationsDuration, Converter={StaticResource Converter.BoolToVisibilityConverter}}">
+                                <!--ZoomChanged="Conversationschart2_OnZoomChanged"
+						                           MouseDoubleClick="Conversations_OnMouseDoubleClick"-->
+
+
+                                <telerik:RadCartesianChart.VerticalAxis>
+                                    <telerik:LinearAxis
+                                        Title="Duration [ms]"
+                                        LabelStyle="{StaticResource yaxisLabelStyle}">
+                                        <telerik:LinearAxis.TitleTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding}" Foreground="Black" />
+                                            </DataTemplate>
+                                        </telerik:LinearAxis.TitleTemplate>
+                                    </telerik:LinearAxis>
+                                </telerik:RadCartesianChart.VerticalAxis>
+
+                                <telerik:RadCartesianChart.Grid>
+                                    <telerik:CartesianChartGrid
+                                        MajorLinesVisibility="XY"
+                                        MajorYLineDashArray="3,4" />
+                                </telerik:RadCartesianChart.Grid>
+
+                                <telerik:RadCartesianChart.HorizontalAxis>
+                                    <telerik:CategoricalAxis
+                                        ShowLabels="False"
+                                        x:Name="conversationsAxis2" Title="Conversations">
+                                        <telerik:CategoricalAxis.Resources>
+                                            <Style TargetType="telerik:PanZoomBar">
+                                                <Setter Property="SelectionStart"
+                                                        Value="{Binding ElementName=ThisControl,  Path=HorizontalRangeStart, Mode=TwoWay}" />
+                                                <Setter Property="SelectionEnd"
+                                                        Value="{Binding ElementName=ThisControl,  Path=HorizontalRangeEnd, Mode=TwoWay}" />
+                                            </Style>
+                                        </telerik:CategoricalAxis.Resources>
+                                    </telerik:CategoricalAxis>
+                                </telerik:RadCartesianChart.HorizontalAxis>
+
+                                <telerik:RadCartesianChart.Behaviors>
+                                    <telerik:ChartPanAndZoomBehavior ZoomMode="Horizontal" />
+
+                                    <!--<telerik:ChartTrackBallBehavior
+									TrackInfoUpdated="Conversations_OnTrackInfoUpdated"
+									ShowIntersectionPoints="False" />-->
+
+                                    <!--<telerik:ChartSelectionBehavior
+									SelectionChanged="ChartSelectionBehavior_OnSelectionChanged"
+
+									DataPointSelectionMode="Single" />-->
+
+
+                                </telerik:RadCartesianChart.Behaviors>
+
+                                <telerik:BarSeries
+                                    ItemsSource="{Binding ElementName=ThisControl, Path=ConversationsByTrafficOrDuration.Result}"
+                                    CombineMode="Stack"
+                                    CategoryBinding="Name"
+                                    ValueBinding="DurationTotalMilliseconds" />
+
+                            </telerik:RadCartesianChart>
+                        </StackPanel>
+
+
+                    </Grid>
+                </telerik:RadTabItem>
+
+            </telerik:RadTabControl>
+        </Grid>
+
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,20 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)"
+              GeneratedClassNamespace="Netfox.Backend.Framework.Properties" GeneratedClassName="Paths">
+  <Profiles />
+  <Settings>
+    <Setting Name="TestingDataBaseFilePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\..\..\..\TestingData\</Value>
+    </Setting>
+    <Setting Name="PcapsSettingsFilePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\..\Properties\Pcaps.settings</Value>
+    </Setting>
+    <Setting Name="SnoopersPcapsSettingsFilePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">..\..\..\Properties\SnoopersPcaps.settings</Value>
+    </Setting>
+    <Setting Name="SnooperFilePath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\..\..\..\Backend\Snoopers</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

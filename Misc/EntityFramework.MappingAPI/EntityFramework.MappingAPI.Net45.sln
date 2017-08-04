@@ -1,0 +1,70 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.MappingAPI.Net45", "EntityFramework.MappingAPI\EntityFramework.MappingAPI.Net45.csproj", "{168DD262-C4DB-49E8-BF62-BFDD3B6DA41E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.MappingAPI.Test.Net45", "EntityFramework.MappingAPI.Test\EntityFramework.MappingAPI.Test.Net45.csproj", "{BC13B004-21FE-4A7A-8B8B-728E4A9CEC67}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs33
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = EntityFramework.MappingAPI.Test\\EntityFramework.MappingAPI.Test.Net45.csproj
+		SccProjectName1 = EntityFramework.MappingAPI.Test
+		SccLocalPath1 = EntityFramework.MappingAPI.Test
+		SccProjectUniqueName2 = EntityFramework.MappingAPI\\EntityFramework.MappingAPI.Net45.csproj
+		SccProjectName2 = EntityFramework.MappingAPI
+		SccLocalPath2 = EntityFramework.MappingAPI
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		NET45_EF5.0.0|Any CPU = NET45_EF5.0.0|Any CPU
+		NET45_EF6.0.0|Any CPU = NET45_EF6.0.0|Any CPU
+		NET45_EF6.0.1|Any CPU = NET45_EF6.0.1|Any CPU
+		NET45_EF6.0.2|Any CPU = NET45_EF6.0.2|Any CPU
+		NET45_EF6.1.0|Any CPU = NET45_EF6.1.0|Any CPU
+		NET45_EF6.1.1|Any CPU = NET45_EF6.1.1|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{168DD262-C4DB-49E8-BF62-BFDD3B6DA41E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{168DD262-C4DB-49E8-BF62-BFDD3B6DA41E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{168DD262-C4DB-49E8-BF62-BFDD3B6DA41E}.NET45_EF5.0.0|Any CPU.ActiveCfg = NET45_EF5.0.0|Any CPU
+		{168DD262-C4DB-49E8-BF62-BFDD3B6DA41E}.NET45_EF5.0.0|Any CPU.Build.0 = NET45_EF5.0.0|Any CPU
+		{168DD262-C4DB-49E8-BF62-BFDD3B6DA41E}.NET45_EF6.0.0|Any CPU.ActiveCfg = NET45_EF6.0.0|Any CPU
+		{168DD262-C4DB-49E8-BF62-BFDD3B6DA41E}.NET45_EF6.0.0|Any CPU.Build.0 = NET45_EF6.0.0|Any CPU
+		{168DD262-C4DB-49E8-BF62-BFDD3B6DA41E}.NET45_EF6.0.1|Any CPU.ActiveCfg = NET45_EF6.0.1|Any CPU
+		{168DD262-C4DB-49E8-BF62-BFDD3B6DA41E}.NET45_EF6.0.1|Any CPU.Build.0 = NET45_EF6.0.1|Any CPU
+		{168DD262-C4DB-49E8-BF62-BFDD3B6DA41E}.NET45_EF6.0.2|Any CPU.ActiveCfg = NET45_EF6.0.2|Any CPU
+		{168DD262-C4DB-49E8-BF62-BFDD3B6DA41E}.NET45_EF6.0.2|Any CPU.Build.0 = NET45_EF6.0.2|Any CPU
+		{168DD262-C4DB-49E8-BF62-BFDD3B6DA41E}.NET45_EF6.1.0|Any CPU.ActiveCfg = NET45_EF6.1.0|Any CPU
+		{168DD262-C4DB-49E8-BF62-BFDD3B6DA41E}.NET45_EF6.1.0|Any CPU.Build.0 = NET45_EF6.1.0|Any CPU
+		{168DD262-C4DB-49E8-BF62-BFDD3B6DA41E}.NET45_EF6.1.1|Any CPU.ActiveCfg = NET45_EF6.1.1|Any CPU
+		{168DD262-C4DB-49E8-BF62-BFDD3B6DA41E}.NET45_EF6.1.1|Any CPU.Build.0 = NET45_EF6.1.1|Any CPU
+		{168DD262-C4DB-49E8-BF62-BFDD3B6DA41E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{168DD262-C4DB-49E8-BF62-BFDD3B6DA41E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC13B004-21FE-4A7A-8B8B-728E4A9CEC67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC13B004-21FE-4A7A-8B8B-728E4A9CEC67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC13B004-21FE-4A7A-8B8B-728E4A9CEC67}.NET45_EF5.0.0|Any CPU.ActiveCfg = NET45_EF5.0.0|Any CPU
+		{BC13B004-21FE-4A7A-8B8B-728E4A9CEC67}.NET45_EF5.0.0|Any CPU.Build.0 = NET45_EF5.0.0|Any CPU
+		{BC13B004-21FE-4A7A-8B8B-728E4A9CEC67}.NET45_EF6.0.0|Any CPU.ActiveCfg = NET45_EF6.0.0|Any CPU
+		{BC13B004-21FE-4A7A-8B8B-728E4A9CEC67}.NET45_EF6.0.0|Any CPU.Build.0 = NET45_EF6.0.0|Any CPU
+		{BC13B004-21FE-4A7A-8B8B-728E4A9CEC67}.NET45_EF6.0.1|Any CPU.ActiveCfg = NET45_EF6.0.1|Any CPU
+		{BC13B004-21FE-4A7A-8B8B-728E4A9CEC67}.NET45_EF6.0.1|Any CPU.Build.0 = NET45_EF6.0.1|Any CPU
+		{BC13B004-21FE-4A7A-8B8B-728E4A9CEC67}.NET45_EF6.0.2|Any CPU.ActiveCfg = NET45_EF6.0.2|Any CPU
+		{BC13B004-21FE-4A7A-8B8B-728E4A9CEC67}.NET45_EF6.0.2|Any CPU.Build.0 = NET45_EF6.0.2|Any CPU
+		{BC13B004-21FE-4A7A-8B8B-728E4A9CEC67}.NET45_EF6.1.0|Any CPU.ActiveCfg = NET45_EF6.1.0|Any CPU
+		{BC13B004-21FE-4A7A-8B8B-728E4A9CEC67}.NET45_EF6.1.0|Any CPU.Build.0 = NET45_EF6.1.0|Any CPU
+		{BC13B004-21FE-4A7A-8B8B-728E4A9CEC67}.NET45_EF6.1.1|Any CPU.ActiveCfg = NET45_EF6.1.1|Any CPU
+		{BC13B004-21FE-4A7A-8B8B-728E4A9CEC67}.NET45_EF6.1.1|Any CPU.Build.0 = NET45_EF6.1.1|Any CPU
+		{BC13B004-21FE-4A7A-8B8B-728E4A9CEC67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC13B004-21FE-4A7A-8B8B-728E4A9CEC67}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

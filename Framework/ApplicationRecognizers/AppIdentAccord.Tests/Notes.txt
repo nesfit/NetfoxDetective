@@ -1,0 +1,7 @@
+﻿- correlation matrix to be able to exclude some features to achieve better model performance
+- how to evaluate classification model performance:
+- ROC curve - True positive rate to false positive rate -> https://www.wikiwand.com/en/Receiver_operating_characteristic
+- CAP curve - https://www.scribd.com/document/317871163/CAP-curve
+- curse of dimensionality -> https://www.wikiwand.com/en/Curse_of_dimensionality
+- dummy variable trap (with cathegorical data)
+- in work we use python scikit-learn lib for ML .. this lib enable us to create so called pipelines - where you can specify N classification models each with M hyperparameter and each hyper parameter with K different values .. this pipeline uses cross validation and grid search algorithm to tell you the best classification model for you probelm

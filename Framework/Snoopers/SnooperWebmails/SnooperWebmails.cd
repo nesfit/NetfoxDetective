@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.SnooperExportWebmail" Collapsed="true">
+    <Position X="14.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\SnooperExportWebmail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.Analyzers.GenericWebmailAnalyzer" Collapsed="true">
+    <Position X="1.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Models\Analyzers\GenericWebmailAnalyzer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.Analyzers.MicrosoftWebmailAnalyzer" Collapsed="true">
+    <Position X="3.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Models\Analyzers\MicrosoftWebmailAnalyzer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.Analyzers.WebmailAnalyzerBase" Collapsed="true">
+    <Position X="2.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABBAAAAAAIAQAAAAAAAAAAAAAAAAAAAEECAAAAIEA=</HashCode>
+      <FileName>Models\Analyzers\WebmailAnalyzerBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.Analyzers.WebmailAnalyzerFactory" Collapsed="true">
+    <Position X="14.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Models\Analyzers\WebmailAnalyzerFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.Spotters.FRPCparser" Collapsed="true">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Models\Spotters\FRPCparser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.Spotters.SpotterBase" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AogACAAAAAAAEAAAAAAAAAAAAAAAAAACACACAAgYQAA=</HashCode>
+      <FileName>Models\Spotters\SpotterBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.Spotters.SpotterFactory" Collapsed="true">
+    <Position X="16.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAABAAAAAAA=</HashCode>
+      <FileName>Models\Spotters\SpotterFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.Spotters.SpotterFRPC" Collapsed="true">
+    <Position X="6" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AogACCAAAAgACAAAAAAAAAAAAAAAAAQCAKACAAAYRAA=</HashCode>
+      <FileName>Models\Spotters\SpotterFRPC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.Spotters.SpotterJson" Collapsed="true">
+    <Position X="8.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AogACCAAAAgQgAAAAAAAAAAAQAAAAAQCACACAAAYQAA=</HashCode>
+      <FileName>Models\Spotters\SpotterJson.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.Spotters.SpotterKeyValue" Collapsed="true">
+    <Position X="10.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gogACCAAAAgAgAAAAAAAAAAAAAAAAAQCACACAAAYQAA=</HashCode>
+      <FileName>Models\Spotters\SpotterKeyValue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.Spotters.SpotterMultipart" Collapsed="true">
+    <Position X="1.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AogACCAAAAgABAABAAIAQAAIAAAAAAwCECACIAAYQgA=</HashCode>
+      <FileName>Models\Spotters\SpotterMultipart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.Spotters.SpotterText" Collapsed="true">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AogACAAAAAAAAAABAAAAAAAAAAAAAAACACACAAAYQAA=</HashCode>
+      <FileName>Models\Spotters\SpotterText.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.Spotters.SpotterPool.SpotterPool" Collapsed="true">
+    <Position X="18.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAQAAAQAAAAAAgQAAAAAQAAAAAAGQAAAAEAEBAACA=</HashCode>
+      <FileName>Models\Spotters\SpotterPool\SpotterPool.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.SpotterVisitors.SeznamGetDisplayMessage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Models\SpotterVisitors\SeznamGetDisplayMessage.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.SpotterVisitors.SeznamGetListedMessages" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Models\SpotterVisitors\SeznamGetListedMessages.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.SpotterVisitors.SeznamGetNewMessage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAEA=</HashCode>
+      <FileName>Models\SpotterVisitors\SeznamGetNewMessage.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.SpotterVisitors.SpotterVisitorsManager" Collapsed="true">
+    <Position X="13" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAEAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Models\SpotterVisitors\SpotterVisitorsManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.SpotterVisitors.YahooGetDisplayMessage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Models\SpotterVisitors\YahooGetDisplayMessage.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.SpotterVisitors.YahooGetListedMessages" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Models\SpotterVisitors\YahooGetListedMessages.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.WebmailEvents.EventDisplayMessage" Collapsed="true">
+    <Position X="3.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Models\WebmailEvents\EventDisplayMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.WebmailEvents.EventListFolder" Collapsed="true">
+    <Position X="6" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Models\WebmailEvents\EventListFolder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.WebmailEvents.MailMsg" Collapsed="true">
+    <Position X="14.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgBAAAAAAAAAAAAAAIABAAAAAAAIAAAAAAAAAAAIABg=</HashCode>
+      <FileName>Models\WebmailEvents\EventNewMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.WebmailEvents.EventNewMessage" Collapsed="true">
+    <Position X="1.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Models\WebmailEvents\EventNewMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.WebmailEvents.WebmailEventBase" Collapsed="true">
+    <Position X="3.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\WebmailEvents\WebmailEventBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Netfox.Framework.Snoopers.SnooperWebmails.Models.Spotters.ISpotterVisitor" Collapsed="true">
+    <Position X="13" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Models\Spotters\ISpotterVisitor.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

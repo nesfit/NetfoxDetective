@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <!-- Read this before publishing packages to chocolatey.org: https://github.com/chocolatey/chocolatey/wiki/CreatePackages -->
+    <id>netfoxdetective</id>
+    <title>NetfoxDetective (Install)</title>
+    <version>0.9.1</version>
+    <authors>Jan Pluskal</authors>
+    <owners>Jan Pluskal</owners>
+    
+    <summary>Network Forensic Extendable Analysis Tool</summary>
+    <description>NFX Detective is a novel Network forensic analysis tool that implements methods for extraction of application content from communication using supported protocols.</description>
+    <projectUrl>http://netfox.fit.vutbr.cz</projectUrl>
+    <tags>Network forensics packet analyzer forensics wireshark network monitor xplico networkminer</tags>
+    <licenseUrl>http://netfox.fit.vutbr.cz/License.en.html</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance> <!-- or true if you require the user to accept the License before installing -->
+    <packageSourceUrl>https://chocolatey.org/packages/NetfoxDetective</packageSourceUrl>
+    <!--<projectSourceUrl></projectSourceUrl>
+    <docsUrl></docsUrl>
+    <mailingListUrl></mailingListUrl>
+    <bugTrackerUrl></bugTrackerUrl>-->
+    <copyright></copyright>
+    <!--<iconUrl>http://cdn.rawgit.com/__REPLACE_YOUR_REPO__/master/icons/netfoxdetective.png</iconUrl>-->
+    <!--<dependencies>
+      <dependency id="" version="__VERSION__" />
+      <dependency id="" />
+    </dependencies>-->
+    <releaseNotes>__REPLACE_OR_REMOVE__MarkDown_Okay</releaseNotes>
+    <!--<provides></provides>-->
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

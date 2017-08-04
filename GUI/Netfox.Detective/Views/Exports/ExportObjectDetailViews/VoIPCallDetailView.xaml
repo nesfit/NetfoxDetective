@@ -1,0 +1,231 @@
+﻿<views:DetectiveExportDetailPaneViewBase
+    x:Class="Netfox.Detective.Views.Exports.ExportObjectDetailViews.VoIPCallDetailView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    xmlns:wpfSoundVisualizationLib="clr-namespace:WPFSoundVisualizationLib;assembly=WPFSoundVisualizationLib"
+    xmlns:views="clr-namespace:Netfox.Detective.Views"
+    xmlns:exportObjectDetailViews="clr-namespace:Netfox.Detective.Views.Exports.ExportObjectDetailViews"
+    xmlns:detail="clr-namespace:Netfox.Detective.ViewModelsDataEntity.Exports.Detail"
+    mc:Ignorable="d"
+    d:DesignHeight="360" d:DesignWidth="580"
+    d:DataContext="{d:DesignInstance detail:VoIPCallDetailVm, d:IsDesignTimeCreatable=False}">
+
+    <views:DetectiveExportDetailPaneViewBase.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- LOCAL STYLES -->
+                <ResourceDictionary x:Name="LocalStyles" />
+                <ResourceDictionary>
+                    <LinearGradientBrush x:Key="PressedBorderBrush"
+                                         EndPoint="0,1"
+                                         StartPoint="0,0">
+                        <GradientStop Color="#444"
+                                      Offset="0.0" />
+                        <GradientStop Color="#888"
+                                      Offset="1.0" />
+                    </LinearGradientBrush>
+                    <LinearGradientBrush x:Key="VerticalPressedBorderBrush"
+                                         EndPoint="0,0"
+                                         StartPoint="1,0">
+                        <GradientStop Color="#444"
+                                      Offset="0.0" />
+                        <GradientStop Color="#888"
+                                      Offset="1.0" />
+                    </LinearGradientBrush>
+
+                    <!-- Region: WaveformTimeline -->
+                    <LinearGradientBrush x:Key="WaveformRightLevelBrush"
+                                         EndPoint="1,1"
+                                         StartPoint="1,0">
+                        <GradientStop Color="#D80303"
+                                      Offset="-1" />
+                        <GradientStop Color="#A80000"
+                                      Offset="0" />
+                    </LinearGradientBrush>
+                    <LinearGradientBrush x:Key="WaveformLeftLevelBrush"
+                                         EndPoint="1,0"
+                                         StartPoint="1,1">
+                        <GradientStop Color="#D80303"
+                                      Offset="1" />
+                        <GradientStop Color="#A80000"
+                                      Offset="0" />
+                    </LinearGradientBrush>
+
+                    <SolidColorBrush x:Key="ControlBackgroundBrush"
+                                     Color="#FFD6D6D6" />
+
+                    <Style TargetType="{x:Type wpfSoundVisualizationLib:WaveformTimeline}">
+                        <Setter Property="FontSize"
+                                Value="10" />
+                        <Setter Property="RepeatRegionBrush"
+                                Value="#7FFFFFFF" />
+                        <Setter Property="TimelineTickBrush"
+                                Value="Gray" />
+                        <Setter Property="ProgressBarBrush"
+                                Value="Black" />
+                        <Setter Property="CenterLineBrush"
+                                Value="#595959" />
+                        <Setter Property="Foreground"
+                                Value="{DynamicResource TextBrush}" />
+                        <Setter Property="RightLevelBrush"
+                                Value="{StaticResource WaveformRightLevelBrush}" />
+                        <Setter Property="LeftLevelBrush"
+                                Value="{StaticResource WaveformLeftLevelBrush}" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type wpfSoundVisualizationLib:WaveformTimeline}">
+                                    <Border Background="{StaticResource ControlBackgroundBrush}"
+                                            BorderBrush="DimGray"
+                                            BorderThickness="2"
+                                            CornerRadius="5">
+                                        <Border.Effect>
+                                            <DropShadowEffect BlurRadius="5"
+                                                              ShadowDepth="3"
+                                                              Color="Black"
+                                                              Opacity="0.15" />
+                                        </Border.Effect>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="20" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Canvas Name="PART_Waveform"
+                                                    Grid.Row="1"
+                                                    ClipToBounds="True" />
+                                            <Border BorderBrush="{TemplateBinding TimelineTickBrush}"
+                                                    Grid.Row="0"
+                                                    BorderThickness="0,0,0,1"
+                                                    Panel.ZIndex="0">
+                                                <Canvas Name="PART_Timeline"
+                                                        ClipToBounds="True"
+                                                        Height="20" />
+                                            </Border>
+                                            <Canvas Name="PART_Repeat"
+                                                    Grid.Row="1"
+                                                    ClipToBounds="True" />
+                                            <Canvas Name="PART_Progress"
+                                                    Grid.Row="0"
+                                                    Grid.RowSpan="2"
+                                                    ClipToBounds="True" />
+                                        </Grid>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </views:DetectiveExportDetailPaneViewBase.Resources>
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140" />
+            <RowDefinition Height="Auto" />
+            <!--<RowDefinition Height="Auto"/>-->
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+
+        <Grid Margin="10" DataContext="{Binding Path=SelectedCall, Mode=OneWay}">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+
+            <TextBlock Text="Start :" Grid.Row="0" HorizontalAlignment="Right" />
+            <TextBox Text="{Binding Path=Start, Mode=OneWay}" IsReadOnly="True" Grid.Row="0" Grid.Column="2" />
+
+            <TextBlock Text="End :" Grid.Row="1" HorizontalAlignment="Right" />
+            <TextBox Text="{Binding Path=End, Mode=OneWay}" IsReadOnly="True" Grid.Row="1" Grid.Column="2" />
+
+            <TextBlock Text="From :" Grid.Row="2" HorizontalAlignment="Right" />
+            <TextBox Text="{Binding Path=From, Mode=OneWay}" IsReadOnly="True" Grid.Row="2" Grid.Column="2" />
+
+            <TextBlock Text="To :" Grid.Row="3" HorizontalAlignment="Right" />
+            <TextBox Text="{Binding Path=To, Mode=OneWay}" IsReadOnly="True" Grid.Row="3" Grid.Column="2" />
+
+
+            <TextBlock Text="Duration :" Grid.Row="4" HorizontalAlignment="Right" />
+            <TextBox Text="{Binding Path=Duration, Mode=OneWay}" IsReadOnly="True" Grid.Row="4" Grid.Column="2" />
+
+            <TextBlock Text="State :" Grid.Row="5" HorizontalAlignment="Right" />
+            <TextBox Text="{Binding Path=State, Mode=OneWay}" IsReadOnly="True" Grid.Row="5" Grid.Column="2" />
+
+        </Grid>
+
+        <StackPanel Grid.Row="1">
+            <!--<StackPanel Grid.Row="1" Visibility="Hidden">-->
+            <exportObjectDetailViews:PlayControls />
+            <TextBlock Text="Call content:" Margin="10 0 0 10" />
+            <!--    -->
+            <telerik:RadListBox ItemsSource="{Binding Path=CallStreams}" Name="CallsList" Margin="10 0 0 10"
+                                Grid.Row="3">
+                <telerik:RadListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=CallStream.Start}" FontWeight="Bold" />
+                                <TextBlock Text="-" Margin="10 0 10 0" />
+                                <TextBlock Text="{Binding Path=CallStream.End}" FontWeight="Bold" />
+                                <CheckBox IsChecked="{Binding Path=IsPlayChecked}" Margin="10 0 0 0" Content="Play" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=CallStream.SourceEndPoint}" FontWeight="Bold" />
+                                <TextBlock Text=">" Margin="10 0 10 0" />
+                                <TextBlock Text="{Binding Path=CallStream.DestinationEndPoint}" FontWeight="Bold" />
+                            </StackPanel>
+                            <ContentPresenter Content="{Binding Visualization}" Height="100" />
+
+                            <Button Style="{StaticResource LinkButton}"
+                                    Content="{Binding Path=CallStream.WavFilePath}" />
+                            <!--Click="CallContentClick"-->
+                        </StackPanel>
+                    </DataTemplate>
+                </telerik:RadListBox.ItemTemplate>
+            </telerik:RadListBox>
+            <TextBlock Text="Possibly matching call streams:" Margin="10 0 0 10" />
+
+            <telerik:RadListBox ItemsSource="{Binding Path=PossibleCallStreams}" Name="PossibleCallStreams"
+                                Margin="10 0 0 10"
+                                Grid.Row="3">
+                <telerik:RadListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=CallStream.Start}" FontWeight="Bold" />
+                                <TextBlock Text="-" Margin="10 0 10 0" />
+                                <TextBlock Text="{Binding Path=CallStream.End}" FontWeight="Bold" />
+                                <CheckBox IsChecked="{Binding Path=IsPlayChecked}" Margin="10 0 0 0" Content="Play" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=CallStream.SourceEndPoint}" FontWeight="Bold" />
+                                <TextBlock Text=">" Margin="10 0 10 0" />
+                                <TextBlock Text="{Binding Path=CallStream.DestinationEndPoint}" FontWeight="Bold" />
+                            </StackPanel>
+                            <ContentPresenter Content="{Binding Visualization}" Height="100" />
+
+                            <Button Style="{StaticResource LinkButton}"
+                                    Content="{Binding Path=CallStream.WavFilePath}" />
+                            <!--Click="CallContentClick"-->
+                        </StackPanel>
+                    </DataTemplate>
+                </telerik:RadListBox.ItemTemplate>
+            </telerik:RadListBox>
+        </StackPanel>
+
+
+    </Grid>
+</views:DetectiveExportDetailPaneViewBase>

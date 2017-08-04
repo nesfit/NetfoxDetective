@@ -1,0 +1,373 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=PresentationFramework"
+                    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
+    <Style TargetType="{x:Type UserControl}">
+        <Style.Triggers>
+            <Trigger Property="componentModel:DesignerProperties.IsInDesignMode"
+                     Value="true">
+                <Setter Property="Background"
+                        Value="White" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <SolidColorBrush x:Key="LightGrayBrush" Color="#FFEEEEEE" />
+    <SolidColorBrush x:Key="GrayBrush" Color="#FFCCCCCC" />
+    <SolidColorBrush x:Key="DarkGrayBrush" Color="#FF333333" />
+    <SolidColorBrush x:Key="LightGrayBackgroundBrush" Color="#FFFFFFFF" />
+    <SolidColorBrush x:Key="WhiteBlueSmoke" Color="#FFF0F8FF" />
+    <SolidColorBrush x:Key="ContentForegroundBrush" Color="#FF333333" />
+    <SolidColorBrush x:Key="ContentDimmedForegroundBrush" Color="#FF888888" />
+    <SolidColorBrush x:Key="GreenBrush" Color="#FF388B41" />
+    <SolidColorBrush x:Key="BlueBrush" Color="#FF0055aa" />
+    <SolidColorBrush x:Key="RedBrush" Color="Red" />
+    <SolidColorBrush x:Key="DisableBrush" Color="#4C434647" />
+    <SolidColorBrush x:Key="LabelBrush" Color="#767676" />
+    <SolidColorBrush x:Key="ToolbarForegroundBrush" Color="#FF434647" />
+
+    <telerik:Windows8Theme x:Key="TelerikGlobalTheme" />
+
+    <Style BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        <Setter Property="telerik:StyleManager.Theme" Value="{DynamicResource TelerikGlobalTheme}" />
+    </Style>
+    <Style BasedOn="{x:Null}" TargetType="{x:Type ComboBox}">
+        <Setter Property="telerik:StyleManager.Theme" Value="{DynamicResource TelerikGlobalTheme}" />
+    </Style>
+    <Style BasedOn="{x:Null}" TargetType="{x:Type Expander}">
+        <Setter Property="telerik:StyleManager.Theme" Value="{DynamicResource TelerikGlobalTheme}" />
+    </Style>
+    <Style BasedOn="{x:Null}" TargetType="{x:Type CheckBox}">
+        <Setter Property="telerik:StyleManager.Theme" Value="{DynamicResource TelerikGlobalTheme}" />
+    </Style>
+
+    <Style BasedOn="{x:Null}" TargetType="{x:Type ListBox}">
+        <Setter Property="telerik:StyleManager.Theme" Value="{DynamicResource TelerikGlobalTheme}" />
+    </Style>
+    <Style BasedOn="{x:Null}" TargetType="{x:Type ListView}">
+        <Setter Property="telerik:StyleManager.Theme" Value="{DynamicResource TelerikGlobalTheme}" />
+    </Style>
+    <Style BasedOn="{x:Null}" TargetType="{x:Type Menu}">
+        <Setter Property="telerik:StyleManager.Theme" Value="{DynamicResource TelerikGlobalTheme}" />
+    </Style>
+    <Style BasedOn="{x:Null}" TargetType="{x:Type PasswordBox}">
+        <Setter Property="telerik:StyleManager.Theme" Value="{DynamicResource TelerikGlobalTheme}" />
+    </Style>
+    <Style BasedOn="{x:Null}" TargetType="{x:Type ProgressBar}">
+        <Setter Property="telerik:StyleManager.Theme" Value="{DynamicResource TelerikGlobalTheme}" />
+    </Style>
+    <Style BasedOn="{x:Null}" TargetType="{x:Type RadioButton}">
+        <Setter Property="telerik:StyleManager.Theme" Value="{DynamicResource TelerikGlobalTheme}" />
+    </Style>
+
+    <Style BasedOn="{x:Null}" TargetType="{x:Type ScrollBar}">
+        <Setter Property="telerik:StyleManager.Theme" Value="{DynamicResource TelerikGlobalTheme}" />
+    </Style>
+    <Style BasedOn="{x:Null}" TargetType="{x:Type ScrollViewer}">
+        <Setter Property="telerik:StyleManager.Theme" Value="{DynamicResource TelerikGlobalTheme}" />
+    </Style>
+    <!--<Style BasedOn="{x:Null}" TargetType="{x:Type Slider}">
+        <Setter Property="telerik:StyleManager.Theme" Value="{DynamicResource TelerikGlobalTheme}" />
+    </Style>-->
+
+    <Style BasedOn="{x:Null}" TargetType="{x:Type StatusBar}">
+        <Setter Property="telerik:StyleManager.Theme" Value="{DynamicResource TelerikGlobalTheme}" />
+    </Style>
+
+    <Style x:Key="Style.TabItem" TargetType="{x:Type telerik:RadTabItem}">
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Foreground" Value="{StaticResource ResourceKey=ContentForegroundBrush}" />
+    </Style>
+
+    <Style BasedOn="{x:Null}" TargetType="{x:Type TextBox}">
+        <Setter Property="telerik:StyleManager.Theme" Value="{DynamicResource TelerikGlobalTheme}" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+    </Style>
+
+    <Style BasedOn="{x:Null}" TargetType="{x:Type TreeView}">
+        <Setter Property="telerik:StyleManager.Theme" Value="{DynamicResource TelerikGlobalTheme}" />
+    </Style>
+
+
+    <Style TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="13" />
+		<Setter Property="FontFamily" Value="Segoe UI" />
+		<Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Foreground" Value="{StaticResource ResourceKey=ContentForegroundBrush}" />
+    </Style>
+
+    <Style x:Key="Style.TextBlock.Label" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{StaticResource ResourceKey=ContentForegroundBrush}" />
+    </Style>
+
+    <Style x:Key="Style.TextBlock.Content" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{StaticResource ResourceKey=BlueBrush}" />
+    </Style>
+
+    <Style x:Key="Style.TextBox.Content" TargetType="{x:Type TextBox}">
+        <Setter Property="Foreground" Value="{StaticResource ResourceKey=BlueBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+		<Setter Property="Border.BorderThickness" Value="0" />
+		<Setter Property="Border.BorderBrush" Value="Transparent" />
+    </Style>
+
+    <Style x:Key="Style.Border.Header" TargetType="{x:Type Border}">
+        <Setter Property="BorderThickness" Value="0,0,0,0" />
+		<Setter Property="BorderBrush" Value="{StaticResource ResourceKey=BlueBrush}" />
+		<Setter Property="Background" Value="White" />
+    </Style>
+
+    <Style x:Key="Style.RadExpander" TargetType="{x:Type telerik:RadExpander}">
+        <Setter Property="BorderThickness" Value="0,4,0,1" />
+		<Setter Property="BorderBrush" Value="{StaticResource ResourceKey=GrayBrush}" />
+		<Setter Property="Background" Value="WhiteSmoke" />
+		 <!--{StaticResource ResourceKey=WhiteBlueSmoke}" />--> 
+		<Setter Property="Margin" Value="3" />
+    </Style>
+
+    <Style x:Key="Style.TextBlock.Header" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="15" />
+		<Setter Property="FontFamily" Value="Segoe UI" />
+		<Setter Property="VerticalAlignment" Value="Top" />
+		<Setter Property="Margin" Value="12,6,0,6" />
+		<Setter Property="Foreground" Value="{StaticResource ResourceKey=BlueBrush}" />
+    </Style>
+
+
+    <Style x:Key="Style.TextBlock.Subheader" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="14" />
+		<Setter Property="FontFamily" Value="Segoe UI" />
+		<Setter Property="VerticalAlignment" Value="Top" />
+		<Setter Property="Margin" Value="12,6,0,6" />
+		<Setter Property="Foreground" Value="{StaticResource ResourceKey=BlueBrush}" />
+    </Style>
+
+    <Style x:Key="Style.TextBlock.Subsubheader" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="13" />
+		<Setter Property="FontFamily" Value="Segoe UI" />
+		<Setter Property="VerticalAlignment" Value="Top" />
+		<Setter Property="Margin" Value="12,6,0,6" />
+		<Setter Property="Foreground" Value="{StaticResource ResourceKey=BlueBrush}" />
+    </Style>
+
+
+    <Style x:Key="NavigableTextBlockStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="13" />
+		<Setter Property="FontFamily" Value="Segoe UI" />
+		<Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Foreground" Value="{telerik:Windows8Resource ResourceKey=AccentBrush}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Foreground" Value="{telerik:Windows8Resource ResourceKey=ValidationBrush}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="false">
+                <Setter Property="Foreground" Value="{telerik:Windows8Resource ResourceKey=AccentBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="GroupBoxStyle" TargetType="{x:Type GroupBox}">
+        <Setter Property="Foreground" Value="Black" />
+    </Style>
+
+
+    <Style TargetType="{x:Type telerik:LinearAxis}">
+        <Setter Property="Foreground" Value="Black" />
+    </Style>
+
+    <Style TargetType="{x:Type DataGridCell}">
+        <Setter Property="Padding" Value="2" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type DataGridCell}">
+					<Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}"
+					        BorderThickness="{TemplateBinding BorderThickness}"
+					        Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+						<ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+    </Style>
+
+    <Style x:Key="Style.DataGrid" TargetType="{x:Type DataGrid}">
+        <Setter Property="Background" Value="White" />
+		<Setter Property="Foreground" Value="{StaticResource ResourceKey=ContentForegroundBrush}" />
+		<Setter Property="FontSize" Value="13" />
+		<Setter Property="FontFamily" Value="Segoe UI" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="RowHeaderWidth" Value="0" />
+		<Setter Property="BorderBrush" Value="{StaticResource ResourceKey=LightGrayBrush}" />
+		<Setter Property="GridLinesVisibility" Value="All" />
+		<Setter Property="HorizontalGridLinesBrush" Value="WhiteSmoke" />
+		<Setter Property="VerticalGridLinesBrush" Value="{StaticResource ResourceKey=LightGrayBrush}" />
+    </Style>
+
+    <Style x:Key="Style.GridView.Header" TargetType="{x:Type DataGridColumnHeader}">
+        <Setter Property="FontSize" Value="13" />
+		<Setter Property="FontFamily" Value="Segoe UI" />
+		<Setter Property="Margin" Value="0 0 0 10" />
+		<Setter Property="Padding" Value="5 0 0 5" />
+		<Setter Property="Background" Value="{StaticResource ResourceKey=LightGrayBrush}" />
+		<Setter Property="Foreground" Value="{StaticResource ResourceKey=ContentForegroundBrush}" />
+		<Setter Property="BorderThickness" Value="0" />
+    </Style>
+
+    <Style x:Key="Style.DataGridHeader" TargetType="{x:Type telerik:GridViewHeaderRow}" />
+
+    <Style x:Key="Style.DataGridView" TargetType="{x:Type telerik:RadGridView}">
+        <Setter Property="RowIndicatorVisibility" Value="Collapsed" />
+		<Setter Property="HeaderRowStyle" Value="{StaticResource Style.DataGridHeader}" />
+    </Style>
+    
+    <Style x:Key="Style.TabControl" TargetType="{x:Type TabControl}">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="{StaticResource ResourceKey=ContentForegroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ResourceKey=GrayBrush}"/>
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+
+    <!--<Style x:Key="Style.TabItem" TargetType="{x:Type TabItem}">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="{StaticResource ResourceKey=ContentForegroundBrush}"/>
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{StaticResource ResourceKey=LightGrayBrush}"/>
+    </Style>-->
+
+    <Style x:Key="Style.RadTabControl" TargetType="{x:Type telerik:RadTabControl}">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="HeaderBackground" Value="WhiteSmoke"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="{StaticResource ResourceKey=ContentForegroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ResourceKey=LightGrayBrush}"/>
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+    <Style x:Key="Style.RadTabItem" TargetType="{x:Type telerik:RadTabItem}">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="{StaticResource ResourceKey=GrayBrush}"/>
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="BorderThickness" Value="0" />
+    </Style>
+
+
+    <Style x:Key="Style.TreeView" TargetType="{x:Type TreeView}">
+        <Setter Property="Background" Value="White" />
+		<Setter Property="Foreground" Value="{StaticResource ResourceKey=ContentForegroundBrush}" />
+		<Setter Property="FontSize" Value="13" />
+		<Setter Property="FontFamily" Value="Segoe UI" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="BorderBrush" Value="{StaticResource ResourceKey=LightGrayBrush}" />
+    </Style>
+
+    <Style TargetType="{x:Type telerik:RadTreeViewItem}">
+         <!--BasedOn="{StaticResource RadTreeViewItemStyle}">--> 
+        <Setter Property="FontSize" Value="10" />
+		<Setter Property="FontFamily" Value="Segoe UI" />
+    </Style>
+
+    <Style TargetType="{x:Type telerik:RadToolBar}">
+         <!--BasedOn="{StaticResource RadToolBarStyle}">--> 
+        <Setter Property="Height" Value="28" />
+		<Setter Property="VerticalContentAlignment" Value="Center" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style TargetType="{x:Type telerik:RadButton}" x:Key="test">
+         <!--BasedOn="{StaticResource RadButtonStyle}">--> 
+        <Setter Property="Background" Value="Transparent" />
+		<Setter Property="BorderBrush" Value="Transparent" />
+		<Setter Property="BorderThickness" Value="0" />
+    </Style>
+
+
+    <Style x:Key="Style.RadDocumentPane" TargetType="telerik:RadDocumentPane">
+        <Setter Property="BorderThickness" Value="0" />
+		<Setter Property="FontFamily" Value="Segoe UI Light" />
+		<Setter Property="FontSize" Value="13" />
+    </Style>
+    <Style x:Key="Style.RadPane" TargetType="telerik:RadPane">
+        <Setter Property="BorderThickness" Value="0" />
+		<Setter Property="FontFamily" Value="Segoe UI Light" />
+		<Setter Property="FontSize" Value="13" />
+    </Style>
+
+    <Style x:Key="Style.Button" TargetType="Button">
+        <Setter Property="BorderBrush" Value="{StaticResource ResourceKey=LightGrayBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Background" Value="{StaticResource ResourceKey=LightGrayBrush}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="BorderBrush" Value="{StaticResource ResourceKey=GrayBrush}" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="false">
+                <Setter Property="BorderBrush" Value="{Binding Path=LightGrayBrush}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style x:Key="Style.DropDownButton" TargetType="xctk:DropDownButton">
+        <Setter Property="BorderBrush" Value="{StaticResource ResourceKey=LightGrayBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Background" Value="{StaticResource ResourceKey=LightGrayBrush}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="BorderBrush" Value="{StaticResource ResourceKey=GrayBrush}"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="false">
+                <Setter Property="BorderBrush" Value="{Binding Path=LightGrayBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+
+    <Style x:Key="TrackBallLineStyle" TargetType="Polyline">
+        <Setter Property="Visibility" Value="Collapsed" />
+    </Style>
+
+    <Style x:Key="TrackBallInfoStyle" TargetType="telerik:TrackBallInfoControl">
+        <Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="telerik:TrackBallInfoControl" />
+			</Setter.Value>
+		</Setter>
+    </Style>
+
+    <Style
+        x:Key="LinkButton"
+        TargetType="Button">
+        <Setter
+            Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    TargetType="Button">
+                    <TextBlock
+                        TextDecorations="Underline">
+                        <ContentPresenter />
+                    </TextBlock>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter
+            Property="Foreground"
+            Value="{StaticResource ResourceKey=BlueBrush}" />
+        <Style.Triggers>
+            <Trigger
+                Property="IsMouseOver"
+                Value="true">
+                <Setter
+                    Property="Foreground"
+                    Value="Red" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="Netfox.Detective.Views.Snoopers.UsedSnoopersUc"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:conversationsCollections="clr-namespace:Netfox.Detective.ViewModelsDataEntity.ConversationsCollections"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300"
+             d:DataContext="{d:DesignInstance conversationsCollections:MockConversationsVm, IsDesignTimeCreatable=false}">
+    <Grid>
+        <StackPanel>
+            <CheckBox Margin="10 10 0 10" Grid.Row="0"
+                      Content="Apply export on all conversations (don't use application tags)"
+                      VerticalAlignment="Center"
+                      x:Name="DontUseApplicationTagsForceOnAllConversations"
+                      Grid.Column="0" />
+            <CheckBox Margin="10 0 0 0" Grid.Row="3" Content="Show results during operation (slower)"
+                      VerticalAlignment="Center"
+                      x:Name="ShowExportedObjectsDuringExportation"
+                      Grid.Column="1" />
+            <telerik:RadListBox Grid.Column="0" Margin="5"
+                                ItemsSource="{Binding Path=AvailableSnoopers, Mode=OneWay}"
+                                BorderThickness="0"
+                                ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <telerik:RadListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" IsItemsHost="True"
+                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
+                    </ItemsPanelTemplate>
+                </telerik:RadListBox.ItemsPanel>
+                <telerik:RadListBox.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox IsChecked="{Binding Path=IsEnabled}" Margin="10 5 5 5" Width="100"
+                                  Content="{Binding Path=Name, Mode=OneWay}">
+                            <CheckBox.Foreground>
+                                <MultiBinding Converter="{StaticResource Converter.BoolAndBoolToBlueAndRedConverter}">
+                                    <Binding Path="IsAlreadyExported" />
+                                    <Binding Path="IsEnabled" />
+                                </MultiBinding>
+                            </CheckBox.Foreground>
+                        </CheckBox>
+                    </DataTemplate>
+                </telerik:RadListBox.ItemTemplate>
+            </telerik:RadListBox>
+
+            <telerik:RadButton Content="Update export set" Width="150" HorizontalAlignment="Right"
+                               Margin="0 0 20 0" Command="{Binding Path=CActualizeExportSet}">
+                <telerik:RadButton.CommandParameter>
+                    <MultiBinding Converter="{StaticResource  Converter.PassThroughConverter}">
+                        <Binding Path="IsChecked" ElementName="DontUseApplicationTagsForceOnAllConversations" />
+                        <Binding Path="IsChecked" ElementName="ShowExportedObjectsDuringExportation" />
+                    </MultiBinding>
+                </telerik:RadButton.CommandParameter>
+            </telerik:RadButton>
+        </StackPanel>
+    </Grid>
+</UserControl>

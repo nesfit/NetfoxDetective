@@ -1,0 +1,1719 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="APPLICATIONFOLDER">
+            <Component Id="cmp0E02248DC535A57FC06CB20797BD7745" Guid="616A0C0B-BA81-4489-BABC-B2E0DC048392">
+                <File Id="fil6E07A4532E7DC822D62562E955A9219C" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Accord.dll" />
+            </Component>
+            <Component Id="cmp3087D3C1EE1162ADBDFD4892803BE683" Guid="5B0E24FC-A211-46BE-ACBC-E444EB6DDC88">
+                <File Id="fil2B07C116CFC97ED4850390E1F4143FFC" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Accord.dll.config" />
+            </Component>
+            <Component Id="cmp645F0E317088DB8236E675199369CDD3" Guid="6AF8ADB5-D721-42A8-AC99-81E1FD669D96">
+                <File Id="filE33EFFDB55038E2BA35AA5AA5F461748" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Accord.MachineLearning.dll" />
+            </Component>
+            <Component Id="cmp501B9556AC0E8F21525551A53B5315E1" Guid="05503824-217F-4E6A-97CC-AF4CE908E326">
+                <File Id="fil8DDE84CA2A109DD28D15910B616C5D4C" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Accord.MachineLearning.xml" />
+            </Component>
+            <Component Id="cmpE15A53DB24456DF7477A82D9AFD8080A" Guid="ED0FE8B5-6E92-4092-9932-52459139CC95">
+                <File Id="fil5C3C329F91FFD5885DA4DB800588AFF7" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Accord.Math.Core.dll" />
+            </Component>
+            <Component Id="cmpDDF544ECC378F22FDF85A0BADE79E8F1" Guid="F1F08A6D-C14D-4E3A-BD84-D670E8FC65AF">
+                <File Id="fil51CC14424DA2E0C3B84CDBDDD3148601" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Accord.Math.Core.xml" />
+            </Component>
+            <Component Id="cmp7A6191EB59C39E5713C3E25CE9534631" Guid="3758E7B8-30F8-4FD6-967F-629A3DB4888B">
+                <File Id="filD778B7C8F89A5A107EDDBEAFBA45DA48" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Accord.Math.dll" />
+            </Component>
+            <Component Id="cmp9E56D6FA6667FAFDCEF5BCFD108F5105" Guid="81029D32-6BAA-4628-928E-78695C17F7F1">
+                <File Id="fil114466521A848CA8296E97BB74BF2042" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Accord.Math.xml" />
+            </Component>
+            <Component Id="cmp6F5C2D7DB2C460B33007CC7239A6D938" Guid="5317266E-C597-4EC2-B1DD-7DEDC2A34CBF">
+                <File Id="fil1297793631AFBF824022AA889F100B00" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Accord.Statistics.dll" />
+            </Component>
+            <Component Id="cmp714A40D4A04C907479DB511B83134FC2" Guid="677F9D35-73AC-4B8D-A7E4-F7EA58BF807B">
+                <File Id="fil2F5DC5FF914B62090D7E735E01BEF2CB" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Accord.Statistics.xml" />
+            </Component>
+            <Component Id="cmp07993CFD830FDC555E4F11636389AB8A" Guid="4529BDC3-3D7C-4DF8-9B18-63DD9E4BD3B2">
+                <File Id="filE233D5258790C473B4F85BD15ADF8DE2" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Accord.xml" />
+            </Component>
+            <Component Id="cmpA4DFAC1E192213BC71AF74E4FB5D9BC7" Guid="31AC43C5-04B2-48B6-AEC0-D8ECD2734C53">
+                <File Id="filB5F0DD0B9F838F238ADD9DADB3BB0000" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\BencodeLibrary.dll" />
+            </Component>
+            <Component Id="cmpA6410FA276AD3F226134ED589610275B" Guid="935A348D-09C7-47F8-8941-CE17BA47D554">
+                <File Id="fil8FCCD6C841D7BE92E5F89B9ED0A1C745" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\BouncyCastle.Crypto.dll" />
+            </Component>
+            <Component Id="cmpFFF96509D2DD3B8746161258380410DF" Guid="AF15BB77-1028-488C-BBDD-E5D6E642E710">
+                <File Id="filF99CEB475383A6EE341D236C835AA75F" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Castle.Core.dll" />
+            </Component>
+            <Component Id="cmp3F91BDF2BCD10717446290EDC5F0B5FF" Guid="C61167B7-5313-49BF-AB98-A8AD7B0D4AF5">
+                <File Id="fil3390C2BC131B1361C254BFFCAC5B7CDA" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Castle.Facilities.Logging.dll" />
+            </Component>
+            <Component Id="cmp6942B79BE7BC2CEF46D6217D36B57089" Guid="6DF6367B-CC5E-4052-B246-4A86CFDBFE12">
+                <File Id="filEC0C9E9430A878D41ADA755C70320C0C" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Castle.Facilities.Logging.xml" />
+            </Component>
+            <Component Id="cmpB305C738FB75730AEAB0DC24A6D9809E" Guid="E15CFBF4-BF7E-4D1B-9802-483036A74915">
+                <File Id="fil3D908D92E4A3B918A7C2DC6FACBCE79D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Castle.Services.Logging.Log4netIntegration.dll" />
+            </Component>
+            <Component Id="cmp724DCC6A695BE7D1837586C829014464" Guid="ECDF4DB9-F62E-4EE2-A52D-83F13C4B0CB1">
+                <File Id="fil6C53EE20778A559408D2CB2A11EA9F28" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Castle.Windsor.dll" />
+            </Component>
+            <Component Id="cmpEF733909754CF56B8027A2138B507A0F" Guid="2F6196E9-7384-452B-AFAA-D53F25CAE144">
+                <File Id="fil73E02F5E939843F813B39F00E276AE16" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Castle.Windsor.xml" />
+            </Component>
+            <Component Id="cmp463C4316D2DFF1837F38707979359E30" Guid="C160A915-DF10-4EA7-9E4D-3C65D9005A79">
+                <File Id="fil7975CE4E86034C44DA0FC4865FD700EA" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\cef.pak" />
+            </Component>
+            <Component Id="cmp7AEE3CCF09BDD71BB63E1FC49218B64C" Guid="9D9DF7D7-B959-4158-9A0E-1466D2B8C2B1">
+                <File Id="filF138289CE3B3A08C928005F4D6A8158A" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\CefSharp.BrowserSubprocess.Core.dll" />
+            </Component>
+            <Component Id="cmp1FFF2A012CCBEC4A8FE510A75356F063" Guid="4399B623-F6DF-4A74-9CAC-C6D43FDF2AC1">
+                <File Id="fil5DC08B8705393BE4B25AE7FA07BEFAD4" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\CefSharp.BrowserSubprocess.Core.pdb" />
+            </Component>
+            <Component Id="cmp3D5CFE11A573CDA80485B9389A208AFE" Guid="15C3DB64-5890-40FD-8E0C-B3AA0B19EE4F">
+                <File Id="fil5D7623D61B284702A39DD495823BAB9F" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\CefSharp.BrowserSubprocess.exe" />
+            </Component>
+            <Component Id="cmp87318B065461199DBA43CF9C37DA6900" Guid="53C987D1-E421-4688-BE96-BFA28C94D55C">
+                <File Id="fil97B90033A68699EBA0DCF494F3E2CA69" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\CefSharp.BrowserSubprocess.pdb" />
+            </Component>
+            <Component Id="cmpE1B67FC37B6616A5255EAB43FD70C1AF" Guid="70FF040C-1398-4E88-86EE-D7DFFED8BB95">
+                <File Id="filDF9076F1F1F7DE5E22C046892828E288" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\CefSharp.Core.dll" />
+            </Component>
+            <Component Id="cmp045DB3FD9977289A0F900403DF949E02" Guid="792A9269-95D7-44B7-A428-A38A884A2606">
+                <File Id="filCEFC7272FF7F50BF4DBA6A3C3E569C19" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\CefSharp.Core.pdb" />
+            </Component>
+            <Component Id="cmpE6F92F815C42BF37FE1C60F643EA4B75" Guid="7BAE312B-B409-43D0-A235-BDF5D13666F2">
+                <File Id="fil0019C206512E4D8713B64A49069B895E" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\CefSharp.Core.xml" />
+            </Component>
+            <Component Id="cmpD3AE1C4EEB9E28ADC69542CE16344108" Guid="85BF9661-23A3-4BAF-915E-0D7B3B00D79F">
+                <File Id="fil2BE07D7DD9557844D6F54C4F61DC81C7" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\CefSharp.dll" />
+            </Component>
+            <Component Id="cmp49C0E67132251F0CB60759A58252330D" Guid="DC8DF7EF-B36D-4A29-8C64-4ECAE37BC6E7">
+                <File Id="fil987838E70DB7232EECEFF3EA506C9DA6" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\CefSharp.pdb" />
+            </Component>
+            <Component Id="cmpD4BF5FCBC274F08539825045F0B15481" Guid="FBBD0C2A-30DB-4F11-92BE-1DDA0659C06C">
+                <File Id="fil6E3B007078877494F3642C7CD7461C68" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\CefSharp.Wpf.dll" />
+            </Component>
+            <Component Id="cmp0CF114D290D24777FAF04E2F7465093F" Guid="A77C5283-B668-421B-90EB-06E79FAB1952">
+                <File Id="fil46F353116B55D6EB9922DF76A8DFFEA5" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\CefSharp.Wpf.pdb" />
+            </Component>
+            <Component Id="cmpC5D0365124B4BF76FB9AC95B1F0C6F4D" Guid="BE907313-A061-4353-A8F2-96811A3E88A8">
+                <File Id="filFDA030790589CBCB33595AC07BBB7F80" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\CefSharp.Wpf.xml" />
+            </Component>
+            <Component Id="cmpC9A4B8B0D47C981686C6075A069B4F61" Guid="6C72780C-07D0-4ECD-A021-6C2022115DEE">
+                <File Id="fil4DBEDDFF3E26C11F43B45F49BB58474B" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\CefSharp.xml" />
+            </Component>
+            <Component Id="cmpED6B27D86A92A08733E8C4297023E89E" Guid="F5F28D73-7915-4C28-8A18-F9654F8DCD6F">
+                <File Id="fil52F2E32721DA2E320A06FB7226A9814E" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\cef_100_percent.pak" />
+            </Component>
+            <Component Id="cmpAD0F00D51339710F5A682E36A1EFDD1F" Guid="4AB57A52-A511-4465-98CC-637D3609B10E">
+                <File Id="fil63021A278071DD9E52B1B3C0CEAC1FFD" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\cef_200_percent.pak" />
+            </Component>
+            <Component Id="cmpECE0EE3C3A327BB8CF89714B59CAAED1" Guid="BC377E15-E241-48C1-BDC6-2414866960BB">
+                <File Id="fil51B37291D35151ABF61F1010C6E59AD4" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\cef_extensions.pak" />
+            </Component>
+            <Component Id="cmpB0682DDCF19646AE9F3BD0619C663836" Guid="51386FA6-4CEC-4DEA-9B08-967DF74EB023">
+                <File Id="fil4A0DE5D3A036E0AFD5AC30DE6030A686" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\chrome_elf.dll" />
+            </Component>
+            <Component Id="cmp6D7FAF06BD62B5E7241008F7578C1335" Guid="A66116D5-6066-4FC5-B30B-EFB54BBCA4FE">
+                <File Id="filB33C7B30400D081F4CDC9E40DB0B3809" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\CommandLine.dll" />
+            </Component>
+            <Component Id="cmp4D5AB147051970BD9987BC33CD965195" Guid="E8B8FC0B-BFEE-4857-9F95-E7E1AC1528EA">
+                <File Id="fil0D29E5E6344C33A1C4EAB319C5507510" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\CommandLine.xml" />
+            </Component>
+            <Component Id="cmp4CA065DEF8A71EAED7CC72C98CBBE255" Guid="12799DEB-9C23-40BB-954D-2C8A4D762E20">
+                <File Id="filC47BC4565AA4E3E9D4B5C3A1837AC1DB" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\CommonServiceLocator.WindsorAdapter.Unofficial.dll" />
+            </Component>
+            <Component Id="cmp6E1494326FA64EDB36C1EF5041FF3E72" Guid="452305D5-C048-4FF7-8BE6-1DEDACFB36E6">
+                <File Id="fil90A840C637C86780E6E7E138AC65E8B5" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\d3dcompiler_47.dll" />
+            </Component>
+            <Component Id="cmpE3D49D277F2F82B9DCDB1C8BE53706BF" Guid="5E3FF1D5-AB55-4086-8F83-CD86F038B3B1">
+                <File Id="filEC440F1EDB76C21DFCE9781A51D68E96" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\devtools_resources.pak" />
+            </Component>
+            <Component Id="cmp07CB5B3BD4E69DBAF2C89DA0A5950F59" Guid="07FCC535-4D8A-4D12-8AD1-A343B2745069">
+                <File Id="filDDDB42D3DFA399D60FC0AE789F35AE20" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\EntityFramework.BulkInsert.dll" />
+            </Component>
+            <Component Id="cmp01276A51485337C9C409680933495D65" Guid="A5357D20-8843-4557-AD01-C444107526DE">
+                <File Id="filB3990844CABC912EB957193635D2E9CA" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\EntityFramework.BulkInsert.dll.config" />
+            </Component>
+            <Component Id="cmpEBB74119240C98BBD692EC86A817C0BC" Guid="2082C553-9B80-43AE-AEF8-AD1CAD65D24E">
+                <File Id="filE8E23F126F90D1B7B63967791B779A9A" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\EntityFramework.BulkInsert.pdb" />
+            </Component>
+            <Component Id="cmp28D78D3D3EDE8BBE8C77853A690F1257" Guid="419FC7B1-C006-4C14-AB3D-91B0871C661D">
+                <File Id="fil81A1C88C5B58D25765FD0E3C6BE12982" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\EntityFramework.dll" />
+            </Component>
+            <Component Id="cmp9943C3475CA14CF63C757CA8CF4CB213" Guid="E9284EC0-8F5E-4A82-9AC2-44810A1CDB8F">
+                <File Id="fil2EA148ED0928AB3F27FD6C89275C3D65" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\EntityFramework.InMemory.dll" />
+            </Component>
+            <Component Id="cmp577A70232DE34A7B9C1085318014C1BB" Guid="B959C616-C7ED-4ACB-845A-D6354385FC09">
+                <File Id="fil2CC7C9A72ECE12473539B591F4B68F16" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\EntityFramework.InMemory.dll.config" />
+            </Component>
+            <Component Id="cmp57BF17E8165361F1E87A455E780C7DDB" Guid="A7D0F40A-8E0D-4AB2-9EFF-5F5425C7FB57">
+                <File Id="fil5EBC914539C6100E5582397399E1092F" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\EntityFramework.InMemory.pdb" />
+            </Component>
+            <Component Id="cmp3C479B929EABAF85B18A005E389F04DC" Guid="F9BC2DFB-DCDB-4A8B-AC38-6A51F69E7AC4">
+                <File Id="filFC064E8226DAAC1477E9D5235B5A573D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\EntityFramework.MappingAPI.dll" />
+            </Component>
+            <Component Id="cmpDB033F1151F602971C7F834C3941381B" Guid="5B2A70D8-7864-4A41-A2B9-F09AF2B48ADA">
+                <File Id="filF0A26B9B2F8878C7E98C70F66F6D7314" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\EntityFramework.MappingAPI.pdb" />
+            </Component>
+            <Component Id="cmp1103AA312B68FAC6F34A8BB8288C2C04" Guid="2BF031BE-4294-4702-8F35-CF59BF89B769">
+                <File Id="fil8AE4AAC0688FDA0E06A2A9619271BC35" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\EntityFramework.SqlServer.dll" />
+            </Component>
+            <Component Id="cmp90284086D18376777381C1C6E9F806F6" Guid="82BBA56D-CB0D-4D41-874D-1E9295B4A4D4">
+                <File Id="filB9AFE2B129ACE916CD9DE6080DEBBAD3" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\EntityFramework.SqlServer.xml" />
+            </Component>
+            <Component Id="cmp87E02E80F4F4D5F3DE711D9153F3381F" Guid="32AC9C59-F35E-4C15-ACF1-8EF71C04F5DE">
+                <File Id="fil76748BF149E5B4595EE91594231CF805" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\EntityFramework.xml" />
+            </Component>
+            <Component Id="cmp55740869256386681E47E334447E2723" Guid="49C4050D-C015-4805-BE15-6246B011C756">
+                <File Id="filF39A9B35702230588FB776FC7A81ED0B" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\GalaSoft.MvvmLight.dll" />
+            </Component>
+            <Component Id="cmp8D627207B5F5581A9329705509A3B656" Guid="DF3F6D43-838B-497A-80E6-F8F08FB29BCD">
+                <File Id="filB473465501C32445607CBA50D31BBD43" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\GalaSoft.MvvmLight.Extras.dll" />
+            </Component>
+            <Component Id="cmpE473BAE2D4E1BDABD0D036A0E9CB23AE" Guid="3388F151-4C32-424D-8DCF-03590F03CABD">
+                <File Id="filFB7A7EABEF1CE80E7BC366821CD7320E" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\GalaSoft.MvvmLight.Extras.pdb" />
+            </Component>
+            <Component Id="cmp1C502A84AFE53EA98039046832390B10" Guid="47A92EE2-FF05-45F9-8A1A-9B2AEC6628CE">
+                <File Id="fil467F763D31034101C0A4085CD36377B1" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\GalaSoft.MvvmLight.Extras.xml" />
+            </Component>
+            <Component Id="cmp481027CA382B920C3620021A4F935FB6" Guid="BF066DEA-98EB-4165-BD02-BBCC0F08A1E1">
+                <File Id="fil8DF5DF4A4F5CA08CB9DFF50672865D2B" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\GalaSoft.MvvmLight.pdb" />
+            </Component>
+            <Component Id="cmp3B91628CC6F33482DAB8C1AD90DDD47B" Guid="E57E2666-75AB-444A-A355-EC122604F20C">
+                <File Id="fil19A686D9A254A74C1FAB372E20E8F35C" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\GalaSoft.MvvmLight.Platform.dll" />
+            </Component>
+            <Component Id="cmpDF2B32A3FAF70E98249D13A15F196A5D" Guid="7D6C9ACF-59D4-4336-BE5A-6A41A71E5B95">
+                <File Id="fil629F4806F05E31A7D63BBBF967D52C04" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\GalaSoft.MvvmLight.Platform.pdb" />
+            </Component>
+            <Component Id="cmpA9F474D756C1ED0CF3F9A38C1C80F52B" Guid="95E14029-85D2-488E-BD15-AC56F3081565">
+                <File Id="filED6BF785C351A205D2A2ADE980172022" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\GalaSoft.MvvmLight.Platform.xml" />
+            </Component>
+            <Component Id="cmpAE8CFC24DD13C513AB2F8E23597F79F3" Guid="E0607F7E-1F6B-42F5-B25A-4383E0AD4308">
+                <File Id="fil76F44D121DD9203A827AD75912C001D1" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\GalaSoft.MvvmLight.xml" />
+            </Component>
+            <Component Id="cmp16C31B4EA6A9155EC7C2C56D98D4E35A" Guid="FB224A01-6ED9-4C2C-8BCF-B5337AD424AA">
+                <File Id="filF95A7718CCABE9C88E72BAB905F90C55" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Google.Protobuf.dll" />
+            </Component>
+            <Component Id="cmpC6849751DAFB98CFC7706D7FFC070DF8" Guid="D8B2F254-403E-4DF2-BB06-04A56E7C48F9">
+                <File Id="fil8524A344F0E33CB8AE1348D95975571E" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Google.Protobuf.xml" />
+            </Component>
+            <Component Id="cmp399ED9264B10FDAAF97C6F536348AD50" Guid="D0700A67-B9EC-4F3B-96F3-60E80B9CA012">
+                <File Id="filD71EE51CD85B5F0EE28FA499FE15DF27" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\HtmlAgilityPack.dll" />
+            </Component>
+            <Component Id="cmpAE791216F77EC2FA091A40EEA559FA1A" Guid="B2F7D28B-06C4-451C-BEE1-56202A2AB0B6">
+                <File Id="filC9EB24024D78C595B3E3CEEA41D47FDC" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\HtmlAgilityPack.pdb" />
+            </Component>
+            <Component Id="cmp7D831B28A4DC403CDB1E6D8CF11100E0" Guid="56A0ABD7-5F72-434D-A303-3C2DB6ABB6F0">
+                <File Id="filE92AA68B383236302716BBFBC5B08E25" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\HtmlAgilityPack.xml" />
+            </Component>
+            <Component Id="cmp2070C8742B52CED8C1E2B0A5FA35376C" Guid="E3845429-D449-4D76-8EBC-52569A9E1FBB">
+                <File Id="fil8D331208484F98FD7470C76A5669AD3D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\icudtl.dat" />
+            </Component>
+            <Component Id="cmp4756E500133797772036440A6E476A11" Guid="9E21D7ED-F9DE-4A4B-AFB3-EC6507866234">
+                <File Id="filBFA5DE3D8DBDCBFD3198C50E57A4B1C4" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\InfragisticsWPF4.Controls.Maps.XamMap.v16.1.dll" />
+            </Component>
+            <Component Id="cmp44F585661A68126B990885EE713F0D83" Guid="A8BAF617-C7A8-46A9-9589-86A2BDB4FD67">
+                <File Id="filD9D157EE7618B29819053B938F3AA64F" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\InfragisticsWPF4.Controls.Maps.XamNetworkNode.v16.1.dll" />
+            </Component>
+            <Component Id="cmpA6DED19743CDE9D86EDB78DFE805A801" Guid="651AE8D6-D016-4693-B9A2-3BA08DE8AD69">
+                <File Id="filE555A04802C19C26FCEC0ECEF299F824" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\InfragisticsWPF4.Controls.Maps.XamOrgChart.v16.1.dll" />
+            </Component>
+            <Component Id="cmp2BB4AAC6A11447C4F9FB4A1A07D2F520" Guid="B84351A7-E0E7-4DE7-AD0D-9F2081813D89">
+                <File Id="fil7961ED57F05601F7632CE02B61DC93C6" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\InfragisticsWPF4.DataManager.v16.1.dll" />
+            </Component>
+            <Component Id="cmp63616E6A6F0AF07B736176AF355F9934" Guid="894D9CF3-E36B-473D-8973-9A4EACEA6A96">
+                <File Id="filF475929F9B7733E5C890704DB0B750D5" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\InfragisticsWPF4.DataVisualization.v16.1.dll" />
+            </Component>
+            <Component Id="cmpE3D7FC42508218E5AEB5F882882F233E" Guid="8DC43E79-4084-4A23-96C3-470C7AA0C15A">
+                <File Id="filE63CA64A1B120636C3198FA9EB841BAC" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\InfragisticsWPF4.v16.1.dll" />
+            </Component>
+            <Component Id="cmp057A03F98B7BC67982D5D7BA78A4910B" Guid="B9C9207E-5CBB-4FB6-A829-C5C33B6EE0FA">
+                <File Id="fil9A8916B7E1E496FA267C705B358F5431" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\JavaScriptEngineSwitcher.Core.dll" />
+            </Component>
+            <Component Id="cmp405ACA7CC2A913E9A1AB4489A916FDF3" Guid="AA2B987B-4B87-4216-ACA5-95466F6581DE">
+                <File Id="filDAD1131DDFC1C844A5822AC7BEAC5758" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\JavaScriptEngineSwitcher.Core.xml" />
+            </Component>
+            <Component Id="cmp7D02AC8224E3B4E716B834B061245B47" Guid="65BFA743-C787-44EF-8C43-AEBB2C3779AA">
+                <File Id="fil06130BF6BCDC4E3CFE86E4E5C8C62DDC" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\jint.dll" />
+            </Component>
+            <Component Id="cmp76B21E7CA5F391B02CE82B9D2F1A8743" Guid="F4440977-5390-4B64-B8D0-8A713E910AEE">
+                <File Id="fil43A9AE0D86DFEDD73681EF4C05239116" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\libcef.dll" />
+            </Component>
+            <Component Id="cmpED1C29F8914A4A53211F619E1872ECC1" Guid="C71502D8-82AF-4348-A54A-552FBD446D2D">
+                <File Id="fil6FEA381F205FBC4A929B8656B60465E6" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\libEGL.dll" />
+            </Component>
+            <Component Id="cmp8173820A225E77A4F1F9A1A20860A672" Guid="16C4418A-2D42-44B2-ABB1-8ADFAA97E890">
+                <File Id="filC4FD67C1E47EB7B5DD004A098216196B" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\libGLESv2.dll" />
+            </Component>
+            <Component Id="cmp693A03D36C02FED2D2F3B9EC33D980B4" Guid="3308FBCA-CC95-4576-BFFB-78DFABCC6062">
+                <File Id="fil1473EEAC5F4C13AEB00E5CCB1BED9F23" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\license.txt" />
+            </Component>
+            <Component Id="cmp8296B867300EB002EFFAADAF1CAB0EC1" Guid="EA49269A-99B0-4822-99E9-AEFB7881AAE7">
+                <File Id="fil472C9309C9FD3C00F0BBD86835FF9DB6" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\LinqStatistics.dll" />
+            </Component>
+            <Component Id="cmp3625E84F55B0B46B68CCE46BB4083906" Guid="AFD5BB73-8E43-49EB-BFEF-7F730EB3D303">
+                <File Id="fil1A5E79DAF23BEB4DE6A506A026483184" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\LinqStatistics.pdb" />
+            </Component>
+            <Component Id="cmpA71DACE5622286E04883CE213F37B14A" Guid="3DB937A3-38A5-4C8D-B4BC-90D3E6B8DF62">
+                <File Id="fil757C90407D4D4D3219EA5345BEC4367E" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\LinqStatistics.xml" />
+            </Component>
+            <Component Id="cmpD19FE8BB1B90E58F1B6F08FD8B8C73F7" Guid="E28225FB-BFA5-48A3-9B8B-BAAB1CCAEDCC">
+                <File Id="fil1D2B48F840DBD68607CA9ACDF4E9B79B" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\log4net.dll" />
+            </Component>
+            <Component Id="cmpBAADB11A1B94D8777D5170009D241B6C" Guid="32514CBE-A337-4E64-A52F-7FD3918FD446">
+                <File Id="filBC57AB910226729EE498C4E6B1D948A5" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\log4net.xml" />
+            </Component>
+            <Component Id="cmpB7A70DD9BDC08AE07ECF984AB60E292D" Guid="CF26D894-7046-4908-A4DB-744B29CE1CAA">
+                <File Id="fil2D439CF32247F6480DA1F56D7962BDC1" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Microsoft.Practices.ServiceLocation.dll" />
+            </Component>
+            <Component Id="cmp4EDF818DF2DE24CB98819162CFA8EEE2" Guid="0E78F62A-4FEB-4FE9-B3CD-CE6D9CCCF213">
+                <File Id="fil34143DE2012AF0363D202AA878190515" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Microsoft.Practices.ServiceLocation.pdb" />
+            </Component>
+            <Component Id="cmpFE6AD0521A9CDE17F88D30349E7AA2DF" Guid="14E6B1D7-0EA2-481B-866E-C464AA3DF774">
+                <File Id="filEBDB63F3455872CB08E0F47C8A17AD85" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Microsoft.Practices.ServiceLocation.xml" />
+            </Component>
+            <Component Id="cmp5E84294361CCADAC0B8AA2F3E38FAE84" Guid="1F322F96-8669-46C4-B3C0-00B5AFD0E5F6">
+                <File Id="fil7D5532AE3E9424D868960D960047C30E" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Microsoft.SqlServer.Types.dll" />
+            </Component>
+            <Component Id="cmp40341A7CE8FF4C9537B38B3CFFA35A5A" Guid="D85EF55A-8A49-417D-8107-A20CC4519345">
+                <File Id="fil3767B854255E9DA80D65037B22070CF2" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\natives_blob.bin" />
+            </Component>
+            <Component Id="cmpBE9DF01A66595E282E73857268A99F34" Guid="F419F8C2-EBCF-48E6-9445-44A0AEB5FE21">
+                <File Id="fil45521DE5F184A1F1579B4035389ABBE3" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\NAudio.dll" />
+            </Component>
+            <Component Id="cmpF8161E0352F86042AC2C87BFB76B5F43" Guid="1CB180AC-0966-4865-B8FC-D308A0D99B74">
+                <File Id="filC1A5159A441F9E54AC01A2C6A2C63F0A" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\NAudio.xml" />
+            </Component>
+            <Component Id="cmpC178CE1ECB3E0EBAFF1836922F453376" Guid="87DC7F55-7E46-4563-9FBA-C1ADF160CCAC">
+                <File Id="fil744961D07B48A2730ACE1F070BEA86E0" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\NBug.dll" />
+            </Component>
+            <Component Id="cmp1592CE306F92B0F050E181D2E1D269C1" Guid="D981610F-70C6-4B03-BE66-4367EFDC883E">
+                <File Id="filD444C7F6250561E478C2BDDC3F34B36D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\NBug.xml" />
+            </Component>
+            <Component Id="cmpE16592C264EC3C89CF5E00C6FC06EBAC" Guid="E112C689-5230-4236-9E1E-FE399427CE2A">
+                <File Id="fil5CE1929A6D49DA961D71E46CC0E53029" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.AnalyzerAppIdent.dll" />
+            </Component>
+            <Component Id="cmp3DD29F1D9DB259239D38BB6EEDD8FEB1" Guid="534E7CAC-21DD-4A78-9B19-DC888E498DFA">
+                <File Id="fil0680159C9BFF3EA8EE3FDE89F305F950" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.AnalyzerSIPFraud.dll" />
+            </Component>
+            <Component Id="cmpEA867E4F4357065593E02B1F8473D1F2" Guid="A2CAD67A-4D0B-4B1A-8119-7686F3B2F664">
+                <File Id="filF19B7C627FF2483000D7E868F1B38302" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.AnalyzerVoIP.dll" />
+            </Component>
+            <Component Id="cmp36B465BF66F75A9589FD1625F88BCE9E" Guid="A3FE58D5-1585-4B71-87B2-9957632590B1">
+                <File Id="fil8CAD75351B01B4490819C178779F9E41" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.AppIdent.dll" />
+            </Component>
+            <Component Id="cmpE574989DD59E389E13C6388835C31D37" Guid="D3FD0005-238D-4E85-B81A-C248F332A672">
+                <File Id="fil4D5B61B51D1E9A3EB3ECCC9038E64CA1" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.AppIdent.dll.config" />
+            </Component>
+            <Component Id="cmpA7ACA146CD02AC5D030AF2500EE7A19C" Guid="6FE5FEB0-69C2-4AFA-A6F5-1F037C0AD0ED">
+                <File Id="filE8A3ACD3B0F3F047F237C92D6C71399F" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Core.dll" />
+            </Component>
+            <Component Id="cmpDA302C358A59FDA49ADF32EF1270BDD5" Guid="E9F1E776-8313-491F-A329-E0D11D0970DA">
+                <File Id="fil952C9027AA7D75D5D50DA0646C5EC1C0" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Core.dll.config" />
+            </Component>
+            <Component Id="cmp97FDA078BF3869777ECC147BF581A00B" Guid="C888BBC5-BD17-432A-AA56-42AC877B413E">
+                <File Id="filCD82DB05C12108DE272298FF1E95ADF2" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Core.pdb" />
+            </Component>
+            <Component Id="cmpB9A51F2031F49853661E48AA7531E652" Guid="12B117FD-D3E9-47C7-A678-11B65C68DAE0">
+                <File Id="fil9F212324C4627A002114B2E573F6A160" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Detective.exe" />
+            </Component>
+            <Component Id="cmp168A3C5B3BFAC530663A65C8FA9D1CD5" Guid="406EEFD2-6EA8-402A-B01A-BC4F8E7DC1B3">
+                <File Id="fil73068C2251855825F418E05375CE3732" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Detective.exe.config" />
+            </Component>
+            <Component Id="cmpA59144D25A469081C6F2614E11818CB7" Guid="22B737B7-CF14-4ACF-B99F-5B78F5D51AFC">
+                <File Id="fil1A072C8BF2882C58CEADB32BEF941B25" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Detective.pdb" />
+            </Component>
+            <Component Id="cmp42F6C19668AA6CCC7F994A863141AB37" Guid="1CB48C8B-89C8-4BBC-BBAA-B42D2905116E">
+                <File Id="fil7528EA4E81BA8EEFC8E306BE2C726631" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Detective.pssym" />
+            </Component>
+            <Component Id="cmpAF504B7221995538E213B01F22C204FC" Guid="CD44335C-8B79-4FE0-BD53-E6A3A768B473">
+                <File Id="filA338E89C74050C5A2562136F37BA4F1D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Framework.ApplicationProtocolExport.dll" />
+            </Component>
+            <Component Id="cmp1F56419E3F438BD9D29FB697E2099DFC" Guid="DA4276F2-46CA-4273-96A7-7B0C6DAE454B">
+                <File Id="fil662F1B11212A549845A8F83237140A05" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Framework.ApplicationProtocolExport.dll.config" />
+            </Component>
+            <Component Id="cmpFF84D2EC24CA90C7D53176F4454E9230" Guid="0929749C-8283-46A5-A78E-637590059FAF">
+                <File Id="fil63DD098AE5ABEB0A44A5BD2DE55C1867" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Framework.ApplicationProtocolExport.pdb" />
+            </Component>
+            <Component Id="cmpD003E9DEC3BEA1B0E6075DDDE545E472" Guid="C6B453E6-85DA-4A43-A49F-359320372ECA">
+                <File Id="filE3F41133105C12B22745C8D15C33558E" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Framework.ApplicationProtocolExport.Tests.dll" />
+            </Component>
+            <Component Id="cmpD2F1185819A1789A5BD286099F810926" Guid="02B49042-C739-4152-9926-63C05D6118FB">
+                <File Id="filC4FEFE177224D25949FC6F9480A08D71" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Framework.ApplicationProtocolExport.Tests.dll.config" />
+            </Component>
+            <Component Id="cmp4E09CDC4F6745D63C0FDFDDC3230C77B" Guid="8A2A8F76-F52C-4641-8C6F-BE2A0B7BF781">
+                <File Id="fil4446E9BD4FEE37DB1BD50CECF41D6593" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Framework.ApplicationProtocolExport.Tests.pdb" />
+            </Component>
+            <Component Id="cmp13D610F16F53844288D1D47D49DFA1D3" Guid="99C62697-E761-4029-8BAC-7795776FCED1">
+                <File Id="fil0137000D21465ED524EDF62E47688AF0" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Framework.CaptureProcessor.dll" />
+            </Component>
+            <Component Id="cmp1E95E6826F015CE03C85BE8EEDCE79C8" Guid="AA1F04A2-0432-413B-A043-E1FD451AAE88">
+                <File Id="fil388344890C35431E77DC5C0B8D09454F" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Framework.CaptureProcessor.dll.config" />
+            </Component>
+            <Component Id="cmpF066B0F42BB4F4B0E63604BADA64AD59" Guid="6E74B8A3-9719-4200-A2AA-17951E3017F2">
+                <File Id="fil178CE3D9EFFEDC8AF13D63A606E98878" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Framework.Models.dll" />
+            </Component>
+            <Component Id="cmp814BDE35B90453DCBFC6166DFE150C6E" Guid="57861D2C-5690-4677-A7E2-3220EA7F2206">
+                <File Id="fil04BEF2833078405A99455C9B28D27EAB" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Framework.Models.dll.config" />
+            </Component>
+            <Component Id="cmp4CF22544E670EA195E3B2503E2FA1D0D" Guid="76D6D796-9180-4A50-A69B-1EBBD82C8458">
+                <File Id="fil8916BF6A7D429064E147A1237FFEA38D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Logger.dll" />
+            </Component>
+            <Component Id="cmp8A5E7FEE96F4CAF8D5374D4BAEE00179" Guid="DFB3551C-F9C8-4D6C-84AB-CDB03D5C3D6F">
+                <File Id="fil18536473B80EAC868D46FD52B1D34A97" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Logger.dll.config" />
+            </Component>
+            <Component Id="cmpD3CADD5FA56206180C92AD6F9C48BF34" Guid="C874512C-C406-4BF9-98CA-5E7A19960EED">
+                <File Id="filE8F148F18CAB43768FAF8A28AE7DBFE4" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Nbar.dll" />
+            </Component>
+            <Component Id="cmpA271479A68264D5D39CC3630524381DA" Guid="D6C6EAB0-7639-4F2F-B39F-5D06600B2C73">
+                <File Id="filE36913EBC540561E00E4D4E1A3C73412" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Nbar.dll.config" />
+            </Component>
+            <Component Id="cmpEECD3D8A162344639220871940C8ACC2" Guid="C9146FFF-3FE3-425F-920F-8B2911DB8644">
+                <File Id="fil91F614B064916BE77543DAAFD089367C" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.NBARDatabase.dll" />
+            </Component>
+            <Component Id="cmp91E82EAB366E2CDDC133A0AFABAFE381" Guid="49784B55-C81A-4923-A9E8-9B2899FDD72B">
+                <File Id="filB5DDC5A44206254C301A24F3E05F98B7" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.NBARDatabase.dll.config" />
+            </Component>
+            <Component Id="cmp16AB03A7F1C7C45F882C539F57A4B75D" Guid="0BAFD1FF-24B9-4C5B-A6D6-736B257C96D1">
+                <File Id="filD8E5D456252527624BD173D0639B09AF" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.NetfoxFrameworkAPI.dll" />
+            </Component>
+            <Component Id="cmp802E43AEF89EF154A5F9DFE2D3167B93" Guid="A9A89140-FDC1-43EB-A1C1-E1C42322217D">
+                <File Id="fil220096FC2E1C1AD6638BF990F38BD3D6" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.NetfoxFrameworkAPI.dll.config" />
+            </Component>
+            <Component Id="cmp890A86F03AF00CC73083DEE38B046045" Guid="1983A8C9-2C4A-41CA-91EC-336D3868B66F">
+                <File Id="filE15328C71B995725B9F0F388F9D5777A" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.NetfoxFrameworkAPI.pdb" />
+            </Component>
+            <Component Id="cmp43707DD521487F0D9296CF0C3AE23E3E" Guid="4EFC8011-58DF-4B47-8E37-FF217A64B7C7">
+                <File Id="fil3DA6DD100B187D3D7A0BE6F32B0B8382" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.NetfoxFrameworkAPI.Tests.dll" />
+            </Component>
+            <Component Id="cmpF6D99D6E1EBB4061816E90E87957CC15" Guid="828E22B6-78AF-4681-BF3A-E59CE82AF143">
+                <File Id="fil187DF1EEAC1B153D90E1B23C5E8CD470" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.NetfoxFrameworkAPI.Tests.dll.config" />
+            </Component>
+            <Component Id="cmp33F49BB3D8E816E8B9FF0A1EEB243EDE" Guid="6AF34C89-1B8C-4765-96D1-464C73EE9D57">
+                <File Id="fil12ADBC5CD3CBA4415FEDFE3B28D2F06B" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.NetfoxFrameworkAPI.Tests.pdb" />
+            </Component>
+            <Component Id="cmp31ABC0D8DD85873B663D29780531F3F8" Guid="20406CF0-9C8A-4055-9B5C-9088C8BF9438">
+                <File Id="filA5B05C7EDF269ED20D691540187BF25F" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Persistence.dll" />
+            </Component>
+            <Component Id="cmpD47C69D8F0D613AA90BCD78EC46D0CF1" Guid="CAE6280B-77CD-4EE4-B7E2-F96DEE206999">
+                <File Id="fil0FD0E5CFB4D8B0451AAD9715E948F339" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Persistence.dll.config" />
+            </Component>
+            <Component Id="cmp89A7B4413F1AA959F6FB5BC5891B7C4F" Guid="78EFF6C1-CF20-4B81-9524-E15087F0FDC1">
+                <File Id="filC83C0F38D30E851EA7147CB35248A8A8" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.Persistence.pdb" />
+            </Component>
+            <Component Id="cmp47B50422291A5F5A525BBDB50CA955A0" Guid="962E9E64-C2E9-4C27-96DE-19BAE5B14A81">
+                <File Id="fil28938D4BD91B3C5856A43AD8710BDA8E" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.RTP.dll" />
+            </Component>
+            <Component Id="cmp0389A5299FC4AEB72FCEFE31A4704496" Guid="9F9C1246-876E-41AD-A086-D7BD1E4F8ACC">
+                <File Id="filBACE0200C5D2DAFDD109C081C1572EDB" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.RTP.dll.config" />
+            </Component>
+            <Component Id="cmpC92C4AFDCB36AA73A25C2E81C9FDA5E2" Guid="F6BACD3E-774D-4202-9CE1-FF44D66079E0">
+                <File Id="fil3F778390E8EE875A6C7E7CF1FF2D52BD" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperBTC.dll" />
+            </Component>
+            <Component Id="cmpCEDE0A814E959009644479B0671BCD1E" Guid="1F3AA687-EF57-425D-9CFF-5DC85B0E6E3F">
+                <File Id="fil62D2975755B6E52960D95AF51B86CBD7" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperBTC.dll.config" />
+            </Component>
+            <Component Id="cmp9386B7B6280676636563F0B916B71CF5" Guid="FF7B24C8-9E05-46D5-8355-A075327699E4">
+                <File Id="filFC30B2D8988826649EDA3BF4DCF3D91E" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperBTC.pdb" />
+            </Component>
+            <Component Id="cmp173840E9B330DF58D3354CB72281599D" Guid="48B184EF-0DC2-484D-9DB2-2E4869DCB462">
+                <File Id="filF08178C16A6D5410A06F33794031B243" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperBTC.pssym" />
+            </Component>
+            <Component Id="cmp28DD9D7EAA01D5061A0CAE7C7A77DB55" Guid="A78845DB-2F27-40A8-9306-9FE8F5E73E83">
+                <File Id="fil1DFADCBA9EEA798303610C9D34C57FF2" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperDNS.dll" />
+            </Component>
+            <Component Id="cmp03532B5DF6F8536D70AEC56D426A2207" Guid="0398FFA5-BA57-456C-AE26-DC495839EF4A">
+                <File Id="filFF986A110C13AE7BC6CE45B4EEA35836" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperDNS.dll.config" />
+            </Component>
+            <Component Id="cmp3E08DB4692CF61B1C003B25A93CA09AD" Guid="E00A1C9D-6BDE-43F0-A77F-DABA446B34FF">
+                <File Id="filE196322F160EA9D675836F08A2B100B5" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperDNS.pdb" />
+            </Component>
+            <Component Id="cmp26BCA403C3AE478DF72DDDB26BDC2470" Guid="BC75C050-1A4F-4CE8-9ECD-BECBE62693DD">
+                <File Id="fil13978ADDF69321C0899C975142E29807" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperFacebook.dll" />
+            </Component>
+            <Component Id="cmp2D30F19D879AB5791710291E6FAB15A6" Guid="0673C4EC-EA3C-4DE2-ADDA-D6970B71576D">
+                <File Id="fil489770934E97845E9FC52BEC73542B66" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperFacebook.dll.config" />
+            </Component>
+            <Component Id="cmp7E6E8490701580C1FE29591DD3831278" Guid="FCA920ED-819A-4EB5-8378-0923169E83AB">
+                <File Id="fil96BE32B872AB710B82FBA78F6E81DA52" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperFacebook.pdb" />
+            </Component>
+            <Component Id="cmp397EB7B52DAAA6413E19D6530E9B2C85" Guid="2390AEC5-63AD-499C-AD8B-23520ABCD605">
+                <File Id="fil8879437BF8DF0FF5A3F77D9AC6A80122" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperFacebook.pssym" />
+            </Component>
+            <Component Id="cmpE2058DAA8FD11358DF321E6E4A3F54E4" Guid="7D5C5F1A-CA4D-46CD-95C2-7583E68622C3">
+                <File Id="fil1DDB782AF9F90FD2EA83000F8866653C" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperFTP.dll" />
+            </Component>
+            <Component Id="cmp014B498C94AE744905BD937C332B6847" Guid="E9440387-B2C1-4267-8A4E-CEA6664F1EFE">
+                <File Id="fil1BF266CAE6A4554FAB81222BCDA68ECF" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperFTP.dll.config" />
+            </Component>
+            <Component Id="cmp2827FF06297D5A96B8505E991A2B93AA" Guid="536EC2D2-F039-429D-B3FC-D380EC281B9C">
+                <File Id="fil0553D07D4C2B6C719A3F1436ACE3FCC2" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperFTP.pdb" />
+            </Component>
+            <Component Id="cmp7B457BE3B565A115B723F43AB8E8834B" Guid="6CD0C767-A823-4B9A-9F19-6555D4028809">
+                <File Id="filA71B8A315CD9CF4389EF5528B3C60B36" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperFTP.pssym" />
+            </Component>
+            <Component Id="cmp3F08A58045ECE3881D0F3FB387A3BD72" Guid="EA785341-9405-4498-91F3-B96EBFCA7ACC">
+                <File Id="filBCB0490FA5192517DC0744384495B6E8" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperHangouts.dll" />
+            </Component>
+            <Component Id="cmpE9F0A74CF3BF45E8EA82F896DB732D7E" Guid="B828941F-8F14-4715-9A36-8F5B364EA176">
+                <File Id="filDD71390F264353700220956C4D814427" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperHangouts.dll.config" />
+            </Component>
+            <Component Id="cmp92E4F6B09D52A9D9C8D9C9064DBF46EE" Guid="4C3F9FF8-1794-4B41-AF92-1AEC23528FB6">
+                <File Id="filA6A2B4965EB1A891066CC936A990783C" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperHangouts.pdb" />
+            </Component>
+            <Component Id="cmp5D85C38C9765484CD004980CBA5F292E" Guid="ACA9E771-3B24-4A84-AFDE-F32D34945522">
+                <File Id="fil69DAB93C0A7A26196A7801A0620B0385" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperHTTP.dll" />
+            </Component>
+            <Component Id="cmpE47E5D0808DA74DAD11F4F5A37ED86FB" Guid="27B71CA4-C429-42AC-8846-7A8B90BF0939">
+                <File Id="fil0C366BFC1019F62234FAB6F61D57E323" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperHTTP.dll.config" />
+            </Component>
+            <Component Id="cmp91D159ECEDC2CA6EE8532BB456EED818" Guid="748E240C-993A-468A-9435-4D899B290BD2">
+                <File Id="filC0591B12A3A7A4A073236B0EE92FFA59" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperHTTP.pdb" />
+            </Component>
+            <Component Id="cmp9ABAC6188871B2857CAD08221C581241" Guid="A48231AE-D955-4BA1-89ED-213C980404E8">
+                <File Id="filE4F58A40EC0CF3A2F5FC1D287EA26106" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperHTTP.pssym" />
+            </Component>
+            <Component Id="cmpC1EF8DB4714EA78B8A5DF1A76932C876" Guid="4178B448-EAA7-4A15-85BD-C7ED2053E479">
+                <File Id="filA42CE9A9723AE4E6B06B6FD6161A6E6D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperICQ.dll" />
+            </Component>
+            <Component Id="cmp7252E54299867CA8F2E5CC6C9E37687A" Guid="501C68EF-493C-4C7B-A249-F0567A46053D">
+                <File Id="filEAA44DE413A781E17CB47543E5984BC1" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperICQ.dll.config" />
+            </Component>
+            <Component Id="cmp7F6D756FA96B6EBEA5926E71D9F46B91" Guid="89424DD6-EEF8-47BD-83A3-C115E93FC172">
+                <File Id="fil13C88912803557B2545E8F0FD5749525" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperICQ.pdb" />
+            </Component>
+            <Component Id="cmp6E77BA0B84A4AB68F3070D6F157D1CEF" Guid="3AB4D2D2-C1B2-4AFB-B99F-5A20A66C8E47">
+                <File Id="fil03C7CA189DC31AB9B3C3E878ECF94555" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperICQ.pssym" />
+            </Component>
+            <Component Id="cmp40EAF95D8F715FCD7494613C97BFE9FD" Guid="DCFD2744-263C-4A93-96FE-62BA0E707406">
+                <File Id="fil6C7ECF07D39BE20138051804AEEB8E97" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperIMAP.dll" />
+            </Component>
+            <Component Id="cmp6029D288B0792DD0B2D11628CFB8B3B1" Guid="0942AB58-3ADD-47B3-A234-077DE224CEC1">
+                <File Id="fil3FD99BB1502A2166B6A1246F5F404340" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperIMAP.dll.config" />
+            </Component>
+            <Component Id="cmpB211D0CC98E86A70CF572787C6E0B0B1" Guid="C54354C6-0649-4C71-B1E5-38914BC63BC4">
+                <File Id="filCDDA4886CB285EC25DA98BE493C59E65" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperIMAP.pdb" />
+            </Component>
+            <Component Id="cmp4D28C80CBE0814B97C2731CE5409208D" Guid="F952CE22-4379-4CFE-B05F-86ED689E4F4A">
+                <File Id="fil75F4798ACEF8E56444AC53E0B02550E3" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperIMAP.pssym" />
+            </Component>
+            <Component Id="cmp70A8D02878718E3D41919D87F4D7A33F" Guid="66DFD81E-347A-4C46-ACC4-F709D2723C2D">
+                <File Id="fil4F4A088731362889B7702A3255A42696" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperMAFF.dll" />
+            </Component>
+            <Component Id="cmpFAD6A6AD573F79DB9DE4FB5B2D0A10BE" Guid="DCDD6F93-F82D-479A-AB93-F8B6052D0E6F">
+                <File Id="filA41C12EF59D4187B09E235D0D2B6EDB4" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperMAFF.dll.config" />
+            </Component>
+            <Component Id="cmp4A1AB1748F67DFB02CB8C1C4354A4E87" Guid="AEB74FC2-F090-4993-95BA-81364A084AED">
+                <File Id="fil1E7959EB4D4F1DE0711C89791D31150C" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperMAFF.pssym" />
+            </Component>
+            <Component Id="cmp89B336B7EE79F74C0A8371D2940FAB58" Guid="6DE35E11-18CB-4EBF-95F3-3EB683DCDE0B">
+                <File Id="fil30A7D757817D477C07BD5C961568231F" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperMessenger.dll" />
+            </Component>
+            <Component Id="cmp0F81DE8A9C221E5FCF6D2AE5041FF871" Guid="4B6E20F8-2D74-44DB-A4EF-DF27E5385CE3">
+                <File Id="filA8F595481A857EE3BE45560B2349554C" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperMessenger.dll.config" />
+            </Component>
+            <Component Id="cmpAD01AA4260E06171A1D3722C2E80AB13" Guid="66866410-14C1-48DC-A9B7-A69D3010B622">
+                <File Id="filAD1088ED0DB8CE5A248FF55CF1B13094" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperMessenger.pdb" />
+            </Component>
+            <Component Id="cmp64A95AF57A4F9A3D45AC52D2F88424C0" Guid="81B75282-2012-4ED9-9A22-DE222083A4EF">
+                <File Id="filD87FC371DF0660C868835CFBF0B2D2E6" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperMinecraft.dll" />
+            </Component>
+            <Component Id="cmp3ED7118238CD434B7CA2AE9A51E52288" Guid="E2C5A6B5-A4A8-4BD7-A9F3-A2F9F4C58C81">
+                <File Id="filA7183AAFF90FBF0B9C768C5F0814FCAC" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperMinecraft.dll.config" />
+            </Component>
+            <Component Id="cmpB80030B6ABB082618880E38A296EC5D2" Guid="FF1704C4-0A90-4C9C-9028-C7B3B91F5B34">
+                <File Id="fil48A38C9272B40D3FC69831E8BA95E8C6" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperMinecraft.pdb" />
+            </Component>
+            <Component Id="cmp801B0C4AF695785D81F62336020C45BA" Guid="4F5E4AC1-65FB-4B61-B73E-2E8247CDE5CB">
+                <File Id="fil308D8C42850753D18E4C0D64A90ACB5F" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperMinecraft.pssym" />
+            </Component>
+            <Component Id="cmp312168AB4C092B07DC189E2C83B40934" Guid="C93CD885-688A-43EF-BCEF-A53A99A80C6C">
+                <File Id="fil7137797D0CB156020D58D03D9C952FEE" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperMQTT.dll" />
+            </Component>
+            <Component Id="cmp9053485AECB16DF0BA4D8973E2379D27" Guid="9475F7C7-7609-4C08-84DA-03D293D224DC">
+                <File Id="fil5FC0697FBF48C01F2E2CF826D1AB2216" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperMQTT.dll.config" />
+            </Component>
+            <Component Id="cmp1DAC8A29D4FB1F0D7C1C7D57AC0A8B1F" Guid="8A77B928-A4E4-4781-A0FA-3BA4218FF93A">
+                <File Id="fil09682BDC21079A01ECBF4BBFCEAE10E0" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperMQTT.pdb" />
+            </Component>
+            <Component Id="cmpBFA493D68CD92223B69FE9137235BBB0" Guid="D2AA2FA1-13CC-4FC5-8390-54026677A768">
+                <File Id="fil2A35D6CBFB919D229EB5859BEDD7C915" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperMQTT.pssym" />
+            </Component>
+            <Component Id="cmpFB7152C0577F8490223FF5717A411202" Guid="D2C813AB-B034-4351-B4BC-83E5B1AE272B">
+                <File Id="fil4114A8D1B21631A875F933054F79C8E8" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperPOP.dll" />
+            </Component>
+            <Component Id="cmpD1FEF8E25E7A811BD877DA6623EECEC3" Guid="EBA16303-398C-44A9-9F34-338EC4E0A7D6">
+                <File Id="filDBB1F07D7405E0D97276E22377AA1149" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperPOP.dll.config" />
+            </Component>
+            <Component Id="cmpB4E772005B44E4D315AD2F638F69B6EB" Guid="797F295B-7EAF-4379-948B-92E1598306D8">
+                <File Id="filEC8A6653351AD49A9B2DAEFB311C9FB8" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperPOP.pdb" />
+            </Component>
+            <Component Id="cmp71DFAC9282A9C6CC08B1FBAE4DCDFC44" Guid="6714FD6A-A5B7-4A29-965D-404A8BEA9D24">
+                <File Id="filE1F43EB280D7822DC0746BF76E0362E2" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperPOP.pssym" />
+            </Component>
+            <Component Id="cmp92FA2CA19703BB2ED8FBEBF8EC5C6446" Guid="FCF37E44-1E62-4ED3-8439-C61739FD38B2">
+                <File Id="filC28882F88013543230648D1B0E223D31" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperRTP.dll" />
+            </Component>
+            <Component Id="cmpA0A48F9D512213ECB29E9F591FE6185E" Guid="4F05F546-B101-42CD-9184-867A613FE898">
+                <File Id="fil9B45B7B8890CFECB16600360BC3E02D6" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperRTP.dll.config" />
+            </Component>
+            <Component Id="cmp921F1C19162A1E8BBBC5949DB7EE60E1" Guid="23BAE35C-C704-40CD-9DE9-3A1E9894E2FB">
+                <File Id="fil1FC8106FCBD4182CC65D44B343BF759B" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperRTP.pdb" />
+            </Component>
+            <Component Id="cmp7C184AEE6F15B198DEB110BB0AFED4B1" Guid="60895C0E-E7E9-4FC8-9BF5-B38FAE0EC902">
+                <File Id="fil8F241396870C62E29F2C1BA35A7C5CD7" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperRTP.pssym" />
+            </Component>
+            <Component Id="cmp634564183BF5626B3D889088CCE93399" Guid="4D653776-8E70-41ED-8F48-6BFFC7471678">
+                <File Id="filC106F75EA795E0A5879C275732D82F73" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperSIP.dll" />
+            </Component>
+            <Component Id="cmp50C22D1579CDAF99BBCA510FDB266D0B" Guid="C3F3EF4F-FDEB-448F-98A9-ADB08E8F146A">
+                <File Id="fil3D8F03C33031110F80E432971F8EB1DD" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperSIP.dll.config" />
+            </Component>
+            <Component Id="cmpB6256949861CE138C7FC396B1460E4CB" Guid="8B792FA1-BB84-4D31-8174-1DF5B8DCFC62">
+                <File Id="fil8FC96D9F7886DEE9DC248A1D3AC7EECB" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperSIP.pdb" />
+            </Component>
+            <Component Id="cmpCA83048EBD2A3915E3BF39FEFB585956" Guid="86B42423-EDCB-4B60-9F47-0E5F07182746">
+                <File Id="filA9A66416C72F68B059D62ADF181BA97A" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperSIP.pssym" />
+            </Component>
+            <Component Id="cmp5005A1AC95099A9EDF69779247B2723A" Guid="802CD47E-7C86-47AF-A077-D8B87A819D5F">
+                <File Id="fil47F68483EAEA8E8CCA118A433FEF39ED" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperSMTP.dll" />
+            </Component>
+            <Component Id="cmpF25C2CFB4B997FC05EB5145595F66DFF" Guid="9E0ABDBD-A45B-4464-97B9-D670EE6473F4">
+                <File Id="fil4AB64F1BBC7F79EC0990CAB7593F8BD6" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperSMTP.dll.config" />
+            </Component>
+            <Component Id="cmpD14A3074BEB929F10A1B1FFEE9940096" Guid="81167E56-E3A2-463A-8970-CE4400350CC0">
+                <File Id="filCD6DF5FD2D1AA14464BD546C3D0DB996" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperSMTP.pdb" />
+            </Component>
+            <Component Id="cmp5E1D706A8A5589FAE0FBC5F0FA5E9727" Guid="EBBE33FD-FF42-4747-935A-7BE3126F0328">
+                <File Id="fil342CF1C419F47AA46D1EBBC95AB5AE43" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperSMTP.pssym" />
+            </Component>
+            <Component Id="cmpA5F93498CBC11B18811156B15BE5F8E5" Guid="9BA49391-4121-4512-A6A5-5CD5B42BBD9D">
+                <File Id="filB54603F8E599D61E4092CE9CB4C1B512" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperSPDY.dll" />
+            </Component>
+            <Component Id="cmpB0D5CAD8C0B20EA3D38D661972E64D98" Guid="F6D5AA42-B521-4B38-97E4-ECC5961C9408">
+                <File Id="filEE9EBD143EA1BC1276851BF9D3C2B513" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperSPDY.dll.config" />
+            </Component>
+            <Component Id="cmpB8DAD6FC366CA31336D6355C634113B8" Guid="3B3D8EE7-8BBC-4256-9AE2-E678C1B1C42B">
+                <File Id="filC7F9A2CF8C0B1D9703BF99182A85204B" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperSPDY.pdb" />
+            </Component>
+            <Component Id="cmpFD84F6EEF2240C6F05F3D5DA737659E9" Guid="BC06A835-665A-4CF3-84DE-9A88995FECC7">
+                <File Id="fil693FEBBBC2FD0FB4E7E33B1F7A48D1FE" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperSPDY.pssym" />
+            </Component>
+            <Component Id="cmp843DD1EDBF609A7F22555A3EAFEC2D5B" Guid="A7915598-4039-462F-99D5-56CB7A02FB48">
+                <File Id="fil1FCCBAB580CED575C6B89B659DF1B395" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperTwitter.dll" />
+            </Component>
+            <Component Id="cmpEE9EE52959625D59EFA14880E34887AE" Guid="B132D796-79C2-4D7B-9A48-1C6CFD79611B">
+                <File Id="fil7EEF4FAEC990DEC012E69B1DA4E828E2" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperTwitter.dll.config" />
+            </Component>
+            <Component Id="cmp87E4B0FA02FB06C176F76421CFDA7444" Guid="99C77146-F181-4C15-A2B8-5B24EB4A44BA">
+                <File Id="filB25DCD25D209167DE1418825E718B5B1" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperTwitter.pdb" />
+            </Component>
+            <Component Id="cmp8D985C6F30CD261F37CA043797E991C7" Guid="2EE24819-C302-41C4-A252-C05856C13461">
+                <File Id="filA5A7E8FF15D59B83282251B00CB16C57" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperWarcraft.dll" />
+            </Component>
+            <Component Id="cmp463460AC3F813723D01974519D0907F4" Guid="5727B102-F6A2-43C2-BF05-5FD6EF2D1784">
+                <File Id="fil16C7BFC85606206C2C9C0F56301088BA" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperWarcraft.dll.config" />
+            </Component>
+            <Component Id="cmp5755673F9D41E8347998014BF1A5A66D" Guid="D6C6CAE8-8ACA-45AD-9EF0-A647B0979CE0">
+                <File Id="filB8BE2F6DE17529105D7B919FF3425A82" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperWarcraft.pdb" />
+            </Component>
+            <Component Id="cmp340912D669698D3A9795A7058A18FF3B" Guid="BC4F1E5D-B8C9-41EA-A284-C292CB2B5CF9">
+                <File Id="filDEB6CEB453F9990757742F7AF6F1BAB5" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperWarcraft.pssym" />
+            </Component>
+            <Component Id="cmp12C4D26318849A4F2DB4479EBC4D5C8E" Guid="BDF97B7C-5F3D-42F8-A17B-BBC89AC2EB0E">
+                <File Id="fil03815F1617AA5B9B4CE810337B7E9783" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperWebmails.dll" />
+            </Component>
+            <Component Id="cmp0A2A57B4BFEB5C0AA0FD4B7D79D05461" Guid="44EFD8E1-2F64-4152-BD65-DC46E416FA8F">
+                <File Id="filEC897CBD26C5E9EE87DA30048FCB6C63" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperWebmails.dll.config" />
+            </Component>
+            <Component Id="cmpCA2E0B693E195FC090CBEC74C1EC0CBB" Guid="8784BA12-0C55-45BE-9334-B101AC025632">
+                <File Id="fil351A10D5B3B364AA5A70268096EB4F95" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperWebmails.pdb" />
+            </Component>
+            <Component Id="cmp40DEB5ABD2AAABD208CDC48FB4535836" Guid="39D24D7E-A39B-4854-B2FE-957030A41CA7">
+                <File Id="fil9EB389A43AD722929ED343CA2AA66AE8" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperWebmails.pssym" />
+            </Component>
+            <Component Id="cmp778C8A1D533DF9EE40B20875B004508A" Guid="B522C5A7-D415-43A4-BEAC-261F6A98A06D">
+                <File Id="fil5934F7B15BC37B85384E93839FE374FE" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperXchat.dll" />
+            </Component>
+            <Component Id="cmp86036F621F4901F6136CDF5FA41DA3F0" Guid="41416D78-A9D7-430B-BF98-919F46DCB660">
+                <File Id="fil367741E459B3A71014ACB0FA98E19BBD" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperXchat.dll.config" />
+            </Component>
+            <Component Id="cmp6CDDB17501CDB53960648AB66702998F" Guid="84238E9F-F126-48E7-896E-F9547795EDAA">
+                <File Id="fil5A12F4D7291A8D012DCB18794A0A9903" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperXchat.pdb" />
+            </Component>
+            <Component Id="cmp735B29F9E67626C239DBCBE49493532B" Guid="BF85909F-A7F4-48C7-8FB9-B7F19A574A8A">
+                <File Id="fil599A058FF512027873E8652D98E3AF1A" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperXchat.pssym" />
+            </Component>
+            <Component Id="cmpDC04ECB67896961F76516656304A4D7A" Guid="06A02B37-CBB4-4619-936A-24E3195D26A1">
+                <File Id="fil94757D79FD0B1802D127D8739EECF267" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperXMPP.dll" />
+            </Component>
+            <Component Id="cmpF50FE025C30A1D072FD14839E6F15529" Guid="373C92C5-386E-4ACF-80F5-BABE215F3B90">
+                <File Id="filD2788560F9CD705E3BFBCF800F31749A" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperXMPP.dll.config" />
+            </Component>
+            <Component Id="cmpAFC19D73ABEC822DA7514A4F9A9F7E67" Guid="068481F1-4C09-4CD2-9841-96FEB352AA04">
+                <File Id="fil0D767E3A062D90570B1B5BA09BD8E6ED" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperXMPP.pdb" />
+            </Component>
+            <Component Id="cmp270423A060B0EE2E1C3166034253F032" Guid="1AADF3EA-59BC-400A-BB9B-7A8387F5C206">
+                <File Id="filFC4263526456C17240CC760DC18D132E" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperXMPP.pssym" />
+            </Component>
+            <Component Id="cmpB85D2BA45351380A40B30C01B725A9D3" Guid="DE334E6F-F6DA-471A-85B6-87C86D8026F8">
+                <File Id="fil23D9D988CD954D9D75D947C4A07FF88A" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperYMSG.dll" />
+            </Component>
+            <Component Id="cmp37BCE359352C3E3548BD42E5F1268337" Guid="3179AE32-CFA3-45AA-954A-A603414674C4">
+                <File Id="fil4552732A09C15993B616972A78CB36C4" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperYMSG.dll.config" />
+            </Component>
+            <Component Id="cmpE6320B576E84B539407C36AB8F9FA9F6" Guid="933FCA4E-5DC2-4C48-94D0-27585D5B90CD">
+                <File Id="filD2981FE3E434864C3EF052C8E8168DC6" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperYMSG.pdb" />
+            </Component>
+            <Component Id="cmp221A848704E03ED1DF10461EE84EA03B" Guid="92C23F59-E457-4BE7-82A7-C2CBA127F6A7">
+                <File Id="fil06122CA72FF4577F3742780EA165B979" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Netfox.SnooperYMSG.pssym" />
+            </Component>
+            <Component Id="cmp4CDF7DFD2D0E95016925C6786A10C503" Guid="C744172D-ADD4-4837-9BF2-95E588164626">
+                <File Id="fil58078AD85E0073F162CFFABD8ECDFD92" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Newtonsoft.Json.dll" />
+            </Component>
+            <Component Id="cmpEC5CA923F382FAC50F6D948F86E329B2" Guid="A8D95ED7-47F3-46F0-8AB8-EE4D64BA3983">
+                <File Id="fil59800B0773DA93236D44CAFE982940CE" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Newtonsoft.Json.xml" />
+            </Component>
+            <Component Id="cmp8F9CFC6DF6383D67BCBA40891B39DFCB" Guid="2CA67491-2A5A-41A1-86CA-C8CF2CF166F2">
+                <File Id="fil7333F87B6C0CFB91C5BEA4973EED028E" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\numl.dll" />
+            </Component>
+            <Component Id="cmp1BCDD13BBCF35F2305CDB366DEB9CE92" Guid="969635EE-783B-45BE-8D84-0D12C6CEC96E">
+                <File Id="fil66E93F5668640B1FB6A5AB552E4F6A83" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\numl.pdb" />
+            </Component>
+            <Component Id="cmpD99A37BF060ABA80C88A3C8B4E068A76" Guid="0647638C-B69E-4DB0-A61A-452086FBBB76">
+                <File Id="fil41BCA909C9E7CB0D8888361926567533" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\numl.xml" />
+            </Component>
+            <Component Id="cmp6F669A0C0A790CC800E67F3D59117174" Guid="7F466B94-C995-4BC1-AEAA-5681582BF408">
+                <File Id="fil0CDB6280D608BB8C14311C54F3AC9B5B" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\nunit.framework.dll" />
+            </Component>
+            <Component Id="cmp507575F6DA7DE4A41516F1103DAEC4DA" Guid="3B4F19B6-5FF0-4C22-8E3A-A556E0AD6A11">
+                <File Id="filC1BFC4DE3E44BCD2AAA5DBD55D5F88B4" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\nunit.framework.xml" />
+            </Component>
+            <Component Id="cmp9AFAECEA155BB25205686F7F6980D0E1" Guid="F91D1B67-F425-4349-B64B-2B2853F0FF02">
+                <File Id="filDB2334BEED8FFC369D6DAA6DA9DCE5AA" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\PacketDotNet.dll" />
+            </Component>
+            <Component Id="cmpD65D0BEEB96170C258CAEC623E09E54C" Guid="FD9F42E9-0646-45A8-AAD4-E5ED6D90F5F7">
+                <File Id="filD883C782DAF9D698793F52044542C88A" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\PacketDotNet.dll.config" />
+            </Component>
+            <Component Id="cmpCD6C73D82676C4151149996155112038" Guid="8A939A11-819C-48E8-82D3-7A3BD7E28D90">
+                <File Id="filC829FEBD97BD62781BEC4EDBF624E2C5" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\PacketDotNet.xml" />
+            </Component>
+            <Component Id="cmp5B6D2DAD417EDC837B102C2262E16865" Guid="878A8EA0-A34E-4ACF-B1DB-D1DFE60C8AB1">
+                <File Id="fil58DF73EA4B12531E01DFB6D388B68B35" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\phantomjs.exe" />
+            </Component>
+            <Component Id="cmpFAAAED1A8B1E1B7D9CF6EC632B0C9474" Guid="58DA07E2-8437-4446-A756-3086A08C42B4">
+                <File Id="filF0FEAA2E8EB0DFD9B35B10794ADD0528" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\PostSharp.dll" />
+            </Component>
+            <Component Id="cmpC8460B8E6893DFC801F830B64B8121B7" Guid="A04C7648-14D6-4B35-91BE-9E80AE23CF12">
+                <File Id="fil0FA5F932A1CD0A91F4853DCB9EF0D321" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\PostSharp.Patterns.Aggregation.dll" />
+            </Component>
+            <Component Id="cmp9DBB56427565363894122989AEE57A07" Guid="891FB334-6EFE-49AB-93AC-196EE8A98B4B">
+                <File Id="fil9B72BB77DF7637070D8163140817E345" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\PostSharp.Patterns.Aggregation.xml" />
+            </Component>
+            <Component Id="cmpAB79EE594C81E805F7ECC3EC672F3D05" Guid="0962C5BE-E17F-488C-A61F-6EEB4767CFA0">
+                <File Id="filF065E4197446110E434D0F0E908C6E5D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\PostSharp.Patterns.Common.dll" />
+            </Component>
+            <Component Id="cmp2B622D5D613894A96E9EA4B107C83B16" Guid="F5465345-E2A9-4372-BA44-4676AF71799C">
+                <File Id="filBA7881CFD37BB133A0AE7BE1CF13FC65" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\PostSharp.Patterns.Common.xml" />
+            </Component>
+            <Component Id="cmpB946F294FB0109E56C95563426EBE212" Guid="BFD9081B-81C3-42BB-98F7-F592B9AEE05E">
+                <File Id="filF41829B23B770D1F1EB2EA2A0C77D190" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\PostSharp.Patterns.Diagnostics.dll" />
+            </Component>
+            <Component Id="cmpEC34D7CE58E8091B12DDC5BAD4E68D02" Guid="06B463DA-4ED2-412F-80F5-178AAB1A52FC">
+                <File Id="fil60BEEFBAF8C88F17A9E51DDC3B04A690" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\PostSharp.Patterns.Diagnostics.xml" />
+            </Component>
+            <Component Id="cmpA681B81F23A33899C45194753B114207" Guid="E47653D5-5FDA-4C74-849C-7AE24540E678">
+                <File Id="fil61A14585AB08BD59A0CB085B3042F99E" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\PostSharp.Patterns.Model.dll" />
+            </Component>
+            <Component Id="cmp82BD49C5BA4DD3C98A8AAB8661262CCD" Guid="D4E1175F-3771-4A79-8F6E-C7DAF12E77B5">
+                <File Id="fil26B4D650F4D1B369221F0BBCE8035CA1" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\PostSharp.Patterns.Model.xml" />
+            </Component>
+            <Component Id="cmp542A4E63C378171FEE62D234710EF35D" Guid="4C04E70A-767A-466D-B6BD-756530BE39F2">
+                <File Id="fil4A731D994BA7081B8622AC84800DB4AE" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\PostSharp.xml" />
+            </Component>
+            <Component Id="cmpC8DA21D334498C2D7F2CEB9D31E9D850" Guid="ECA90884-0C88-4292-AA0F-123AD7C205C2">
+                <File Id="fil7E5EFDA056D8AA5BB3DAF6E01D3027D9" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\snapshot_blob.bin" />
+            </Component>
+            <Component Id="cmpB9EBD7874B665740BC7E808EA37DC766" Guid="B55D3318-0D6D-42CE-B9BF-DB3F1A095F41">
+                <File Id="filEF2D875C9FD82C2DD05BC83D3674E56A" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\System.IO.dll" />
+            </Component>
+            <Component Id="cmpE377B5D63926B89AA4B0CD91D0973BB5" Guid="0E0D5976-55FC-46C2-8314-2AD16E4BF2C4">
+                <File Id="filB46BD78E1CD99121AEB0F528550EE54B" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\System.Linq.Dynamic.dll" />
+            </Component>
+            <Component Id="cmp13BED6C8EA8EEFC7EF027B2E79746FB8" Guid="E179BBC8-D820-4D10-A0A1-69041DEAA23B">
+                <File Id="fil5AE9F32DBAC80F00D244393269E902C8" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\System.Reactive.Core.dll" />
+            </Component>
+            <Component Id="cmp6EE62B51BA68960819E4EFE0D77579C5" Guid="230B5388-D556-4AEA-9417-88C334A0EFB5">
+                <File Id="fil4A9CE6A3456C032B079FD68A8848DC57" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\System.Reactive.Core.xml" />
+            </Component>
+            <Component Id="cmp303E138DD2E109F2479CC653D35C23DA" Guid="DDDAF129-B822-4681-9E8F-FA722D63472A">
+                <File Id="fil0762921B4958C454B144BAB407B8BA0B" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\System.Reactive.Interfaces.dll" />
+            </Component>
+            <Component Id="cmp7D1890756C845F2591CEE1C2DA3624AE" Guid="0856D615-D88B-4AE0-8A10-E804DF3267D7">
+                <File Id="fil1A9E0474C53110A237E9501ADA63658D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\System.Reactive.Interfaces.xml" />
+            </Component>
+            <Component Id="cmpD58C4EFB05F48CEF996489444B6621EC" Guid="0156405A-E163-4BAA-A83A-6D663F3E18E2">
+                <File Id="fil00A0F696DCDA0A4C068A6A0190A3432F" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\System.Reactive.Linq.dll" />
+            </Component>
+            <Component Id="cmpCB07520600BF8109AD5715DAFFF9113E" Guid="BF928DD6-9CFB-4732-BDE7-BCE7EF97120A">
+                <File Id="filBF1D996DFC45B6D45445438C62DB0C28" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\System.Reactive.Linq.xml" />
+            </Component>
+            <Component Id="cmpBFDEC9A912747DEBFFC51AC7D52EBFA6" Guid="FA26A6D4-BD20-46BB-8AAA-FB6159153D9A">
+                <File Id="fil5C577E849B6220E1351ABB58A1511B4B" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\System.Reactive.PlatformServices.dll" />
+            </Component>
+            <Component Id="cmpBEADE0CD21E252F7A625CD12244AF5D6" Guid="57883D0E-EB0E-4DD8-A357-DD397216358B">
+                <File Id="filAF81E0712FD7251ACEF5C3003B5E85CF" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\System.Reactive.PlatformServices.xml" />
+            </Component>
+            <Component Id="cmpE1A7A1A49AEC05C97D7834F48F9304F9" Guid="9A0612E0-7552-4770-8F69-DBFB54DD0ECD">
+                <File Id="fil208F16650D6E0B0FAFF134434FEE7CAE" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\System.Reactive.Windows.Threading.dll" />
+            </Component>
+            <Component Id="cmpF0EC23441F05799EF70AC7DB6E69F4D7" Guid="15086172-2D04-4CEE-B4E5-F888D68B7200">
+                <File Id="fil9EC01987C208B1F881E52F5059DED950" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\System.Reactive.Windows.Threading.xml" />
+            </Component>
+            <Component Id="cmp2D02FEDD720A986EF30D26DC67247E43" Guid="6BFF80D2-DEF7-41FD-8F8A-38239B5FFDAA">
+                <File Id="filFF239AB90B4225585A416AAE792907DE" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\System.Reflection.dll" />
+            </Component>
+            <Component Id="cmp5D1E16FF39C8B3CF723FD7619A96B75E" Guid="C0C8B346-7335-4E0F-89E1-36382855B10E">
+                <File Id="fil35B2395B0966474D22220C59F958108D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\System.Runtime.dll" />
+            </Component>
+            <Component Id="cmp24918AF9B56AE140350D3C668EACCE64" Guid="179B1CC6-794A-4EC9-BE45-01AF9F704911">
+                <File Id="filCCEB533F614E76C1BB861973D09C9EBA" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\System.Runtime.Extensions.dll" />
+            </Component>
+            <Component Id="cmp78D3D87283BAE7833F66522CA54AB626" Guid="969504DF-4102-435D-8D40-9CA871624E8E">
+                <File Id="fil7DCCA381ED65830E2C4F4DC613BA8FA3" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\System.Threading.Tasks.Dataflow.dll" />
+            </Component>
+            <Component Id="cmpA70550B10376BF9F4362A69E7389DD93" Guid="62F41188-4267-4803-BC75-0B7809A913C0">
+                <File Id="fil1EBF4190242382780201227F6F50492C" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\System.Threading.Tasks.Dataflow.xml" />
+            </Component>
+            <Component Id="cmpB314FFA141B7D8435C1BFC5F2F9E2A85" Guid="56FAB44C-5408-4CF1-A648-D6AD0071E424">
+                <File Id="fil9FA7B6CCFDF3A2FAAC66357E8928EE7A" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\System.Windows.Interactivity.dll" />
+            </Component>
+            <Component Id="cmp2B377803AEEE5CAAAA7F2C7445978A31" Guid="C2EE4E45-CB5F-4A86-BF5F-0644F97B6462">
+                <File Id="filCD82F8FD1ABF5506EF02D3E60A1FCE3D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Controls.Chart.dll" />
+            </Component>
+            <Component Id="cmp9A3B4673D7796DD4EA351B32E08B2EDA" Guid="576682B5-92E3-46F9-94CE-0C997D22FBBD">
+                <File Id="fil7E70440C2BABF5CA9EC29EFFDAEC2959" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Controls.Chart.xml" />
+            </Component>
+            <Component Id="cmp245B9F2A8BB61619923595BF60D76594" Guid="18C5298B-F486-4D11-B5C8-8747E752DD3A">
+                <File Id="filD9A9FD19AE6027CF843E3EA617112F57" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Controls.Charting.dll" />
+            </Component>
+            <Component Id="cmp17C78D9DFFC9E43DD35EF8C302C8E4A5" Guid="C6F8E325-1CE1-4211-86C9-52A5FF84AE0C">
+                <File Id="fil435EE47D6DF409BE4568D438F25830D1" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Controls.DataVisualization.dll" />
+            </Component>
+            <Component Id="cmpF7A69E114DB3A56EB7AD2C62758EC93C" Guid="B42BB8B5-1112-4074-9239-E3D167D5D555">
+                <File Id="filD5B0AD5D05ECE288BCEE53C8FE188C1C" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Controls.DataVisualization.xml" />
+            </Component>
+            <Component Id="cmp908B6CAFD7AEE0434DA9994AA8AA9DF6" Guid="DEF4314B-6BDD-498E-99BC-F4B4DF2672CA">
+                <File Id="filAEB88E4FB4E3ECDB85553D68B88A98D6" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Controls.dll" />
+            </Component>
+            <Component Id="cmpB7633696823EB01ABDD8177BC15A8349" Guid="1C337B90-5933-4D9B-9811-B8158B0F0D30">
+                <File Id="fil89E564D888AA211B9930AF2C02C7F10F" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Controls.Docking.dll" />
+            </Component>
+            <Component Id="cmp76C48349B8F75A57823B3DE30FA935D4" Guid="505AACFD-10F9-41A7-9407-B7C641A3F3BE">
+                <File Id="fil7973352F8434AE3B675D6EEAA2FF3345" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Controls.Docking.xml" />
+            </Component>
+            <Component Id="cmp004B71D62C055B78CACD3961305648E8" Guid="1BF9E803-157B-4834-9849-CB865B094587">
+                <File Id="fil568D1260A21041D2ED84DA264B8EE34F" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Controls.GridView.dll" />
+            </Component>
+            <Component Id="cmp1BE11E939CF1723D1EDB44501B7DFDFB" Guid="EE61301D-84F2-4F7E-8DE7-1C3851252D07">
+                <File Id="fil83ECAD73D42FE71C7646D7EC57FA48E4" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Controls.GridView.xml" />
+            </Component>
+            <Component Id="cmpC9A109EE0096DF4BFEAB024E7DC53090" Guid="03E29A19-86F7-4ACB-9429-DBC51D5D128D">
+                <File Id="fil9818B8CFFDFDDBA178749FB1DDFCA1F4" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Controls.Input.dll" />
+            </Component>
+            <Component Id="cmp1147D9BBF55E4354C507A1C0B0746E84" Guid="21A05BD2-11C4-4B92-99B5-6285CC74F2C4">
+                <File Id="fil9C2CDB8301C07D8A52114BBD6E1F911D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Controls.Input.xml" />
+            </Component>
+            <Component Id="cmpF55BB79A10706417BEE7754E638C6201" Guid="4ED1F047-D771-4673-81A4-2280FEE4A5DC">
+                <File Id="fil8FAA2E0A52E60A5195B973DD217D8819" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Controls.Navigation.dll" />
+            </Component>
+            <Component Id="cmp5831D0D59B9EEDEB62F85776483400FE" Guid="51D1A21C-E189-4105-911F-A4984A16B75D">
+                <File Id="filA76FC146C8146342D1E51F4A0A238F7D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Controls.Navigation.xml" />
+            </Component>
+            <Component Id="cmp28551FDAB1F3E71226E980FF2DE31C7F" Guid="3F9C8FFB-AB09-4F60-AF74-2368E7165930">
+                <File Id="fil66F1FEF116225AFB4D6B3075C3C94219" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Controls.xml" />
+            </Component>
+            <Component Id="cmpAB618F3CEBCF20E7172F3FD0E35EAFAE" Guid="645AC500-DE83-43BE-BAEC-158B6825E766">
+                <File Id="filDF6863A000AEB2A7DE85AA04034A7031" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Data.dll" />
+            </Component>
+            <Component Id="cmp63B605CDEA38855028D032F9AE68AE5C" Guid="6C8C2CB0-B7D7-445C-862C-91AA7B9D36E0">
+                <File Id="fil7E6445884132A96B0F07DA620EE2DBD4" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Data.xml" />
+            </Component>
+            <Component Id="cmpD7DF9F8C365D6D955387D670A98F91FC" Guid="BAA1A788-0756-479C-A588-27027B09639C">
+                <File Id="fil712190B05A24A76808C97D5581B66E42" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Documents.Core.dll" />
+            </Component>
+            <Component Id="cmp182D39B76FC5097EBAE082D5D35F14E0" Guid="1AD857B1-B6A1-45CB-871D-7568EC569EBC">
+                <File Id="fil64AFCA3156D6E6869C65C053144AEF7D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Documents.Core.xml" />
+            </Component>
+            <Component Id="cmp152047B9F245C731B2DE24FE2EA1045F" Guid="190C7569-B991-43BE-ACDF-D1B79F07F801">
+                <File Id="fil2EF54F045DEB338EEE49AF1185C51034" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Documents.dll" />
+            </Component>
+            <Component Id="cmp93BFF3D3DF0882029D79CCB63526811D" Guid="30F6505B-B027-4173-BC0B-282FC0F44C17">
+                <File Id="fil6BD451A51179903B9C34ADC4ABCB1CE9" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Documents.Fixed.dll" />
+            </Component>
+            <Component Id="cmp98CEBF201E7A238AFBEA2C6388225AD0" Guid="F127108E-B63A-4D54-8701-BE8AF7DE411D">
+                <File Id="filAF1A5456E7345E091D64A70EAF0C8942" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Documents.Fixed.xml" />
+            </Component>
+            <Component Id="cmpD562C1A4E951F6E175A96E4965D941B9" Guid="1958070A-33F5-4437-8AA0-F0303FCD4D11">
+                <File Id="fil0CCCDFD9477559C49D2E2B106E84B717" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Documents.Flow.dll" />
+            </Component>
+            <Component Id="cmpE56BC051394AC117B661E072E32B18F5" Guid="6B9DE7E6-5E94-4731-84CA-43332EAF1A8A">
+                <File Id="fil9A1E74F6A19136E42665CEECEF8DAFC1" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Documents.Flow.FormatProviders.Pdf.dll" />
+            </Component>
+            <Component Id="cmpE1F99286BDEE695B0672C94A3133F55B" Guid="E6CCAC5D-5251-4841-B469-8612010C110A">
+                <File Id="fil6B48399DDD72156E52ACC149702BFCC7" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Documents.Flow.FormatProviders.Pdf.xml" />
+            </Component>
+            <Component Id="cmp6865E2D143887D12D3440866A11FBDA1" Guid="C7F6F4DA-2D4D-4CE2-955B-5DCB57150487">
+                <File Id="fil791496807835D8D54632EA59AE336F22" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Documents.Flow.xml" />
+            </Component>
+            <Component Id="cmpCD9060DA6AE7FEBAD063DB7E9D900A8D" Guid="06D28E6F-FE46-4559-BF71-A9781D8832D3">
+                <File Id="fil7B34E7D349B0DCBD79C436E08D82903C" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Documents.FormatProviders.Html.dll" />
+            </Component>
+            <Component Id="cmpDF5A5C8D759FBE3474D2B527A1C8944A" Guid="F667962F-B648-440B-AEAA-0D1EE68C2644">
+                <File Id="filDFF3433FEBF72BEC2579FA5D764EB87C" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Documents.FormatProviders.Html.xml" />
+            </Component>
+            <Component Id="cmp90E1A7BC0F488D6FF5EFADFFE2D83DA2" Guid="91E03A10-FE17-4900-9BA4-3A613086E615">
+                <File Id="fil5443B00CE694875AA0DBDDD32F20E71D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Documents.FormatProviders.MsRichTextBoxXaml.dll" />
+            </Component>
+            <Component Id="cmpCC515A8DC81FCD8F16B11A1E0B6715A4" Guid="5A8AE1C9-8223-49E4-99F4-DAD7362967CF">
+                <File Id="fil514AD33417E605909482E86C38FB609C" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Documents.FormatProviders.MsRichTextBoxXaml.xml" />
+            </Component>
+            <Component Id="cmp6693BB7E3906470B587E673332A513A4" Guid="6551D49A-5C45-439A-8275-05755F300FC3">
+                <File Id="filB2EE1A50BF0678F14A42DEE55BB7A73E" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Documents.FormatProviders.OpenXml.dll" />
+            </Component>
+            <Component Id="cmp035ADB13B436293446AF68646EA01A54" Guid="62244EF3-02E3-4E6C-82C5-349FC212E8D4">
+                <File Id="filB51338DA35F46D62CFAE51C976499ABE" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Documents.FormatProviders.OpenXml.xml" />
+            </Component>
+            <Component Id="cmp41DDEDBFB6170C2EEDA605474CC2CCA5" Guid="12B2F6A9-544C-4AD7-9942-26CDA122E6E0">
+                <File Id="fil8488C1433EE530367065FE5B1F8D39E6" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Documents.FormatProviders.Pdf.dll" />
+            </Component>
+            <Component Id="cmp380F47C9BB9F3D7170863CEE20F5A152" Guid="BD4B466B-D813-4769-B2F3-D8A65E31C769">
+                <File Id="fil48C5AA32D1FEC6714939DC793CD8F394" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Documents.FormatProviders.Pdf.xml" />
+            </Component>
+            <Component Id="cmpCB806F31239CB1A9C440770BEC549DD3" Guid="27A77C91-F539-4F0B-B017-E2D72DFF1DB2">
+                <File Id="fil2056E9FC539B7A2EB7915A09ECE061D6" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Documents.FormatProviders.Rtf.dll" />
+            </Component>
+            <Component Id="cmpCF721E5D8C41F7907CD20857A7E2D9CE" Guid="BFD05794-9572-4FD3-987F-E9F8490893BF">
+                <File Id="fil42A2CE18F78A171396D7AE7B6C5A5956" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Documents.FormatProviders.Rtf.xml" />
+            </Component>
+            <Component Id="cmpAA0781BFAFA5AC5C53320B5D29CEF54D" Guid="01DA55A6-9A9A-4147-9692-D6786BB300D9">
+                <File Id="fil7052EDB0D3553F47004FFE180757DF1C" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Documents.FormatProviders.Xaml.dll" />
+            </Component>
+            <Component Id="cmpB3AEFCDB09CCDB5B88C2CB8419C22C5B" Guid="859DD461-4B8E-49F2-AE50-CB47F3387CDC">
+                <File Id="fil7204C726682A877E712D6BBC8146303B" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Documents.FormatProviders.Xaml.xml" />
+            </Component>
+            <Component Id="cmpBBEC4427B8884A1977A30967EE61E4DA" Guid="ADCD58E2-AD2C-47E5-AE71-F87D1CAC1E08">
+                <File Id="filB10CA1E646C91D4B31F9ECEEF1892EB5" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Documents.xml" />
+            </Component>
+            <Component Id="cmpA9300B15E0437615C26F49942FE67C26" Guid="760EC709-8909-440E-8641-3192A481CA76">
+                <File Id="fil6DF60793EAC9CD7BDE73097EC49CC1C4" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Zip.dll" />
+            </Component>
+            <Component Id="cmpF6E302B5D93ED2B13C4FA7A82CDE44A7" Guid="266FF5E3-F792-4CDB-8DD9-E0752C045F92">
+                <File Id="filB1B074837F57689AF30E8F1F6CD85A36" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Telerik.Windows.Zip.xml" />
+            </Component>
+            <Component Id="cmpC9C37553FBB21C0CC138671DA5927FD9" Guid="EC60F6DA-49A1-4CC9-A2D7-A4F76D17D6AE">
+                <File Id="filE201FA6EF6977E7722BEB2759892B168" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Thrift.dll" />
+            </Component>
+            <Component Id="cmpA069EF40010C95CF33DEF1BBFB428AEE" Guid="56B214F2-C0A9-4669-AA55-E2FDB792129A">
+                <File Id="fil4DE1F76DB36C268A20EDC2E45F4DBBFB" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Thrift.pdb" />
+            </Component>
+            <Component Id="cmp8C003E70226658710882644985BAA499" Guid="A2FBE487-8F6D-4A1E-BDF9-CD40C51BC98C">
+                <File Id="filD5C4A50A084B52D9C551C09EEA947A2B" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\VDS.Common.dll" />
+            </Component>
+            <Component Id="cmpDAD3C63ADB9D425E243E3D14B8080F5B" Guid="E9FC111E-E74C-4D92-A3FC-8CC58482B8D0">
+                <File Id="fil8D5A222EEDFC9596E95186B2D156964C" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\VirtualizingObservableCollection.dll" />
+            </Component>
+            <Component Id="cmpC900B8A1AFF807772C6235ACD0AD2530" Guid="9399A50F-B318-4F03-B249-E54AFB2D477A">
+                <File Id="fil36BD768D882B8F962279BB7E5B1315B2" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\VirtualizingObservableCollection.dll.config" />
+            </Component>
+            <Component Id="cmp6F72C457AF6EAE66DB19C84FEBC0EBF9" Guid="7400CC60-113D-418C-83C4-4BA0DBF918B4">
+                <File Id="filF2E45749F0F2DFD72D2B58D3DA8E8E1D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\VirtualizingObservableCollection.pdb" />
+            </Component>
+            <Component Id="cmpAA5C10C0AE8C04ACC6F17F7E798E2F8F" Guid="8B5B80AB-FAFE-446A-B306-3E6F924054D1">
+                <File Id="fil34B56404F9B51686392DBE75B2FB605D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\vm.Aspects.Diagnostics.ObjectDumper.dll" />
+            </Component>
+            <Component Id="cmp4F9DF128AE237D0D2B165E3EA4440C86" Guid="541D7580-98DA-47C8-AA01-8969B00E8BA9">
+                <File Id="fil6E55C7C680B0A794B0D1E3A7D2BE9D5F" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\vm.Aspects.Diagnostics.ObjectDumper.xml" />
+            </Component>
+            <Component Id="cmpF9AE74F399346A5945BCE5E758EA7BEA" Guid="C0428633-03B5-4155-96BC-EAA1B921A7BD">
+                <File Id="fil8B504052261915F781224605A4965F8C" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\WebDriver.dll" />
+            </Component>
+            <Component Id="cmp9312CC5B51CCEBD8CC75257EAC2F5D56" Guid="78ADF0E1-E215-4C0F-B07C-9948715DB34B">
+                <File Id="filAD2B5B67EE91972F0F155EAEEDA07AEB" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\WebDriver.xml" />
+            </Component>
+            <Component Id="cmp8E9717D3A101FCC2B2C21F41AD57B3FF" Guid="B086D320-21FF-48CE-A165-AF9775053662">
+                <File Id="filDFBE491841E235313DC56A7E00F17220" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\widevinecdmadapter.dll" />
+            </Component>
+            <Component Id="cmp2FBA93EC186C6E344AF419707FF825EC" Guid="C3551C80-C806-4CCF-96B1-6EFEF6EB5A8F">
+                <File Id="fil0D42378D97E900A3D6D612C53DC6FE7E" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\WinSCP.exe" />
+            </Component>
+            <Component Id="cmp2D227AEF3305B728CCE7137D02539A0C" Guid="D52BE4BA-B0C8-459F-BE2B-052CBFC1D817">
+                <File Id="fil36F341548997C5BF5B3BBA540EDD5142" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\WinSCPnet.dll" />
+            </Component>
+            <Component Id="cmp995F5EFF667041EEDB189C706A1BFDC9" Guid="2C68131C-6B92-451F-8F3B-8B266F2BAD99">
+                <File Id="filCEE95C27D2F6F4DABF89DB5BDB377870" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\WPFSoundVisualizationLib.dll" />
+            </Component>
+            <Component Id="cmp97B75E93D548A050005596B19A021A8D" Guid="40594417-8C83-48A1-B561-2084975BB5B6">
+                <File Id="filFDF3B04394ED8CBBF2AE229A0AE7B603" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\WPFSoundVisualizationLib.pdb" />
+            </Component>
+            <Component Id="cmpB60E28E18DD4AE24F6C3FE01BA1F527B" Guid="74E4D648-5DE6-477E-A15A-0312D880C639">
+                <File Id="filCB63338B5059493E36669EFD42C87FF1" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Xceed.Wpf.AvalonDock.dll" />
+            </Component>
+            <Component Id="cmp1C9F0B8874BE940E40E6512D9D1A3C1B" Guid="94409292-7982-48D8-BE0F-C97ABE486B55">
+                <File Id="filD3533B61A9EB5FCD0B460D18CE391995" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Xceed.Wpf.AvalonDock.Themes.Aero.dll" />
+            </Component>
+            <Component Id="cmpEB33DE851DCFEB699F27A5C41CE7066E" Guid="2D2E9DF3-9390-436A-A34F-E02D63E57A9D">
+                <File Id="fil53562156750E1796069A3D680445EC09" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Xceed.Wpf.AvalonDock.Themes.Metro.dll" />
+            </Component>
+            <Component Id="cmpAC1E562F7A69777C8003781CB3B38E11" Guid="5569A324-F250-43BA-A7F4-279AEF41D6C2">
+                <File Id="filB060B5013AB369F3EE565390CC0BD14D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Xceed.Wpf.AvalonDock.Themes.VS2010.dll" />
+            </Component>
+            <Component Id="cmpB643AE499D21370E24376B1DB9811964" Guid="57D13CAD-DC82-4062-A810-2929BF92D90D">
+                <File Id="filAC9EC74676FC074EF19EFB55334B0332" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Xceed.Wpf.DataGrid.dll" />
+            </Component>
+            <Component Id="cmpB4B1A8D2DD0636AE11AFEA45DD6F603D" Guid="BD883BB4-3848-43B0-90A0-E822DCBDA397">
+                <File Id="fil5183E8ECD3104990E578717B9665A3C3" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Xceed.Wpf.Toolkit.dll" />
+            </Component>
+            <Component Id="cmp0B87CB5A9ACD9BD4A23EA830EEF91CE4" Guid="E15DB350-2DAA-409D-BB6C-7691BCF069E0">
+                <File Id="fil4B7618E47CB92028CC6345A5EC31AA04" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\zlib.net.dll" />
+            </Component>
+            <Directory Id="dir54BA5EE92CB8F37BEFA5CE0F7976ACAB" Name="de">
+                <Component Id="cmpDA8D79794912851D90E6A20ADF8CF04E" Guid="4BC502F5-461F-412E-9322-0459FAAFFE45">
+                    <File Id="filD5D20EDFD11FFCA6A5CC6B713E808323" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\de\Telerik.Windows.Controls.resources.dll" />
+                </Component>
+                <Component Id="cmp715D609ED0BB78479BA266FEF156EE9F" Guid="ACD7339F-6D63-4D41-980E-4CC145022B0B">
+                    <File Id="fil1B4C9C75A51534B31E126A63639FED0F" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\de\Xceed.Wpf.AvalonDock.resources.dll" />
+                </Component>
+            </Directory>
+            <Directory Id="dir64D71989966D3C995252DD5EAD72204A" Name="es">
+                <Component Id="cmp45CB12252259B49A7330E30195D26429" Guid="07CB215D-260A-4F40-9F98-09082E133ED8">
+                    <File Id="fil7B8ADBBEF0946666791477A7BA7CF0AE" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\es\Telerik.Windows.Controls.resources.dll" />
+                </Component>
+                <Component Id="cmp9509459CF91AF891BCF294FE71262B92" Guid="DD1220A8-4B5B-4201-9063-0D517708E088">
+                    <File Id="fil3DCBCD46D9BFD491277A508595606529" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\es\Xceed.Wpf.AvalonDock.resources.dll" />
+                </Component>
+            </Directory>
+            <Directory Id="dir7ABA76C83D0AFCE97CD348E8219F4CE1" Name="fr">
+                <Component Id="cmpBDE7541A5A91EC4CC5F702D845F31478" Guid="CB7A1FAA-F08E-4B69-9BA4-7DAC6E3A744C">
+                    <File Id="fil35902DAD7FDBE74BE4E020D15E58F200" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\fr\Telerik.Windows.Controls.resources.dll" />
+                </Component>
+                <Component Id="cmp20756BB8A93E601AA892F7D8026D55F1" Guid="AB630520-0EFC-46B2-B647-915159B3D390">
+                    <File Id="filCE839DFE3F0E2F040717DACD7B257030" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\fr\Xceed.Wpf.AvalonDock.resources.dll" />
+                </Component>
+            </Directory>
+            <Directory Id="dir802762042FC8A54533E00C717565B055" Name="hu">
+                <Component Id="cmp5C70DC8583064785AEACD8FE2A853F2B" Guid="768814A3-7892-4FD2-9797-6A33B428ED22">
+                    <File Id="fil3CAB5B69074CCC5E1E6174E929ADF341" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\hu\Xceed.Wpf.AvalonDock.resources.dll" />
+                </Component>
+            </Directory>
+            <Directory Id="dirA1C9D6EE90DA7B3D513AC1CA7D72F253" Name="it">
+                <Component Id="cmpBC34A41C1625DDE713424D8230910213" Guid="5709DA44-6CF6-499D-B27E-E4EFB2061E0E">
+                    <File Id="filE77C2EF19BD62CFED875E8DFFA7344C2" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\it\Telerik.Windows.Controls.resources.dll" />
+                </Component>
+                <Component Id="cmp38418DBB0C87A561404353A5EFA2C29C" Guid="8D9B8911-C9FD-44DB-B7D6-053AB1A879A2">
+                    <File Id="filB256E694F4A4CCD7E2CFA31501F1A792" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\it\Xceed.Wpf.AvalonDock.resources.dll" />
+                </Component>
+            </Directory>
+            <Directory Id="dirD9BDD7640045AB6653B1C37CCF84AB0B" Name="locales">
+                <Component Id="cmpEF0E6A1F83E92A0CF8F100A395EE6C7F" Guid="4DC6092F-898B-4204-AF24-25A9627B38E5">
+                    <File Id="filCEC5FACBF857064E1220105019164AE5" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\am.pak" />
+                </Component>
+                <Component Id="cmp62C2567F43F90D0C27821FDD5A942BE7" Guid="3133D3D0-5562-4CF6-B23E-081DFE12012A">
+                    <File Id="fil9292C5699BFD72385AE1B62DC964BC5D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\ar.pak" />
+                </Component>
+                <Component Id="cmpBDCA0A97624455ED6B3148E51C6CD716" Guid="127B9B71-FA98-4609-83A7-787607D70A93">
+                    <File Id="fil942ED5EFA2813DE0974B9D0CE4388549" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\bg.pak" />
+                </Component>
+                <Component Id="cmpDBDBA2E2F9956E10098644CAAFEC895D" Guid="F8EC6595-782B-40FA-8F5C-A47C2DB9A293">
+                    <File Id="fil0C0D38C900F41A82EBB73D5E620206F5" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\bn.pak" />
+                </Component>
+                <Component Id="cmp95282681C2D8C51357F7F010B796E32F" Guid="0BB0E65D-3F42-4DB8-BA54-C748456A3302">
+                    <File Id="filED2D5F537D8C270BFC46BBD2CF580FED" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\ca.pak" />
+                </Component>
+                <Component Id="cmpA9F2362A5BC9913C95815CE357BEA9C8" Guid="5A87AB8D-ECC6-49B9-85BF-3DB2146CF90F">
+                    <File Id="fil22AE479CA55A6A7D2E870A1DB0E5DD6E" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\cs.pak" />
+                </Component>
+                <Component Id="cmp788AE056FFE7A8F1C9088798C2B9D16A" Guid="A844FFCE-208C-4592-B7F0-7B6387AFA12D">
+                    <File Id="filF36FAED9E51DCCAF86EC381DE84CAF99" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\da.pak" />
+                </Component>
+                <Component Id="cmp6E10C18A801C842F85CB4692B3BB91F1" Guid="9C78282B-2320-4A1B-B461-4ECDA5AC1378">
+                    <File Id="fil071A9B8C82430F49C6295B966600A59D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\de.pak" />
+                </Component>
+                <Component Id="cmp4952058F60EC417C5B913F17D31604FB" Guid="8AFD410F-FDCD-497D-BA36-D3251F94F94C">
+                    <File Id="filE2EA72B722DB1885632D3B3C2BB70AD6" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\el.pak" />
+                </Component>
+                <Component Id="cmp8221547D5B3DB423CBBBFFAA060A9D58" Guid="67202727-33AD-4903-AF36-B1041B567599">
+                    <File Id="filCA6D014BA98322C55C2E97C1B1BE5A34" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\en-GB.pak" />
+                </Component>
+                <Component Id="cmp33B6D48D9D47FB06B5962D2046DD2157" Guid="75565A69-309D-4B28-A850-EF82E3A347AB">
+                    <File Id="filDBFF5D991A0FEAD9AB79B9E14548230D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\en-US.pak" />
+                </Component>
+                <Component Id="cmpAAAADC6A006B386700A049AC50BA7E8C" Guid="FB724300-5921-4D20-9573-AE158F32A453">
+                    <File Id="filD2F99BB150208A3CE32436E2A9394547" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\es-419.pak" />
+                </Component>
+                <Component Id="cmpCFE584C7FF7E6F66BFE2E3EF9206D630" Guid="ACB0E3DB-7A6F-4D45-B681-86F747B0D6AA">
+                    <File Id="filD14FB00DD95A3C4AF4F3ADD477FB3E86" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\es.pak" />
+                </Component>
+                <Component Id="cmpB9415FBC3E55E98412B4A1137C0CF556" Guid="7D6241BB-02EE-4CCF-8586-FE61E1D0560A">
+                    <File Id="filA21E9A48F75815F1C4645E6E476C2CF6" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\et.pak" />
+                </Component>
+                <Component Id="cmpD835FAC09FAF365EC7CFF7D358B357EC" Guid="46B57EC2-3A54-4673-90F0-344DDFAF3641">
+                    <File Id="fil14AA3F9F6051B3993BFD2B25EEEA9AFC" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\fa.pak" />
+                </Component>
+                <Component Id="cmpC87A130587FD562381802D29C515B1F7" Guid="B494454A-B420-4099-8083-209839A264FE">
+                    <File Id="filA3CE11A2E2A43961958A3BB04E34B446" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\fi.pak" />
+                </Component>
+                <Component Id="cmp5AF0CFD567E370B5DEF9E52F65438FEA" Guid="5358B76C-53F7-401A-B2D9-F1ECE2186C69">
+                    <File Id="fil1682982F29F8D987B5CFB95BF7E43659" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\fil.pak" />
+                </Component>
+                <Component Id="cmp2618DA72B4EBD1CFEC9BF849B1C6A720" Guid="A853460F-7084-4EE1-A686-08D09E96AA63">
+                    <File Id="fil0F68D2A662FFF5D73042E7E138B2C96E" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\fr.pak" />
+                </Component>
+                <Component Id="cmp9A6D91745EA3CA78B704C93A44EE8A24" Guid="467B8489-8C26-47AB-87EA-AC70D43BB085">
+                    <File Id="fil1603F737FE6234988211C98292A36310" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\gu.pak" />
+                </Component>
+                <Component Id="cmpC2FF4524B4F889D3755BC3F346DB7532" Guid="216610A9-7CDA-49DA-82CC-38ECDC9942C7">
+                    <File Id="filAFB1BCB7D9F666A79C9F6AA66CA26577" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\he.pak" />
+                </Component>
+                <Component Id="cmpFF3E713765831F7A625146E5C4EE7756" Guid="F5797A98-BE77-42BA-878B-6970D59B90B6">
+                    <File Id="fil1CEBAA06D9054315BB0B74B5A7C7D4D7" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\hi.pak" />
+                </Component>
+                <Component Id="cmpDFEF0DFBF83DFE56CD5D00BA3EE284CD" Guid="78D74F64-7B2E-4C5B-912A-243884DAB7C3">
+                    <File Id="fil61BA9CE3CA2E4C57385BCB02CBD36F82" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\hr.pak" />
+                </Component>
+                <Component Id="cmp77ED9943111D332E717A324E9A7D1462" Guid="2FEA6387-09ED-4A59-8C23-40506C2B8621">
+                    <File Id="filBFC165D8C2C0BABCF5261449D5EFD9C4" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\hu.pak" />
+                </Component>
+                <Component Id="cmp340CDE652C8B117D1F3F85871FB93A71" Guid="7ADD3D51-8F7E-4E51-AA32-4C8C9947AEEA">
+                    <File Id="fil9FCFA54385F7BD97A8ED0B0539A626F5" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\id.pak" />
+                </Component>
+                <Component Id="cmpA2971C1BB31E466991E9490C7EFAD08C" Guid="130CDD94-EC08-437D-A3EE-EB58B580A98F">
+                    <File Id="filC8A0B0B234CC53BB8E4D03223CB92178" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\it.pak" />
+                </Component>
+                <Component Id="cmp06E040C37C640B62E1B2BA1DC4A20E74" Guid="F82BEA07-D50D-461D-BEDD-AAD5654CBF1C">
+                    <File Id="fil457929410F20FE3733516DC0F3730BB2" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\ja.pak" />
+                </Component>
+                <Component Id="cmpCAFC3CDB194A6BD5F0DE487648130395" Guid="F5E393EC-E368-4E6E-BE50-33184FB569D2">
+                    <File Id="filEC6063FD58B7A6B19E0B0C8C43E82648" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\kn.pak" />
+                </Component>
+                <Component Id="cmp29CF0F8D0DD57C192CFCC830705D1DDA" Guid="8FC6CB3B-9323-4CC1-8950-9C6A70F9706E">
+                    <File Id="filE0F3F7AA26A8474ECE3D1D2FB9ECFC3C" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\ko.pak" />
+                </Component>
+                <Component Id="cmp29621CC9AE64EE7F2D72B7310AAAE6B7" Guid="E1682F38-1E25-4912-88E7-944A589EB2B0">
+                    <File Id="fil88D23D63FA0DBA2E6AE967CA4DFE7D99" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\lt.pak" />
+                </Component>
+                <Component Id="cmp72689D0F152F42DE48C8A9FA8AFB4B6B" Guid="4DF6DDB9-B187-417B-9492-D9C74A475EB0">
+                    <File Id="filF16988A7957BA6FFDA549A549BA9D944" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\lv.pak" />
+                </Component>
+                <Component Id="cmp62E5A05A6984AADB535698872B4FABAB" Guid="F8A7FE47-F8BB-4643-868C-E0FA311B2938">
+                    <File Id="fil597D5C068BDA609C2C5DB74E8C3079FD" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\ml.pak" />
+                </Component>
+                <Component Id="cmpFAC95D800D87D9850FCD3B00AABB8810" Guid="D7AA3DEB-E350-45C5-A6AE-4A02598B3567">
+                    <File Id="fil44CC1B72B84AD8C068AC467CD88FDE71" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\mr.pak" />
+                </Component>
+                <Component Id="cmpBA35E583A6E70F01D86FE8BF18F33581" Guid="4F1AE27B-931E-455B-81C9-7BE31ECCE4B8">
+                    <File Id="fil9EFD7D687D5F8A23EC1A974124F859EF" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\ms.pak" />
+                </Component>
+                <Component Id="cmpFABCBE881F3D1973115D5D273F226778" Guid="6AB5C0E0-511F-4158-8965-AF46524A1792">
+                    <File Id="fil8561DF1B6AE95663880CD9C0EB93E21C" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\nb.pak" />
+                </Component>
+                <Component Id="cmp270084105CD1BB1A39A5198747219228" Guid="8679C93A-9B6B-49DA-982D-BE7A3C727607">
+                    <File Id="filC2FA3B3EFB4D101E560DEE61F820EF1D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\nl.pak" />
+                </Component>
+                <Component Id="cmp495000D3B43E522C22562A49F9729994" Guid="07FA8FA6-8517-481A-9FBE-B6A9A15BAB7A">
+                    <File Id="filF0D001095036F853B42E25AD92697755" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\pl.pak" />
+                </Component>
+                <Component Id="cmp8EB981D7CEF1B7856C7792AE7FE5267C" Guid="281B63CF-0E26-49FB-A971-8F322F1FC812">
+                    <File Id="fil939A51F79679DCFA4F3A02F06CC915B2" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\pt-BR.pak" />
+                </Component>
+                <Component Id="cmp25A9665CC7FB5058BAAFDDF4513180C5" Guid="B373C9DC-C23E-4FE1-8351-E30811E1883C">
+                    <File Id="filA24AE6E2487855D8D680C146E3BF01E1" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\pt-PT.pak" />
+                </Component>
+                <Component Id="cmp60CABDD4B099BA3663A1760964EA6948" Guid="9F038630-A982-48DD-B58F-E2640A9F2045">
+                    <File Id="fil466B2680E03F601B30B21020D984EC30" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\ro.pak" />
+                </Component>
+                <Component Id="cmp670B9CE70C9F6D8252BEBDB2B2C9FEE5" Guid="71E2A27D-672B-4019-8CAB-9C838C7EE2AB">
+                    <File Id="fil94357857575709A3C52559D2DC01F786" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\ru.pak" />
+                </Component>
+                <Component Id="cmp1FC7028DA642188F5F52E75864D2B04B" Guid="E6F9D3D8-C5C2-4131-879E-BB244A74114B">
+                    <File Id="fil88B9934941FFEB0D4F5864E9BEA7901E" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\sk.pak" />
+                </Component>
+                <Component Id="cmp41FFA89D1A8972541C5C058083E06D57" Guid="AB90E0D9-EC84-4E2B-8AF9-32DB7E804CD6">
+                    <File Id="filFEC04C482CDFA2300BEA4699E184D9B7" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\sl.pak" />
+                </Component>
+                <Component Id="cmpCF48B1D4FEB9F0E8995B47066D381BF0" Guid="134232FA-D53E-450D-882D-01B4EBC77191">
+                    <File Id="fil21F8E3199BCD3DD6B1194F6DDC55A16B" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\sr.pak" />
+                </Component>
+                <Component Id="cmpD047BAEF2BD0D96CB6CDBF5045E339D8" Guid="0ACCB387-C926-4E26-A300-2348B0ADA329">
+                    <File Id="fil3E1F45BB928DB3D8EEE7C5BCF311BFC7" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\sv.pak" />
+                </Component>
+                <Component Id="cmpE9607A9AF365010A0F229B2816EEF6A5" Guid="852B2FCB-3B25-417F-B16F-1B14092D7C55">
+                    <File Id="filD8F4D6B112B770FC9CEA7B94E37573B7" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\sw.pak" />
+                </Component>
+                <Component Id="cmpA36E8F20455325C47C8E5C1488C9D4F5" Guid="5AFAF27D-90FC-4AB4-8CB2-B7DE2C6B941F">
+                    <File Id="fil94B8DD49F1E47784B20BCDC1A3A87DED" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\ta.pak" />
+                </Component>
+                <Component Id="cmpEC7739B32F92AA82886DFD25D2798580" Guid="E2A7032F-E574-4DC9-BD87-FEAA606071B7">
+                    <File Id="fil22F0C25A58E9D29DCC19F9CBD3CB4B37" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\te.pak" />
+                </Component>
+                <Component Id="cmp3B7740B523E3C15AA134C0FEE0DA01E6" Guid="05BAD4B4-E2B6-46FA-B97D-CC87464C64C2">
+                    <File Id="fil01FE65FA127A082B6587B0DD4034C7D2" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\th.pak" />
+                </Component>
+                <Component Id="cmpFFC3C12C370CEF5CBDC5F5DD49FDC4A2" Guid="05C8F93C-4490-4F33-9B9A-10348E27285A">
+                    <File Id="fil10709857EFC915620690F9B5EAADABB7" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\tr.pak" />
+                </Component>
+                <Component Id="cmp1E5C3FE4762504E822DEC4FCBCAAFB9B" Guid="2847495C-8132-4835-B6AE-0776C8B300AC">
+                    <File Id="filBFB8F27F439F4FFB11886D13A8DE116B" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\uk.pak" />
+                </Component>
+                <Component Id="cmpFEC6AEB485B631E1CB87842374C2B4E3" Guid="0D271844-2C3A-4D7F-8E9E-B86E531A6B27">
+                    <File Id="fil7678A92FC3197C522CE775B0E941C9C5" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\vi.pak" />
+                </Component>
+                <Component Id="cmp8937CD85D5A80300EB46AA934E5FBC18" Guid="C80926E3-23B8-44A8-A6F4-2DD3D6728F51">
+                    <File Id="fil9550FDAAE2637F3D497B7D462C1E6660" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\zh-CN.pak" />
+                </Component>
+                <Component Id="cmp26452B763005B4732D8A89EBF304D6AA" Guid="E9CF989C-6E19-4F4E-BA40-7F76C98F1D35">
+                    <File Id="fil5EE6EC9474B64A64255C24E49CD3CFD0" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\locales\zh-TW.pak" />
+                </Component>
+            </Directory>
+            <Directory Id="dirCD4D3292B4EFD084D06AD463BEA1ECB9" Name="NBARDatabase">
+                <Component Id="cmp0010D9A76482099351422B06648D766D" Guid="5D2246BD-E44D-4E15-AB17-F34EC885FA94">
+                    <File Id="fil05BF80EC750E148F707CE7E39129089C" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\NBARDatabase\nbar11.xml" />
+                </Component>
+            </Directory>
+            <Directory Id="dir7460B5F7946E9C40E9611C6AE29090FA" Name="nl">
+                <Component Id="cmp5A1B514BB0A43EEE40888E42BF8E0DDC" Guid="E1E88E06-5091-4F80-ACD3-08C27E1C22D2">
+                    <File Id="fil860B801D3DA24CB52F1B37EDA4410B24" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\nl\Telerik.Windows.Controls.resources.dll" />
+                </Component>
+            </Directory>
+            <Directory Id="dirA43D9BF55E6375A261066CE5487B2FD5" Name="pt-BR">
+                <Component Id="cmp8834AFD4E01DA47B9D36FD549C9FE8D2" Guid="38AB3E1F-1F25-4FAE-AE9A-914123D9BD81">
+                    <File Id="fil2B3B837B6EA07CC08BE50877F138F4E0" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\pt-BR\Xceed.Wpf.AvalonDock.resources.dll" />
+                </Component>
+            </Directory>
+            <Directory Id="dirA398CA5F6E2ECA086A9EE81FDECA779D" Name="ro">
+                <Component Id="cmp4A60123A3F97AC97A9096719E0C145C7" Guid="41484EE1-990E-4B9C-8174-F15FE63508F2">
+                    <File Id="fil4F8A1A0495BCBC89B906E44E0483CA45" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\ro\Xceed.Wpf.AvalonDock.resources.dll" />
+                </Component>
+            </Directory>
+            <Directory Id="dir113445E6F89EECCCAD68A52BB70F8EF9" Name="ru">
+                <Component Id="cmp5D75226B1A023EA29576961CEE3FD6F2" Guid="96C0D80E-5D9A-428E-98FA-BD42CAD3D729">
+                    <File Id="fil6147055D9B69A157248AB980E5BD4CCC" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\ru\Xceed.Wpf.AvalonDock.resources.dll" />
+                </Component>
+            </Directory>
+            <Directory Id="dir670BC64B1A68B3D76FDBF6C96CF14579" Name="ru-ru">
+                <Component Id="cmp7AFCC76CE0FFCB81ACB31CC3D7F7338B" Guid="6C056D6C-C1A5-46AB-898A-7C9FE541BA3F">
+                    <File Id="fil949C29745F1F5132A7F8C057B549A90E" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\ru-ru\JavaScriptEngineSwitcher.Core.resources.dll" />
+                </Component>
+            </Directory>
+            <Directory Id="dir393ACDA493F1D5A5BCDC153222447582" Name="Services">
+                <Component Id="cmp2F735C081960147240C79E8D31B25DAA" Guid="6F16263C-9B3D-4FD5-97B4-3BB17FFDDFF2">
+                    <File Id="fil2EC84E210FB4E7F9E37172ED5FD60545" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\Services\netfox2nemea.ppk" />
+                </Component>
+            </Directory>
+            <Directory Id="dir257071EB858A0518AB183904E7171E1B" Name="sv">
+                <Component Id="cmpFC8011DFDA67F2E55F07D968880A2D68" Guid="7F05CF55-3104-4830-BB2D-F5FC0C79A90F">
+                    <File Id="filB75A2D294B510CF4A242467511EADF60" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\sv\Xceed.Wpf.AvalonDock.resources.dll" />
+                </Component>
+            </Directory>
+            <Directory Id="dirC93633E5AB3236C129430DB8F56AB7E6" Name="TestingData">
+                <Component Id="cmp12995D2113B148B26B29DF5B0E3E419F" Guid="D6B30751-332E-4A40-A3B5-2A9B35B9FEC0">
+                    <File Id="fil1AE68AF9E11D4C06D77414AEAF6C53BF" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\TestingData\sip_fraud.pcap" />
+                </Component>
+            </Directory>
+            <Directory Id="dir8A13E78E7B436DCFEA9FD5AAE02D2A2C" Name="tools">
+                <Directory Id="dirCF931850C684F34205FDE62EE42C4D4B" Name="RTPDecoders">
+                    <Component Id="cmp8E8778520EB3B920FD735EF9D8EE7F71" Guid="1A6901C7-A7B7-440F-AED4-C02C563C38A8">
+                        <File Id="fil7ADFEB3E5E0D708A7F89420DF23D3602" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\tools\RTPDecoders\G722_decode.exe" />
+                    </Component>
+                    <Component Id="cmp370807BE6F31892170DE6BB9D360D6B4" Guid="8E8EB500-00EA-477B-9B16-7F6B08D318DA">
+                        <File Id="filDAC83715AEADF7FD20AD1B578B256E75" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\tools\RTPDecoders\G723.1_decode.exe" />
+                    </Component>
+                    <Component Id="cmpE7C8BC80BBF22E98369BD1BE862572FE" Guid="E71D2F98-E799-4574-8BBD-C4E30EABF9A2">
+                        <File Id="fil0AB411FF3991BC4E707BC46427FEC2EB" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\tools\RTPDecoders\G728_decode.exe" />
+                    </Component>
+                    <Component Id="cmpD2A1E2AE41826E5970FBB8CB5863BA0F" Guid="B2EE1AEA-451C-4325-BA1C-38E2B4560341">
+                        <File Id="fil48836B63A2EC0AE9F4222AA330B7B1E0" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\tools\RTPDecoders\G729A_decode.exe" />
+                    </Component>
+                    <Component Id="cmp6A452781167C426BD0853880F7440595" Guid="3C7FC8B4-939F-45A6-9CBC-55BF7DA60646">
+                        <File Id="filBD679D793688A1DF67D62A786B49C220" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\tools\RTPDecoders\G729_decode.exe" />
+                    </Component>
+                </Directory>
+                <Directory Id="dir18553F780E4E081316B8174FAE4AA951" Name="SoX.14.3.2">
+                    <Component Id="cmp93F86C06ED8E2B6C1F376991E53B8F6B" Guid="7793D075-E9C2-44EA-97AB-E09A19E244B9">
+                        <File Id="fil9CC5D9F83FF87E2168B1F631DDD5997D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\tools\SoX.14.3.2\batch-example.bat" />
+                    </Component>
+                    <Component Id="cmp4ADD0F3E07C384A83B260285EE5143D8" Guid="B7375A64-B8D3-4836-8D6F-2394E0ED3F94">
+                        <File Id="filE3AA5229E0DD5C08CC22574FB2FAD894" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\tools\SoX.14.3.2\ChangeLog.txt" />
+                    </Component>
+                    <Component Id="cmp11A3D18BBA9686E0C9241AA65D256FE2" Guid="F8F5C0A7-9F76-45CB-B2B2-1CD94F8273E7">
+                        <File Id="fil6F27C1903240002B6F69C45CB9FFCC82" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\tools\SoX.14.3.2\libgomp-1.dll" />
+                    </Component>
+                    <Component Id="cmpDA963BCD853FEC7E2E4CD95D0B23257D" Guid="B7254F73-AF73-49DC-9003-9EEEFE4FC5D0">
+                        <File Id="fil30D5EDFF17F7B1A98499DA78A9E1AEEC" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\tools\SoX.14.3.2\LICENSE.GPL.txt" />
+                    </Component>
+                    <Component Id="cmp516A4DB0350247DA0BC232A8D2530712" Guid="FA0A5000-9898-4A72-B73E-9B2A01044AC2">
+                        <File Id="fil106860D97DC57C0261BE3240BDC276AA" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\tools\SoX.14.3.2\pthreadgc2.dll" />
+                    </Component>
+                    <Component Id="cmp699C884C2D03C8D497509E84C8CF8275" Guid="06D1B0B7-C4A6-4722-B92C-368EAA44CE1D">
+                        <File Id="fil5812ACFC7A680F9D46377340E9FA944F" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\tools\SoX.14.3.2\README.txt" />
+                    </Component>
+                    <Component Id="cmp768D319A226F49B074A45087936FDF26" Guid="2D530054-F7BB-497F-BDA6-065389BB2B50">
+                        <File Id="fil646745F5B3001675A9525EA36D7118D1" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\tools\SoX.14.3.2\README.win32.txt" />
+                    </Component>
+                    <Component Id="cmp699E7084502D09511A3B88AD8488D04C" Guid="D61551ED-AB38-4737-B8D6-2A46A70EBF56">
+                        <File Id="fil6E336B78A6E8D2D7D229BEFABC4A66C0" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\tools\SoX.14.3.2\sox.exe" />
+                    </Component>
+                    <Component Id="cmp985D6316036C1F2B975E50CD15E043AD" Guid="AA5E5C27-B1BE-406F-8669-FEB3606AF075">
+                        <File Id="fil8309599ABED9ACCBD81483E15205753D" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\tools\SoX.14.3.2\sox.pdf" />
+                    </Component>
+                    <Component Id="cmp636CBDBFF066066C1B8194AC7A3BA697" Guid="D0ACD2A0-3481-4DD3-A415-C1597DE0D4FD">
+                        <File Id="filB0C725E9086BE2E5B99FF3F1C6F175E0" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\tools\SoX.14.3.2\soxformat.pdf" />
+                    </Component>
+                    <Component Id="cmp2804A93B87691C124E25A472EDF7DCFE" Guid="0C45FFF4-5662-4C63-89DA-1F8CCBDEF5C5">
+                        <File Id="fil19E415CAFA5D87E5BE4E296B76B25858" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\tools\SoX.14.3.2\soxi.pdf" />
+                    </Component>
+                    <Component Id="cmp74B19532C9A3F205FF196128A9E59FE8" Guid="7D20C39F-5F8F-4CBF-B4CE-F0BAF9F7A487">
+                        <File Id="fil3DE42B84796CDB5ABAB6E5A2787B5E8C" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\tools\SoX.14.3.2\wget.exe" />
+                    </Component>
+                    <Component Id="cmpB10643D6251D3E7BECA4892A6D49BF3A" Guid="4C02F557-FE67-4D47-A652-783F69662D01">
+                        <File Id="fil4ED3BF08808BE63158CB37CC0CB46C3B" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\tools\SoX.14.3.2\wget.ini" />
+                    </Component>
+                    <Component Id="cmpF28AE040B0C5F113CA4C01D7A83937FD" Guid="F2933626-DFFA-4251-9E16-7FFD29E7E422">
+                        <File Id="filA07FBD0808172EBA770D18A83E4EBF47" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\tools\SoX.14.3.2\zlib1.dll" />
+                    </Component>
+                </Directory>
+            </Directory>
+            <Directory Id="dir3967E0CDC830ED12EE5AEDEF49E48286" Name="tr">
+                <Component Id="cmp6981EF07B4B4B4091D3A5AED742DEB4E" Guid="6A5D4CBC-084E-4FFA-A0DF-7D6D16A66E74">
+                    <File Id="fil01148951668DA9BBB36FC8315BBA8715" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\tr\Telerik.Windows.Controls.resources.dll" />
+                </Component>
+            </Directory>
+            <Directory Id="dirD8D18BE0CBE3A171A18753A5B5985BB4" Name="zh-Hans">
+                <Component Id="cmp7C70888AC97A30C06C19D0E311418007" Guid="7277A1CC-92C3-400E-BCF3-9AF8894B072F">
+                    <File Id="filA9D7B58C76FFEFD94519CA086A6324F6" KeyPath="yes" Source="$(var.Netfox.Detective.TargetDir)\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll" />
+                </Component>
+            </Directory>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="InstallFiles">
+            <ComponentRef Id="cmp0E02248DC535A57FC06CB20797BD7745" />
+            <ComponentRef Id="cmp3087D3C1EE1162ADBDFD4892803BE683" />
+            <ComponentRef Id="cmp645F0E317088DB8236E675199369CDD3" />
+            <ComponentRef Id="cmp501B9556AC0E8F21525551A53B5315E1" />
+            <ComponentRef Id="cmpE15A53DB24456DF7477A82D9AFD8080A" />
+            <ComponentRef Id="cmpDDF544ECC378F22FDF85A0BADE79E8F1" />
+            <ComponentRef Id="cmp7A6191EB59C39E5713C3E25CE9534631" />
+            <ComponentRef Id="cmp9E56D6FA6667FAFDCEF5BCFD108F5105" />
+            <ComponentRef Id="cmp6F5C2D7DB2C460B33007CC7239A6D938" />
+            <ComponentRef Id="cmp714A40D4A04C907479DB511B83134FC2" />
+            <ComponentRef Id="cmp07993CFD830FDC555E4F11636389AB8A" />
+            <ComponentRef Id="cmpA4DFAC1E192213BC71AF74E4FB5D9BC7" />
+            <ComponentRef Id="cmpA6410FA276AD3F226134ED589610275B" />
+            <ComponentRef Id="cmpFFF96509D2DD3B8746161258380410DF" />
+            <ComponentRef Id="cmp3F91BDF2BCD10717446290EDC5F0B5FF" />
+            <ComponentRef Id="cmp6942B79BE7BC2CEF46D6217D36B57089" />
+            <ComponentRef Id="cmpB305C738FB75730AEAB0DC24A6D9809E" />
+            <ComponentRef Id="cmp724DCC6A695BE7D1837586C829014464" />
+            <ComponentRef Id="cmpEF733909754CF56B8027A2138B507A0F" />
+            <ComponentRef Id="cmp463C4316D2DFF1837F38707979359E30" />
+            <ComponentRef Id="cmp7AEE3CCF09BDD71BB63E1FC49218B64C" />
+            <ComponentRef Id="cmp1FFF2A012CCBEC4A8FE510A75356F063" />
+            <ComponentRef Id="cmp3D5CFE11A573CDA80485B9389A208AFE" />
+            <ComponentRef Id="cmp87318B065461199DBA43CF9C37DA6900" />
+            <ComponentRef Id="cmpE1B67FC37B6616A5255EAB43FD70C1AF" />
+            <ComponentRef Id="cmp045DB3FD9977289A0F900403DF949E02" />
+            <ComponentRef Id="cmpE6F92F815C42BF37FE1C60F643EA4B75" />
+            <ComponentRef Id="cmpD3AE1C4EEB9E28ADC69542CE16344108" />
+            <ComponentRef Id="cmp49C0E67132251F0CB60759A58252330D" />
+            <ComponentRef Id="cmpD4BF5FCBC274F08539825045F0B15481" />
+            <ComponentRef Id="cmp0CF114D290D24777FAF04E2F7465093F" />
+            <ComponentRef Id="cmpC5D0365124B4BF76FB9AC95B1F0C6F4D" />
+            <ComponentRef Id="cmpC9A4B8B0D47C981686C6075A069B4F61" />
+            <ComponentRef Id="cmpED6B27D86A92A08733E8C4297023E89E" />
+            <ComponentRef Id="cmpAD0F00D51339710F5A682E36A1EFDD1F" />
+            <ComponentRef Id="cmpECE0EE3C3A327BB8CF89714B59CAAED1" />
+            <ComponentRef Id="cmpB0682DDCF19646AE9F3BD0619C663836" />
+            <ComponentRef Id="cmp6D7FAF06BD62B5E7241008F7578C1335" />
+            <ComponentRef Id="cmp4D5AB147051970BD9987BC33CD965195" />
+            <ComponentRef Id="cmp4CA065DEF8A71EAED7CC72C98CBBE255" />
+            <ComponentRef Id="cmp6E1494326FA64EDB36C1EF5041FF3E72" />
+            <ComponentRef Id="cmpE3D49D277F2F82B9DCDB1C8BE53706BF" />
+            <ComponentRef Id="cmp07CB5B3BD4E69DBAF2C89DA0A5950F59" />
+            <ComponentRef Id="cmp01276A51485337C9C409680933495D65" />
+            <ComponentRef Id="cmpEBB74119240C98BBD692EC86A817C0BC" />
+            <ComponentRef Id="cmp28D78D3D3EDE8BBE8C77853A690F1257" />
+            <ComponentRef Id="cmp9943C3475CA14CF63C757CA8CF4CB213" />
+            <ComponentRef Id="cmp577A70232DE34A7B9C1085318014C1BB" />
+            <ComponentRef Id="cmp57BF17E8165361F1E87A455E780C7DDB" />
+            <ComponentRef Id="cmp3C479B929EABAF85B18A005E389F04DC" />
+            <ComponentRef Id="cmpDB033F1151F602971C7F834C3941381B" />
+            <ComponentRef Id="cmp1103AA312B68FAC6F34A8BB8288C2C04" />
+            <ComponentRef Id="cmp90284086D18376777381C1C6E9F806F6" />
+            <ComponentRef Id="cmp87E02E80F4F4D5F3DE711D9153F3381F" />
+            <ComponentRef Id="cmp55740869256386681E47E334447E2723" />
+            <ComponentRef Id="cmp8D627207B5F5581A9329705509A3B656" />
+            <ComponentRef Id="cmpE473BAE2D4E1BDABD0D036A0E9CB23AE" />
+            <ComponentRef Id="cmp1C502A84AFE53EA98039046832390B10" />
+            <ComponentRef Id="cmp481027CA382B920C3620021A4F935FB6" />
+            <ComponentRef Id="cmp3B91628CC6F33482DAB8C1AD90DDD47B" />
+            <ComponentRef Id="cmpDF2B32A3FAF70E98249D13A15F196A5D" />
+            <ComponentRef Id="cmpA9F474D756C1ED0CF3F9A38C1C80F52B" />
+            <ComponentRef Id="cmpAE8CFC24DD13C513AB2F8E23597F79F3" />
+            <ComponentRef Id="cmp16C31B4EA6A9155EC7C2C56D98D4E35A" />
+            <ComponentRef Id="cmpC6849751DAFB98CFC7706D7FFC070DF8" />
+            <ComponentRef Id="cmp399ED9264B10FDAAF97C6F536348AD50" />
+            <ComponentRef Id="cmpAE791216F77EC2FA091A40EEA559FA1A" />
+            <ComponentRef Id="cmp7D831B28A4DC403CDB1E6D8CF11100E0" />
+            <ComponentRef Id="cmp2070C8742B52CED8C1E2B0A5FA35376C" />
+            <ComponentRef Id="cmp4756E500133797772036440A6E476A11" />
+            <ComponentRef Id="cmp44F585661A68126B990885EE713F0D83" />
+            <ComponentRef Id="cmpA6DED19743CDE9D86EDB78DFE805A801" />
+            <ComponentRef Id="cmp2BB4AAC6A11447C4F9FB4A1A07D2F520" />
+            <ComponentRef Id="cmp63616E6A6F0AF07B736176AF355F9934" />
+            <ComponentRef Id="cmpE3D7FC42508218E5AEB5F882882F233E" />
+            <ComponentRef Id="cmp057A03F98B7BC67982D5D7BA78A4910B" />
+            <ComponentRef Id="cmp405ACA7CC2A913E9A1AB4489A916FDF3" />
+            <ComponentRef Id="cmp7D02AC8224E3B4E716B834B061245B47" />
+            <ComponentRef Id="cmp76B21E7CA5F391B02CE82B9D2F1A8743" />
+            <ComponentRef Id="cmpED1C29F8914A4A53211F619E1872ECC1" />
+            <ComponentRef Id="cmp8173820A225E77A4F1F9A1A20860A672" />
+            <ComponentRef Id="cmp693A03D36C02FED2D2F3B9EC33D980B4" />
+            <ComponentRef Id="cmp8296B867300EB002EFFAADAF1CAB0EC1" />
+            <ComponentRef Id="cmp3625E84F55B0B46B68CCE46BB4083906" />
+            <ComponentRef Id="cmpA71DACE5622286E04883CE213F37B14A" />
+            <ComponentRef Id="cmpD19FE8BB1B90E58F1B6F08FD8B8C73F7" />
+            <ComponentRef Id="cmpBAADB11A1B94D8777D5170009D241B6C" />
+            <ComponentRef Id="cmpB7A70DD9BDC08AE07ECF984AB60E292D" />
+            <ComponentRef Id="cmp4EDF818DF2DE24CB98819162CFA8EEE2" />
+            <ComponentRef Id="cmpFE6AD0521A9CDE17F88D30349E7AA2DF" />
+            <ComponentRef Id="cmp5E84294361CCADAC0B8AA2F3E38FAE84" />
+            <ComponentRef Id="cmp40341A7CE8FF4C9537B38B3CFFA35A5A" />
+            <ComponentRef Id="cmpBE9DF01A66595E282E73857268A99F34" />
+            <ComponentRef Id="cmpF8161E0352F86042AC2C87BFB76B5F43" />
+            <ComponentRef Id="cmpC178CE1ECB3E0EBAFF1836922F453376" />
+            <ComponentRef Id="cmp1592CE306F92B0F050E181D2E1D269C1" />
+            <ComponentRef Id="cmpE16592C264EC3C89CF5E00C6FC06EBAC" />
+            <ComponentRef Id="cmp3DD29F1D9DB259239D38BB6EEDD8FEB1" />
+            <ComponentRef Id="cmpEA867E4F4357065593E02B1F8473D1F2" />
+            <ComponentRef Id="cmp36B465BF66F75A9589FD1625F88BCE9E" />
+            <ComponentRef Id="cmpE574989DD59E389E13C6388835C31D37" />
+            <ComponentRef Id="cmpA7ACA146CD02AC5D030AF2500EE7A19C" />
+            <ComponentRef Id="cmpDA302C358A59FDA49ADF32EF1270BDD5" />
+            <ComponentRef Id="cmp97FDA078BF3869777ECC147BF581A00B" />
+            <ComponentRef Id="cmpB9A51F2031F49853661E48AA7531E652" />
+            <ComponentRef Id="cmp168A3C5B3BFAC530663A65C8FA9D1CD5" />
+            <ComponentRef Id="cmpA59144D25A469081C6F2614E11818CB7" />
+            <ComponentRef Id="cmp42F6C19668AA6CCC7F994A863141AB37" />
+            <ComponentRef Id="cmpAF504B7221995538E213B01F22C204FC" />
+            <ComponentRef Id="cmp1F56419E3F438BD9D29FB697E2099DFC" />
+            <ComponentRef Id="cmpFF84D2EC24CA90C7D53176F4454E9230" />
+            <ComponentRef Id="cmpD003E9DEC3BEA1B0E6075DDDE545E472" />
+            <ComponentRef Id="cmpD2F1185819A1789A5BD286099F810926" />
+            <ComponentRef Id="cmp4E09CDC4F6745D63C0FDFDDC3230C77B" />
+            <ComponentRef Id="cmp13D610F16F53844288D1D47D49DFA1D3" />
+            <ComponentRef Id="cmp1E95E6826F015CE03C85BE8EEDCE79C8" />
+            <ComponentRef Id="cmpF066B0F42BB4F4B0E63604BADA64AD59" />
+            <ComponentRef Id="cmp814BDE35B90453DCBFC6166DFE150C6E" />
+            <ComponentRef Id="cmp4CF22544E670EA195E3B2503E2FA1D0D" />
+            <ComponentRef Id="cmp8A5E7FEE96F4CAF8D5374D4BAEE00179" />
+            <ComponentRef Id="cmpD3CADD5FA56206180C92AD6F9C48BF34" />
+            <ComponentRef Id="cmpA271479A68264D5D39CC3630524381DA" />
+            <ComponentRef Id="cmpEECD3D8A162344639220871940C8ACC2" />
+            <ComponentRef Id="cmp91E82EAB366E2CDDC133A0AFABAFE381" />
+            <ComponentRef Id="cmp16AB03A7F1C7C45F882C539F57A4B75D" />
+            <ComponentRef Id="cmp802E43AEF89EF154A5F9DFE2D3167B93" />
+            <ComponentRef Id="cmp890A86F03AF00CC73083DEE38B046045" />
+            <ComponentRef Id="cmp43707DD521487F0D9296CF0C3AE23E3E" />
+            <ComponentRef Id="cmpF6D99D6E1EBB4061816E90E87957CC15" />
+            <ComponentRef Id="cmp33F49BB3D8E816E8B9FF0A1EEB243EDE" />
+            <ComponentRef Id="cmp31ABC0D8DD85873B663D29780531F3F8" />
+            <ComponentRef Id="cmpD47C69D8F0D613AA90BCD78EC46D0CF1" />
+            <ComponentRef Id="cmp89A7B4413F1AA959F6FB5BC5891B7C4F" />
+            <ComponentRef Id="cmp47B50422291A5F5A525BBDB50CA955A0" />
+            <ComponentRef Id="cmp0389A5299FC4AEB72FCEFE31A4704496" />
+            <ComponentRef Id="cmpC92C4AFDCB36AA73A25C2E81C9FDA5E2" />
+            <ComponentRef Id="cmpCEDE0A814E959009644479B0671BCD1E" />
+            <ComponentRef Id="cmp9386B7B6280676636563F0B916B71CF5" />
+            <ComponentRef Id="cmp173840E9B330DF58D3354CB72281599D" />
+            <ComponentRef Id="cmp28DD9D7EAA01D5061A0CAE7C7A77DB55" />
+            <ComponentRef Id="cmp03532B5DF6F8536D70AEC56D426A2207" />
+            <ComponentRef Id="cmp3E08DB4692CF61B1C003B25A93CA09AD" />
+            <ComponentRef Id="cmp26BCA403C3AE478DF72DDDB26BDC2470" />
+            <ComponentRef Id="cmp2D30F19D879AB5791710291E6FAB15A6" />
+            <ComponentRef Id="cmp7E6E8490701580C1FE29591DD3831278" />
+            <ComponentRef Id="cmp397EB7B52DAAA6413E19D6530E9B2C85" />
+            <ComponentRef Id="cmpE2058DAA8FD11358DF321E6E4A3F54E4" />
+            <ComponentRef Id="cmp014B498C94AE744905BD937C332B6847" />
+            <ComponentRef Id="cmp2827FF06297D5A96B8505E991A2B93AA" />
+            <ComponentRef Id="cmp7B457BE3B565A115B723F43AB8E8834B" />
+            <ComponentRef Id="cmp3F08A58045ECE3881D0F3FB387A3BD72" />
+            <ComponentRef Id="cmpE9F0A74CF3BF45E8EA82F896DB732D7E" />
+            <ComponentRef Id="cmp92E4F6B09D52A9D9C8D9C9064DBF46EE" />
+            <ComponentRef Id="cmp5D85C38C9765484CD004980CBA5F292E" />
+            <ComponentRef Id="cmpE47E5D0808DA74DAD11F4F5A37ED86FB" />
+            <ComponentRef Id="cmp91D159ECEDC2CA6EE8532BB456EED818" />
+            <ComponentRef Id="cmp9ABAC6188871B2857CAD08221C581241" />
+            <ComponentRef Id="cmpC1EF8DB4714EA78B8A5DF1A76932C876" />
+            <ComponentRef Id="cmp7252E54299867CA8F2E5CC6C9E37687A" />
+            <ComponentRef Id="cmp7F6D756FA96B6EBEA5926E71D9F46B91" />
+            <ComponentRef Id="cmp6E77BA0B84A4AB68F3070D6F157D1CEF" />
+            <ComponentRef Id="cmp40EAF95D8F715FCD7494613C97BFE9FD" />
+            <ComponentRef Id="cmp6029D288B0792DD0B2D11628CFB8B3B1" />
+            <ComponentRef Id="cmpB211D0CC98E86A70CF572787C6E0B0B1" />
+            <ComponentRef Id="cmp4D28C80CBE0814B97C2731CE5409208D" />
+            <ComponentRef Id="cmp70A8D02878718E3D41919D87F4D7A33F" />
+            <ComponentRef Id="cmpFAD6A6AD573F79DB9DE4FB5B2D0A10BE" />
+            <ComponentRef Id="cmp4A1AB1748F67DFB02CB8C1C4354A4E87" />
+            <ComponentRef Id="cmp89B336B7EE79F74C0A8371D2940FAB58" />
+            <ComponentRef Id="cmp0F81DE8A9C221E5FCF6D2AE5041FF871" />
+            <ComponentRef Id="cmpAD01AA4260E06171A1D3722C2E80AB13" />
+            <ComponentRef Id="cmp64A95AF57A4F9A3D45AC52D2F88424C0" />
+            <ComponentRef Id="cmp3ED7118238CD434B7CA2AE9A51E52288" />
+            <ComponentRef Id="cmpB80030B6ABB082618880E38A296EC5D2" />
+            <ComponentRef Id="cmp801B0C4AF695785D81F62336020C45BA" />
+            <ComponentRef Id="cmp312168AB4C092B07DC189E2C83B40934" />
+            <ComponentRef Id="cmp9053485AECB16DF0BA4D8973E2379D27" />
+            <ComponentRef Id="cmp1DAC8A29D4FB1F0D7C1C7D57AC0A8B1F" />
+            <ComponentRef Id="cmpBFA493D68CD92223B69FE9137235BBB0" />
+            <ComponentRef Id="cmpFB7152C0577F8490223FF5717A411202" />
+            <ComponentRef Id="cmpD1FEF8E25E7A811BD877DA6623EECEC3" />
+            <ComponentRef Id="cmpB4E772005B44E4D315AD2F638F69B6EB" />
+            <ComponentRef Id="cmp71DFAC9282A9C6CC08B1FBAE4DCDFC44" />
+            <ComponentRef Id="cmp92FA2CA19703BB2ED8FBEBF8EC5C6446" />
+            <ComponentRef Id="cmpA0A48F9D512213ECB29E9F591FE6185E" />
+            <ComponentRef Id="cmp921F1C19162A1E8BBBC5949DB7EE60E1" />
+            <ComponentRef Id="cmp7C184AEE6F15B198DEB110BB0AFED4B1" />
+            <ComponentRef Id="cmp634564183BF5626B3D889088CCE93399" />
+            <ComponentRef Id="cmp50C22D1579CDAF99BBCA510FDB266D0B" />
+            <ComponentRef Id="cmpB6256949861CE138C7FC396B1460E4CB" />
+            <ComponentRef Id="cmpCA83048EBD2A3915E3BF39FEFB585956" />
+            <ComponentRef Id="cmp5005A1AC95099A9EDF69779247B2723A" />
+            <ComponentRef Id="cmpF25C2CFB4B997FC05EB5145595F66DFF" />
+            <ComponentRef Id="cmpD14A3074BEB929F10A1B1FFEE9940096" />
+            <ComponentRef Id="cmp5E1D706A8A5589FAE0FBC5F0FA5E9727" />
+            <ComponentRef Id="cmpA5F93498CBC11B18811156B15BE5F8E5" />
+            <ComponentRef Id="cmpB0D5CAD8C0B20EA3D38D661972E64D98" />
+            <ComponentRef Id="cmpB8DAD6FC366CA31336D6355C634113B8" />
+            <ComponentRef Id="cmpFD84F6EEF2240C6F05F3D5DA737659E9" />
+            <ComponentRef Id="cmp843DD1EDBF609A7F22555A3EAFEC2D5B" />
+            <ComponentRef Id="cmpEE9EE52959625D59EFA14880E34887AE" />
+            <ComponentRef Id="cmp87E4B0FA02FB06C176F76421CFDA7444" />
+            <ComponentRef Id="cmp8D985C6F30CD261F37CA043797E991C7" />
+            <ComponentRef Id="cmp463460AC3F813723D01974519D0907F4" />
+            <ComponentRef Id="cmp5755673F9D41E8347998014BF1A5A66D" />
+            <ComponentRef Id="cmp340912D669698D3A9795A7058A18FF3B" />
+            <ComponentRef Id="cmp12C4D26318849A4F2DB4479EBC4D5C8E" />
+            <ComponentRef Id="cmp0A2A57B4BFEB5C0AA0FD4B7D79D05461" />
+            <ComponentRef Id="cmpCA2E0B693E195FC090CBEC74C1EC0CBB" />
+            <ComponentRef Id="cmp40DEB5ABD2AAABD208CDC48FB4535836" />
+            <ComponentRef Id="cmp778C8A1D533DF9EE40B20875B004508A" />
+            <ComponentRef Id="cmp86036F621F4901F6136CDF5FA41DA3F0" />
+            <ComponentRef Id="cmp6CDDB17501CDB53960648AB66702998F" />
+            <ComponentRef Id="cmp735B29F9E67626C239DBCBE49493532B" />
+            <ComponentRef Id="cmpDC04ECB67896961F76516656304A4D7A" />
+            <ComponentRef Id="cmpF50FE025C30A1D072FD14839E6F15529" />
+            <ComponentRef Id="cmpAFC19D73ABEC822DA7514A4F9A9F7E67" />
+            <ComponentRef Id="cmp270423A060B0EE2E1C3166034253F032" />
+            <ComponentRef Id="cmpB85D2BA45351380A40B30C01B725A9D3" />
+            <ComponentRef Id="cmp37BCE359352C3E3548BD42E5F1268337" />
+            <ComponentRef Id="cmpE6320B576E84B539407C36AB8F9FA9F6" />
+            <ComponentRef Id="cmp221A848704E03ED1DF10461EE84EA03B" />
+            <ComponentRef Id="cmp4CDF7DFD2D0E95016925C6786A10C503" />
+            <ComponentRef Id="cmpEC5CA923F382FAC50F6D948F86E329B2" />
+            <ComponentRef Id="cmp8F9CFC6DF6383D67BCBA40891B39DFCB" />
+            <ComponentRef Id="cmp1BCDD13BBCF35F2305CDB366DEB9CE92" />
+            <ComponentRef Id="cmpD99A37BF060ABA80C88A3C8B4E068A76" />
+            <ComponentRef Id="cmp6F669A0C0A790CC800E67F3D59117174" />
+            <ComponentRef Id="cmp507575F6DA7DE4A41516F1103DAEC4DA" />
+            <ComponentRef Id="cmp9AFAECEA155BB25205686F7F6980D0E1" />
+            <ComponentRef Id="cmpD65D0BEEB96170C258CAEC623E09E54C" />
+            <ComponentRef Id="cmpCD6C73D82676C4151149996155112038" />
+            <ComponentRef Id="cmp5B6D2DAD417EDC837B102C2262E16865" />
+            <ComponentRef Id="cmpFAAAED1A8B1E1B7D9CF6EC632B0C9474" />
+            <ComponentRef Id="cmpC8460B8E6893DFC801F830B64B8121B7" />
+            <ComponentRef Id="cmp9DBB56427565363894122989AEE57A07" />
+            <ComponentRef Id="cmpAB79EE594C81E805F7ECC3EC672F3D05" />
+            <ComponentRef Id="cmp2B622D5D613894A96E9EA4B107C83B16" />
+            <ComponentRef Id="cmpB946F294FB0109E56C95563426EBE212" />
+            <ComponentRef Id="cmpEC34D7CE58E8091B12DDC5BAD4E68D02" />
+            <ComponentRef Id="cmpA681B81F23A33899C45194753B114207" />
+            <ComponentRef Id="cmp82BD49C5BA4DD3C98A8AAB8661262CCD" />
+            <ComponentRef Id="cmp542A4E63C378171FEE62D234710EF35D" />
+            <ComponentRef Id="cmpC8DA21D334498C2D7F2CEB9D31E9D850" />
+            <ComponentRef Id="cmpB9EBD7874B665740BC7E808EA37DC766" />
+            <ComponentRef Id="cmpE377B5D63926B89AA4B0CD91D0973BB5" />
+            <ComponentRef Id="cmp13BED6C8EA8EEFC7EF027B2E79746FB8" />
+            <ComponentRef Id="cmp6EE62B51BA68960819E4EFE0D77579C5" />
+            <ComponentRef Id="cmp303E138DD2E109F2479CC653D35C23DA" />
+            <ComponentRef Id="cmp7D1890756C845F2591CEE1C2DA3624AE" />
+            <ComponentRef Id="cmpD58C4EFB05F48CEF996489444B6621EC" />
+            <ComponentRef Id="cmpCB07520600BF8109AD5715DAFFF9113E" />
+            <ComponentRef Id="cmpBFDEC9A912747DEBFFC51AC7D52EBFA6" />
+            <ComponentRef Id="cmpBEADE0CD21E252F7A625CD12244AF5D6" />
+            <ComponentRef Id="cmpE1A7A1A49AEC05C97D7834F48F9304F9" />
+            <ComponentRef Id="cmpF0EC23441F05799EF70AC7DB6E69F4D7" />
+            <ComponentRef Id="cmp2D02FEDD720A986EF30D26DC67247E43" />
+            <ComponentRef Id="cmp5D1E16FF39C8B3CF723FD7619A96B75E" />
+            <ComponentRef Id="cmp24918AF9B56AE140350D3C668EACCE64" />
+            <ComponentRef Id="cmp78D3D87283BAE7833F66522CA54AB626" />
+            <ComponentRef Id="cmpA70550B10376BF9F4362A69E7389DD93" />
+            <ComponentRef Id="cmpB314FFA141B7D8435C1BFC5F2F9E2A85" />
+            <ComponentRef Id="cmp2B377803AEEE5CAAAA7F2C7445978A31" />
+            <ComponentRef Id="cmp9A3B4673D7796DD4EA351B32E08B2EDA" />
+            <ComponentRef Id="cmp245B9F2A8BB61619923595BF60D76594" />
+            <ComponentRef Id="cmp17C78D9DFFC9E43DD35EF8C302C8E4A5" />
+            <ComponentRef Id="cmpF7A69E114DB3A56EB7AD2C62758EC93C" />
+            <ComponentRef Id="cmp908B6CAFD7AEE0434DA9994AA8AA9DF6" />
+            <ComponentRef Id="cmpB7633696823EB01ABDD8177BC15A8349" />
+            <ComponentRef Id="cmp76C48349B8F75A57823B3DE30FA935D4" />
+            <ComponentRef Id="cmp004B71D62C055B78CACD3961305648E8" />
+            <ComponentRef Id="cmp1BE11E939CF1723D1EDB44501B7DFDFB" />
+            <ComponentRef Id="cmpC9A109EE0096DF4BFEAB024E7DC53090" />
+            <ComponentRef Id="cmp1147D9BBF55E4354C507A1C0B0746E84" />
+            <ComponentRef Id="cmpF55BB79A10706417BEE7754E638C6201" />
+            <ComponentRef Id="cmp5831D0D59B9EEDEB62F85776483400FE" />
+            <ComponentRef Id="cmp28551FDAB1F3E71226E980FF2DE31C7F" />
+            <ComponentRef Id="cmpAB618F3CEBCF20E7172F3FD0E35EAFAE" />
+            <ComponentRef Id="cmp63B605CDEA38855028D032F9AE68AE5C" />
+            <ComponentRef Id="cmpD7DF9F8C365D6D955387D670A98F91FC" />
+            <ComponentRef Id="cmp182D39B76FC5097EBAE082D5D35F14E0" />
+            <ComponentRef Id="cmp152047B9F245C731B2DE24FE2EA1045F" />
+            <ComponentRef Id="cmp93BFF3D3DF0882029D79CCB63526811D" />
+            <ComponentRef Id="cmp98CEBF201E7A238AFBEA2C6388225AD0" />
+            <ComponentRef Id="cmpD562C1A4E951F6E175A96E4965D941B9" />
+            <ComponentRef Id="cmpE56BC051394AC117B661E072E32B18F5" />
+            <ComponentRef Id="cmpE1F99286BDEE695B0672C94A3133F55B" />
+            <ComponentRef Id="cmp6865E2D143887D12D3440866A11FBDA1" />
+            <ComponentRef Id="cmpCD9060DA6AE7FEBAD063DB7E9D900A8D" />
+            <ComponentRef Id="cmpDF5A5C8D759FBE3474D2B527A1C8944A" />
+            <ComponentRef Id="cmp90E1A7BC0F488D6FF5EFADFFE2D83DA2" />
+            <ComponentRef Id="cmpCC515A8DC81FCD8F16B11A1E0B6715A4" />
+            <ComponentRef Id="cmp6693BB7E3906470B587E673332A513A4" />
+            <ComponentRef Id="cmp035ADB13B436293446AF68646EA01A54" />
+            <ComponentRef Id="cmp41DDEDBFB6170C2EEDA605474CC2CCA5" />
+            <ComponentRef Id="cmp380F47C9BB9F3D7170863CEE20F5A152" />
+            <ComponentRef Id="cmpCB806F31239CB1A9C440770BEC549DD3" />
+            <ComponentRef Id="cmpCF721E5D8C41F7907CD20857A7E2D9CE" />
+            <ComponentRef Id="cmpAA0781BFAFA5AC5C53320B5D29CEF54D" />
+            <ComponentRef Id="cmpB3AEFCDB09CCDB5B88C2CB8419C22C5B" />
+            <ComponentRef Id="cmpBBEC4427B8884A1977A30967EE61E4DA" />
+            <ComponentRef Id="cmpA9300B15E0437615C26F49942FE67C26" />
+            <ComponentRef Id="cmpF6E302B5D93ED2B13C4FA7A82CDE44A7" />
+            <ComponentRef Id="cmpC9C37553FBB21C0CC138671DA5927FD9" />
+            <ComponentRef Id="cmpA069EF40010C95CF33DEF1BBFB428AEE" />
+            <ComponentRef Id="cmp8C003E70226658710882644985BAA499" />
+            <ComponentRef Id="cmpDAD3C63ADB9D425E243E3D14B8080F5B" />
+            <ComponentRef Id="cmpC900B8A1AFF807772C6235ACD0AD2530" />
+            <ComponentRef Id="cmp6F72C457AF6EAE66DB19C84FEBC0EBF9" />
+            <ComponentRef Id="cmpAA5C10C0AE8C04ACC6F17F7E798E2F8F" />
+            <ComponentRef Id="cmp4F9DF128AE237D0D2B165E3EA4440C86" />
+            <ComponentRef Id="cmpF9AE74F399346A5945BCE5E758EA7BEA" />
+            <ComponentRef Id="cmp9312CC5B51CCEBD8CC75257EAC2F5D56" />
+            <ComponentRef Id="cmp8E9717D3A101FCC2B2C21F41AD57B3FF" />
+            <ComponentRef Id="cmp2FBA93EC186C6E344AF419707FF825EC" />
+            <ComponentRef Id="cmp2D227AEF3305B728CCE7137D02539A0C" />
+            <ComponentRef Id="cmp995F5EFF667041EEDB189C706A1BFDC9" />
+            <ComponentRef Id="cmp97B75E93D548A050005596B19A021A8D" />
+            <ComponentRef Id="cmpB60E28E18DD4AE24F6C3FE01BA1F527B" />
+            <ComponentRef Id="cmp1C9F0B8874BE940E40E6512D9D1A3C1B" />
+            <ComponentRef Id="cmpEB33DE851DCFEB699F27A5C41CE7066E" />
+            <ComponentRef Id="cmpAC1E562F7A69777C8003781CB3B38E11" />
+            <ComponentRef Id="cmpB643AE499D21370E24376B1DB9811964" />
+            <ComponentRef Id="cmpB4B1A8D2DD0636AE11AFEA45DD6F603D" />
+            <ComponentRef Id="cmp0B87CB5A9ACD9BD4A23EA830EEF91CE4" />
+            <ComponentRef Id="cmpDA8D79794912851D90E6A20ADF8CF04E" />
+            <ComponentRef Id="cmp715D609ED0BB78479BA266FEF156EE9F" />
+            <ComponentRef Id="cmp45CB12252259B49A7330E30195D26429" />
+            <ComponentRef Id="cmp9509459CF91AF891BCF294FE71262B92" />
+            <ComponentRef Id="cmpBDE7541A5A91EC4CC5F702D845F31478" />
+            <ComponentRef Id="cmp20756BB8A93E601AA892F7D8026D55F1" />
+            <ComponentRef Id="cmp5C70DC8583064785AEACD8FE2A853F2B" />
+            <ComponentRef Id="cmpBC34A41C1625DDE713424D8230910213" />
+            <ComponentRef Id="cmp38418DBB0C87A561404353A5EFA2C29C" />
+            <ComponentRef Id="cmpEF0E6A1F83E92A0CF8F100A395EE6C7F" />
+            <ComponentRef Id="cmp62C2567F43F90D0C27821FDD5A942BE7" />
+            <ComponentRef Id="cmpBDCA0A97624455ED6B3148E51C6CD716" />
+            <ComponentRef Id="cmpDBDBA2E2F9956E10098644CAAFEC895D" />
+            <ComponentRef Id="cmp95282681C2D8C51357F7F010B796E32F" />
+            <ComponentRef Id="cmpA9F2362A5BC9913C95815CE357BEA9C8" />
+            <ComponentRef Id="cmp788AE056FFE7A8F1C9088798C2B9D16A" />
+            <ComponentRef Id="cmp6E10C18A801C842F85CB4692B3BB91F1" />
+            <ComponentRef Id="cmp4952058F60EC417C5B913F17D31604FB" />
+            <ComponentRef Id="cmp8221547D5B3DB423CBBBFFAA060A9D58" />
+            <ComponentRef Id="cmp33B6D48D9D47FB06B5962D2046DD2157" />
+            <ComponentRef Id="cmpAAAADC6A006B386700A049AC50BA7E8C" />
+            <ComponentRef Id="cmpCFE584C7FF7E6F66BFE2E3EF9206D630" />
+            <ComponentRef Id="cmpB9415FBC3E55E98412B4A1137C0CF556" />
+            <ComponentRef Id="cmpD835FAC09FAF365EC7CFF7D358B357EC" />
+            <ComponentRef Id="cmpC87A130587FD562381802D29C515B1F7" />
+            <ComponentRef Id="cmp5AF0CFD567E370B5DEF9E52F65438FEA" />
+            <ComponentRef Id="cmp2618DA72B4EBD1CFEC9BF849B1C6A720" />
+            <ComponentRef Id="cmp9A6D91745EA3CA78B704C93A44EE8A24" />
+            <ComponentRef Id="cmpC2FF4524B4F889D3755BC3F346DB7532" />
+            <ComponentRef Id="cmpFF3E713765831F7A625146E5C4EE7756" />
+            <ComponentRef Id="cmpDFEF0DFBF83DFE56CD5D00BA3EE284CD" />
+            <ComponentRef Id="cmp77ED9943111D332E717A324E9A7D1462" />
+            <ComponentRef Id="cmp340CDE652C8B117D1F3F85871FB93A71" />
+            <ComponentRef Id="cmpA2971C1BB31E466991E9490C7EFAD08C" />
+            <ComponentRef Id="cmp06E040C37C640B62E1B2BA1DC4A20E74" />
+            <ComponentRef Id="cmpCAFC3CDB194A6BD5F0DE487648130395" />
+            <ComponentRef Id="cmp29CF0F8D0DD57C192CFCC830705D1DDA" />
+            <ComponentRef Id="cmp29621CC9AE64EE7F2D72B7310AAAE6B7" />
+            <ComponentRef Id="cmp72689D0F152F42DE48C8A9FA8AFB4B6B" />
+            <ComponentRef Id="cmp62E5A05A6984AADB535698872B4FABAB" />
+            <ComponentRef Id="cmpFAC95D800D87D9850FCD3B00AABB8810" />
+            <ComponentRef Id="cmpBA35E583A6E70F01D86FE8BF18F33581" />
+            <ComponentRef Id="cmpFABCBE881F3D1973115D5D273F226778" />
+            <ComponentRef Id="cmp270084105CD1BB1A39A5198747219228" />
+            <ComponentRef Id="cmp495000D3B43E522C22562A49F9729994" />
+            <ComponentRef Id="cmp8EB981D7CEF1B7856C7792AE7FE5267C" />
+            <ComponentRef Id="cmp25A9665CC7FB5058BAAFDDF4513180C5" />
+            <ComponentRef Id="cmp60CABDD4B099BA3663A1760964EA6948" />
+            <ComponentRef Id="cmp670B9CE70C9F6D8252BEBDB2B2C9FEE5" />
+            <ComponentRef Id="cmp1FC7028DA642188F5F52E75864D2B04B" />
+            <ComponentRef Id="cmp41FFA89D1A8972541C5C058083E06D57" />
+            <ComponentRef Id="cmpCF48B1D4FEB9F0E8995B47066D381BF0" />
+            <ComponentRef Id="cmpD047BAEF2BD0D96CB6CDBF5045E339D8" />
+            <ComponentRef Id="cmpE9607A9AF365010A0F229B2816EEF6A5" />
+            <ComponentRef Id="cmpA36E8F20455325C47C8E5C1488C9D4F5" />
+            <ComponentRef Id="cmpEC7739B32F92AA82886DFD25D2798580" />
+            <ComponentRef Id="cmp3B7740B523E3C15AA134C0FEE0DA01E6" />
+            <ComponentRef Id="cmpFFC3C12C370CEF5CBDC5F5DD49FDC4A2" />
+            <ComponentRef Id="cmp1E5C3FE4762504E822DEC4FCBCAAFB9B" />
+            <ComponentRef Id="cmpFEC6AEB485B631E1CB87842374C2B4E3" />
+            <ComponentRef Id="cmp8937CD85D5A80300EB46AA934E5FBC18" />
+            <ComponentRef Id="cmp26452B763005B4732D8A89EBF304D6AA" />
+            <ComponentRef Id="cmp0010D9A76482099351422B06648D766D" />
+            <ComponentRef Id="cmp5A1B514BB0A43EEE40888E42BF8E0DDC" />
+            <ComponentRef Id="cmp8834AFD4E01DA47B9D36FD549C9FE8D2" />
+            <ComponentRef Id="cmp4A60123A3F97AC97A9096719E0C145C7" />
+            <ComponentRef Id="cmp5D75226B1A023EA29576961CEE3FD6F2" />
+            <ComponentRef Id="cmp7AFCC76CE0FFCB81ACB31CC3D7F7338B" />
+            <ComponentRef Id="cmp2F735C081960147240C79E8D31B25DAA" />
+            <ComponentRef Id="cmpFC8011DFDA67F2E55F07D968880A2D68" />
+            <ComponentRef Id="cmp12995D2113B148B26B29DF5B0E3E419F" />
+            <ComponentRef Id="cmp8E8778520EB3B920FD735EF9D8EE7F71" />
+            <ComponentRef Id="cmp370807BE6F31892170DE6BB9D360D6B4" />
+            <ComponentRef Id="cmpE7C8BC80BBF22E98369BD1BE862572FE" />
+            <ComponentRef Id="cmpD2A1E2AE41826E5970FBB8CB5863BA0F" />
+            <ComponentRef Id="cmp6A452781167C426BD0853880F7440595" />
+            <ComponentRef Id="cmp93F86C06ED8E2B6C1F376991E53B8F6B" />
+            <ComponentRef Id="cmp4ADD0F3E07C384A83B260285EE5143D8" />
+            <ComponentRef Id="cmp11A3D18BBA9686E0C9241AA65D256FE2" />
+            <ComponentRef Id="cmpDA963BCD853FEC7E2E4CD95D0B23257D" />
+            <ComponentRef Id="cmp516A4DB0350247DA0BC232A8D2530712" />
+            <ComponentRef Id="cmp699C884C2D03C8D497509E84C8CF8275" />
+            <ComponentRef Id="cmp768D319A226F49B074A45087936FDF26" />
+            <ComponentRef Id="cmp699E7084502D09511A3B88AD8488D04C" />
+            <ComponentRef Id="cmp985D6316036C1F2B975E50CD15E043AD" />
+            <ComponentRef Id="cmp636CBDBFF066066C1B8194AC7A3BA697" />
+            <ComponentRef Id="cmp2804A93B87691C124E25A472EDF7DCFE" />
+            <ComponentRef Id="cmp74B19532C9A3F205FF196128A9E59FE8" />
+            <ComponentRef Id="cmpB10643D6251D3E7BECA4892A6D49BF3A" />
+            <ComponentRef Id="cmpF28AE040B0C5F113CA4C01D7A83937FD" />
+            <ComponentRef Id="cmp6981EF07B4B4B4091D3A5AED742DEB4E" />
+            <ComponentRef Id="cmp7C70888AC97A30C06C19D0E311418007" />
+        </ComponentGroup>
+    </Fragment>
+</Wix>

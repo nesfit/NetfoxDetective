@@ -1,0 +1,108 @@
+﻿<views:PageViewBase xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                    x:Class="Netfox.Detective.Views.FullTextSearch.FullTextSearchResultsView"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:converters1="clr-namespace:Netfox.Detective.Views.Converters"
+                    xmlns:views="clr-namespace:Netfox.Detective.Views"
+                    mc:Ignorable="d"
+                    d:DesignHeight="400" d:DesignWidth="600">
+	<views:PageViewBase.Resources>
+		<ResourceDictionary>
+			<converters1:BoolToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary
+					Source="pack://application:,,,/Netfox.Detective;component/Views/Styles/Style13.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</views:PageViewBase.Resources>
+	<Grid Margin="5">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<TextBlock Text="Name" VerticalAlignment="Center" />
+			<TextBox Grid.Column="1" Width="300" HorizontalAlignment="Left" Margin="10 0 0 0"
+			         Text="{Binding Path=Data.Name}" />
+
+		</Grid>
+		<telerik:RadTabControl Grid.Row="1" Margin="0 10 0 0" x:Name="ResultsControl">
+			<telerik:RadTabItem Header="Exported Data"
+			                    Visibility="{Binding HasExportedDataResults, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+
+				<telerik:RadGridView EnableRowVirtualization="True"
+				                     ItemsSource="{Binding Path=ExportedDataResults}"
+				                     AutoGenerateColumns="False" IsReadOnly="True"
+				                     MouseDoubleClick="SearchResultExportedData_OnMouseDoubleClick"
+				                     SelectedItem="{Binding Path=SelectedExportedData, Mode=OneWayToSource}"
+
+				                     Style="{StaticResource Style.DataGridView}">
+
+					<telerik:RadGridView.Columns>
+						<telerik:GridViewDataColumn DataMemberBinding="{Binding Path=Score, Mode=OneWay}"
+						                            Header="Score" />
+						<telerik:GridViewDataColumn
+							DataMemberBinding="{Binding Path=Data.NetworkTimeStamp, Mode=OneWay}" Header="TimeStamp" />
+						<telerik:GridViewDataColumn DataMemberBinding="{Binding Path=Type , Mode=OneWay}" Header="Type" />
+						<telerik:GridViewDataColumn DataMemberBinding="{Binding Path=Data.Description , Mode=OneWay}"
+						                            Header="Description"
+						                            Width="250" />
+						<telerik:GridViewColumn Header="File">
+							<telerik:GridViewColumn.CellTemplate>
+								<DataTemplate>
+									<Button Style="{StaticResource LinkButton}"
+									        Content="{Binding Path=FileName}"
+									        x:Name="SearchResultFileButton"
+									        Click="SearchResultFileButton_OnClick" />
+								</DataTemplate>
+							</telerik:GridViewColumn.CellTemplate>
+							<telerik:GridViewColumn.CellEditTemplate>
+								<DataTemplate />
+							</telerik:GridViewColumn.CellEditTemplate>
+						</telerik:GridViewColumn>
+					</telerik:RadGridView.Columns>
+				</telerik:RadGridView>
+			</telerik:RadTabItem>
+
+			<telerik:RadTabItem Header="Captures content"
+			                    Visibility="{Binding HasCaptureResults, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+				<telerik:RadGridView EnableRowVirtualization="True"
+				                     ItemsSource="{Binding Path=CaptureSearchResults}"
+				                     AutoGenerateColumns="False" IsReadOnly="True"
+				                     MouseDoubleClick="SearchResultCapture_OnMouseDoubleClick"
+				                     SelectedItem="{Binding Path=SelectedFrameResult, Mode=OneWayToSource}"
+
+				                     Style="{StaticResource Style.DataGridView}">
+
+					<telerik:RadGridView.Columns>
+						<telerik:GridViewDataColumn DataMemberBinding="{Binding Path=Capture.FileName, Mode=OneWay}"
+						                            Header="Capture" />
+						<telerik:GridViewDataColumn DataMemberBinding="{Binding Path=FrameIndex, Mode=OneWay}"
+						                            Header="No." />
+						<telerik:GridViewDataColumn DataMemberBinding="{Binding Path=Frame.TimeStamp, Mode=OneWay}"
+						                            Header="TimeStamp" />
+						<telerik:GridViewDataColumn DataMemberBinding="{Binding Path=Source, Mode=OneWay}"
+						                            Header="Source" />
+						<telerik:GridViewDataColumn DataMemberBinding="{Binding Path=Destination, Mode=OneWay}"
+						                            Header="Destination" />
+						<telerik:GridViewDataColumn DataMemberBinding="{Binding Path=Frame.LinkType, Mode=OneWay}"
+						                            Header="LinkType" />
+						<telerik:GridViewDataColumn
+							DataMemberBinding="{Binding Path=Frame.OriginalLength, Mode=OneWay}"
+							Header="OriginalLength" />
+					</telerik:RadGridView.Columns>
+				</telerik:RadGridView>
+
+
+			</telerik:RadTabItem>
+		</telerik:RadTabControl>
+	</Grid>
+</views:PageViewBase>

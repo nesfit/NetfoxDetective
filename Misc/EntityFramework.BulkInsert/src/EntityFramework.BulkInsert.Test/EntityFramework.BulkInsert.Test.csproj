@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\..\..\packages\PostSharp.5.0.30\build\PostSharp.props" Condition="Exists('..\..\..\..\packages\PostSharp.5.0.30\build\PostSharp.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{20B90CC0-1DC1-4154-8434-A16B9B902FC4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EntityFramework.BulkInsert.Test</RootNamespace>
+    <AssemblyName>EntityFramework.BulkInsert.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NET45;EF6;EF61</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NET45;EF6;EF61</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Choose>
+    <When Condition=" '$(Configuration)'=='Debug' " />
+    <When Condition=" '$(Configuration)'=='NET45_EF5' ">
+      <ItemGroup>
+        <Reference Include="EntityFramework">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>$(SolutionDir)packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+        </Reference>
+        <Reference Include="EntityFramework.SqlServer">
+          <HintPath>$(SolutionDir)packages\EntityFramework.5.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+        </Reference>
+        <Reference Include="EntityFramework.MappingAPI">
+          <HintPath>$(SolutionDir)packages\EntityFramework.MappingAPI.5.0.0.6\lib\net45\EntityFramework.MappingAPI.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="EntityFramework.SqlServerCompact">
+          <HintPath>$(SolutionDir)packages\EntityFramework.SqlServerCompact.4.1.8482.1\lib\System.Data.SqlServerCe.Entity.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Data.Entity" />
+      </ItemGroup>
+    </When>
+    <When Condition=" '$(Configuration)'=='NET45_EF6' ">
+      <ItemGroup>
+        <Reference Include="EntityFramework">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>$(SolutionDir)packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+        </Reference>
+        <Reference Include="EntityFramework.SqlServer">
+          <HintPath>$(SolutionDir)packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+        </Reference>
+        <Reference Include="EntityFramework.MappingAPI">
+          <HintPath>$(SolutionDir)packages\EntityFramework.MappingAPI.6.0.0.7\lib\net45\EntityFramework.MappingAPI.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
+        <Reference Include="EntityFramework.SqlServerCompact">
+          <HintPath>$(SolutionDir)packages\EntityFramework.SqlServerCompact.6.1.0\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServerCompact, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\EntityFramework.SqlServerCompact.6.1.3\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="PostSharp, Version=5.0.30.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\PostSharp.Redist.5.0.30\lib\net45\PostSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PostSharp.Patterns.Aggregation, Version=5.0.30.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\PostSharp.Patterns.Aggregation.Redist.5.0.30\lib\net45\PostSharp.Patterns.Aggregation.dll</HintPath>
+    </Reference>
+    <Reference Include="PostSharp.Patterns.Common, Version=5.0.30.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\PostSharp.Patterns.Common.Redist.5.0.30\lib\net46\PostSharp.Patterns.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="PostSharp.Patterns.Model, Version=5.0.30.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\PostSharp.Patterns.Model.Redist.5.0.30\lib\net40\PostSharp.Patterns.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CodeFirst\BulkInsert\BulkInsertTestBase.cs" />
+    <Compile Include="CodeFirst\BulkInsert\PerformanceTestBase.cs" />
+    <Compile Include="CodeFirst\BulkInsert\SqlCe\SqlCeBulkInsertTest.cs" />
+    <Compile Include="CodeFirst\BulkInsert\SqlServer\SqlBulkInsertWithMappedDataReader.cs" />
+    <Compile Include="CodeFirst\BulkInsert\SqlServer\SqlBulkInsertWithMappedDataReaderPerformance.cs" />
+    <Compile Include="CodeFirst\Domain\PinPoint.cs" />
+    <Compile Include="CodeFirst\Domain\Foo.cs" />
+    <Compile Include="CodeFirst\SqlCeContext.cs" />
+    <Compile Include="CodeFirst\SqlContext.cs" />
+    <Compile Include="CustomProvider\Class1.cs" />
+    <Compile Include="DatabaseFirst\Authors.cs">
+      <DependentUpon>TestDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseFirst\Books.cs">
+      <DependentUpon>TestDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseFirst\Class1.cs" />
+    <Compile Include="DatabaseFirst\Publishers.cs">
+      <DependentUpon>TestDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseFirst\TestDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseFirst\TestDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseFirst\TestDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TestDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="CodeFirst\Domain\Contract.cs" />
+    <Compile Include="CodeFirst\Domain\Employee.cs" />
+    <Compile Include="CodeFirst\Domain\Entity.cs" />
+    <Compile Include="CodeFirst\Domain\EntityWithTypedId.cs" />
+    <Compile Include="CodeFirst\Domain\ICreatedAt.cs" />
+    <Compile Include="CodeFirst\Domain\IModifiedAt.cs" />
+    <Compile Include="CodeFirst\Domain\MeteringPoint.cs" />
+    <Compile Include="CodeFirst\Domain\Reading.cs" />
+    <Compile Include="Issue1344\AccrualContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Issue1344\BaseXafConvention.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Issue1344\IntervalEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Issue1344\Post.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Issue1344\PostConfiguration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Issue1344\XafEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Issue1344\XafGcEntity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Issue1369\Issue1369Context.cs" />
+    <Compile Include="Issue1369\LoanEntity.cs" />
+    <Compile Include="Issue1369\CreditReportEntity.cs" />
+    <Compile Include="MappedDataReaderTest.cs" />
+    <Compile Include="CodeFirst\Domain\ComplexTypes\Address.cs" />
+    <Compile Include="CodeFirst\Domain\ComplexTypes\Contact.cs" />
+    <Compile Include="CodeFirst\Domain\Page.cs" />
+    <Compile Include="CodeFirst\Domain\PageTranslations.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CodeFirst\TestBase.cs" />
+    <Compile Include="CodeFirst\TestBaseContext.cs" />
+    <Compile Include="CodeFirst\Domain\TestUser.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="DatabaseFirst\TestDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TestDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DatabaseFirst\TestDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TestDataModel.edmx</DependentUpon>
+      <LastGenOutput>TestDataModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DatabaseFirst\TestDataModel.edmx.diagram">
+      <DependentUpon>TestDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="DatabaseFirst\TestDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TestDataModel.edmx</DependentUpon>
+      <LastGenOutput>TestDataModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\EntityFramework.MappingAPI\EntityFramework.MappingAPI\EntityFramework.MappingAPI.Net45.csproj">
+      <Project>{168dd262-c4db-49e8-bf62-bfdd3b6da41e}</Project>
+      <Name>EntityFramework.MappingAPI.Net45</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntityFramework.BulkInsert.SqlServerCe\EntityFramework.BulkInsert.SqlServerCe.csproj">
+      <Project>{8BCCBC7B-9F9F-491A-8778-88EF6D2A279C}</Project>
+      <Name>EntityFramework.BulkInsert.SqlServerCe</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntityFramework.BulkInsert\EntityFramework.BulkInsert.csproj">
+      <Project>{E48AB221-FB79-4F22-9641-3C283F44F1C7}</Project>
+      <Name>EntityFramework.BulkInsert</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Issue1344\Table Schema.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    if not exist "$(TargetDir)x86" md "$(TargetDir)x86"
+    xcopy /C/H/R/S/Y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\x86\*.*" "$(TargetDir)x86"
+    if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
+    xcopy /C/H/R/S/Y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\amd64\*.*" "$(TargetDir)amd64"
+    if not exist "$(TargetDir)x86" md "$(TargetDir)x86"
+    xcopy /C/H/R/S/Y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\x86\*.*" "$(TargetDir)x86"
+    if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
+    xcopy /C/H/R/S/Y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\amd64\*.*" "$(TargetDir)amd64"</PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\..\packages\PostSharp.5.0.30\build\PostSharp.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\..\packages\PostSharp.5.0.30\build\PostSharp.props'))" />
+    <Error Condition="!Exists('..\..\..\..\packages\PostSharp.5.0.30\build\PostSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\..\packages\PostSharp.5.0.30\build\PostSharp.targets'))" />
+  </Target>
+  <Import Project="..\..\..\..\packages\PostSharp.5.0.30\build\PostSharp.targets" Condition="Exists('..\..\..\..\packages\PostSharp.5.0.30\build\PostSharp.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

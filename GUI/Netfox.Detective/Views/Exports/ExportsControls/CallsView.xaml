@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="Netfox.Detective.Views.Exports.ExportsControls.CallsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:exports="clr-namespace:Netfox.Detective.ViewModelsDataEntity.Exports"
+             mc:Ignorable="d"
+             d:DesignHeight="271" d:DesignWidth="507"
+             d:DataContext="{d:DesignInstance exports:ExportGroupVm, IsDesignTimeCreatable=False}">
+    <Grid>
+        <telerik:RadGridView EnableRowVirtualization="True"
+                             ItemsSource="{Binding Path=Calls}"
+                             AutoGenerateColumns="False" IsReadOnly="True"
+                             Style="{StaticResource Style.DataGridView}"
+                             x:Name="CallsDataGrid">
+            <telerik:EventToCommandBehavior.EventBindings>
+                <telerik:EventBinding Command="{Binding CNavigateToExportDetail}" EventName="MouseDoubleClick"
+                                      CommandParameter="{Binding ElementName=CallsDataGrid, Path=SelectedItem.ExportVm}" />
+                <telerik:EventBinding Command="{Binding CSelectExport}" EventName="SelectionChanged"
+                                      CommandParameter="{Binding  ElementName=CallsDataGrid, Path=SelectedItem.ExportVm}" />
+            </telerik:EventToCommandBehavior.EventBindings>
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Call.Start, Mode=OneWay}" Header="Start" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Call.End, Mode=OneWay}" Header="End" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Call.Duration , Mode=OneWay}" Header="Duration" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Call.From, Mode=OneWay}" Header="From" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Call.To , Mode=OneWay}" Header="To" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Call.Protocol, Mode=OneWay}" Header="Protocol" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Call.State, Mode=OneWay}" Header="State" />
+                <!--<telerik:GridViewDataColumn DataMemberBinding="{Binding Path=ResultVm.VoIPData.Call, Converter={StaticResource CallContentToBool}}" Header="Has Content" />-->
+                <!--<telerik:GridViewDataColumn DataMemberBinding="{Binding Path=ResultVm, Converter={StaticResource CallContentToBool}}" Header="Has Content" />-->
+                <telerik:GridViewDataColumn
+                    Header="Has Content" />
+                <!--DataMemberBinding="{Binding DataVm.VoIPData, Converter={StaticResource CallContentToBool}, Mode=OneWay}"-->
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+    </Grid>
+</UserControl>

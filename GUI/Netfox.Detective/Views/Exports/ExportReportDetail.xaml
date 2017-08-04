@@ -1,0 +1,10 @@
+﻿<telerikDocking:RadPane x:Class="Netfox.Detective.Views.Exports.ExportReportDetail"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:telerikDocking="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Docking"
+                        xmlns:exports="clr-namespace:Netfox.Detective.Views.Exports"
+                        mc:Ignorable="d">
+	<exports:ExportReportDetailContent x:Name="ExportReportDetailC" />
+</telerikDocking:RadPane>

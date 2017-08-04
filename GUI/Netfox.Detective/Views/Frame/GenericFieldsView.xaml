@@ -1,0 +1,48 @@
+﻿<frame:PacketViewBase xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                      x:Class="Netfox.Detective.Views.Frame.GenericFieldsView"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:frame="clr-namespace:Netfox.Detective.Views.Frame"
+                      xmlns:frame1="clr-namespace:Netfox.Detective.ViewModels.Frame"
+                      mc:Ignorable="d"
+                      d:DataContext="{d:DesignInstance frame1:FrameVm}"
+                      d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--  DATA TEMPLATES -->
+                <ResourceDictionary x:Name="DataTemplates">
+                    <HierarchicalDataTemplate x:Key="PacketHeaderTemplate"
+                                              ItemsSource="{Binding Path=Content}">
+                        <StackPanel Orientation="Horizontal">
+                            <!-- <Image Source="../../Resources/Icons/cube_icon_16.png" Width="12"/>-->
+                            <TextBlock Style="{StaticResource ResourceKey=Style.TextBlock.Label}" Margin="3,0,0,0"
+                                       Text="{Binding Path=Name}" />
+                            <TextBlock Style="{StaticResource ResourceKey=Style.TextBlock.Label}" Margin="3,0,0,0"
+                                       Text="=" />
+                            <TextBlock Style="{StaticResource ResourceKey=Style.TextBlock.Content}" Margin="3,0,0,0"
+                                       Text="{Binding Path=Value}" />
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+
+
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <telerik:RadTreeView x:Name="TreeView" Expanded="treeViewExpanded" Collapsed="treeViewCollapsed"
+                         Background="White" BorderThickness="0" Margin="1"
+                         telerik:AnimationManager.IsAnimationEnabled="False"
+                         Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left"
+                         ItemsSource="{Binding Path=AllPacketHeaders}"
+                         SelectionChanged="TreeView_OnSelectionChanged"
+                         ItemTemplate="{StaticResource ResourceKey=PacketHeaderTemplate}">
+        <telerik:RadTreeView.ItemContainerStyle>
+            <Style TargetType="telerik:RadTreeViewItem">
+                <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+            </Style>
+        </telerik:RadTreeView.ItemContainerStyle>
+    </telerik:RadTreeView>
+</frame:PacketViewBase>

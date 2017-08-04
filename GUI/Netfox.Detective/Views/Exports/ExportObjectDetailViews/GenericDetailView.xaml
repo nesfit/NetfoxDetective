@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="Netfox.Detective.Views.Exports.ExportObjectDetailViews.GenericDetailView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:collections="clr-namespace:System.Collections;assembly=mscorlib"
+             xmlns:generic="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300"
+             d:DataContext="{d:DesignInstance exports:ExportVm, d:IsDesignTimeCreatable=False}">
+    <Grid>
+        <Grid Height="25">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Image
+                Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/Icons/notepad_2.png"
+                Width="25" Height="25" Grid.Column="0"
+                Margin="0 0 5 0" />
+
+            <Border Grid.Column="1" Style="{StaticResource Style.Border.Header}" VerticalAlignment="Center">
+
+                <TextBlock Margin="4 1 0 0" Style="{StaticResource Style.TextBlock.Header}"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Text="Conversations group" />
+            </Border>
+
+            <TextBox Grid.Column="2" FontWeight="Bold" Margin="10,5,6,3" Text="{Binding Path=Name, Mode=OneWay}" />
+
+        </Grid>
+        <!--<telerik:RadGridView ItemsSource="{Binding SelectedSnooperExportObject, Converter={StaticResource ObjectToStringDictionaryPropertiesMap}, Mode=OneWay}" AutoGenerateColumns="True" />-->
+        <telerik:RadGridView
+            DataContext="{Binding SelectedSnooperExportObject, Converter={StaticResource ObjectToStringDictionaryPropertiesMap}, Mode=OneWay}"
+            ItemsSource="{Binding Result}" AutoGenerateColumns="True">
+            <!--<telerik:RadGridView.Columns>
+
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Path=Result.Key, Mode=OneWay}" Header="Property " />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Path=Result.Value, Mode=OneWay}" Header="Value " />
+
+            </telerik:RadGridView.Columns>-->
+        </telerik:RadGridView>
+        <!--<ListView
+			ItemsSource="{Binding SelectedSnooperExportObject.SnooperExportedObject, Converter={StaticResource ObjectToStringDictionaryPropertiesMap}}">
+			<ListBox.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal" d:DataContext="{d:DesignInstance generic:IDictionary, IsDesignTimeCreatable=False}">
+						<Label Content="{Binding Key}" />
+						<TextBlock xml:space="preserve" />
+						<Label Content="{Binding Value}" />
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.ItemTemplate>
+			--><!--<ListView.ItemTemplate>
+				<DataTemplate>
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="{Binding Key}" />
+						<TextBlock Text="{Binding Value}" />
+					</StackPanel>
+				</DataTemplate>
+			</ListView.ItemTemplate>--><!--
+		</ListView>-->
+    </Grid>
+</UserControl>

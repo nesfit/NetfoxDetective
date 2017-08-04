@@ -1,0 +1,52 @@
+﻿<views:DetectiveApplicationPaneViewBase
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    xmlns:helpers="clr-namespace:Netfox.Core.Helpers;assembly=Netfox.Core"
+    xmlns:core="clr-namespace:log4net.Core;assembly=log4net"
+    xmlns:views="clr-namespace:Netfox.Detective.Views"
+    xmlns:converters="clr-namespace:Netfox.Detective.Views.Converters"
+    xmlns:extenders="clr-namespace:Netfox.Detective.Views.Extenders"
+    xmlns:outputs="clr-namespace:Netfox.Detective.ViewModels.Outputs"
+    x:Class="Netfox.Detective.Views.Outputs.MainOutputView"
+    mc:Ignorable="d"
+    d:DesignHeight="179" d:DesignWidth="639"
+    d:DataContext="{d:DesignInstance outputs:MainOutputVm}">
+    <views:DetectiveApplicationPaneViewBase.Resources>
+        <converters:Log4NetLevelToColorConverter x:Key="MTCConverter" />
+    </views:DetectiveApplicationPaneViewBase.Resources>
+    <Grid>
+        <telerik:RadListBox Grid.Row="0" Name="MessagesListBox" ItemsSource="{Binding Path=OutputMessages}"
+                            SelectedItem="{Binding SelectedLogMessage, Mode=TwoWay}"
+                            IsSynchronizedWithCurrentItem="True"
+                            extenders:RadListBoxExtenders.AutoScrollToCurrentItem="True">
+
+            <telerik:RadListBox.Resources>
+                <helpers:BindingProxy x:Key="proxy" Data="{Binding }" />
+            </telerik:RadListBox.Resources>
+            <telerik:RadListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="5 0 0 0" d:DataContext="{d:DesignInstance core:LoggingEvent}">
+                        <StackPanel.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy to clipboard"
+                                          Command="{Binding Data.CCopyItemToClipBoard, Source={StaticResource proxy}}" />
+                            </ContextMenu>
+                        </StackPanel.ContextMenu>
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Foreground"
+                                        Value="{Binding Path=Level, Converter={StaticResource MTCConverter}}" />
+                            </Style>
+                        </StackPanel.Resources>
+                        <TextBlock Text="{Binding Path=TimeStamp}" FontWeight="Bold" />
+                        <TextBlock Margin="10 0 0 0" Text="{Binding Path=Identity}" FontWeight="Bold" />
+                        <TextBlock Margin="10 0 0 0" Text="{Binding Path=RenderedMessage}" />
+                    </StackPanel>
+                </DataTemplate>
+            </telerik:RadListBox.ItemTemplate>
+        </telerik:RadListBox>
+    </Grid>
+</views:DetectiveApplicationPaneViewBase>

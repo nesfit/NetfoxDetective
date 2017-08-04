@@ -1,0 +1,39 @@
+﻿<views:DetectiveExportDetailPaneViewBase x:Class="Netfox.SnooperMAFF.View.MAFFExportsViewVisualization"
+                                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                                         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                                         xmlns:converters="clr-namespace:Netfox.SnooperMAFF.View.Converters"
+                                         xmlns:viewModels="clr-namespace:Netfox.SnooperMAFF.ViewModels"
+                                         xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+                                         xmlns:views="clr-namespace:Netfox.Detective.Views;assembly=Netfox.Detective"
+                                         d:DataContext="{d:DesignInstance viewModels:SnooperMAFFViewVisualizationModel}"
+                                         mc:Ignorable="d"
+                                         Loaded="OnLoaded"
+                                         Unloaded="OnUnloaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <DockPanel  Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">
+            <Button  Width="auto"  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                     ScrollViewer.CanContentScroll="True" Name="PreviousButton" HorizontalAlignment="Stretch" 
+                     MinWidth="80" Height="20" Click="PreviousPartAfterClick" Content="Previous"/>
+            <DockPanel HorizontalAlignment="Center" MinWidth="25">
+                <TextBox Height="20" MinWidth="10" HorizontalAlignment="Center" IsReadOnly="True" Background="Transparent" IsManipulationEnabled="False" Name="Current" Text="{Binding Path=CurrentPart,Mode=TwoWay}"/>
+                <TextBox Height="20" MinWidth="5" HorizontalAlignment="Center" IsReadOnly="True" Background="Transparent" IsManipulationEnabled="False" Text="/"/>
+                <TextBox Height="20" MinWidth="10" HorizontalAlignment="Center" IsReadOnly="True" Background="Transparent" IsManipulationEnabled="False" Text="{Binding Path=PartCount}"/>
+            </DockPanel>
+            <Button  Width="auto"  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                     ScrollViewer.CanContentScroll="True" Name="NextButton" HorizontalAlignment="Stretch" 
+                     MinWidth="80" Height="20" Click="NextPartAfterClick" Content="Next"/>
+        </DockPanel>
+        <DockPanel Grid.Row="1" Grid.Column="0" MinWidth="600" MinHeight="800">
+            <cefSharp:ChromiumWebBrowser Address="{Binding GetPathToArchive,Mode=OneWay}"/>
+        </DockPanel>
+    </Grid>
+</views:DetectiveExportDetailPaneViewBase>

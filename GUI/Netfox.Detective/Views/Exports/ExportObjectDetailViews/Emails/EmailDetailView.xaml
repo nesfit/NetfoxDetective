@@ -1,0 +1,119 @@
+﻿<views:DetectiveExportDetailPaneViewBase
+    x:Class="Netfox.Detective.Views.Exports.ExportObjectDetailViews.Emails.EmailDetailView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    xmlns:ig="http://schemas.infragistics.com/xaml"
+    xmlns:views="clr-namespace:Netfox.Detective.Views"
+    xmlns:converters="clr-namespace:Netfox.Detective.Views.Converters"
+    xmlns:emails="clr-namespace:Netfox.Detective.Views.Exports.ExportObjectDetailViews.Emails"
+    xmlns:detail="clr-namespace:Netfox.Detective.ViewModelsDataEntity.Exports.Detail"
+    xmlns:modelWrappers="clr-namespace:Netfox.Detective.ViewModelsDataEntity.Exports.ModelWrappers"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="500"
+    d:DataContext="{d:DesignInstance detail:EmailDetailVm, d:IsDesignTimeCreatable=False}">
+    <UserControl.Resources>
+        <converters:FileImageConverter x:Key="FileImageConv" />
+        <DataTemplate x:Key="BodyItemTemplate">
+            <StackPanel Orientation="Horizontal"
+                        d:DataContext="{d:DesignInstance modelWrappers:MimePartVm, d:IsDesignTimeCreatable=False}">
+                <TextBlock Text="{Binding Path=MIMEpart.ContentType}" />
+                <TextBlock Text="/" />
+                <TextBlock Text="{Binding Path=MIMEpart.ContentSubtype}" />
+            </StackPanel>
+
+        </DataTemplate>
+        <DataTemplate x:Key="BodyContentTemplate">
+            <emails:EmailBodyContent />
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition MinHeight="150" />
+            <RowDefinition Height="15*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="From :" Grid.Row="0" HorizontalAlignment="Right" />
+            <TextBox Text="{Binding Path=SelectedEmail.EmailRoot.From, Mode=OneWay}" IsReadOnly="True" Grid.Row="0"
+                     Grid.Column="2" />
+
+            <TextBlock Text="To :" Grid.Row="1" HorizontalAlignment="Right" />
+            <TextBox Text="{Binding Path=SelectedEmail.EmailRoot.To, Mode=OneWay}" IsReadOnly="True" Grid.Row="1"
+                     Grid.Column="2" />
+
+            <TextBlock Text="CC :" Grid.Row="2" HorizontalAlignment="Right" />
+            <TextBox Text="{Binding Path=SelectedEmail.EmailRoot.Cc, Mode=OneWay}" IsReadOnly="True" Grid.Row="2"
+                     Grid.Column="2" />
+
+            <TextBlock Text="BCC :" Grid.Row="3" HorizontalAlignment="Right" />
+            <TextBox Text="{Binding Path=SelectedEmail.EmailRoot.Bcc, Mode=OneWay}" IsReadOnly="True" Grid.Row="3"
+                     Grid.Column="2" />
+
+            <TextBlock Text="Subject :" Grid.Row="4" HorizontalAlignment="Right" />
+            <TextBox Text="{Binding Path=SelectedEmail.EmailRoot.Subject, Mode=OneWay}" IsReadOnly="True" Grid.Row="4"
+                     Grid.Column="2" />
+
+            <TextBlock Text="Date :" Grid.Row="5" HorizontalAlignment="Right" />
+            <TextBox Text="{Binding Path=SelectedEmail.TimeStamp, Mode=OneWay}" IsReadOnly="True" Grid.Row="5"
+                     Grid.Column="2" />
+        </Grid>
+
+
+        <telerik:RadTabControl Margin="5" Grid.Row="1" x:Name="BodiesTabControl"
+                               SelectedIndex="{Binding SelectedBodieIndex, Mode=TwoWay}"
+                               ItemsSource="{Binding Path=SelectedEmail.Bodies}"
+                               ItemTemplate="{StaticResource BodyItemTemplate}"
+                               ContentTemplate="{StaticResource BodyContentTemplate}" />
+
+        <StackPanel Grid.Row="2">
+            <StackPanel.Style>
+                <Style TargetType="StackPanel">
+                    <Setter Property="Visibility" Value="Visible" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=SelectedEmail.Attachments.Count}" Value="0">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </StackPanel.Style>
+            <TextBlock Text="Attachments :" Margin="5 0 0 0" />
+            <telerik:RadListBox Height="76" Name="AattachmentsListBox" Margin="5"
+                                MouseDoubleClick="Control_OnMouseDoubleClick"
+                                Grid.Row="1"
+                                ItemsSource="{Binding Path=SelectedEmail.Attachments}">
+                <telerik:RadListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" IsItemsHost="True" />
+                    </ItemsPanelTemplate>
+                </telerik:RadListBox.ItemsPanel>
+                <telerik:RadListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical" Margin="10 0 10 0">
+                            <Image Source="{Binding Path=FileName, Converter={StaticResource FileImageConv}}"
+                                   Width="48" Height="48" />
+                            <TextBlock Text="{Binding Path=FileName}" TextAlignment="Center" />
+                        </StackPanel>
+                    </DataTemplate>
+                </telerik:RadListBox.ItemTemplate>
+            </telerik:RadListBox>
+        </StackPanel>
+
+
+    </Grid>
+</views:DetectiveExportDetailPaneViewBase>

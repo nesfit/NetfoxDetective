@@ -1,0 +1,228 @@
+﻿<views:DetectiveWindowBase x:Class="Netfox.Detective.Views.Windows.RadMessageBox"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                           xmlns:views="clr-namespace:Netfox.Detective.Core.BaseTypes.Views"
+                           MinHeight="140" MinWidth="300" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <telerik:RadWindow.Resources>
+
+        <!-- Image control template -->
+        <ControlTemplate x:Uid="ControlTemplate_1" x:Key="imgControlTemplate">
+            <Image x:Uid="imgDlgType" x:Name="imgDlgType" Margin="5,5,5,5" />
+            <ControlTemplate.Triggers>
+                <DataTrigger x:Uid="DataTrigger_1" Binding="{Binding DialogImage}">
+                    <DataTrigger.Value>
+                        <MessageBoxImage x:Uid="MessageBoxImage_1">
+                            Asterisk
+                        </MessageBoxImage>
+                    </DataTrigger.Value>
+                    <Setter x:Uid="Setter_1" TargetName="imgDlgType" Property="Source"
+                            Value="pack://application:,,,/Netfox.Detective;component/Views/Resources/RadMessageBoxResources/asterisk.png" />
+                </DataTrigger>
+
+                <DataTrigger x:Uid="DataTrigger_2" Binding="{Binding DialogImage}">
+                    <DataTrigger.Value>
+                        <MessageBoxImage x:Uid="MessageBoxImage_2">
+                            Error
+                        </MessageBoxImage>
+                    </DataTrigger.Value>
+                    <Setter x:Uid="Setter_2" TargetName="imgDlgType" Property="Source"
+                            Value="pack://application:,,,/Netfox.Detective;component/Views/Resources/RadMessageBoxResources/error.png" />
+                </DataTrigger>
+
+                <DataTrigger x:Uid="DataTrigger_3" Binding="{Binding DialogImage}">
+                    <DataTrigger.Value>
+                        <MessageBoxImage x:Uid="MessageBoxImage_3">
+                            Exclamation
+                        </MessageBoxImage>
+                    </DataTrigger.Value>
+                    <Setter x:Uid="Setter_3" TargetName="imgDlgType" Property="Source"
+                            Value="pack://application:,,,/Netfox.Detective;component/Views/Resources/RadMessageBoxResources/exclamation.png" />
+                </DataTrigger>
+
+                <DataTrigger x:Uid="DataTrigger_4" Binding="{Binding DialogImage}">
+                    <DataTrigger.Value>
+                        <MessageBoxImage x:Uid="MessageBoxImage_4">
+                            Hand
+                        </MessageBoxImage>
+                    </DataTrigger.Value>
+                    <Setter x:Uid="Setter_4" TargetName="imgDlgType" Property="Source"
+                            Value="pack://application:,,,/Netfox.Detective;component/Views/Resources/RadMessageBoxResources/hand.png" />
+                </DataTrigger>
+
+                <DataTrigger x:Uid="DataTrigger_5" Binding="{Binding DialogImage}">
+                    <DataTrigger.Value>
+                        <MessageBoxImage x:Uid="MessageBoxImage_5">
+                            Information
+                        </MessageBoxImage>
+                    </DataTrigger.Value>
+                    <Setter x:Uid="Setter_5" TargetName="imgDlgType" Property="Source"
+                            Value="pack://application:,,,/Netfox.Detective;component/Views/Resources/RadMessageBoxResources/information.png" />
+                </DataTrigger>
+
+                <DataTrigger x:Uid="DataTrigger_6" Binding="{Binding DialogImage}">
+                    <DataTrigger.Value>
+                        <MessageBoxImage x:Uid="MessageBoxImage_6">
+                            None
+                        </MessageBoxImage>
+                    </DataTrigger.Value>
+                    <Setter x:Uid="Setter_6" TargetName="imgDlgType" Property="Source"
+                            Value="pack://application:,,,/Netfox.Detective;component/Views/Resources/RadMessageBoxResources/none.png" />
+                </DataTrigger>
+
+                <DataTrigger x:Uid="DataTrigger_7" Binding="{Binding DialogImage}">
+                    <DataTrigger.Value>
+                        <MessageBoxImage x:Uid="MessageBoxImage_7">
+                            Question
+                        </MessageBoxImage>
+                    </DataTrigger.Value>
+                    <Setter x:Uid="Setter_7" TargetName="imgDlgType" Property="Source"
+                            Value="pack://application:,,,/Netfox.Detective;component/Views/Resources/RadMessageBoxResources/question.png" />
+                </DataTrigger>
+
+                <DataTrigger x:Uid="DataTrigger_8" Binding="{Binding DialogImage}">
+                    <DataTrigger.Value>
+                        <MessageBoxImage x:Uid="MessageBoxImage_8">
+                            Stop
+                        </MessageBoxImage>
+                    </DataTrigger.Value>
+                    <Setter x:Uid="Setter_8" TargetName="imgDlgType" Property="Source"
+                            Value="pack://application:,,,/Netfox.Detective;component/Views/Resources/RadMessageBoxResources/stop.png" />
+                </DataTrigger>
+
+                <DataTrigger x:Uid="DataTrigger_9" Binding="{Binding DialogImage}">
+                    <DataTrigger.Value>
+                        <MessageBoxImage x:Uid="MessageBoxImage_9">
+                            Warning
+                        </MessageBoxImage>
+                    </DataTrigger.Value>
+                    <Setter x:Uid="Setter_9" TargetName="imgDlgType" Property="Source"
+                            Value="pack://application:,,,/Netfox.Detective;component/Views/Resources/RadMessageBoxResources/Warning.png" />
+                </DataTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <!-- End image control template -->
+
+        <!-- Control template for the buttons -->
+        <ControlTemplate x:Uid="ControlTemplate_2" x:Key="btnControlTemplate">
+            <Grid x:Uid="grdBtnControls" Name="grdBtnControls" Margin="0,0,0,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition x:Uid="RowDefinition_1" Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Uid="ColumnDefinition_1" Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Uid="StackPanel_1" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                            Orientation="Horizontal"
+                            Grid.Row="0" Width="Auto">
+
+                    <telerik:RadButton x:Uid="btnYes" Name="btnYes" Content="Yes" Margin="5,0,5,0" Width="70"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed"
+                                       Click="btnYes_Click" />
+                    <telerik:RadButton x:Uid="btnNo" Name="btnNo" Content="No" Margin="5,0,5,0" Width="70"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" Visibility="Collapsed" Click="btnNo_Click" />
+
+                    <telerik:RadButton x:Uid="btnOk" Name="btnOk" Content="Ok" Margin="5,0,5,0" Width="70"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center" Click="btnOk_Click" IsDefault="True" />
+                    <telerik:RadButton x:Uid="btnCancel" Name="btnCancel" Content="Cancel" Margin="5,0,5,0" Width="70"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed"
+                                       Click="btnCancel_Click" IsCancel="True" />
+                </StackPanel>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <DataTrigger x:Uid="DataTrigger_10" Binding="{Binding Buttons}">
+                    <DataTrigger.Value>
+                        <MessageBoxButton x:Uid="MessageBoxButton_1">
+                            OK
+                        </MessageBoxButton>
+                    </DataTrigger.Value>
+                    <Setter x:Uid="Setter_10" TargetName="btnOk" Property="Visibility" Value="Visible" />
+                    <Setter TargetName="btnOk" Property="IsDefault" Value="true" />
+                    <Setter x:Uid="Setter_11" TargetName="btnYes" Property="Visibility" Value="Collapsed" />
+                    <Setter TargetName="btnYes" Property="IsDefault" Value="false" />
+                    <Setter x:Uid="Setter_12" TargetName="btnNo" Property="Visibility" Value="Collapsed" />
+                    <Setter TargetName="btnNo" Property="IsDefault" Value="false" />
+                    <Setter x:Uid="Setter_13" TargetName="btnCancel" Property="Visibility" Value="Collapsed" />
+                    <Setter TargetName="btnCancel" Property="IsDefault" Value="false" />
+                </DataTrigger>
+
+                <DataTrigger x:Uid="DataTrigger_11" Binding="{Binding Buttons}">
+                    <DataTrigger.Value>
+                        <MessageBoxButton x:Uid="MessageBoxButton_2">
+                            OKCancel
+                        </MessageBoxButton>
+                    </DataTrigger.Value>
+                    <Setter x:Uid="Setter_14" TargetName="btnOk" Property="Visibility" Value="Visible" />
+                    <Setter TargetName="btnOk" Property="IsDefault" Value="true" />
+                    <Setter x:Uid="Setter_15" TargetName="btnYes" Property="Visibility" Value="Collapsed" />
+                    <Setter TargetName="btnYes" Property="IsDefault" Value="false" />
+                    <Setter x:Uid="Setter_16" TargetName="btnNo" Property="Visibility" Value="Collapsed" />
+                    <Setter TargetName="btnNo" Property="IsDefault" Value="false" />
+                    <Setter x:Uid="Setter_17" TargetName="btnCancel" Property="Visibility" Value="Visible" />
+                    <Setter TargetName="btnCancel" Property="IsDefault" Value="false" />
+                    <Setter TargetName="btnCancel" Property="IsCancel" Value="true" />
+                </DataTrigger>
+
+                <DataTrigger x:Uid="DataTrigger_12" Binding="{Binding Buttons}">
+                    <DataTrigger.Value>
+                        <MessageBoxButton x:Uid="MessageBoxButton_3">
+                            YesNo
+                        </MessageBoxButton>
+                    </DataTrigger.Value>
+                    <Setter x:Uid="Setter_18" TargetName="btnOk" Property="Visibility" Value="Collapsed" />
+                    <Setter TargetName="btnOk" Property="IsDefault" Value="false" />
+                    <Setter x:Uid="Setter_19" TargetName="btnYes" Property="Visibility" Value="Visible" />
+                    <Setter TargetName="btnYes" Property="IsDefault" Value="true" />
+                    <Setter x:Uid="Setter_20" TargetName="btnNo" Property="Visibility" Value="Visible" />
+                    <Setter TargetName="btnNo" Property="IsDefault" Value="false" />
+                    <Setter x:Uid="Setter_21" TargetName="btnCancel" Property="Visibility" Value="Collapsed" />
+                    <Setter TargetName="btnCancel" Property="IsDefault" Value="false" />
+                    <Setter TargetName="btnCancel" Property="IsCancel" Value="false" />
+                </DataTrigger>
+
+                <DataTrigger x:Uid="DataTrigger_13" Binding="{Binding Buttons}">
+                    <DataTrigger.Value>
+                        <MessageBoxButton x:Uid="MessageBoxButton_4">
+                            YesNoCancel
+                        </MessageBoxButton>
+                    </DataTrigger.Value>
+                    <Setter x:Uid="Setter_22" TargetName="btnOk" Property="Visibility" Value="Collapsed" />
+                    <Setter TargetName="btnOk" Property="IsDefault" Value="false" />
+                    <Setter x:Uid="Setter_23" TargetName="btnYes" Property="Visibility" Value="Visible" />
+                    <Setter TargetName="btnYes" Property="IsDefault" Value="true" />
+                    <Setter x:Uid="Setter_24" TargetName="btnNo" Property="Visibility" Value="Visible" />
+                    <Setter TargetName="btnNo" Property="IsDefault" Value="false" />
+                    <Setter x:Uid="Setter_25" TargetName="btnCancel" Property="Visibility" Value="Visible" />
+                    <Setter TargetName="btnCancel" Property="IsDefault" Value="false" />
+                    <Setter TargetName="btnCancel" Property="IsCancel" Value="true" />
+                </DataTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <!-- End control template for the buttons -->
+    </telerik:RadWindow.Resources>
+    <Grid x:Uid="Grid_1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Uid="ColumnDefinition_2" Width="80" />
+            <ColumnDefinition x:Uid="ColumnDefinition_3" Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition x:Uid="RowDefinition_2" Height="Auto" />
+            <RowDefinition x:Uid="RowDefinition_3" Height="*" />
+        </Grid.RowDefinitions>
+
+        <ContentControl x:Uid="imgDlgTypeCtrl" Name="imgDlgTypeCtrl" Grid.Column="0" Grid.Row="0"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center" Template="{StaticResource imgControlTemplate}" />
+
+        <TextBlock x:Uid="txtMessage" Name="txtMessage" VerticalAlignment="Center" HorizontalAlignment="Left"
+                   Grid.Row="0"
+                   Grid.Column="1" Margin="20,0,5,0" />
+
+        <ContentControl x:Uid="btnCtrl" Name="btnCtrl" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom" Template="{StaticResource btnControlTemplate}"
+                        HorizontalContentAlignment="Center" />
+
+    </Grid>
+</views:DetectiveWindowBase>

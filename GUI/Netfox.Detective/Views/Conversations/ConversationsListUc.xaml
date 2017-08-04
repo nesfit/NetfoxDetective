@@ -1,0 +1,83 @@
+﻿<views:CollectionUserControlBase x:Class="Netfox.Detective.Views.Conversations.ConversationsListUc"
+                                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                 xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                                 xmlns:views="clr-namespace:Netfox.Core.BaseTypes.Views;assembly=Netfox.Core"
+                                 xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                                 xmlns:command="http://www.galasoft.ch/mvvmlight"
+                                 xmlns:converters="clr-namespace:Netfox.Detective.Views.Converters"
+                                 xmlns:conversations="clr-namespace:Netfox.Detective.Views.Conversations"
+                                 xmlns:conversations1="clr-namespace:Netfox.Detective.ViewModelsDataEntity.Conversations"
+                                 mc:Ignorable="d"
+                                 x:Name="ConversationsListUcB"
+                                 d:DataContext="{d:DesignInstance views:CollectionUserControlBase}"
+                                 d:DesignHeight="300" d:DesignWidth="600">
+    <UserControl.Resources>
+        <converters:ConvStateToColorBgConverter x:Key="Converter.ConvStateToColorBgConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <DataGrid Grid.Row="0" EnableRowVirtualization="True" EnableColumnVirtualization="True"
+                  IsSynchronizedWithCurrentItem="False"
+                  ItemsSource="{Binding Path=ItemsSource, Mode=OneWay}"
+                  SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                  AutoGenerateColumns="false" IsReadOnly="True"
+                  d:DataContext="{d:DesignInstance conversations1:ConversationVm}"
+                  SelectionMode="Extended"
+                  x:Name="ConversationsLisDataGrid"
+                  ScrollViewer.IsDeferredScrollingEnabled="True">
+            <telerik:EventToCommandBehavior.EventBindings>
+                <telerik:EventBinding Command="{Binding CDoubleClickedConversation}" EventName="MouseDoubleClick"
+                                      RaiseOnHandledEvents="True"
+                                      CommandParameter="{Binding ElementName=ConversationsLisDataGrid, Path=SelectedItem}" />
+            </telerik:EventToCommandBehavior.EventBindings>
+            <telerik:RadContextMenu.ContextMenu>
+                <telerik:RadContextMenu d:DataContext="{d:DesignInstance conversations:ConversationsListUc}">
+                    <telerik:RadMenuItem Header="Create conversation group" Click="RadMenuItem_OnClick" />
+                </telerik:RadContextMenu>
+            </telerik:RadContextMenu.ContextMenu>
+            <DataGrid.Resources>
+
+                <!--<Style TargetType="telerik:GridViewRow">
+					<Setter Property="Background"
+					        Value="{Binding Path=Conversation.Statistics, Converter={StaticResource Converter.ConvStateToColorBgConverter}}" />
+				</Style>-->
+                <Style TargetType="TextBlock">
+                    <Setter Property="Foreground"
+                            Value="{Binding Path=Conversation.ProtocolType, Converter={StaticResource Converter.IPProtocolTypeToColorConverter}}" />
+                </Style>
+            </DataGrid.Resources>
+
+
+            <DataGrid.Columns>
+                <!--<telerik:GridViewDataColumn DataMemberBinding="{Binding Path=Conversation.Index, Mode=OneWay}"
+				                            Header="# " />-->
+                <DataGridTextColumn Binding="{Binding Path=Conversation.FirstSeen, Mode=OneWay}" Header="First Seen " />
+                <DataGridTextColumn Binding="{Binding Path=Conversation.LastSeen, Mode=OneWay}" Header="Last Seen " />
+                <DataGridTextColumn Binding="{Binding Path=Conversation.ProtocolType, Mode=OneWay}" Header="Transport " />
+                <DataGridTextColumn Binding="{Binding Path=Conversation.SourceEndPoint, Mode=OneWay}" Header="Client " />
+                <DataGridTextColumn Binding="{Binding Path=Conversation.DestinationEndPoint, Mode=OneWay}"
+                                    Header="Server " />
+                <DataGridTextColumn
+                    Binding="{Binding Path=Conversation.ApplicationProtocols, Mode=OneWay, Converter={StaticResource Converter.ApplicationProtocolsToStringConverter}}"
+                    Header="Application " Width="150" />
+                <DataGridTextColumn Binding="{Binding Path=Conversation.UpConversationStatistic.Frames, Mode=OneWay}" Header="Frames Up " />
+                <DataGridTextColumn Binding="{Binding Path=Conversation.UpConversationStatistic.Bytes, Mode=OneWay}" Header="Bytes Up " />
+                <DataGridTextColumn
+                    Binding="{Binding Path=Conversation.DownConversationStatistic.Frames, Mode=OneWay}" Header="Frames Down " />
+                <DataGridTextColumn
+                    Binding="{Binding Path=Conversation.DownConversationStatistic.Bytes, Mode=OneWay}" Header="Bytes Down " />
+                <DataGridTextColumn Binding="{Binding Path=MalformedFrames, Mode=OneWay}"
+                                    Header="Malformed Frms " />
+                <DataGridTextColumn Binding="{Binding Path=ExtractedBytes, Mode=OneWay}"
+                                    Header="Extracted B. " />
+                <DataGridTextColumn Binding="{Binding Path=MissingBytes, Mode=OneWay}"
+                                    Header="Missing B. " />
+                <DataGridTextColumn Binding="{Binding Path=MissingFrames, Mode=OneWay}"
+                                    Header="Missing Frms " />
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</views:CollectionUserControlBase>

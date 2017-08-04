@@ -1,0 +1,54 @@
+﻿<views:DetectiveExportDetailPaneViewBase x:Class="Netfox.Detective.Views.Exports.Explorers.VoIPExplorerView"
+                                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                                         xmlns:exports2="clr-namespace:Netfox.Core.Interfaces.Model.Exports;assembly=Netfox.Core"
+                                         xmlns:views="clr-namespace:Netfox.Detective.Views"
+                                         xmlns:detail="clr-namespace:Netfox.Detective.ViewModelsDataEntity.Exports.Detail"
+                                         mc:Ignorable="d"
+                                         d:DesignHeight="300" d:DesignWidth="150"
+                                         d:DataContext="{d:DesignInstance detail:VoIPExplorerVm}">
+    <views:DetectiveExportDetailPaneViewBase.Resources>
+        <!--<converters:ExportValidityToColorConverter x:Key="ValidityToColorConverter" />
+		<converters:HasCallContentToColor x:Key="HasCallContentToColor" />-->
+    </views:DetectiveExportDetailPaneViewBase.Resources>
+    <Grid>
+        <telerik:RadListBox Margin="0,0,0,0" Name="CallsList"
+                            SelectedItem="{Binding Path=SelectedCall, Mode=TwoWay}"
+                            ItemsSource="{Binding Path=Calls}">
+            <telerik:RadListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5" d:DataContext="{d:DesignInstance exports2:ICall}">
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Foreground"
+                                        Value="{Binding Path=ExportValidity, Mode=OneWay, Converter={StaticResource ValidityToColorConverter}}" />
+                            </Style>
+                        </StackPanel.Resources>
+                        <WrapPanel Orientation="Horizontal">
+                            <TextBlock FontStyle="Italic" FontWeight="Normal"
+                                       Text="{Binding Path=Start, Mode=OneWay}" />
+                            <TextBlock FontWeight="Normal" Text=" - " />
+                            <TextBlock FontWeight="Bold" Text="{Binding Path=Duration, Mode=OneWay}">
+                                <!--<TextBlock.Resources>
+									<Style TargetType="{x:Type TextBlock}">
+										<Setter Property="Foreground"
+										        Value="{Binding Path=Data, Converter={StaticResource HasCallContentToColor}}" />
+									</Style>
+								</TextBlock.Resources>-->
+                            </TextBlock>
+                        </WrapPanel>
+
+                        <StackPanel>
+                            <TextBlock FontStyle="Italic" FontWeight="Normal" Text="{Binding Path=From, Mode=OneWay}" />
+                            <TextBlock FontStyle="Italic" FontWeight="Normal" Text=" - " />
+                            <TextBlock FontStyle="Italic" FontWeight="Normal" Text="{Binding Path=To, Mode=OneWay}" />
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </telerik:RadListBox.ItemTemplate>
+        </telerik:RadListBox>
+    </Grid>
+</views:DetectiveExportDetailPaneViewBase>

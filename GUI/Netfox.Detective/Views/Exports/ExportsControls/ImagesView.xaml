@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="Netfox.Detective.Views.Exports.ExportsControls.ImagesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:converters="clr-namespace:Netfox.Detective.Views.Exports.Converters"
+             mc:Ignorable="d"
+             x:Name="imV"
+             d:DesignHeight="400" d:DesignWidth="600">
+    <UserControl.Resources>
+        <converters:ImageUriConverter x:Key="ImageUriConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <WrapPanel Orientation="Horizontal" Margin="5 10 0 0">
+            <TextBlock Text="Size : " VerticalAlignment="Center" />
+            <telerik:RadSlider x:Name="sldZoom" VerticalAlignment="Center" Minimum="1" Maximum="650" Value="100"
+                               Margin="10 0 0 0" Width="200" ValueChanged="SldZoom_OnValueChanged" />
+        </WrapPanel>
+
+        <telerik:RadListBox Name="ImagesListBox" MouseDoubleClick="ImagesListBox_OnMouseDoubleClick"
+                            Grid.Row="1" Margin="5"
+                            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                            ItemsSource="{Binding Path=AllImages}">
+            <telerik:RadListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <telerik:VirtualizingWrapPanel Orientation="Horizontal"
+                                                   ItemWidth="{Binding ElementName=imV,  Path=BoxWidth, Mode=OneWay}"
+                                                   ItemHeight="{Binding ElementName=imV, Path=BoxHeight, Mode=OneWay}"
+                                                   IsItemsHost="True" />
+                </ItemsPanelTemplate>
+            </telerik:RadListBox.ItemsPanel>
+            <telerik:RadListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="20" />
+                        </Grid.RowDefinitions>
+                        <Image Source="{Binding Path=Path, Converter={StaticResource ImageUriConverter}}"
+                               Stretch="Uniform" />
+                        <TextBlock Grid.Row="1" Text="{Binding Path=Name}" TextWrapping="Wrap"
+                                   Width="{Binding ElementName=imV, Path=BoxWidth, Mode=OneWay}" />
+                    </Grid>
+                </DataTemplate>
+            </telerik:RadListBox.ItemTemplate>
+        </telerik:RadListBox>
+
+    </Grid>
+</UserControl>

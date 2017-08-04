@@ -1,0 +1,132 @@
+﻿<views:DetectiveDataEntityPaneViewBase xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                                       x:Class="Netfox.Detective.Views.Frame.FrameContentView"
+                                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                       xmlns:views="clr-namespace:Netfox.Detective.Views"
+                                       xmlns:frame="clr-namespace:Netfox.Detective.Views.Frame"
+                                       xmlns:frames="clr-namespace:Netfox.Detective.ViewModelsDataEntity.Frames"
+                                       mc:Ignorable="d"
+                                       d:DataContext="{d:DesignInstance frames:FrameContentVm}"
+                                       d:DesignHeight="500" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Image
+                Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/Icons/doc_lines_stright.png"
+                Width="25" Height="25"
+                Margin="0 0 0 0" Grid.Column="0" />
+
+            <TextBlock Margin="6 5 0 5" Style="{StaticResource Style.TextBlock.Header}"
+                       HorizontalAlignment="Left" Grid.Column="1"
+                       Text="Frame No. " />
+
+            <TextBlock Margin="10 5 0 5" Style="{StaticResource Style.TextBlock.Header}"
+                       HorizontalAlignment="Left" MinWidth="100" Grid.Column="2"
+                       Text="{Binding Path=FrameVm.FrameIndex}" />
+
+
+            <telerik:RadButton HorizontalAlignment="Left" BorderThickness="0"
+                               FontWeight="Bold" FontSize="18" Width="30" Height="30"
+                               x:Name="BtnPrevFrame" Grid.Column="4"
+                               Command="{Binding CPreviousFrame}">
+                <Image Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/Icons/sq_prev.png"
+                       Stretch="Fill" />
+            </telerik:RadButton>
+            <telerik:RadButton HorizontalAlignment="Left" BorderThickness="0"
+                               FontWeight="Bold" FontSize="18" Width="30" Height="30"
+                               x:Name="BtnNextFrame" Grid.Column="5"
+                               Command="{Binding CNextFrame}">
+                <Image Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/Icons/sq_next.png"
+                       Stretch="Fill" />
+            </telerik:RadButton>
+
+            <!--<plugins:PluginsActivator Margin="10 0 0 0" Grid.Column="6" />-->
+
+
+        </Grid>
+
+        <telerik:RadDocking x:Name="radDocking" Grid.Row="1" AllowUnsafeMode="True">
+
+            <telerik:RadSplitContainer telerik:DockingPanel.InitialSize="500,500">
+                <telerik:RadPaneGroup x:Name="LeftSearchPanesGroup">
+                    <telerik:RadPane Header="Structure">
+                        <StackPanel Orientation="Vertical">
+                            <frame:GenericFieldsView Margin="5"
+                                                     VerticalAlignment="Top"
+                                                     HorizontalAlignment="Left"
+                                                     x:Name="GenericFiledsView" DataContext="{Binding FrameVm}" />
+                        </StackPanel>
+
+                    </telerik:RadPane>
+                </telerik:RadPaneGroup>
+            </telerik:RadSplitContainer>
+
+            <telerik:RadDocking.DocumentHost>
+                <telerik:RadSplitContainer>
+                    <telerik:RadPaneGroup x:Name="MainSearchPanesGroup">
+                        <telerik:RadDocumentPane Header="Raw content" DataContext="{Binding FrameVm}">
+
+                            <DataGrid MinWidth="370" FontFamily="Courier new" Grid.Row="1" Margin="10" Grid.Column="1"
+                                      Name="radHexDetailsDataGrid" Style="{StaticResource ResourceKey=Style.DataGrid}"
+                                      ColumnHeaderStyle="{StaticResource ResourceKey=Style.GridView.Header}"
+                                      IsReadOnly="True"
+                                      ItemsSource="{Binding Path=FrameHexContent}"
+                                      AutoGenerateColumns="False"
+                                      EnableRowVirtualization="True">
+                                <DataGrid.Columns>
+
+                                    <DataGridTextColumn Binding="{Binding Offset}" CanUserSort="False"
+                                                        CanUserResize="False" Header="Offset " Width="70" />
+                                    <DataGridTextColumn Binding="{Binding Hexa0}" CanUserSort="False"
+                                                        CanUserResize="False" Header="00 " />
+                                    <DataGridTextColumn Binding="{Binding Hexa1}" CanUserSort="False"
+                                                        CanUserResize="False" Header="01 " />
+                                    <DataGridTextColumn Binding="{Binding Hexa2}" CanUserSort="False"
+                                                        CanUserResize="False" Header="02 " />
+                                    <DataGridTextColumn Binding="{Binding Hexa3}" CanUserSort="False"
+                                                        CanUserResize="False" Header="03 " />
+                                    <DataGridTextColumn Binding="{Binding Hexa4}" CanUserSort="False"
+                                                        CanUserResize="False" Header="04 " />
+                                    <DataGridTextColumn Binding="{Binding Hexa5}" CanUserSort="False"
+                                                        CanUserResize="False" Header="05 " />
+                                    <DataGridTextColumn Binding="{Binding Hexa6}" CanUserSort="False"
+                                                        CanUserResize="False" Header="06 " />
+                                    <DataGridTextColumn Binding="{Binding Hexa7}" CanUserSort="False"
+                                                        CanUserResize="False" Header="07 " />
+                                    <DataGridTextColumn CanUserSort="False" CanUserResize="False" Width="25" Header="" />
+                                    <DataGridTextColumn Binding="{Binding Ascii}" CanUserSort="False"
+                                                        CanUserResize="False" Header="ASCII" Width="200" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                        </telerik:RadDocumentPane>
+
+                        <telerik:RadDocumentPane Header="Network Header" />
+                        <telerik:RadDocumentPane Header="Transport Header" />
+                        <telerik:RadDocumentPane Header="Application" />
+                    </telerik:RadPaneGroup>
+                </telerik:RadSplitContainer>
+            </telerik:RadDocking.DocumentHost>
+
+
+        </telerik:RadDocking>
+
+    </Grid>
+
+</views:DetectiveDataEntityPaneViewBase>

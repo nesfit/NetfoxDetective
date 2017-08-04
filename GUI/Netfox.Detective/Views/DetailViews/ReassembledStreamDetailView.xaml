@@ -1,0 +1,95 @@
+﻿<views:DetectiveDataEntityPaneViewBase xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                                       x:Class="Netfox.Detective.Views.DetailViews.ReassembledStreamDetailView"
+                                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                       xmlns:views="clr-namespace:Netfox.Detective.Views"
+                                       xmlns:converters="clr-namespace:Netfox.Detective.Views.Converters"
+                                       xmlns:conversations="clr-namespace:Netfox.Detective.ViewModelsDataEntity.Conversations"
+                                       mc:Ignorable="d"
+                                       x:Name="ThisElement"
+                                       d:DataContext="{d:DesignInstance conversations:ReassembledStreamDetailVm}"
+                                       d:DesignHeight="375" d:DesignWidth="500">
+    <views:DetectiveDataEntityPaneViewBase.Resources>
+        <ResourceDictionary>
+            <converters:PDUDirectionToColorConverter x:Key="PDUDirectionToColorConverter" />
+        </ResourceDictionary>
+    </views:DetectiveDataEntityPaneViewBase.Resources>
+
+    <Grid Margin="10">
+        <telerik:RadTabControl>
+            <telerik:RadTabItem Header="Plaintext">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="220" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Encoding :" Margin="5 0 0 0" VerticalAlignment="Center" />
+                        <telerik:RadComboBox
+                            Grid.Column="1"
+                            Margin="10 0 0 0"
+                            ItemsSource="{Binding  Path=Encodings}"
+                            SelectedItem="{Binding Path=ConversationVm.L7PlaintextEncoding, Mode=TwoWay}">
+                            <telerik:RadComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=DisplayName, Mode=OneWay}" />
+                                </DataTemplate>
+                            </telerik:RadComboBox.ItemTemplate>
+                        </telerik:RadComboBox>
+
+                        <telerik:RadButton Grid.Column="2" HorizontalAlignment="Right" Width="120"
+                                           Content="Save selected as" Click="SaveAsButton_Click" />
+                    </Grid>
+
+
+                    <telerik:RadListBox
+                        Grid.Row="1" SelectionMode="Extended" x:Name="StreamListBox"
+                        ScrollViewer.CanContentScroll="False"
+                        ItemsSource="{Binding Path=ConversationVm.ReassembledStream}">
+                        <telerik:RadListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <WrapPanel Orientation="Horizontal"
+                                               FocusManager.FocusedElement="{Binding ElementName=tbText}">
+                                        <TextBox IsReadOnly="True" BorderThickness="0" x:Name="tbText"
+                                                 Text="{Binding Path=PlainTextValue, Mode=OneWay}"
+                                                 Foreground="{Binding Path=FlowDirection, Converter={StaticResource PDUDirectionToColorConverter}}"
+                                                 FontFamily="Courier new" />
+                                    </WrapPanel>
+                                </Grid>
+                            </DataTemplate>
+
+                        </telerik:RadListBox.ItemTemplate>
+                    </telerik:RadListBox>
+                </Grid>
+            </telerik:RadTabItem>
+
+            <telerik:RadTabItem Header="Hex Dump">
+
+                <telerik:RadListBox
+
+                    ScrollViewer.CanContentScroll="False"
+                    ItemsSource="{Binding Path=ConversationVm.ReassembledStream}">
+                    <telerik:RadListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBox IsReadOnly="True" BorderThickness="0"
+                                     Text="{Binding Path=HexValue, Mode=OneWay}"
+                                     Foreground="{Binding Path=FlowDirection, Converter={StaticResource PDUDirectionToColorConverter}}"
+                                     FontFamily="Courier new" />
+                        </DataTemplate>
+                    </telerik:RadListBox.ItemTemplate>
+                </telerik:RadListBox>
+
+            </telerik:RadTabItem>
+        </telerik:RadTabControl>
+    </Grid>
+
+</views:DetectiveDataEntityPaneViewBase>

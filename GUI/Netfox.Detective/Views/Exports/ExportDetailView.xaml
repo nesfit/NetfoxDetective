@@ -1,0 +1,59 @@
+﻿<views:DetectiveDataEntityPaneViewBase x:Class="Netfox.Detective.Views.Exports.ExportDetailView"
+                                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                       xmlns:telerikDocking="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Docking"
+                                       xmlns:views="clr-namespace:Netfox.Detective.Views"
+                                       xmlns:windows="clr-namespace:Netfox.Detective.Views.Windows"
+                                       xmlns:exportObjectDetailViews="clr-namespace:Netfox.Detective.Views.Exports.ExportObjectDetailViews"
+                                       xmlns:explorers="clr-namespace:Netfox.Detective.Views.Exports.Explorers"
+                                       xmlns:exports="clr-namespace:Netfox.Detective.ViewModelsDataEntity.Exports"
+                                       mc:Ignorable="d"
+                                       d:DesignHeight="300" d:DesignWidth="300"
+                                       d:DataContext="{d:DesignInstance exports:ExportDetailVm, d:IsDesignTimeCreatable=False}">
+    <Grid>
+        <telerikDocking:RadDocking x:Name="MainDocking"
+                                   BorderThickness="0"
+                                   PanesSource="{Binding ViewPanesVMs}"
+                                   Padding="0" Background="{StaticResource LightGrayBrush}">
+            <telerikDocking:RadDocking.DockingPanesFactory>
+                <windows:DetectiveDockingPanesFactory />
+            </telerikDocking:RadDocking.DockingPanesFactory>
+            <telerikDocking:RadDocking.CurrentSaveLoadLayoutHelper>
+                <windows:DockingSaveLoadLayoutHelper />
+            </telerikDocking:RadDocking.CurrentSaveLoadLayoutHelper>
+            <telerikDocking:RadDocking.DocumentHost>
+                <telerikDocking:RadSplitContainer>
+                    <telerikDocking:RadPaneGroup x:Name="DockedDocument"
+                                                 telerikDocking:RadDocking.SerializationTag="DockedDocument">
+                        <telerikDocking:RadPane Header="Generic details">
+                            <exportObjectDetailViews:GenericDetailView DataContext="{Binding ExportVm}" />
+                        </telerikDocking:RadPane>
+                    </telerikDocking:RadPaneGroup>
+                </telerikDocking:RadSplitContainer>
+            </telerikDocking:RadDocking.DocumentHost>
+            <telerikDocking:RadSplitContainer InitialPosition="DockedLeft" MinWidth="220" Width="300" MaxWidth="600"
+                                              telerikDocking:DockingPanel.InitialSize="210,150">
+                <telerikDocking:RadPaneGroup Name="DockedLeft" telerikDocking:RadDocking.SerializationTag="DockedLeft">
+                    <telerikDocking:RadPane Header="Generic events">
+                        <explorers:GenericEventsExplorerView DataContext="{Binding ExportVm}" />
+                    </telerikDocking:RadPane>
+                </telerikDocking:RadPaneGroup>
+            </telerikDocking:RadSplitContainer>
+
+
+            <telerikDocking:RadSplitContainer InitialPosition="DockedRight" MinWidth="0" Width="0" MaxWidth="600"
+                                              telerikDocking:DockingPanel.InitialSize="210,150">
+                <telerikDocking:RadPaneGroup x:Name="DockedRight"
+                                             telerikDocking:RadDocking.SerializationTag="DockedRight" />
+            </telerikDocking:RadSplitContainer>
+
+            <telerikDocking:RadSplitContainer InitialPosition="DockedBottom"
+                                              telerikDocking:DockingPanel.InitialSize="200,200">
+                <telerikDocking:RadPaneGroup x:Name="DockedBottom"
+                                             telerikDocking:RadDocking.SerializationTag="DockedBottom" />
+            </telerikDocking:RadSplitContainer>
+        </telerikDocking:RadDocking>
+    </Grid>
+</views:DetectiveDataEntityPaneViewBase>

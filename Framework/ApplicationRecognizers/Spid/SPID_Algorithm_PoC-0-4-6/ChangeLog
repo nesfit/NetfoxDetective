@@ -1,0 +1,22 @@
+SPID 0.4.6	2010-04-17	Erik Hjelmvik
+
+	* Added obfuscated protocols to the protocol model database. These protocols
+	include MSE (encrypted BitTorrent), eDonkey protocol obfuscation, Skype (both
+	the TCP and UDP protocol) and finally Spotify (both the server streaming
+	protocol and the peer-to-peer protocol).
+	
+
+SPID 0.4.5	2009-12-31	Erik Hjelmvik
+
+	* Added the "-td" command line switch to build protocol database XML files
+	from pcap files.
+	
+	* Added LICENSE-SPID.txt file to explicitly state the the license conditions.
+
+
+SPID 0.4.4	2009-12-13	Erik Hjelmvik
+
+	* Generalized the session concept so that UDP sessions can be treated the same
+	way as TCP sessions.
+	
+	* Added UDP protocols such as DNS and ISAKMP to the default protocol database.

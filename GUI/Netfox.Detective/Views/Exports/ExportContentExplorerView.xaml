@@ -1,0 +1,133 @@
+﻿<views:DetectiveApplicationPaneViewBase xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                                        x:Class="Netfox.Detective.Views.Exports.ExportContentExplorerView"
+                                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                        xmlns:views="clr-namespace:Netfox.Detective.Views"
+                                        xmlns:converters="clr-namespace:Netfox.Detective.Views.Converters"
+                                        xmlns:windows="clr-namespace:Netfox.Detective.Views.Windows"
+                                        xmlns:exports="clr-namespace:Netfox.Detective.ViewModels.Exports"
+                                        mc:Ignorable="d"
+                                        d:DesignHeight="550" d:DesignWidth="800"
+                                        d:DataContext="{d:DesignInstance exports:ExportContentExplorerVm, d:IsDesignTimeCreatable=False}">
+    <views:DetectiveApplicationPaneViewBase.Resources>
+        <ResourceDictionary>
+            <converters:BoolToVisibilityConverter x:Key="Converter.BoolToVisibilityConverter" />
+        </ResourceDictionary>
+    </views:DetectiveApplicationPaneViewBase.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid Margin="6 6 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Image Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/Icons/notepad_2.png"
+                   Width="25" Height="25"
+                   Margin="0 0 5 0" Grid.Column="0" />
+
+            <Border Style="{StaticResource Style.Border.Header}" Grid.Column="1">
+                <TextBlock Margin="6 0 0 0" Style="{StaticResource Style.TextBlock.Header}"
+                           HorizontalAlignment="Left" VerticalAlignment="Center"
+                           Text="Exported data" />
+
+            </Border>
+            <!--<plugins:PluginsActivator Margin="10 0 0 0" Grid.Column="3" />-->
+        </Grid>
+
+
+        <Grid Grid.Row="1" Margin="0 5 0 0" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Style="{StaticResource Style.TextBlock.Label}"
+                       Grid.Row="0" Grid.Column="0" Margin="6,3,3,3" VerticalAlignment="Center" Text="Total events:" />
+            <TextBlock Text="{Binding EventsCount}"
+                       Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Margin="6,3,3,3"
+                       Style="{StaticResource Style.TextBlock.Content}" />
+
+            <TextBlock Style="{StaticResource Style.TextBlock.Label}"
+                       Grid.Row="0" Grid.Column="2" Margin="6,3,3,3" Text="Period:" VerticalAlignment="Center" />
+            <TextBox IsReadOnly="True"
+                     Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" Margin="6,3,3,3"
+                     Text="{Binding Period, Mode=OneWay}" />
+
+
+            <Button Grid.Row="0" Grid.Column="4" Margin="6,3,3,3" Content="Goto Conversation"
+                    Command="{Binding CSelectConversation}" VerticalAlignment="Center"
+                    Style="{StaticResource LinkButton}" />
+
+            <Button Grid.Row="0" Grid.Column="5" Margin="6,3,12,3" Content="Goto Capture"
+                    Command="{Binding CSelectCapture}" VerticalAlignment="Center" Style="{StaticResource LinkButton}" />
+
+
+        </Grid>
+
+        <!--Working but commented only for rad testing of whole solution-->
+        <telerik:RadDocking x:Name="MainDocking"
+                            PreviewShowCompass="OnPreviewShowCompass"
+                            PanesSource="{Binding ExportPanesVMs}"
+                            Close="OnClose"
+                            Grid.Row="2" Margin="10"
+                            BorderThickness="0"
+                            Padding="0" Background="{StaticResource LightGrayBrush}">
+            <telerik:RadDocking.DockingPanesFactory>
+                <windows:DetectiveDockingPanesFactory />
+            </telerik:RadDocking.DockingPanesFactory>
+            <telerik:RadDocking.CurrentSaveLoadLayoutHelper>
+                <windows:DockingSaveLoadLayoutHelper />
+            </telerik:RadDocking.CurrentSaveLoadLayoutHelper>
+
+            <telerik:RadDocking.DocumentHost>
+                <telerik:RadSplitContainer>
+                    <telerik:RadPaneGroup x:Name="documentGroup" telerik:RadDocking.SerializationTag="documentGroup" />
+                </telerik:RadSplitContainer>
+            </telerik:RadDocking.DocumentHost>
+            <telerik:RadSplitContainer InitialPosition="DockedLeft" MinWidth="220" Width="300" MaxWidth="600"
+                                       telerik:DockingPanel.InitialSize="210,150">
+                <telerik:RadPaneGroup Name="leftGroup" telerik:RadDocking.SerializationTag="leftGroup" />
+            </telerik:RadSplitContainer>
+
+
+            <telerik:RadSplitContainer InitialPosition="DockedRight" MinWidth="0" Width="0" MaxWidth="600"
+                                       telerik:DockingPanel.InitialSize="210,150">
+                <telerik:RadPaneGroup x:Name="rightGroup" telerik:RadDocking.SerializationTag="rightGroup" />
+            </telerik:RadSplitContainer>
+
+            <telerik:RadSplitContainer InitialPosition="DockedBottom" telerik:DockingPanel.InitialSize="200,200">
+                <telerik:RadPaneGroup x:Name="bottomGroup" telerik:RadDocking.SerializationTag="bottomGroup" />
+            </telerik:RadSplitContainer>
+        </telerik:RadDocking>
+
+
+        <!--<telerik:RadExpander
+            Visibility="{Binding Path=AnyPluginsView, ElementName=EntityPluginsViewsControl, Converter={StaticResource Converter.BoolToVisibilityConverter}}"
+            Style="{StaticResource ResourceKey=Style.RadExpander}" Grid.Row="3" IsExpanded="True">
+            <telerik:RadExpander.Header>
+                <TextBlock Text="Plugins" />
+            </telerik:RadExpander.Header>
+            <telerik:RadExpander.Content>
+                <plugins:EntityPluginsViewsControl x:Name="EntityPluginsViewsControl" EntityType="ExportGroup" />
+            </telerik:RadExpander.Content>
+        </telerik:RadExpander>-->
+    </Grid>
+
+</views:DetectiveApplicationPaneViewBase>

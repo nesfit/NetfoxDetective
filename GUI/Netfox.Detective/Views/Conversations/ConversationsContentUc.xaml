@@ -1,0 +1,95 @@
+﻿<UserControl x:Class="Netfox.Detective.Views.Conversations.ConversationsContentUc"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:conversations="clr-namespace:Netfox.Detective.Views.Conversations"
+             xmlns:helpers="clr-namespace:Netfox.Detective.Views.Helpers"
+             xmlns:exportsControls="clr-namespace:Netfox.Detective.Views.Exports.ExportsControls"
+             xmlns:conversationsCollections="clr-namespace:Netfox.Detective.ViewModelsDataEntity.ConversationsCollections"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="700" MinHeight="300" MinWidth="200"
+             DataContext="{Binding}"
+             d:DataContext="{d:DesignInstance conversationsCollections:IConversationsVm, IsDesignTimeCreatable=False}">
+    <Grid Background="White" Margin="5 5 5 0" Height="Auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <telerik:RadTabControl Grid.Row="1">
+            <telerik:RadTabItem Header="Conversations L3">
+                <conversations:ConversationsListUc SelectedItem="{Binding CurrentConversation, Mode=TwoWay}"
+                                                   ItemsSource="{Binding L3Conversations}"
+                                                   CCreateConversationsGroup="{Binding CCreateConversationsGroup}"
+                                                   CDoubleClickedConversation="{Binding CShowConversationDetail}" />
+            </telerik:RadTabItem>
+
+            <telerik:RadTabItem Header="Conversations L4">
+                <conversations:ConversationsListUc SelectedItem="{Binding CurrentConversation, Mode=TwoWay}"
+                                                   ItemsSource="{Binding L4Conversations}"
+                                                   CCreateConversationsGroup="{Binding CCreateConversationsGroup}"
+                                                   CDoubleClickedConversation="{Binding CShowConversationDetail}" />
+            </telerik:RadTabItem>
+
+            <telerik:RadTabItem Header="Conversations L7">
+                <conversations:ConversationsListUc SelectedItem="{Binding CurrentConversation, Mode=TwoWay}"
+                                                   ItemsSource="{Binding L7Conversations}"
+                                                   CCreateConversationsGroup="{Binding CCreateConversationsGroup}"
+                                                   CDoubleClickedConversation="{Binding CShowConversationDetail}" />
+            </telerik:RadTabItem>
+
+            <!-- PACKETS -->
+            <telerik:RadTabItem Header="Frames">
+                <helpers:FramesListUc SelectedItem="{Binding CurrentFrame, Mode=TwoWay}" ItemsSource="{Binding Frames}"
+                                      CDoubleClickedFrame="{Binding CShowFrameDetail}" />
+            </telerik:RadTabItem>
+
+            <telerik:RadTabItem Header="Exports">
+                <exportsControls:ExportResultsUc x:Name="ExportResultsListView" />
+            </telerik:RadTabItem>
+            <!--<telerik:RadTabItem Header="F test">
+                <DataGrid 
+                          ItemsSource="{Binding Frames}"
+                          ScrollViewer.IsDeferredScrollingEnabled="True" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        --><!--<DataGridTextColumn Header="TimeStamp" Binding="{Binding TimeStamp}" />
+                                <DataGridTextColumn Header="Source" Binding="{Binding Source}" />
+                                <DataGridTextColumn Header="Destination" Binding="{Binding Destination}" />--><!--
+
+                        <DataGridTextColumn Binding="{Binding FrameIndex, Mode=OneWay}" Header="# " />
+                        <DataGridTextColumn Binding="{Binding TimeStamp, Mode=OneWay}" Header="Time" />
+                        <DataGridTextColumn Binding="{Binding L2SourceAddress , Mode=OneWay}" Header="L2 Source" />
+                        <DataGridTextColumn Binding="{Binding Source , Mode=OneWay}" Header="Source" />
+                        <DataGridTextColumn Binding="{Binding L2TargetAddress , Mode=OneWay}" Header="L2 Target" />
+                        <DataGridTextColumn Binding="{Binding Destination, Mode=OneWay}" Header="Target" />
+                        <DataGridTextColumn Binding="{Binding PacketType, Mode=OneWay}" Header="Protocol" />
+                        <DataGridTextColumn Binding="{Binding FrameSize, Mode=OneWay}" Header="Frame Size" />
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </telerik:RadTabItem>
+
+            <telerik:RadTabItem Header="telerik F test">
+                <telerik:RadGridView Height="300"
+                          ItemsSource="{Binding Frames}"
+                          ScrollViewer.IsDeferredScrollingEnabled="True" AutoGenerateColumns="False">
+                    <telerik:RadGridView.Columns>
+
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding FrameIndex, Mode=OneWay}" Header="# " />
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding TimeStamp, Mode=OneWay}" Header="Time" />
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding L2SourceAddress , Mode=OneWay}" Header="L2 Source" />
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding Source , Mode=OneWay}" Header="Source" />
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding L2TargetAddress , Mode=OneWay}" Header="L2 Target" />
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding Destination, Mode=OneWay}" Header="Target" />
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding PacketType, Mode=OneWay}" Header="Protocol" />
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding FrameSize, Mode=OneWay}" Header="Frame Size" />
+
+                    </telerik:RadGridView.Columns>
+                </telerik:RadGridView>
+            </telerik:RadTabItem>-->
+
+        </telerik:RadTabControl>
+    </Grid>
+
+</UserControl>

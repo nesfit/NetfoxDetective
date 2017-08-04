@@ -1,0 +1,195 @@
+﻿<views:DetectiveApplicationPaneViewBase xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                        xmlns:views="clr-namespace:Netfox.Detective.Views"
+                                        xmlns:exports="clr-namespace:Netfox.Detective.ViewModels.Exports"
+                                        x:Class="Netfox.Detective.Views.Exports.SelectiveExportView"
+                                        mc:Ignorable="d"
+                                        d:DesignHeight="415" d:DesignWidth="650"
+                                        d:DataContext="{d:DesignInstance exports:SelectiveExportVm, IsDesignTimeCreatable=False}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Border Style="{StaticResource Style.Border.Header}">
+            <TextBlock Margin="6 6 0 0" Style="{StaticResource Style.TextBlock.Header}"
+                       HorizontalAlignment="Left"
+                       Text="Export Application data" />
+        </Border>
+        <TextBlock Margin="10 0 0 0" Grid.Row="1" FontWeight="Bold" Text="Sletected conversations to export :" />
+
+
+        <telerik:RadGridView Grid.Row="2" EnableRowVirtualization="True" Margin="10 5 5 10"
+                             SelectedItem="{Binding CurrentConversation, Mode=TwoWay}"
+                             AutoGenerateColumns="False" IsReadOnly="True"
+                             Style="{StaticResource Style.DataGridView}"
+                             ItemsSource="{Binding Path=InvestigationVm.ToExportConversations, Mode=OneWay}">
+
+            <telerik:RadGridView.Columns>
+
+
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Path=FirstSeen, Mode=OneWay}"
+                                            Header="First Seen " />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding Path=LastSeen, Mode=OneWay}"
+                                            Header="Last Seen " />
+                <telerik:GridViewDataColumn
+                    DataMemberBinding="{Binding Path=ProtocolType, Mode=OneWay}" Header="Transport " />
+                <telerik:GridViewDataColumn
+                    DataMemberBinding="{Binding Path=ApplicationTag, Mode=OneWay}"
+                    Header="Application " />
+                <telerik:GridViewDataColumn
+                    DataMemberBinding="{Binding Path=SourceEndPointString, Mode=OneWay}" Header="Client " />
+                <telerik:GridViewDataColumn
+                    DataMemberBinding="{Binding Path=TargetEndPointString, Mode=OneWay}" Header="Server " />
+                <telerik:GridViewDataColumn
+                    DataMemberBinding="{Binding Path=UpFlowFramesCount, Mode=OneWay}"
+                    Header="Frms Up " />
+                <telerik:GridViewDataColumn
+                    DataMemberBinding="{Binding Path=UpFlowBytes, Mode=OneWay}" Header="Bytes Up " />
+                <telerik:GridViewDataColumn
+                    DataMemberBinding="{Binding Path=DownFlowFramesCount, Mode=OneWay}"
+                    Header="Frms Down " />
+                <telerik:GridViewDataColumn
+                    DataMemberBinding="{Binding Path=DownFlowBytes, Mode=OneWay}" Header="Bytes Down " />
+
+
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+
+        <!--
+        <DataGrid Margin="10 5 5 10" Grid.Row="2" x:Name="radConversationSummaryDataGrid"
+                  Style="{StaticResource ResourceKey=Style.DataGrid}"
+                  SelectedItem="{Binding CurrentConversation, Mode=TwoWay}"
+                  ColumnHeaderStyle="{StaticResource ResourceKey=Style.GridView.Header}"
+                  IsReadOnly="True"
+                  ItemsSource="{Binding ToExportConversations, Mode=OneWay}"
+                  SelectionMode="Single" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=Data.FirstSeen, Mode=OneWay}" CanUserResize="False"
+                                    Header="First seen" />
+                <DataGridTextColumn Binding="{Binding ShortName, Mode=OneWay}" CanUserResize="False"
+                                    Header="Conversation" />
+                <DataGridTextColumn Binding="{Binding Path=Data.Bytes, Mode=OneWay}" CanUserResize="False"
+                                    Header="Total Bytes" />
+
+            </DataGrid.Columns>
+        </DataGrid>
+-->
+        <Grid Grid.Row="3" Margin="10 0 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Slected :" Margin="0 0 5 0" />
+            <TextBlock Text="{Binding Path=InvestigationVm.ToExportConversations.Count}" Grid.Column="1"
+                       Margin="0 0 5 0" />
+
+            
+
+            <telerik:RadButton Grid.Column="4" Margin="0 0 5 0" Width="150" Content="Clear selection"
+                               HorizontalAlignment="Right" Command="{Binding CClearToExport}" />
+        </Grid>
+        <Grid Grid.Row="4">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <telerik:RadListBox Grid.Column="0" Margin="5"
+                                    ItemsSource="{Binding Path=InvestigationVm.AvailableExporters, Mode=OneWay}"
+                                    BorderThickness="0"
+                                    ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <telerik:RadListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" IsItemsHost="True"
+                                       ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
+                        </ItemsPanelTemplate>
+                    </telerik:RadListBox.ItemsPanel>
+                    <telerik:RadListBox.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding Path=IsEnabled}" Margin="10 5 5 5" Width="100"
+                                      Content="{Binding Path=Name, Mode=OneWay}" />
+                        </DataTemplate>
+                    </telerik:RadListBox.ItemTemplate>
+                </telerik:RadListBox>
+
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <CheckBox Margin="0 10 0 10" Grid.Row="0"
+                              Content="Apply export on all conversations (don't use application tag)"
+                              IsChecked="{Binding Path=InvestigationVm.DontUseApplicationTag}"
+                              VerticalAlignment="Center"
+                              Grid.Column="0" />
+
+                    <GroupBox Header="Output group :" Grid.Row="1" DataContext="{Binding InvestigationVm}">
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="0" Margin="0 0 5 0" Text="Name:" VerticalAlignment="Center" />
+                            <TextBox Grid.Column="1" Margin="0 0 0 0" Grid.Row="0" VerticalAlignment="Center"
+                                     Text="{Binding Path=ExportGroupName}"
+                                     IsEnabled="{Binding Path=ExportToRootGroupsInver}" />
+                            <CheckBox Margin="0 10 0 0" Grid.Row="2" Content="Export to root groups"
+                                      IsChecked="{Binding Path=ExportToRootGroups}" VerticalAlignment="Center"
+                                      Grid.Column="1" />
+                            <CheckBox Margin="0 10 0 0" Grid.Row="3" Content="Create subgroup for each sleuth"
+                                      IsChecked="{Binding Path=CreateSubGroup}" VerticalAlignment="Center"
+                                      Grid.Column="1"
+                                      IsEnabled="{Binding Path=ExportToRootGroupsInver}" />
+                            <CheckBox Margin="0 10 0 0" Grid.Row="4" Content="Show results during operation (slower)"
+                                      IsChecked="{Binding Path=ShowExportedObjects}" VerticalAlignment="Center"
+                                      Grid.Column="1" />
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+
+
+            </Grid>
+
+
+            <Grid Grid.Row="1" Margin="-1,0,1,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <telerik:RadButton Margin="5 0 5 5" Grid.Column="1" Width="150" Content="Start Export"
+                                   HorizontalAlignment="Right" Command="{Binding CExport}" />
+            </Grid>
+
+        </Grid>
+
+
+    </Grid>
+</views:DetectiveApplicationPaneViewBase>

@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="Netfox.AnalyzerSIPFraud.Views.NemeaSipFraudStats"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:viewModels="clr-namespace:Netfox.AnalyzerSIPFraud.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="300"
+             d:DataContext="{d:DesignInstance viewModels:NemeaSipFraudStatsVm}"
+             >
+    <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Invites" Grid.Column="0" Grid.Row="0" />
+        <TextBlock Text="Callers" Grid.Column="0" Grid.Row="1" />
+        <TextBlock Text="Callees" Grid.Column="0" Grid.Row="2" />
+        <TextBlock Text="Calls per caller" Grid.Column="0" Grid.Row="3" />
+        <TextBlock Text="Suspicious IPs" Grid.Column="0" Grid.Row="4" />
+        
+        <TextBlock Text="{Binding InviteCount}" Grid.Column="1" Grid.Row="0" />
+        <TextBlock Text="{Binding CallerCount}" Grid.Column="1" Grid.Row="1" />
+        <TextBlock Text="{Binding CalleeCount}" Grid.Column="1" Grid.Row="2" />
+        <TextBlock Text="{Binding CallsPerCaller}" Grid.Column="1" Grid.Row="3" />
+        <!--<ListView ItemsSource="{Binding SuspiciousIPs, Mode=OneWay}"   />-->
+        <ItemsControl ItemsSource="{Binding SuspiciousIPs, Mode=OneWay}"   Grid.Column="1" Grid.Row="4">
+                        <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                        <TextBlock Text="{Binding }" />
+                                </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+
+
+    </Grid>
+</UserControl>

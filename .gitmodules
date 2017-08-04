@@ -1,0 +1,9 @@
+[submodule "lib"]
+	path = lib
+	url = http://nessc.fit.vutbr.cz:8080/tfs/Netfox/NetFox/_git/lib
+[submodule "private"]
+	path = private
+	url = http://nessc.fit.vutbr.cz:8080/tfs/Netfox/NetFox/_git/private
+[submodule "TestingData"]
+	path = TestingData
+	url = http://nessc.fit.vutbr.cz:8080/tfs/Netfox/NetFox/_git/TestingData

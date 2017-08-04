@@ -1,0 +1,160 @@
+﻿<views:DetectiveWindowBase
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    x:Class="Netfox.Detective.Views.Windows.NewWorkspaceInvestionWizardView"
+    Height="auto" Width="700"
+    IsTopmost="True"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:Netfox.Detective.Core.BaseTypes.Views"
+    xmlns:workspaces="clr-namespace:Netfox.Detective.ViewModels.Workspaces"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance workspaces:NewWorkspaceInvestigationWizardVm, IsDesignTimeCreatable=False}"
+    Header="{Binding Path=HeaderText}">
+    <telerik:RadWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary x:Name="LocalStyle">
+                    <Style x:Key="BigHeader" TargetType="{x:Type TextBlock}">
+                        <Setter Property="FontSize" Value="20" />
+                        <Setter Property="FontFamily" Value="Segoe UI" />
+                        <Setter Property="VerticalAlignment" Value="Top" />
+                        <Setter Property="Margin" Value="12,6,0,6" />
+                        <Setter Property="Foreground" Value="#FF0055aa" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </telerik:RadWindow.Resources>
+    <telerik:RadWindow.Icon>
+        <Image Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/fox2white.ico" Height="30" />
+    </telerik:RadWindow.Icon>
+    <Grid>
+        <telerik:RadTabControl x:Name="WizardTabControl"
+                               TabStripPlacement="Left"
+                               Align="Right"
+                               TabOrientation="Vertical">
+
+            <telerik:RadTabItem Header="Workspace">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="39*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="34*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Create new Workspace" Grid.ColumnSpan="2" Style="{StaticResource BigHeader}" />
+                    <StackPanel Margin="15 15 0 0" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+                        <TextBlock Text="1. Choose workspace name" />
+                        <telerik:RadWatermarkTextBox Margin="8 5 8 0" Text="{Binding WorkspaceName, UpdateSourceTrigger=PropertyChanged}"
+                                                     WatermarkContent="{Binding WorkspaceName}" />
+                    </StackPanel>
+                    <StackPanel Margin="15 15 0 0" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
+                        <TextBlock Text="2. Choose investigation name" />
+                        <telerik:RadWatermarkTextBox Margin="8 5 8 0" Text="{Binding InvestigationName, UpdateSourceTrigger=PropertyChanged}"
+                                                     WatermarkContent="{Binding InvestigationName}" />
+                    </StackPanel>
+                    <StackPanel Margin="15 15 0 0" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">
+                        <TextBlock Text="3. Choose workspace location" />
+                        <Grid Margin="8 5 8 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <telerik:RadWatermarkTextBox x:Name="PathTextBox" Text="{Binding WorkspaceStoragePath}"
+                                                         WatermarkContent="{Binding WorkspaceStoragePath}" />
+                            <telerik:RadButton Content="..." Width="40" Height="25" Grid.Column="1"
+                                               HorizontalAlignment="Left" Margin="10 0 0 0"
+                                               Command="{Binding OpenDirectory}" />
+                        </Grid>
+                    </StackPanel>
+
+                    <telerik:RadButton Grid.Row="4" Grid.Column="1" x:Name="StepButton3"
+                                       HorizontalAlignment="Right" Width="100"
+                                       Content="Create workspace" Margin="5" Command="{Binding CreateNewWorkspace}" />
+                </Grid>
+            </telerik:RadTabItem>
+            <telerik:RadTabItem Header="Investigation">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="39*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Detailed Investigation Settings" Grid.ColumnSpan="2" Style="{StaticResource BigHeader}" />
+                    <StackPanel Margin="15 15 0 0" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+                        <TextBlock Text="1. Choose investigation name" />
+                        <telerik:RadWatermarkTextBox Margin="8 5 8 0" Text="{Binding InvestigationName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     WatermarkContent="{Binding InvestigationName}" />
+                    </StackPanel>
+                    <StackPanel Margin="15 5 0 0" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2">
+                        <TextBlock Text="2. Choose DB provider" />
+                        <RadioButton GroupName="DbProvider" Content="In Memory" IsChecked="{Binding IsInMemory}"  />
+                        <RadioButton GroupName="DbProvider" Content="SQL" IsChecked="{Binding IsInMemory,Converter={StaticResource Converter.BoolToBoolInvertConverter}}" />
+                    </StackPanel>
+                    <Grid Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Visibility="{Binding IsInMemory, Converter={StaticResource Converter.BoolToVisibilityConverterInvert}}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Margin="15 5 0 0" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+                            <TextBlock Text="2. Choose DB connection string" />
+                            <telerik:RadWatermarkTextBox Margin="8 5 8 0" Text="{Binding ConnectionString, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     WatermarkContent="{Binding ConnectionString}" />
+                        </StackPanel>
+                        <TextBlock Text="OR provide following information"  Margin="15 5 0 0" Grid.Column="0" Grid.Row="2" FontWeight="Bold" />
+                        <StackPanel  Margin="15 5 0 0" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="1">
+                            <TextBlock Text="1. User name" />
+                            <telerik:RadWatermarkTextBox Margin="8 5 8 0" Text="{Binding UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     WatermarkContent="{Binding UserName}" />
+                        </StackPanel>
+                        <StackPanel Margin="15 5 0 0" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="1">
+                            <TextBlock Text="2. Password" />
+                            <telerik:RadWatermarkTextBox Margin="8 5 8 0" Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     WatermarkContent="{Binding Password}" />
+                        </StackPanel>
+                        <StackPanel Margin="15 5 0 0" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="1">
+                            <TextBlock Text="3. Data source" />
+                            <telerik:RadWatermarkTextBox Margin="8 5 8 0" Text="{Binding DataSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     WatermarkContent="{Binding DataSourceDefault}" />
+                        </StackPanel>
+                        <StackPanel Margin="15 5 0 0" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="1" Orientation="Vertical">
+                            <TextBlock Text="4. Storage placement" />
+                            <CheckBox IsChecked="{Binding StoreDatabaseWithInvestigation}" Margin="15 5 0 0" >Store database with investigation</CheckBox>
+                        </StackPanel>
+                    </Grid>
+                    
+
+                    <telerik:RadButton Grid.Row="7" Grid.Column="1" 
+                                       HorizontalAlignment="Right" Width="127"
+                                       Content="Create investigation!" Margin="0,5,5,5" Command="{Binding CreateNewInvestigation}" />
+                </Grid>
+            </telerik:RadTabItem>
+        </telerik:RadTabControl>
+    </Grid>
+</views:DetectiveWindowBase>

@@ -1,0 +1,11 @@
+var gitGraph = new GitGraph({
+  template: "metro",
+  author: "John Doe"
+});
+var develop = gitGraph.branch("origin/develop");
+develop.commit("some work")
+var my_work = gitGraph.branch("origin/feature/my-work");
+my_work.commit("foo commit");
+my_work.commit("bar commit");
+develop.merge(my_work, "updated feature/my-work from develop");
+my_work.merge(develop, {message: "merged origin/feature/my-work to origin/develop", author: "John Reviewer"})

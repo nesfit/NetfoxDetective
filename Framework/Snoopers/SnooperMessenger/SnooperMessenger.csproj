@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1E69C5AE-9589-4A00-A2B5-E80D84A46928}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Netfox.SnooperMessenger</RootNamespace>
+    <AssemblyName>Netfox.SnooperMessenger</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.1.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Castle.Core.4.1.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Castle.Windsor.4.0.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Reactive.Interfaces, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Reactive.Interfaces.3.1.1\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Runtime.Extensions.4.3.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Infrastructure\SnooperMessengerWindsorInstaller.cs" />
+    <Compile Include="Models\Events\MessengerEventBase.cs" />
+    <Compile Include="Models\Events\MessengerEventConnect.cs" />
+    <Compile Include="Models\Events\MessengerEventForegroundState.cs" />
+    <Compile Include="Models\Events\MessengerEventReceiveMessage.cs" />
+    <Compile Include="Models\Events\MessengerEventSendMessage.cs" />
+    <Compile Include="Models\Events\MessengerEventTyping.cs" />
+    <Compile Include="Models\MessengerSnooperExport.cs" />
+    <Compile Include="Protocol\ClientInfo.cs" />
+    <Compile Include="Protocol\ConnectMessage.cs" />
+    <Compile Include="Protocol\Coordinates.cs" />
+    <Compile Include="Protocol\LocationAttachement.cs" />
+    <Compile Include="Protocol\MNMessagesSyncAppAttributionVisibility.cs" />
+    <Compile Include="Protocol\MNMessagesSyncAttachment.cs" />
+    <Compile Include="Protocol\MNMessagesSyncAttachmentAppAttribution.cs" />
+    <Compile Include="Protocol\MNMessagesSyncClientPayload.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaAdminTextMessage.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaBroadcastMessage.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaDeliveryReceipt.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaFolderCount.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaForcedFetch.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaMarkFolderSeen.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaMarkRead.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaMarkUnread.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaMessageDelete.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaNewGroupThread.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaNewMessage.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaNoOp.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaNotificationSettings.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaP2PPaymentMessage.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaPageAdminReply.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaPagesManagerEvent.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaParticipantLeftGroupThread.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaParticipantsAddedToGroupThread.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaPinnedGroups.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaReadReceipt.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaReplaceMessage.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaRTCEventLog.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaSentMessage.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaThreadAction.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaThreadDelete.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaThreadFolder.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaThreadImage.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaThreadMuteSettings.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaThreadName.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaVideoCall.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaWrapper.cs" />
+    <Compile Include="Protocol\MNMessagesSyncDeltaZeroRating.cs" />
+    <Compile Include="Protocol\MNMessagesSyncFailedSend.cs" />
+    <Compile Include="Protocol\MNMessagesSyncImageMetadata.cs" />
+    <Compile Include="Protocol\MNMessagesSyncMessageMetadata.cs" />
+    <Compile Include="Protocol\MNMessagesSyncNotificationDoNotDisturbRange.cs" />
+    <Compile Include="Protocol\MNMessagesSyncParticipantInfo.cs" />
+    <Compile Include="Protocol\MNMessagesSyncTagCount.cs" />
+    <Compile Include="Protocol\MNMessagesSyncThreadKey.cs" />
+    <Compile Include="Protocol\MNMessagesSyncVideoMetadata.cs" />
+    <Compile Include="Protocol\SendMessageRequest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" /><Compile Include="$(SolutionDir)SharedAssemblyInfo.cs"><Link>Properties\SharedAssemblyInfo.cs</Link></Compile>
+    <Compile Include="SnooperMessenger.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Protocol\MessengerProtocol.thrift" />
+    <None Include="SnooperMessenger.licenseheader" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Core\Core.csproj">
+      <Project>{75B3E6D5-8007-4E1F-8A92-1774A5B1D7F1}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\GUI\Netfox.Detective\Netfox.Detective.csproj">
+      <Project>{9FB36484-9F8F-4B22-8A21-9F5E66318214}</Project>
+      <Name>Netfox.Detective</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Misc\thrift\Thrift.csproj">
+      <Project>{499eb63c-d74c-47e8-ae48-a2fc94538e9d}</Project>
+      <Name>Thrift</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ApplicationProtocolExport\ApplicationProtocolExport.csproj">
+      <Project>{0BA2F363-66AF-4F36-9C96-5C30224A88DA}</Project>
+      <Name>ApplicationProtocolExport</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework.Models\Framework.Models.csproj">
+      <Project>{5613CE65-51D2-49E5-BA0D-7CB5D8CB94D9}</Project>
+      <Name>Framework.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SnooperMQTT\SnooperMQTT.csproj">
+      <Project>{8467ea96-e468-4eae-ba4b-24458f9548d6}</Project>
+      <Name>SnooperMQTT</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /C/H/R/S/Y "$(TargetDir)*" "$(SolutionDir)GUI\Netfox.Detective\$(OutDir)"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

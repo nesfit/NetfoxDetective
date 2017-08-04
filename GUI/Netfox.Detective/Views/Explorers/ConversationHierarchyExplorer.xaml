@@ -1,0 +1,115 @@
+﻿<views:DetectiveApplicationPaneViewBase x:Class="Netfox.Detective.Views.Explorers.ConversationHierarchyExplorer"
+                                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                                        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                                        xmlns:command="http://www.galasoft.ch/mvvmlight"
+                                        xmlns:models="clr-namespace:Netfox.Framework.Models;assembly=Netfox.Framework.Models"
+                                        xmlns:views="clr-namespace:Netfox.Detective.Views"
+                                        xmlns:conversations="clr-namespace:Netfox.Detective.ViewModels.Conversations"
+                                        mc:Ignorable="d"
+                                        MinWidth="120"
+                                        d:DesignHeight="300" d:DesignWidth="120"
+                                        d:DataContext="{d:DesignInstance conversations:ConversationHierarchyExplorerVm}">
+    <views:DetectiveApplicationPaneViewBase.Resources>
+        <!--Data template for the L7Conversation object-->
+        <HierarchicalDataTemplate x:Key="L7ConversationTemplate">
+            <StackPanel Orientation="Horizontal" d:DataContext="{d:DesignInstance models:L7Conversation}">
+                <TextBlock Text="{Binding SourceEndPoint}" Foreground="Red" />
+                <TextBlock Text=" - " Foreground="Red" />
+                <TextBlock Text="{Binding DestinationEndPoint}" Foreground="Red" />
+            </StackPanel>
+
+        </HierarchicalDataTemplate>
+
+        <!--Data template for the L4Conversation object-->
+        <HierarchicalDataTemplate
+            x:Key="L4ConversationTemplate"
+            ItemTemplate="{StaticResource L7ConversationTemplate}"
+            ItemsSource="{Binding L7Conversations}">
+            <StackPanel Orientation="Horizontal" d:DataContext="{d:DesignInstance models:L4Conversation}">
+                <TextBlock Text="{Binding SourceEndPoint}" Foreground="Blue" />
+                <TextBlock Text=" - " Foreground="Blue" />
+                <TextBlock Text="{Binding DestinationEndPoint}" Foreground="Blue" />
+            </StackPanel>
+        </HierarchicalDataTemplate>
+
+        <!--Data template for the Organization object-->
+        <HierarchicalDataTemplate
+            x:Key="L3ConversationTemplate"
+            ItemTemplate="{StaticResource L4ConversationTemplate}"
+            ItemsSource="{Binding L4Conversations}">
+            <StackPanel Orientation="Horizontal" d:DataContext="{d:DesignInstance models:L4Conversation}">
+                <TextBlock Text="{Binding SourceEndPoint}" Foreground="Green" />
+                <TextBlock Text=" - " Foreground="Green" />
+                <TextBlock Text="{Binding DestinationEndPoint}" Foreground="Green" />
+            </StackPanel>
+        </HierarchicalDataTemplate>
+    </views:DetectiveApplicationPaneViewBase.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <telerik:RadButton FontWeight="Bold" BorderThickness="0" FontSize="18" HorizontalAlignment="Left"
+                               Width="30" Height="30" Command="{Binding CRemoveConversation}"
+                               ToolTip="Remove conversation">
+                <Image
+                    Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/Icons/doc_minus.png"
+                    Stretch="Fill" />
+            </telerik:RadButton>
+            <telerik:RadButton FontWeight="Bold" BorderThickness="0" FontSize="18" HorizontalAlignment="Left"
+                               Width="30" Height="30" Command="{Binding CClearConversationsList}"
+                               ToolTip="Clear list">
+                <Image
+                    Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/Icons/doc_delete.png"
+                    Stretch="Fill" />
+            </telerik:RadButton>
+            <telerik:RadButton FontWeight="Bold" BorderThickness="0" FontSize="18" HorizontalAlignment="Left"
+                               Width="30" Height="30" Click="ConversationExplorerRadTreeViewExpandAll"
+                               ToolTip="Expand all">
+                <Image
+                    Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/Icons/expanding.png"
+                    Stretch="Fill" />
+            </telerik:RadButton>
+            <telerik:RadButton FontWeight="Bold" BorderThickness="0" FontSize="18" HorizontalAlignment="Left"
+                               Width="30" Height="30"
+                               ToolTip="Collapse all" Click="ConversationExplorerRadTreeViewCollapseAll">
+                <Image
+                    Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/Icons/collapsing.png"
+                    Stretch="Fill" />
+            </telerik:RadButton>
+        </StackPanel>
+        <telerik:RadTreeView
+            Grid.Row="1"
+            x:Name="ConversationExplorerRadTreeView"
+            SelectionMode="Single"
+            IsVirtualizing="True"
+            telerik:TreeViewPanel.IsVirtualizing="True"
+            ItemsSource="{Binding Path=RootConversations}"
+            ItemTemplate="{StaticResource L3ConversationTemplate}"
+            SelectedItem="{Binding SelectedConversation, Mode=TwoWay}"
+            telerik:TextSearch.TextPath="Name"
+            ScrollViewer.VerticalScrollBarVisibility="Auto"
+
+            Margin="0 0 0 0"
+            telerik:TreeViewPanel.TreeVirtualizationMode="Recycling"
+            telerik:AnimationManager.IsAnimationEnabled="False"
+            ItemsIndent="10"
+            IsExpandOnDblClickEnabled="False"
+            IsDragDropEnabled="True"
+            IsDragPreviewEnabled="True"
+            telerik:TreeViewSettings.DragDropExecutionMode="New">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="ItemDoubleClick">
+                    <command:EventToCommand Command="{Binding Mode=OneWay, Path=CShowConversationDetail}"
+                                            PassEventArgsToCommand="False" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </telerik:RadTreeView>
+    </Grid>
+</views:DetectiveApplicationPaneViewBase>

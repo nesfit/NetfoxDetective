@@ -1,0 +1,33 @@
+﻿<settingsTabs:SettingsTabBase 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:logger="clr-namespace:Castle.Core.Logging;assembly=Castle.Core"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    xmlns:settingsTabs="clr-namespace:Netfox.Detective.Views.SettingsTabs"
+    xmlns:applicationSettingsVms="clr-namespace:Netfox.Detective.ViewModels.ApplicationSettingsVms"
+    x:Class="Netfox.Detective.Views.SettingsTabs.MAFFSettingsTab"
+	mc:Ignorable="d"
+	d:DesignHeight="300" d:DesignWidth="500"
+    d:DataContext="{d:DesignInstance applicationSettingsVms:MAFFSnooperSettingsVm, IsDesignTimeCreatable=False}">
+    <StackPanel Margin="10">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="30"/>
+			<RowDefinition Height="30"/>
+			<RowDefinition Height="30"/>
+			<RowDefinition Height="30"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="1*"/>
+			<ColumnDefinition Width="1*"/>
+		</Grid.ColumnDefinitions>
+            <CheckBox Margin="20 0 0 0" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Content="Turn off loading from config file" IsChecked="{Binding Path=TurnOffConfigurationFile}" />
+            <CheckBox Margin="20 0 0 0" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Content="Generate snapshots" IsChecked="{Binding Path=GenerateSnapshots}" />
+            <CheckBox Margin="20 0 0 0" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Content="Object rewrite" IsChecked="{Binding Path=ObjectRewrite}" />
+            <TextBlock Margin="20 0 0 0" Padding="0 5 0 0" Text="Snapshot time separator (1 - 99999 ms): " Grid.Column="0" Grid.Row="3" />
+            <TextBox Margin="0 0 20 0" Grid.Column="1" Grid.Row="3" Height="25" VerticalAlignment="Center" Text="{Binding Path=SnapshotsTimeSeparator,UpdateSourceTrigger=PropertyChanged}"  />
+		</Grid>
+	</StackPanel>
+</settingsTabs:SettingsTabBase>

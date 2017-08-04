@@ -1,0 +1,88 @@
+﻿<views:CollectionUserControlBase x:Class="Netfox.Detective.Views.Helpers.FramesListUc"
+                                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                 xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                                 xmlns:views="clr-namespace:Netfox.Core.BaseTypes.Views;assembly=Netfox.Core"
+                                 xmlns:converters="clr-namespace:Netfox.Detective.Views.Converters"
+                                 xmlns:frame="clr-namespace:Netfox.Detective.ViewModels.Frame"
+                                 mc:Ignorable="d"
+                                 d:DesignHeight="400" d:DesignWidth="600">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <converters:FrameTypeToColorConverter x:Key="Converter.FrameTypeToColorConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <DataGrid EnableRowVirtualization="True" EnableColumnVirtualization="True" IsSynchronizedWithCurrentItem="True"
+              ItemsSource="{Binding Path=ItemsSource, Mode=OneWay}"
+              SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}"
+              AutoGenerateColumns="False" IsReadOnly="True"
+              x:Name="FramesDataGrid"
+              d:DataContext="{d:DesignInstance frame:FrameVm}"
+              ScrollViewer.IsDeferredScrollingEnabled="True">
+        <telerik:EventToCommandBehavior.EventBindings>
+            <telerik:EventBinding Command="{Binding CSelectDoubleClikedItem}" EventName="MouseDoubleClick"
+                                  CommandParameter="{Binding SelectedItem}" />
+            <telerik:EventBinding Command="{Binding CDoubleClickedFrame}" EventName="MouseDoubleClick"
+                                  CommandParameter="{Binding SelectedItem}" />
+            <telerik:EventBinding Command="{Binding CSelectItem}" EventName="SelectionChanged"
+                                  CommandParameter="{Binding SelectedItem}" />
+        </telerik:EventToCommandBehavior.EventBindings>
+        <DataGrid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground"
+                        Value="{Binding PacketType, Converter={StaticResource Converter.FrameTypeToColorConverter}}" />
+            </Style>
+        </DataGrid.Resources>
+        <DataGrid.Columns>
+            <!--<DataGridTextColumn Header="TimeStamp" Binding="{Binding TimeStamp}" />
+                                <DataGridTextColumn Header="Source" Binding="{Binding Source}" />
+                                <DataGridTextColumn Header="Destination" Binding="{Binding Destination}" />-->
+
+            <DataGridTextColumn Binding="{Binding FrameIndex, Mode=OneWay}" Header="# " />
+            <DataGridTextColumn Binding="{Binding TimeStamp, Mode=OneWay}" Header="Time" />
+            <DataGridTextColumn Binding="{Binding Source , Mode=OneWay}" Header="Source" />
+            <DataGridTextColumn Binding="{Binding Destination, Mode=OneWay}" Header="Target" />
+            <DataGridTextColumn Binding="{Binding PacketType, Mode=OneWay}" Header="Protocol" />
+            <DataGridTextColumn Binding="{Binding FrameSize, Mode=OneWay}" Header="Frame Size" />
+        </DataGrid.Columns>
+
+    </DataGrid>
+
+
+    <!--<telerik:RadGridView EnableRowVirtualization="True" EnableColumnVirtualization="True" IsSynchronizedWithCurrentItem="True" 
+	                     ItemsSource="{Binding Path=ItemsSource, Mode=OneWay}"
+                         SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}"
+	                     AutoGenerateColumns="False" IsReadOnly="True"
+	                     Style="{StaticResource Style.DataGridView}"
+	                     x:Name="FramesDataGrid"
+                         d:DataContext="{d:DesignInstance frame:FrameVm}"
+                         ScrollViewer.IsDeferredScrollingEnabled="True" Height="300">
+        <telerik:EventToCommandBehavior.EventBindings>
+        <telerik:EventBinding Command="{Binding CSelectDoubleClikedItem}" EventName="MouseDoubleClick" CommandParameter="{Binding SelectedItem}"/>
+        <telerik:EventBinding Command="{Binding CDoubleClickedFrame}" EventName="MouseDoubleClick" CommandParameter="{Binding SelectedItem}"/>
+        <telerik:EventBinding Command="{Binding CSelectItem}" EventName="SelectionChanged" CommandParameter="{Binding SelectedItem}"/>
+    </telerik:EventToCommandBehavior.EventBindings>
+
+		<telerik:RadGridView.Resources>
+			<Style TargetType="TextBlock">
+				<Setter Property="Foreground"
+				        Value="{Binding PacketType, Converter={StaticResource Converter.FrameTypeToColorConverter}}" />
+			</Style>
+		</telerik:RadGridView.Resources>
+
+		<telerik:RadGridView.Columns>
+
+			<telerik:GridViewDataColumn DataMemberBinding="{Binding FrameIndex, Mode=OneWay}" Header="# " />
+			<telerik:GridViewDataColumn DataMemberBinding="{Binding TimeStamp, Mode=OneWay}" Header="Time" />
+			<telerik:GridViewDataColumn DataMemberBinding="{Binding L2SourceAddress , Mode=OneWay}" Header="L2 Source" />
+			<telerik:GridViewDataColumn DataMemberBinding="{Binding Source , Mode=OneWay}" Header="Source" />
+			<telerik:GridViewDataColumn DataMemberBinding="{Binding L2TargetAddress , Mode=OneWay}" Header="L2 Target" />
+			<telerik:GridViewDataColumn DataMemberBinding="{Binding Destination, Mode=OneWay}" Header="Target" />
+			<telerik:GridViewDataColumn DataMemberBinding="{Binding PacketType, Mode=OneWay}" Header="Protocol" />
+			<telerik:GridViewDataColumn DataMemberBinding="{Binding FrameSize, Mode=OneWay}" Header="Frame Size" />
+
+		</telerik:RadGridView.Columns>
+	</telerik:RadGridView>-->
+</views:CollectionUserControlBase>

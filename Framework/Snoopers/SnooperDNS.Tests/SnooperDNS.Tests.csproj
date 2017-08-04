@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{458B18EB-39BD-45BD-B9B4-81A0282B28F5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Netfox.SnooperDNS.Tests</RootNamespace>
+    <AssemblyName>Netfox.SnooperDNS.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Reactive.Interfaces, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reactive.Interfaces.3.1.1\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SnooperDNSTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" /><Compile Include="$(SolutionDir)SharedAssemblyInfo.cs"><Link>Properties\SharedAssemblyInfo.cs</Link></Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="SnooperDNS.Tests.licenseheader" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Core\Core.csproj">
+      <Project>{75B3E6D5-8007-4E1F-8A92-1774A5B1D7F1}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ApplicationProtocolExport.Tests\ApplicationProtocolExport.Tests.csproj">
+      <Project>{AA9D1FDD-266C-4172-8378-1F11F91092F5}</Project>
+      <Name>ApplicationProtocolExport.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ApplicationProtocolExport\ApplicationProtocolExport.csproj">
+      <Project>{0ba2f363-66af-4f36-9c96-5c30224a88da}</Project>
+      <Name>ApplicationProtocolExport</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework.Models\Framework.Models.csproj">
+      <Project>{5613CE65-51D2-49E5-BA0D-7CB5D8CB94D9}</Project>
+      <Name>Framework.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\NetfoxFrameworkAPI.Tests\NetfoxFrameworkAPI.Tests.csproj">
+      <Project>{4b6086b8-0b57-4107-8e28-6b964ac507fd}</Project>
+      <Name>NetfoxFrameworkAPI.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\NetfoxFrameworkAPI\NetfoxFrameworkAPI.csproj">
+      <Project>{67297ea0-df87-42dc-9f68-957c25568d36}</Project>
+      <Name>NetfoxFrameworkAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SnooperDNS\SnooperDNS.csproj">
+      <Project>{4f50110f-8761-4b06-88f1-9d82de8f53f9}</Project>
+      <Name>SnooperDNS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Misc\VirtualizingObservableCollection\VirtualizingObservableCollection.csproj">
+      <Project>{6026893C-A0AE-4117-8143-D1ED198A983E}</Project>
+      <Name>VirtualizingObservableCollection</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

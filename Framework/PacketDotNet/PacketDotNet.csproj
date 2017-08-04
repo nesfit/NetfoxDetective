@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <Import Project="..\..\packages\PostSharp.5.0.30\build\PostSharp.props" Condition="Exists('..\..\packages\PostSharp.5.0.30\build\PostSharp.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{55ABBA4C-AAF9-4726-A592-0C92436CEC92}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>PacketDotNet</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <RootNamespace>PacketDotNet</RootNamespace>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DocumentationFile>bin\Release\PacketDotNet.XML</DocumentationFile>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.1.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Castle.Core.4.1.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="PostSharp, Version=5.0.30.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PostSharp.Redist.5.0.30\lib\net45\PostSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PostSharp.Patterns.Common, Version=5.0.30.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PostSharp.Patterns.Common.Redist.5.0.30\lib\net46\PostSharp.Patterns.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="ApplicationPacket.cs" />
+    <Compile Include="GreFields.cs" />
+    <Compile Include="GrePacket.cs" />
+    <Compile Include="Ieee80211\ActionFrame.cs" />
+    <Compile Include="Ieee80211\ReassociationRequestFrame.cs" />
+    <Compile Include="Ieee80211\BlockAcknowledgmentControlField.cs" />
+    <Compile Include="Ieee80211\BlockAcknowledgmentFrame.cs" />
+    <Compile Include="Ieee80211\AssociationResponseFrame.cs" />
+    <Compile Include="Ieee80211\AssociationRequestFrame.cs" />
+    <Compile Include="Ieee80211\AuthenticationFrame.cs" />
+    <Compile Include="Ieee80211\AuthenticationStatusCode.cs" />
+    <Compile Include="Ieee80211\BlockAcknowledgmentRequestFrame.cs" />
+    <Compile Include="Ieee80211\DeauthenticationFrame.cs" />
+    <Compile Include="DataLinkPacket.cs" />
+    <Compile Include="EthernetPacket.cs" />
+    <Compile Include="EthernetPacketType.cs" />
+    <Compile Include="Ieee80211\BeaconFrame.cs" />
+    <Compile Include="Ieee80211\CapabilityInformationField.cs" />
+    <Compile Include="Ieee80211\ContentionFreeEndFrame.cs" />
+    <Compile Include="Ieee80211\DataDataFrame.cs" />
+    <Compile Include="Ieee80211\DataFrame.cs" />
+    <Compile Include="Ieee80211\DisassociationFrame.cs" />
+    <Compile Include="Ieee80211\DurationField.cs" />
+    <Compile Include="Ieee80211\FrameControlField.cs" />
+    <Compile Include="Ieee80211\InformationElement.cs" />
+    <Compile Include="Ieee80211\MacFields.cs" />
+    <Compile Include="Ieee80211\MacFrame.cs" />
+    <Compile Include="Ieee80211\ManagementFrame.cs" />
+    <Compile Include="Ieee80211\NullDataFrame.cs" />
+    <Compile Include="Ieee80211\ProbeRequestFrame.cs" />
+    <Compile Include="Ieee80211\ProbeResponseFrame.cs" />
+    <Compile Include="Ieee80211\QosDataFrame.cs" />
+    <Compile Include="Ieee80211\QosNullDataFrame.cs" />
+    <Compile Include="Ieee80211\RadioPacket.cs" />
+    <Compile Include="Ieee80211\RadioFields.cs" />
+    <Compile Include="Ieee80211\RadioTapChannelFlags.cs" />
+    <Compile Include="Ieee80211\RadioTapFields.cs" />
+    <Compile Include="Ieee80211\RadioTapFlags.cs" />
+    <Compile Include="Ieee80211\RadioTapType.cs" />
+    <Compile Include="Ieee80211\ReasonCodes.cs" />
+    <Compile Include="Ieee80211\RtsFrame.cs" />
+    <Compile Include="Ieee80211\SequenceControlField.cs" />
+    <Compile Include="IpPacket.cs" />
+    <Compile Include="Packet.cs" />
+    <Compile Include="SessionPacket.cs" />
+    <Compile Include="TcpPacket.cs" />
+    <Compile Include="UdpPacket.cs" />
+    <Compile Include="EthernetFields.cs" />
+    <Compile Include="TransportPacket.cs" />
+    <Compile Include="Utils\AnsiEscapeSequences.cs" />
+    <Compile Include="UdpFields.cs" />
+    <Compile Include="MiscUtil\IO\EndianBinaryReader.cs" />
+    <Compile Include="MiscUtil\IO\EndianBinaryWriter.cs" />
+    <Compile Include="MiscUtil\Conversion\BigEndianBitConverter.cs" />
+    <Compile Include="MiscUtil\Conversion\DoubleConverter.cs" />
+    <Compile Include="MiscUtil\Conversion\EndianBitConverter.cs" />
+    <Compile Include="MiscUtil\Conversion\Endianness.cs" />
+    <Compile Include="MiscUtil\Conversion\LittleEndianBitConverter.cs" />
+    <Compile Include="InternetPacket.cs" />
+    <Compile Include="IPv4Fields.cs" />
+    <Compile Include="IPv4Packet.cs" />
+    <Compile Include="IPv6Fields.cs" />
+    <Compile Include="IPv6Packet.cs" />
+    <Compile Include="IpPort.cs" />
+    <Compile Include="Utils\ChecksumUtils.cs" />
+    <Compile Include="TcpFields.cs" />
+    <Compile Include="ARPFields.cs" />
+    <Compile Include="ARPPacket.cs" />
+    <Compile Include="ICMPv6Fields.cs" />
+    <Compile Include="ICMPv6Packet.cs" />
+    <Compile Include="IGMPMessageType.cs" />
+    <Compile Include="IGMPv2Packet.cs" />
+    <Compile Include="InternetLinkLayerPacket.cs" />
+    <Compile Include="IGMPv2Fields.cs" />
+    <Compile Include="LinuxSLLPacket.cs" />
+    <Compile Include="LinuxSLLFields.cs" />
+    <Compile Include="LinuxSLLType.cs" />
+    <Compile Include="IPProtocolType.cs" />
+    <Compile Include="IpVersion.cs" />
+    <Compile Include="LinkLayers.cs" />
+    <Compile Include="Utils\HexPrinter.cs" />
+    <Compile Include="ILogInactive.cs" />
+    <Compile Include="Utils\RandomUtils.cs" />
+    <Compile Include="PayloadType.cs" />
+    <Compile Include="ICMPv6Types.cs" />
+    <Compile Include="ARPOperation.cs" />
+    <Compile Include="PPPoEPacket.cs" />
+    <Compile Include="PPPoEFields.cs" />
+    <Compile Include="PPPoECode.cs" />
+    <Compile Include="PPPPacket.cs" />
+    <Compile Include="PPPFields.cs" />
+    <Compile Include="PPPProtocol.cs" />
+    <Compile Include="ICMPv4TypeCodes.cs" />
+    <Compile Include="ICMPv4Fields.cs" />
+    <Compile Include="ICMPv4Packet.cs" />
+    <Compile Include="Utils\ByteArraySegment.cs" />
+    <Compile Include="PacketOrByteArraySegment.cs" />
+    <Compile Include="LLDPPacket.cs" />
+    <Compile Include="LLDP\TLVTypes.cs" />
+    <Compile Include="LLDP\ChassisSubTypes.cs" />
+    <Compile Include="LLDP\PortSubTypes.cs" />
+    <Compile Include="LLDP\CapabilityOptions.cs" />
+    <Compile Include="LLDP\TLV.cs" />
+    <Compile Include="LLDP\NetworkAddress.cs" />
+    <Compile Include="LLDP\InterfaceNumbering.cs" />
+    <Compile Include="LLDP\EndOfLLDPDU.cs" />
+    <Compile Include="LLDP\ChassisID.cs" />
+    <Compile Include="LLDP\PortID.cs" />
+    <Compile Include="LLDP\TimeToLive.cs" />
+    <Compile Include="LLDP\PortDescription.cs" />
+    <Compile Include="LLDP\SystemName.cs" />
+    <Compile Include="LLDP\SystemDescription.cs" />
+    <Compile Include="LLDP\SystemCapabilities.cs" />
+    <Compile Include="LLDP\ManagementAddress.cs" />
+    <Compile Include="LLDP\OrganizationSpecific.cs" />
+    <Compile Include="LLDP\TLVTypeLength.cs" />
+    <Compile Include="LLDP\AddressFamily.cs" />
+    <Compile Include="LLDP\StringTLV.cs" />
+    <Compile Include="LLDP\TLVCollection.cs" />
+    <Compile Include="WakeOnLanPacket.cs" />
+    <Compile Include="StringOutputType.cs" />
+    <Compile Include="Tcp\NoOperation.cs" />
+    <Compile Include="Tcp\EndOfOptions.cs" />
+    <Compile Include="Tcp\MaximumSegmentSize.cs" />
+    <Compile Include="Tcp\Option.cs" />
+    <Compile Include="Tcp\WindowScaleFactor.cs" />
+    <Compile Include="Tcp\OptionTypes.cs" />
+    <Compile Include="Tcp\SACKPermitted.cs" />
+    <Compile Include="Tcp\SACK.cs" />
+    <Compile Include="Tcp\EchoReply.cs" />
+    <Compile Include="Tcp\TimeStamp.cs" />
+    <Compile Include="Tcp\Echo.cs" />
+    <Compile Include="Tcp\AlternateChecksumRequest.cs" />
+    <Compile Include="Tcp\ChecksumAlgorighmType.cs" />
+    <Compile Include="Tcp\AlternateChecksumData.cs" />
+    <Compile Include="Tcp\MD5Signature.cs" />
+    <Compile Include="Tcp\UserTimeout.cs" />
+    <Compile Include="Ieee80211\InformationElementList.cs" />
+    <Compile Include="Utils\Crc32.cs" />
+    <Compile Include="Ieee80211\PpiFieldType.cs" />
+    <Compile Include="Ieee80211\PpiFields.cs" />
+    <Compile Include="Ieee80211\PpiHeaderFields.cs" />
+    <Compile Include="Ieee80211\PpiPacket.cs" />
+    <Compile Include="Ieee80211\AckFrame.cs" />
+    <Compile Include="Ieee80211\CtsFrame.cs" />
+    <Compile Include="Ieee8021QPacket.cs" />
+    <Compile Include="Ieee8021QFields.cs" />
+    <Compile Include="IeeeP8021PPriorities.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Fakes Include="Fakes\log4net.fakes" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <Policies>
+          <TextStylePolicy FileWidth="120" inheritsSet="VisualStudio" inheritsScope="text/plain" />
+        </Policies>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\PostSharp.5.0.30\build\PostSharp.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\PostSharp.5.0.30\build\PostSharp.props'))" />
+    <Error Condition="!Exists('..\..\packages\PostSharp.5.0.30\build\PostSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\PostSharp.5.0.30\build\PostSharp.targets'))" />
+  </Target>
+  <Import Project="..\..\packages\PostSharp.5.0.30\build\PostSharp.targets" Condition="Exists('..\..\packages\PostSharp.5.0.30\build\PostSharp.targets')" />
+</Project>

@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="Netfox.SnooperFacebook.Views.FacebookMiningView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Netfox.SnooperFacebook.Views"
+             mc:Ignorable="d"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+            <TabControl>
+                <TabItem Header="Public Info">
+                    <telerik:RadGridView Name="PublicInfoGrid" ColumnWidth="*" AutoGenerateColumns="False">
+                         <telerik:RadGridView.Columns>
+                             <telerik:GridViewDataColumn DataMemberBinding="{Binding Id}" 
+                                       Header="ID" />
+                             <telerik:GridViewDataColumn DataMemberBinding="{Binding Gender}"
+                                       Header="Gender" />
+                             <telerik:GridViewDataColumn DataMemberBinding="{Binding Name}" 
+                                       Header="Name" />
+                             <telerik:GridViewDataColumn DataMemberBinding="{Binding Locale}" 
+                                       Header="Locale" />
+                             <telerik:GridViewDataColumn DataMemberBinding="{Binding Username}" 
+                                       Header="Username" />
+                             <telerik:GridViewDataColumn DataMemberBinding="{Binding ProfileLink}" 
+                                       Header="Profile Link" />
+                         </telerik:RadGridView.Columns>
+                     </telerik:RadGridView>
+                </TabItem>
+                <TabItem Header="Recent Places">
+                    <telerik:RadGridView Name="RecentPlacesGrid" ColumnWidth="*" AutoGenerateColumns="False">
+                         <telerik:RadGridView.Columns>
+                             <telerik:GridViewDataColumn DataMemberBinding="{Binding UserId}" 
+                                       Header="UserId" />
+                             <telerik:GridViewDataColumn DataMemberBinding="{Binding Name}"
+                                       Header="Name" />
+                             <telerik:GridViewDataColumn DataMemberBinding="{Binding Url}" 
+                                       Header="Url" />
+                         </telerik:RadGridView.Columns>
+                     </telerik:RadGridView>                    
+                </TabItem>
+                <TabItem Header="Past Events">
+                    <telerik:RadGridView Name="PastEventsGrid" ColumnWidth="*" AutoGenerateColumns="False">
+                         <telerik:RadGridView.Columns>
+                             <telerik:GridViewDataColumn DataMemberBinding="{Binding UserId}" 
+                                       Header="UserId" />
+                             <telerik:GridViewDataColumn DataMemberBinding="{Binding Name}"
+                                       Header="Name" />
+                             <telerik:GridViewDataColumn DataMemberBinding="{Binding Url}" 
+                                       Header="Url" />
+                         </telerik:RadGridView.Columns>
+                     </telerik:RadGridView>  
+                </TabItem>
+                <TabItem Header="Upcoming Events">
+                    <telerik:RadGridView Name="UpcomingEventsGrid" ColumnWidth="*" AutoGenerateColumns="False">
+                         <telerik:RadGridView.Columns>
+                             <telerik:GridViewDataColumn DataMemberBinding="{Binding UserId}" 
+                                       Header="UserId" />
+                             <telerik:GridViewDataColumn DataMemberBinding="{Binding Name}"
+                                       Header="Name" />
+                             <telerik:GridViewDataColumn DataMemberBinding="{Binding Url}" 
+                                       Header="Url" />
+                         </telerik:RadGridView.Columns>
+                     </telerik:RadGridView>  
+                </TabItem>
+                <TabItem Header="Friendlists">
+                    <telerik:RadGridView Name="FriendlistGrifeature" ColumnWidth="*" AutoGenerateColumns="False">
+                         <telerik:RadGridView.Columns>
+                             <telerik:GridViewDataColumn DataMemberBinding="{Binding User}" 
+                                       Header="UserId" />
+                             <telerik:GridViewDataColumn DataMemberBinding="{Binding Friends}"
+                                       Header="Name" />
+                         </telerik:RadGridView.Columns>
+                     </telerik:RadGridView>  
+                </TabItem>
+                <TabItem Header="Albums">
+                    <telerik:RadGridView Name="AlbumsGrid" ColumnWidth="*" AutoGenerateColumns="False">
+                         <telerik:RadGridView.Columns>
+                             <telerik:GridViewDataColumn DataMemberBinding="{Binding UserId}" 
+                                       Header="UserId" />
+                             <telerik:GridViewDataColumn DataMemberBinding="{Binding Name}"
+                                       Header="Name" />
+                             <telerik:GridViewDataColumn DataMemberBinding="{Binding Url}" 
+                                       Header="Url" />
+                         </telerik:RadGridView.Columns>
+                     </telerik:RadGridView>  
+                </TabItem>
+            </TabControl>
+    </Grid>
+</UserControl>
