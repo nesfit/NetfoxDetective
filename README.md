@@ -36,34 +36,50 @@ To demonstrate Netfox Detective analysis capcabilitie, you may analyze PCAP file
  * YMSG  
  \* SSL/TLS decryption key is mandatory
 
+## Supported PCAP files
+* [LibPCAP](https://wiki.wireshark.org/Development/LibpcapFileFormat)
+* [Pcap-ng](https://wiki.wireshark.org/Development/PcapNg)
+* [Microsoft Network Monitor cap](https://en.wikipedia.org/wiki/Microsoft_Network_Monitor)
+
+# Download
+
+Netfox Detective can be installed from release builds available on [FourceForge](https://sourceforge.net/projects/netfox-detective/).
+
 # Before you start
 Before you start installing NFX Detective, please check that your system meets the requirements. Microsoft Windows Vista SP2 and newer is reauired to run Netfox Detective.
 ### Minimal hardware configuration:
- * 1 gigahertz (GHz) 64-bit (x64) processor
- * 2 gigabyte (GB) RAM
+ * 1 GHz 64-bit (x64) processor
+ * 2 GB RAM
  * 4 GB available hard disk space
  * DirectX 9 graphics device with WDDM 1.0 or higher driver
  * 1,024 x 768 with true color
 ### Recommended hardware configuration
- * 1 gigahertz (GHz) 64-bit (x64) processor
- * 8 gigabyte (GB) RAM
+ * 1 GHz 64-bit (x64) processor
+ * 8 GB RAM
  * 64 GB available SSD hard disk space
  * DirectX 9 graphics device with WDDM 1.0 or higher driver
  * 1,920 x 1,200 with true color
 
 # Prerequisites for successful compilation and easy development: #
 
-It is **mandatory** to develop according to *GitFlow*. More information can be found in [contributing notes](/docs/CONTRIBUTING.md).
-
 ## Mandatory tools to download
 * Visual Studio 2017 Enterprise
 * [Microsoft .NET Framework 4.7 Developer Pack](https://www.microsoft.com/en-us/download/details.aspx?id=55168)
-* [SQL Server 2016 SP1 Express](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
+* [SQL Server 2016 SP1 Express](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) - for data persistence support
 * [Git LFS](https://git-lfs.github.com/)
  * `git config --global lfs.dialtimeout 0`
  * Without this the HTTP session while pushing LFS tracked file will timeout.
 
 It is strongly advised to remove any obj and bin folders from solution upon repeatedly unsuccessful compilation.
+
+## Required libraries
+* Telerik UI for WPF - [FreeTrial](http://www.telerik.com/products/wpf/overview.aspx) - copy to /lib
+* Infragistics WPF - [FreeTrial](https://www.infragistics.com/free-downloads) - copy to /lib
+* PostSharp - [FreeTrial](https://www.postsharp.net/download)
+* Additional libraries are installed from NuGet.
+
+## Contribution
+It is **mandatory** to develop according to *GitFlow*. More information can be found in [contributing notes](/docs/CONTRIBUTING.md).
 
 ## Useful Visual Studio tools
 * [Resharper](https://www.jetbrains.com/resharper/download/)

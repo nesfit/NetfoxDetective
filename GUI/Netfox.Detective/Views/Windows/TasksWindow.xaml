@@ -12,7 +12,7 @@
                            mc:Ignorable="d"
                            d:DataContext="{d:DesignInstance bgTasks:BgTasksManagerVm, IsDesignTimeCreatable=False}">
     <controls:RadWindow.Icon>
-        <Image Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/fox2white.ico" Height="30" />
+        <Image Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/Netfox.ico" Height="30" />
     </controls:RadWindow.Icon>
     <controls:RadWindow.Resources>
         <ResourceDictionary>

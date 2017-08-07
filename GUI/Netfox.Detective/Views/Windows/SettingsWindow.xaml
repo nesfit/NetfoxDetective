@@ -10,7 +10,7 @@
                              mc:Ignorable="d"
                              d:DataContext="{d:DesignInstance windows:SettingsWindowVm, IsDesignTimeCreatable=False}">
     <telerik:RadWindow.Icon>
-        <Image Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/fox2white.ico" Height="30" />
+        <Image Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/Netfox.ico" Height="30" />
     </telerik:RadWindow.Icon>
     <Grid>
         <telerik:RadTabControl TabStripPlacement="Left" Name="SettingsTabsHost" ItemsSource="{Binding Tabs}"

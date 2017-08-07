@@ -42,6 +42,9 @@
   <PropertyGroup>
     <StartupObject>Netfox.Detective.App</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Views\Resources\Netfox.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BencodeLibrary">
       <HintPath>..\..\lib\BencodeLibrary.dll</HintPath>
@@ -245,6 +248,11 @@
     </Page>
     <Compile Include="..\..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\BgTasksManagerService.cs" />
     <Compile Include="Services\CrossContainerHierarchyResolver.cs" />
@@ -820,11 +828,6 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -888,12 +891,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Views\Resources\Files\zip.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Views\Resources\fox2black.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Views\Resources\fox2white.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Views\Resources\Icons\arr_r.png" />
@@ -1075,14 +1072,9 @@
     <Folder Include="Views\Query\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="fox2black.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <SplashScreen Include="splash.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </SplashScreen>
+    <Resource Include="Views\Resources\Netfox.ico" />
+    <Resource Include="Views\Resources\Netfox128x128.ico" />
+    <SplashScreen Include="Views\Resources\Netfox_splash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\packages\cef.redist.x64.3.2987.1601\build\cef.redist.x64.targets" Condition="Exists('..\..\packages\cef.redist.x64.3.2987.1601\build\cef.redist.x64.targets')" />

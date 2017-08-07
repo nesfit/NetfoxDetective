@@ -12,7 +12,7 @@
                            xmlns:windows="clr-namespace:Netfox.Detective.ViewModels.Windows"
                            d:DataContext="{d:DesignInstance windows:HelpDialogVm, IsDesignTimeCreatable=False}">
     <telerik:RadWindow.Icon>
-        <Image Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/fox2white.ico" Height="30" />
+        <Image Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/Netfox.ico" Height="30" />
     </telerik:RadWindow.Icon>
     <Grid>
         <TextBlock Grid.Row="0" TextWrapping="Wrap" Margin="12,12,12,12"

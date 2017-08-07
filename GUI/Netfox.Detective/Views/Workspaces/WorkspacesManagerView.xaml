@@ -112,7 +112,7 @@
                             </Grid.ColumnDefinitions>
 
                             <Image Grid.RowSpan="2"
-                                   Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/fox2black.ico"
+                                   Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/Netfox.ico"
                                    Height="48" Width="48" HorizontalAlignment="Center" />
                             <TextBlock FontStyle="Italic" Grid.Row="0" Grid.Column="1" FontWeight="Normal"
                                        HorizontalAlignment="Left" Text="{Binding Path=TimeStamp}" />

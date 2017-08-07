@@ -93,8 +93,8 @@ namespace Netfox.Detective
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            //var splashScreen = new SplashScreen("splash.png");
-            //splashScreen.Show(true);
+            var splashScreen = new SplashScreen(@"Views\Resources\Netfox_splash.png");
+            splashScreen.Show(true);
 
             base.OnStartup(e);
             StyleManager.ApplicationTheme = new Windows8Theme();

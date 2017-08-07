@@ -21,7 +21,6 @@
                                     CommandParameter="{Binding ElementName=ApplicationView}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <!--Icon="pack://application:,,,/Netfox.Detective;component/Views/Resources/fox2white.ico">-->
     <!-- RESOURCES -->
     <telerik:RadWindow.Resources>
         <ResourceDictionary>
@@ -31,6 +30,9 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </telerik:RadWindow.Resources>
+    <telerik:RadWindow.Icon>
+        <Image Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/Netfox.ico" Height="20" />
+    </telerik:RadWindow.Icon>
     <Grid x:Name="MainApplicationGrid">
 
         <Grid.RowDefinitions>

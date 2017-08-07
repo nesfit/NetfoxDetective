@@ -28,7 +28,7 @@
         </ResourceDictionary>
     </telerik:RadWindow.Resources>
     <telerik:RadWindow.Icon>
-        <Image Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/fox2white.ico" Height="30" />
+        <Image Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/Netfox.ico" Height="20" />
     </telerik:RadWindow.Icon>
     <Grid>
         <telerik:RadTabControl x:Name="WizardTabControl"
