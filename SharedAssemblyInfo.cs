@@ -24,7 +24,7 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyConfiguration("Debug")]
 
-[assembly: AssemblyDescription("Flavor=Debug")] // a.k.a. "Comments"
+[assembly: AssemblyDescription("Build: 2017.12.14")]
 
 #else
 
@@ -63,7 +63,7 @@ using System.Runtime.InteropServices;
 
 // automated build process.
 
-[assembly: AssemblyVersion("1.0.0.1")]
+[assembly: AssemblyVersion("2.0.0.0")]
 
 
 // By default, the "Product version" shown in the file properties window is
@@ -76,4 +76,5 @@ using System.Runtime.InteropServices;
 
 // properties window matches the version displayed in the GAC shell extension.
 
-[assembly: AssemblyInformationalVersion("1.0.0.1")] // a.k.a. "Product version"
+[assembly: AssemblyInformationalVersion("2.0.0.0")]
+[assembly: AssemblyFileVersion("2.0.0.0")]
