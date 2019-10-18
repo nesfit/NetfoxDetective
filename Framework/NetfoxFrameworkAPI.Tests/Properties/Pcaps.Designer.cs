@@ -12,7 +12,7 @@ namespace Netfox.NetfoxFrameworkAPI.Tests.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.1.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.9.0.0")]
     public sealed partial class Pcaps : global::System.Configuration.ApplicationSettingsBase {
         
         private static Pcaps defaultInstance = ((Pcaps)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Pcaps())));
@@ -74,231 +74,6 @@ namespace Netfox.NetfoxFrameworkAPI.Tests.Properties {
         public string app_identification_testM2_cap {
             get {
                 return ((string)(this["app_identification_testM2_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\1\\100.cap")]
-        public string benchmark_1_100_cap {
-            get {
-                return ((string)(this["benchmark_1_100_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\1\\200.cap")]
-        public string benchmark_1_200_cap {
-            get {
-                return ((string)(this["benchmark_1_200_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\1\\300.cap")]
-        public string benchmark_1_300_cap {
-            get {
-                return ((string)(this["benchmark_1_300_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\1\\50.cap")]
-        public string benchmark_1_50_cap {
-            get {
-                return ((string)(this["benchmark_1_50_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\2\\100.cap")]
-        public string benchmark_2_100_cap {
-            get {
-                return ((string)(this["benchmark_2_100_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\2\\12.cap")]
-        public string benchmark_2_12_cap {
-            get {
-                return ((string)(this["benchmark_2_12_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\2\\150.cap")]
-        public string benchmark_2_150_cap {
-            get {
-                return ((string)(this["benchmark_2_150_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\2\\200.cap")]
-        public string benchmark_2_200_cap {
-            get {
-                return ((string)(this["benchmark_2_200_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\2\\25.cap")]
-        public string benchmark_2_25_cap {
-            get {
-                return ((string)(this["benchmark_2_25_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\2\\50.cap")]
-        public string benchmark_2_50_cap {
-            get {
-                return ((string)(this["benchmark_2_50_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\2\\75.cap")]
-        public string benchmark_2_75_cap {
-            get {
-                return ((string)(this["benchmark_2_75_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\4\\100.cap")]
-        public string benchmark_4_100_cap {
-            get {
-                return ((string)(this["benchmark_4_100_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\4\\12.cap")]
-        public string benchmark_4_12_cap {
-            get {
-                return ((string)(this["benchmark_4_12_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\4\\150.cap")]
-        public string benchmark_4_150_cap {
-            get {
-                return ((string)(this["benchmark_4_150_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\4\\200.cap")]
-        public string benchmark_4_200_cap {
-            get {
-                return ((string)(this["benchmark_4_200_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\4\\25.cap")]
-        public string benchmark_4_25_cap {
-            get {
-                return ((string)(this["benchmark_4_25_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\4\\50.cap")]
-        public string benchmark_4_50_cap {
-            get {
-                return ((string)(this["benchmark_4_50_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\4\\75.cap")]
-        public string benchmark_4_75_cap {
-            get {
-                return ((string)(this["benchmark_4_75_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\isa\\100.cap")]
-        public string benchmark_isa_100_cap {
-            get {
-                return ((string)(this["benchmark_isa_100_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\isa\\12.cap")]
-        public string benchmark_isa_12_cap {
-            get {
-                return ((string)(this["benchmark_isa_12_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\isa\\150.cap")]
-        public string benchmark_isa_150_cap {
-            get {
-                return ((string)(this["benchmark_isa_150_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\isa\\200.cap")]
-        public string benchmark_isa_200_cap {
-            get {
-                return ((string)(this["benchmark_isa_200_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\isa\\25.cap")]
-        public string benchmark_isa_25_cap {
-            get {
-                return ((string)(this["benchmark_isa_25_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\isa\\50.cap")]
-        public string benchmark_isa_50_cap {
-            get {
-                return ((string)(this["benchmark_isa_50_cap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\isa\\75.cap")]
-        public string benchmark_isa_75_cap {
-            get {
-                return ((string)(this["benchmark_isa_75_cap"]));
             }
         }
         
@@ -425,6 +200,15 @@ namespace Netfox.NetfoxFrameworkAPI.Tests.Properties {
         public string features_three_conver_putty_ssh_cap {
             get {
                 return ((string)(this["features_three_conver_putty_ssh_cap"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\GRE\\ip.gre.ip.icmp.cap")]
+        public string GRE_ip_gre_ip_icmp_cap {
+            get {
+                return ((string)(this["GRE_ip_gre_ip_icmp_cap"]));
             }
         }
         
@@ -664,96 +448,6 @@ namespace Netfox.NetfoxFrameworkAPI.Tests.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\10.pcap")]
-        public string benchmark_10_pcap {
-            get {
-                return ((string)(this["benchmark_10_pcap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\100.pcap")]
-        public string benchmark_100_pcap {
-            get {
-                return ((string)(this["benchmark_100_pcap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\20.pcap")]
-        public string benchmark_20_pcap {
-            get {
-                return ((string)(this["benchmark_20_pcap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\200.pcap")]
-        public string benchmark_200_pcap {
-            get {
-                return ((string)(this["benchmark_200_pcap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\30.pcap")]
-        public string benchmark_30_pcap {
-            get {
-                return ((string)(this["benchmark_30_pcap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\300.pcap")]
-        public string benchmark_300_pcap {
-            get {
-                return ((string)(this["benchmark_300_pcap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\40.pcap")]
-        public string benchmark_40_pcap {
-            get {
-                return ((string)(this["benchmark_40_pcap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\400.pcap")]
-        public string benchmark_400_pcap {
-            get {
-                return ((string)(this["benchmark_400_pcap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\50.pcap")]
-        public string benchmark_50_pcap {
-            get {
-                return ((string)(this["benchmark_50_pcap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\benchmark\\500.pcap")]
-        public string benchmark_500_pcap {
-            get {
-                return ((string)(this["benchmark_500_pcap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\dns\\dns_sec.pcap")]
         public string dns_dns_sec_pcap {
             get {
@@ -866,6 +560,69 @@ namespace Netfox.NetfoxFrameworkAPI.Tests.Properties {
         public string ftp_ftp_xkarpi03_06_text_upload_pcap {
             get {
                 return ((string)(this["ftp_ftp_xkarpi03_06_text_upload_pcap"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\GSE\\UDP DVB-S2 GSE 8 UPs in BB frame.pcap")]
+        public string GSE_UDP_DVB_S2_GSE_8_UPs_in_BB_frame_pcap {
+            get {
+                return ((string)(this["GSE_UDP_DVB_S2_GSE_8_UPs_in_BB_frame_pcap"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\GSE\\UDP DVB-S2 GSE complete UP 2.pcap")]
+        public string GSE_UDP_DVB_S2_GSE_complete_UP_2_pcap {
+            get {
+                return ((string)(this["GSE_UDP_DVB_S2_GSE_complete_UP_2_pcap"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\GSE\\UDP DVB-S2 GSE complete UP.pcap")]
+        public string GSE_UDP_DVB_S2_GSE_complete_UP_pcap {
+            get {
+                return ((string)(this["GSE_UDP_DVB_S2_GSE_complete_UP_pcap"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\GSE\\UDP DVB-S2 GSE fragmented UP.pcap")]
+        public string GSE_UDP_DVB_S2_GSE_fragmented_UP_pcap {
+            get {
+                return ((string)(this["GSE_UDP_DVB_S2_GSE_fragmented_UP_pcap"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\GSE\\UDP DVB-S2 GSE intermediate UP.pcap")]
+        public string GSE_UDP_DVB_S2_GSE_intermediate_UP_pcap {
+            get {
+                return ((string)(this["GSE_UDP_DVB_S2_GSE_intermediate_UP_pcap"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\m57\\m57_smtp_1.pcap")]
+        public string m57_m57_smtp_1_pcap {
+            get {
+                return ((string)(this["m57_m57_smtp_1_pcap"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\m57\\m57_smtp_2.pcap")]
+        public string m57_m57_smtp_2_pcap {
+            get {
+                return ((string)(this["m57_m57_smtp_2_pcap"]));
             }
         }
         
@@ -1271,24 +1028,6 @@ namespace Netfox.NetfoxFrameworkAPI.Tests.Properties {
         public string small_pcaps_tcp_fragment_overlaps_old_data_pcap {
             get {
                 return ((string)(this["small_pcaps_tcp_fragment_overlaps_old_data_pcap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\testing_set\\220.pcap")]
-        public string testing_set_220_pcap {
-            get {
-                return ((string)(this["testing_set_220_pcap"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\testing_set\\50.pcap")]
-        public string testing_set_50_pcap {
-            get {
-                return ((string)(this["testing_set_50_pcap"]));
             }
         }
         
@@ -2342,24 +2081,6 @@ namespace Netfox.NetfoxFrameworkAPI.Tests.Properties {
         public string spdy_twit6_spdystreams_pcapng {
             get {
                 return ((string)(this["spdy_twit6_spdystreams_pcapng"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\testing_set\\100.pcapng")]
-        public string testing_set_100_pcapng {
-            get {
-                return ((string)(this["testing_set_100_pcapng"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\..\\TestingData\\testing_set\\150.pcapng")]
-        public string testing_set_150_pcapng {
-            get {
-                return ((string)(this["testing_set_150_pcapng"]));
             }
         }
         

@@ -18,14 +18,13 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
 using AlphaChiTech.Virtualization;
-using AlphaChiTech.Virtualization.Interfaces;
+
 using AlphaChiTech.Virtualization.Pageing;
+using AlphaChiTech.VirtualizingCollection.Interfaces;
 using Castle.Core.Logging;
 using Castle.Windsor;
 using Netfox.Core.Interfaces;
 using Netfox.Core.Interfaces.ViewModels;
-using Netfox.Core.Messages;
-
 namespace Netfox.Core.Collections
 {
     public class ViewModelVirtualizingIoCObservableCollection<TVmType, TModelType> : VirtualizingObservableCollection<TVmType>, INotifyCollectionChanged, INotifyPropertyChanged,

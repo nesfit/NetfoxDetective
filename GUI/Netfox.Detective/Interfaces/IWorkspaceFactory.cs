@@ -1,4 +1,4 @@
-// Copyright (c) 2017 Jan Pluskal, Martin Mares, Martin Kmet
+// Copyright (c) 2017 Jan Pluskal, Martin Mares, Martin Kmet, Hana Slamova
 //
 //Licensed under the Apache License, Version 2.0 (the "License");
 //you may not use this file except in compliance with the License.
@@ -19,6 +19,5 @@ namespace Netfox.Detective.Interfaces {
     public interface IWorkspaceFactory
     {
         Workspace Create(string workspaceName, string workspacesStoragePath, string connectionString);
-        WorkspaceVm Create(Workspace workspace);
     }
 }

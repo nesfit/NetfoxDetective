@@ -13,6 +13,7 @@
 //limitations under the License.
 
 using System.IO;
+using System.IO.Abstractions;
 
 namespace Netfox.Core.Extensions
 {
@@ -25,6 +26,11 @@ namespace Netfox.Core.Extensions
         public static FileInfo GetSubFileInfo(this DirectoryInfo directoryInfo, string fileName)
         {
             return new FileInfo(Path.Combine(directoryInfo.FullName, fileName));
+        }
+
+        public static DirectoryInfoBase GetSubdirectory(this DirectoryInfoBase directoryInfo, string directory)
+        {
+            return new FileSystem().DirectoryInfo.FromDirectoryName(Path.Combine(directoryInfo.FullName, directory));
         }
     }
 }

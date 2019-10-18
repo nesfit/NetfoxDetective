@@ -14,11 +14,13 @@
 
 using Castle.Core;
 using Netfox.Detective.Tests;
-using Netfox.SnooperXchat.Infrastructure;
-using Netfox.SnooperXchat.ViewModels;
-using Netfox.SnooperXchat.Views;
-using Netfox.SnooperXchat.Views.Interface;
+using Netfox.SnooperXchat.WPF.Views;
+using Netfox.SnooperXchat.WPF.Infrastructure;
+using Netfox.SnooperXchat.WPF.ViewModels;
+using Netfox.SnooperXchat.WPF.Views.Interface;
 using NUnit.Framework;
+using XChatView = Netfox.SnooperXchat.WPF.Views.XChatView;
+
 //using Netfox.SnooperXchat.Interfaces;
 
 namespace Netfox.SnooperXchat.Tests

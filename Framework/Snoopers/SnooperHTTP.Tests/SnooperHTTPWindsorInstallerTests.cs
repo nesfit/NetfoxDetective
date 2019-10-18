@@ -14,11 +14,12 @@
 
 using Castle.Core;
 using Netfox.Detective.Tests;
-using Netfox.SnooperHTTP.Infrastructure;
 using Netfox.SnooperHTTP.Interfaces;
-using Netfox.SnooperHTTP.View;
-using Netfox.SnooperHTTP.ViewModels;
+using Netfox.SnooperHTTP.WPF.View;
+using Netfox.SnooperHTTP.WPF.Infrastructure;
+using Netfox.SnooperHTTP.WPF.ViewModels;
 using NUnit.Framework;
+using HTTPExportsView = Netfox.SnooperHTTP.WPF.View.HTTPExportsView;
 
 namespace Netfox.SnooperHTTP.Tests
 {

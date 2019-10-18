@@ -1,0 +1,19 @@
+﻿@viewModel Netfox.Web.App.ViewModels.BaseLayoutViewModel, Netfox.Web.App
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" Visible="{value: IsAuthenticated}">
+    <a class="navbar-brand" href="/">Netfox</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item {value: ActivePage == 'Investigations_overview' ? 'active' : '' }"><dot:RouteLink RouteName="Investigations_overview" Text="Investigations" class="nav-link" /></li>
+            <li class="nav-item {value: ActivePage == 'Settings_profile' ? 'active' : '' }"><dot:RouteLink RouteName="Settings_profile" Text="Settings" class="nav-link" /></li>
+        </ul>
+        <ul class="navbar-nav pull-right">
+            <li><dot:RouteLink RouteName="Settings_profile" class="nav-link">{{value: Username}}</dot:RouteLink></li>
+            <li><dot:LinkButton class="logout nav-link fas fa-sign-out-alt" Click="{command: LogOut()}" Validation.Enabled="false"></li>
+        </ul>
+    </div>
+</nav>
+

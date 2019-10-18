@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  netfox.web.app:
+    ports:
+      - "80"
+networks:
+  default:
+    external:
+      name: nat

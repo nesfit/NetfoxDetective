@@ -18,10 +18,10 @@ using System.Windows.Input;
 using Castle.Core;
 using Castle.Windsor;
 using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Threading;
 using Netfox.Core.Interfaces.Views;
-using Netfox.Core.Messages.Base;
+using Netfox.Detective.Messages;
+using Netfox.Detective.Messages.Investigations;
 using Netfox.Detective.ViewModelsDataEntity.Investigations;
 using PostSharp.Patterns.Model;
 
@@ -30,15 +30,18 @@ namespace Netfox.Detective.ViewModels.Exports
     [NotifyPropertyChanged]
     public class SelectiveExportVm : DetectiveApplicationPaneViewModelBase
     {
+        private IDetectiveMessenger _messenger;
         public SelectiveExportVm(WindsorContainer applicationWindsorContainer) : base(applicationWindsorContainer)
         {
             DispatcherHelper.CheckBeginInvokeOnUI(() => this.View = this.ApplicationOrInvestigationWindsorContainer.Resolve<ISelectiveExportView>());
-            Task.Factory.StartNew(() => Messenger.Default.Register<InvestigationMessage>(this, this.InvestigationActionHandler));
+            this._messenger = this.ApplicationOrInvestigationWindsorContainer.Resolve<IDetectiveMessenger>();
+            Task.Factory.StartNew(() => this._messenger.Register<OpenedInvestigationMessage>(this, this.OpenedInvestigationMessageReceived));
         }
 
         #region Overrides of DetectivePaneViewModelBase
         public override string HeaderText => "Selective export";
         #endregion
+
         [DoNotWire]
         public InvestigationVm InvestigationVm { get; set; }
 
@@ -53,16 +56,19 @@ namespace Netfox.Detective.ViewModels.Exports
             get
             {
                 //return new RelayCommand(() => ToExportConversations.Clear(), () => ToExportConversations.Count > 0);
-                return new RelayCommand(() => this.InvestigationVm.ToExportConversations.Clear());
+                return new RelayCommand(() => this.InvestigationVm?.ToExportConversations.Clear());
             }
         }
 
-        private void InvestigationActionHandler(InvestigationMessage message)
+        private void OpenedInvestigationMessageReceived(OpenedInvestigationMessage msg)
         {
-            if(message.Type != InvestigationMessage.MessageType.CurrentInvestigationChanged) { return; }
-            this.InvestigationVm = message.InvestigationVm as InvestigationVm;
+            this.InvestigationVm = msg.InvestigationVm as InvestigationVm;
 
-            if(this.InvestigationVm == null) { return; }
+            if (this.InvestigationVm == null)
+            {
+                return;
+            }
+
             this.InvestigationVm.ToExportConversations.CollectionChanged += this.ToExportConversationsOnCollectionChanged;
         }
 

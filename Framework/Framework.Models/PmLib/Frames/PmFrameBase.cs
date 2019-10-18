@@ -35,12 +35,10 @@ using Netfox.Framework.Models.PmLib.Captures;
 using Netfox.Framework.Models.PmLib.SupportedTypes;
 using PacketDotNet;
 using PostSharp.Patterns.Model;
-using vm.Aspects.Diagnostics;
 
 namespace Netfox.Framework.Models.PmLib.Frames
 {
     [Serializable]
-    [Dump(Enumerate = ShouldDump.Dump, MaxDepth = 4, MaxLength = 16)]
     [KnownType(typeof(PmFramePcap))]
     [KnownType(typeof(PmFrameMnm))]
     [KnownType(typeof(PmFramePcapNg))]
@@ -54,52 +52,20 @@ namespace Netfox.Framework.Models.PmLib.Frames
         /// <summary>
         ///     Constructor when adding new frame that has no L2 and above information filles
         /// </summary>
-        protected PmFrameBase(PmCaptureBase pmCapture, PmLinkType pmLinkType, DateTime timeStamp, Int64 incLength)
+        protected PmFrameBase(PmCaptureBase pmCapture, PmLinkType pmLinkType, DateTime timeStamp, Int64 incLength, PmFrameType frameType, long frameIndex, long originalLength)
         {
             this.PmCapture = pmCapture;
             this.PmLinkType = pmLinkType;
             this.TimeStamp = timeStamp;
             this.IncludedLength = incLength;
+            this.PmFrameType = frameType;
+            this.FrameIndex = frameIndex;
+            this.OriginalLength = originalLength;
 
             this.PmCapture.Frames.Add(this);
         }
 
         protected PmFrameBase() { }
-
-        /// <summary>
-        /// Parsing frame from l2 data.
-        /// </summary>
-        /// <returns></returns>
-        /// TODO refactor this to more appropriate place 
-        public bool ParseFrameForCluster()
-        {
-            var packet = new PmPacket(this.PmLinkType, (this.L2DataWcf = this.L2Data()));
-            this.L3Offset = this.L2Offset + packet.PacketHeaderOffset;
-
-            this.IpProtocol = packet.ProtocolIdentifier;
-
-            switch (packet.ProtocolIdentifier)
-            {
-                case IPProtocolType.IP:
-                case IPProtocolType.TCP:
-                case IPProtocolType.UDP:
-                    this.SrcAddress = packet.SourceAddress;
-                    this.DstAddress = packet.DestinationAddress;
-                    break;
-                //Possible 6in4
-                case IPProtocolType.IPV6:
-                    this.SrcAddress = packet.SourceAddress;
-                    this.DstAddress = packet.DestinationAddress;
-                    break;
-            }
-            this.SrcPort = packet.SourceTransportPort;
-            this.DstPort = packet.DestinationTransportPort;
-
-            this.PmCaptureRefId = this.PmCapture.Id;
-            if (this.TimeStamp == DateTime.MinValue) { this.TimeStamp = DateTime.MinValue.ToUniversalTime(); }
-            return (this.IpProtocol == IPProtocolType.TCP || this.IpProtocol == IPProtocolType.UDP || this.IpProtocol == IPProtocolType.IP
-                    || this.IpProtocol == IPProtocolType.IPV6);
-        }
 
         /// <summary>
         ///     Fill L3, L4, L7 offsets and other useful information related to IP fragmentation or TCP reassembling
@@ -127,10 +93,14 @@ namespace Netfox.Framework.Models.PmLib.Frames
                     case IPProtocolType.IP:
                     case IPProtocolType.TCP:
                     case IPProtocolType.UDP:
+                    case IPProtocolType.ICMP:
+                    case IPProtocolType.ICMPV6:
                         this.SrcAddress = packet.SourceAddress;
                         this.DstAddress = packet.DestinationAddress;
                         break;
                     case IPProtocolType.GRE:
+                        this.SrcAddress = packet.SourceAddress;
+                        this.DstAddress = packet.DestinationAddress;
                         await captureProcessorBlockBase.CreateAndAddToMetaFramesVirtualFrame(this, packet);
                         break;
 
@@ -310,7 +280,7 @@ namespace Netfox.Framework.Models.PmLib.Frames
 
         [NotMapped]
         [DataMember]
-        public Byte[] L2DataWcf { get; set; }
+        public Byte[] L2DataEncapsulated { get; set; }
 
         /// <summary>
         ///     Method parses frame itself using PacketDotNet and returns new instance of PmPacket.
@@ -324,7 +294,7 @@ namespace Netfox.Framework.Models.PmLib.Frames
                 PmPacket pmPacket = null;
                 if (this._pmPacket == null || !this._pmPacket.TryGetTarget(out pmPacket))
                 {
-                    pmPacket = new PmPacket(this.PmLinkType, this.L2Data() ?? this.L2DataWcf);
+                    pmPacket = new PmPacket(this.PmLinkType, this.L2Data() ?? this.L2DataEncapsulated);
                     this._pmPacket = new WeakReference<PmPacket>(pmPacket);
                 }
                 return pmPacket;
@@ -627,7 +597,7 @@ namespace Netfox.Framework.Models.PmLib.Frames
         /// <returns>Returns data in form of byte field or null if data are not present</returns>
         public virtual Byte[] L7Data()
         {
-            return this.GetData(this.L7Offset,this.L7Offset - this.L2Offset);
+            return this.GetDataBySize(this.L7Offset, (Int32)this.L7PayloadLength);
         }
         private byte[] GetData(long offsetInCaptureFile, long subOfIncluded)
         {
@@ -646,15 +616,44 @@ namespace Netfox.Framework.Models.PmLib.Frames
                     if (reader != null) this.PmCapture.BinaryReadersPool.PutReader(reader);
                 }
             }
-            if (this.L2DataWcf != null)
+            if (this.L2DataEncapsulated != null)
             {
                 var includedLength = (Int32)(this.IncludedLength - subOfIncluded);
-                var l7Data = new byte[includedLength];
-                Array.Copy(this.L2DataWcf, subOfIncluded, l7Data, 0, includedLength);
-                return l7Data;
+                var data = new byte[includedLength];
+                Array.Copy(this.L2DataEncapsulated, subOfIncluded, data, 0, includedLength);
+                return data;
             }
             return null;
         }
+
+        private byte[] GetDataBySize(long offsetInCaptureFile, Int32 length)
+        {
+            if (offsetInCaptureFile < this.L2Offset || this.L2Offset == -1) { return null; }
+            if (this.PmCapture != null)
+            {
+                BinaryReader reader = null;
+                try
+                {
+                    reader = this.PmCapture.BinaryReadersPool.GetReader();
+                    reader.BaseStream.Seek(offsetInCaptureFile, SeekOrigin.Begin);
+                    return reader.ReadBytes(length);
+                }
+                finally
+                {
+                    if (reader != null) this.PmCapture.BinaryReadersPool.PutReader(reader);
+                }
+            }
+            if (this.L2DataEncapsulated != null)
+            {
+                var sourceIndex = (Int32) (this.IncludedLength - length);
+                var data = new byte[length];
+                Array.Copy(this.L2DataEncapsulated, sourceIndex, data, 0, length);
+                return data;
+            }
+            return null;
+        }
+
+
         /// <summary>
         ///     Function gets raw application message data
         /// </summary>
@@ -708,7 +707,7 @@ namespace Netfox.Framework.Models.PmLib.Frames
             }
         }
 
-        public Guid L7PduRefId { get; private set; } = Guid.Empty;
+        public Guid L7PduRefId { get; set; } = Guid.Empty;
 
         [ForeignKey((nameof(L7PduRefId)))]
         public virtual L7PDU L7Pdu
@@ -800,12 +799,12 @@ namespace Netfox.Framework.Models.PmLib.Frames
         public override bool Equals(object obj)
         {
             var frame = obj as PmFrameBase;
-            var e1 = frame != null;
+            if (frame == null){return false;}
             var e2 = this.TimeStamp == frame.TimeStamp;
             var e3 = this.FrameIndex == frame.FrameIndex;
             var e4 = this.SrcAddressData.SequenceEqual(frame.SrcAddressData);
             var e5 = this.DstAddressData.SequenceEqual(frame.DstAddressData);
-            return e1 && e2 && e3 && e4 && e5;
+            return e2 && e3 && e4 && e5;
 
         }
 
@@ -819,5 +818,11 @@ namespace Netfox.Framework.Models.PmLib.Frames
         #endregion
 
         #endregion
+
+        /// <summary>References to frames, which were decapsulated from this frame or from a PDU that this frame partly carries.</summary>
+        public List<PmFrameBase> EncapsulatedFrames = new List<PmFrameBase>();
+
+        /// <summary>References to frames, from which this frame was decapsulated.</summary>
+        public List<PmFrameBase> DecapsulatedFromFrames = new List<PmFrameBase>();
     }
 }

@@ -111,7 +111,7 @@ namespace Netfox.RTP
                     var upFlow = new FsUnidirectionalFlow(conversation.L4Conversation, DaRFlowDirection.up);
                     upFlow.SubstituteL7PDU(rtpStream.Value);
                     var l7Conv = this.L7ConversationFactory.Create(upFlow, DaRFlowDirection.up);
-                    l7Conv.ApplicationProtocols = this.NbarRtcpTaxonomy;
+                    l7Conv.ApplicationProtocols = this.NbarRtpTaxonomy;
                     newL7Conversations.Add(l7Conv);
                 }
                 else
@@ -145,7 +145,7 @@ namespace Netfox.RTP
                     var downFlow = new FsUnidirectionalFlow(conversation.L4Conversation, DaRFlowDirection.down);
                     downFlow.SubstituteL7PDU(rtpStream.Value);
                     var l7Conv = this.L7ConversationFactory.Create(downFlow, DaRFlowDirection.down);
-                    l7Conv.ApplicationProtocols = this.NbarRtcpTaxonomy;
+                    l7Conv.ApplicationProtocols = this.NbarRtpTaxonomy;
                     newL7Conversations.Add(l7Conv);
                 }
                 else

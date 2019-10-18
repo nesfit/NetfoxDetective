@@ -1,0 +1,43 @@
+﻿@viewModel Netfox.Web.App.ViewModels.Investigation.ExportDetailViewModel, Netfox.Web.App
+@masterPage Views/Investigation/layoutInvestigation.dotmaster
+
+<dot:Content ContentPlaceHolderID="Toolbar">
+
+
+</dot:Content>
+<dot:Content ContentPlaceHolderID="Content">
+    <ul id="tabsJustified" class="nav nav-tabs">
+        <li class="nav-item"><a href="" data-target="#home1" data-toggle="tab" class="nav-link small text-uppercase active">Genneric Details</a></li>
+        <dot:ContentPlaceHolder ID="tabHeader"></dot:ContentPlaceHolder>
+    </ul>
+    <div id="tabsJustifiedContent" class="tab-content">
+        <div id="home1" class="tab-pane fade active show">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-3">
+                        <bp:ListView DataSource="{value: ExportedObject}"
+                                     ItemValueBinding="{value: Id}"
+                                     ItemKeyBinding="{value: Id}"
+                                     MaxSelectedValues="1"
+                                     SelectedValues="{value: SelectedExportedObjectBase}"
+                                     Changed="{command: SelectExportChanged()}">
+                            <RowTemplate>
+                                <p>{{value: Text }}</p>
+                            </RowTemplate>
+                        </bp:ListView>
+                    </div>
+                    <div class="col-9">
+                        <bp:GridView DataSource="{value: ExportedObjectDetail}">
+                            <Columns>
+                                <bp:GridViewTextColumn ValueBinding="{{value: Key}}" HeaderText="Key" />
+                                <bp:GridViewTextColumn ValueBinding="{{value: Value}}" HeaderText="Value" />
+                            </Columns>
+                        </bp:GridView>
+                    </div>
+                </div>
+            </div>
+        </div>
+       <dot:ContentPlaceHolder ID="tabContent"></dot:ContentPlaceHolder>
+    </div>
+</dot:Content>
+

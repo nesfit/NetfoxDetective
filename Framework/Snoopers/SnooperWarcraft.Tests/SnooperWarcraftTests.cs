@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2017 Jan Pluskal, Matus Dobrotka
+﻿// Copyright (c) 2018 Jan Pluskal, Matus Dobrotka
 //
 //Licensed under the Apache License, Version 2.0 (the "License");
 //you may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 //See the License for the specific language governing permissions and
 //limitations under the License.
 
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -130,16 +131,16 @@ namespace Netfox.SnooperWarcraft.Tests
         {
             var messagePatterns = new[] // Timestampes, senders and receivers, Text
             {
-                new[] { "26.04.2017 15:13:52", "Current player name", "Some Battle.net friend", "hey, you got a minute?"},
-                new[] { "26.04.2017 15:14:12", "Some Battle.net friend", "Current player name", "afther dungon sure :P"},
-                new[] { "26.04.2017 15:16:14", "Current player name", "Some Battle.net friend", "sure ill wait, just to inform, this isnt actually neth, its her boyfriend, she allowed me to borrow her character for a while. "},
-                new[] { "26.04.2017 15:16:35", "Some Battle.net friend", "Current player name", "npxz"},
-                new[] { "26.04.2017 15:16:36", "Current player name", "Some Battle.net friend", "I am working on bachelors thesis related to wow and i need to gather some testing data related to chat"},
-                new[] { "26.04.2017 15:17:21", "Current player name", "Some Battle.net friend", "I need to find all chat types in wow.. beggining with say or yell and ending with dunno bg/instance chat"},
-                new[] { "26.04.2017 15:17:45", "Some Battle.net friend", "Current player name",  "can u come vent afther then=?"},
-                new[] { "26.04.2017 15:17:55", "Current player name", "Some Battle.net friend",  "So if you could help me out for a few minutes that would be nice"},
-                new[] { "26.04.2017 15:18:24", "Current player name", "Some Battle.net friend",  "I probably can, just need to find it in this pc"},
-                new[] { "26.04.2017 15:19:46", "Current player name", "Some Battle.net friend", "right, im wainting in afk slackers room" }
+                new[] {$"26.04.{DateTime.Now.Year} 15:13:52", "Current player name", "Some Battle.net friend", "hey, you got a minute?"},
+                new[] {$"26.04.{DateTime.Now.Year} 15:14:12", "Some Battle.net friend", "Current player name", "afther dungon sure :P"},
+                new[] {$"26.04.{DateTime.Now.Year} 15:16:14", "Current player name", "Some Battle.net friend", "sure ill wait, just to inform, this isnt actually neth, its her boyfriend, she allowed me to borrow her character for a while. "},
+                new[] {$"26.04.{DateTime.Now.Year} 15:16:35", "Some Battle.net friend", "Current player name", "npxz"},
+                new[] {$"26.04.{DateTime.Now.Year} 15:16:36", "Current player name", "Some Battle.net friend", "I am working on bachelors thesis related to wow and i need to gather some testing data related to chat"},
+                new[] {$"26.04.{DateTime.Now.Year} 15:17:21", "Current player name", "Some Battle.net friend", "I need to find all chat types in wow.. beggining with say or yell and ending with dunno bg/instance chat"},
+                new[] {$"26.04.{DateTime.Now.Year} 15:17:45", "Some Battle.net friend", "Current player name",  "can u come vent afther then=?"},
+                new[] {$"26.04.{DateTime.Now.Year} 15:17:55", "Current player name", "Some Battle.net friend",  "So if you could help me out for a few minutes that would be nice"},
+                new[] {$"26.04.{DateTime.Now.Year} 15:18:24", "Current player name", "Some Battle.net friend",  "I probably can, just need to find it in this pc"},
+                new[] {$"26.04.{DateTime.Now.Year} 15:19:46", "Current player name", "Some Battle.net friend", "right, im wainting in afk slackers room" }
             };
 
             var infos = new List<FileInfo>
@@ -191,9 +192,9 @@ namespace Netfox.SnooperWarcraft.Tests
         {
             var messagePatterns = new[] // Timestampes, senders and receivers, Text
             {
-                new[] { "26.04.2017 15:38:26", "Kobits-Magtheridon", "Channel 2. LocalDefense", "lf mate killng alphas for  Caged Mighty Wolf"},
-                new[] { "26.04.2017 15:39:15", "Drulgir", "Channel LocalDefense", "bergruu up"},
-                new[] { "26.04.2017 15:39:15", "Oeru", "Channel 3. LookingForGroup", "LFM to kill the invading Horde that have taken over Goldshire!" }
+                new[] { $"26.04.{DateTime.Now.Year} 15:38:26", "Kobits-Magtheridon", "Channel 2. LocalDefense", "lf mate killng alphas for  Caged Mighty Wolf"},
+                new[] { $"26.04.{DateTime.Now.Year} 15:39:15", "Drulgir", "Channel LocalDefense", "bergruu up"},
+                new[] { $"26.04.{DateTime.Now.Year} 15:39:15", "Oeru", "Channel 3. LookingForGroup", "LFM to kill the invading Horde that have taken over Goldshire!" }
             };
 
             var infos = new List<FileInfo>

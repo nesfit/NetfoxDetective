@@ -1,0 +1,26 @@
+﻿@viewModel Netfox.Web.App.ViewModels.Investigations.InvestigationsViewModel, Netfox.Web.App
+@masterPage Views/Masterpage.dotmaster
+
+<dot:Content ContentPlaceHolderID="ColumnLeft">
+    <div class="header">Last used</div>
+    <ul class="nav" id="sidebar-menu">
+        <dot:Repeater DataSource="{value: LastInvetigations}" class="w-100">
+            <ItemTemplate>
+                <li>
+                    <dot:RouteLink RouteName="Investigation" Param-InvestigationId="{value: Id}">
+                        <span class="name">{{value: Name}}</span><br />
+                        <dot:Literal class="access" Text="{value: LastAccess}" FormatString="d.M.yyyy H:mm:ss" />
+                    </dot:RouteLink>
+                </li>
+            </ItemTemplate>
+        </dot:Repeater>
+    </ul>
+</dot:Content>
+
+<dot:Content ContentPlaceHolderID="Toolbar">
+    <dot:ContentPlaceHolder ID="Toolbar" />
+</dot:Content>
+
+<dot:Content ContentPlaceHolderID="Content">
+    <dot:ContentPlaceHolder ID="Content" />
+</dot:Content>

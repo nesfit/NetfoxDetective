@@ -16,12 +16,14 @@ using System;
 using System.ComponentModel;
 using System.Data.SqlClient;
 using System.IO;
+using System.IO.Abstractions;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using Castle.Core;
 using Castle.Core.Logging;
 using Netfox.Core.Extensions;
+using Netfox.Core.Infrastructure;
 using Netfox.Core.Interfaces;
 using Netfox.Core.Properties;
 
@@ -40,6 +42,7 @@ namespace Netfox.Core.Models
         private const string LogsDirectory = "Logs";
         private const string DatabaseDirectory = "Database";
 
+
         public InvestigationInfo(ILogger logger)
         {
             this.Logger = logger;
@@ -48,7 +51,7 @@ namespace Netfox.Core.Models
 
         public ILogger Logger { get; }
 
-        public DirectoryInfo InvestigationsDirectoryInfo
+        public DirectoryInfoBase InvestigationsDirectoryInfo
         {
             get => this._investigationsDirectoryInfo;
             set
@@ -60,8 +63,8 @@ namespace Netfox.Core.Models
             }
         }
 
-        public DirectoryInfo InvestigationDirectoryInfo => this._investigationsDirectoryInfo?.GetSubdirectory(this.InvestigationName + "_" + this.Guid);
-        private DirectoryInfo _investigationsDirectoryInfo ;
+        public DirectoryInfoBase InvestigationDirectoryInfo => _investigationsDirectoryInfo.GetSubdirectory(this.InvestigationName + "_" + this.Guid);
+        private DirectoryInfoBase _investigationsDirectoryInfo ;
 
         public void CreateFileStructure()
         {

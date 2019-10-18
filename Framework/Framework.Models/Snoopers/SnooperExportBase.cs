@@ -45,6 +45,8 @@ namespace Netfox.Framework.Models.Snoopers
         private DateTime _timeStampFirst;
         private DateTime _timeStampLast;
 
+        private Guid _sourceCaptureId;
+
         // public SnooperExportBase() { }
 
         protected SnooperExportBase() //todo protected
@@ -78,12 +80,9 @@ namespace Netfox.Framework.Models.Snoopers
         [NotMapped]
         public SnooperExportedObjectBase CurrentObjectBase
         {
-            //get { return this._currentObjectBase; }
             get { return null; }
             internal set
             {
-                //if(this.ExportContext != ExportContext.Data) { throw new WrongExportContext(); }
-                //if(this._currentObjectBase != null) { throw new UnprocessedSnooperExportedObjectBase(); }
                 if (this._currentObjectBase.Contains(value)) { throw new ExportedObjectAlreadyAdded(); }
                 this._currentObjectBase.Add(value);
             }
@@ -97,10 +96,6 @@ namespace Netfox.Framework.Models.Snoopers
             {
                 if(this._timeStampFirst != DateTime.MinValue) return this._timeStampFirst;
                     if (this.ExportObjects != null && this.ExportObjects.Any()) { return this.ExportObjects.First().TimeStamp; }
-                //todo get timestamp from reports and add timestamp to reports
-                //if(this.Reports.Any()) { return this.Reports.First().Timestamp }
-                //else
-                //{ return this._timeStampFirst; }
                 return this._timeStampFirst;
             }
             set { this._timeStampFirst = value; }
@@ -112,12 +107,8 @@ namespace Netfox.Framework.Models.Snoopers
         {
             get
             {
-                if (this._timeStampFirst != DateTime.MinValue || this._timeStampFirst != DateTime.MaxValue) return this._timeStampFirst;
+                if (this._timeStampFirst != DateTime.MinValue && this._timeStampFirst != DateTime.MaxValue) return this._timeStampFirst;
                 if (this.ExportObjects != null && this.ExportObjects.Any()) { return this.ExportObjects.Last().TimeStamp; }
-                //todo get timestamp from reports and add timestamp to reports
-                //if(this.Reports.Any()) { return this.Reports.First().Timestamp }
-                //else
-                //{ return this._timeStampFirst; }
                 return this._timeStampLast;
             }
             set { this._timeStampLast = value; }
@@ -310,6 +301,24 @@ namespace Netfox.Framework.Models.Snoopers
                     this.ExportValidity = ExportValidity.Malformed;
                     break;
             }
+        }
+        
+        public Guid SourceCaptureId {
+            get
+            {
+                if(this._sourceCaptureId == Guid.Empty)
+                {
+                    this._sourceCaptureId = (this.ExportSource is L7Conversation) ? ((this.ExportSource as L7Conversation).Captures.First().Id): Guid.Empty;
+                }
+
+                if (this._sourceCaptureId == Guid.Empty)
+                {
+                    this._sourceCaptureId = (this.ExportSource is L7PDU) ? ((this.ExportSource as L7PDU).L7Conversation.Captures.First().Id) : Guid.Empty;
+                }
+
+                return this._sourceCaptureId;
+            }
+            set { this._sourceCaptureId = value; }
         }
 
         #region Implementation of IExportSource

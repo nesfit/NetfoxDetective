@@ -16,7 +16,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
-using System.Text;
 using Castle.Windsor;
 using Netfox.Detective.ViewModelsDataEntity;
 using Netfox.Framework.Models.PmLib.Frames;
@@ -59,6 +58,8 @@ namespace Netfox.Detective.ViewModels.Frame
 
         public Int64 FrameIndex => this.FwFrame?.FrameIndex ?? 0;
 
+        public Guid Id => this.FwFrame.Id;
+
         public string PacketType => this.FwFrame.IpProtocol.ToString();
 
         public DateTime TimeStamp => this.FwFrame.TimeStamp;
@@ -76,6 +77,10 @@ namespace Netfox.Detective.ViewModels.Frame
         public IPEndPoint Destination => this.FwFrame.DestinationEndPoint;
 
         public Int64 FrameSize => this.FwFrame?.OriginalLength ?? 0;
+
+        public List<PmFrameBase> DecapsulatedFromFrames => this.FwFrame?.DecapsulatedFromFrames;
+
+        public List<PmFrameBase> EncapsulatesFrames => this.FwFrame?.EncapsulatedFrames;
 
         public uint SelectedOffset
         {
@@ -122,7 +127,7 @@ namespace Netfox.Detective.ViewModels.Frame
                     {
                         Offset = i.ToString("X4"),
                         //Ascii = ASCIIEncoding.ASCII.GetString(bytes, i, Math.Min(7, len - i)),
-                        Ascii = this.RawAsciiBytes(bytes, i, Math.Min(8, len - i)),
+                        Ascii = RawAsciiBytes(bytes, i, Math.Min(8, len - i)),
                         Hexa0 = i < len? bytes[i++].ToString("X2") : String.Empty,
                         Hexa1 = i < len? bytes[i++].ToString("X2") : String.Empty,
                         Hexa2 = i < len? bytes[i++].ToString("X2") : String.Empty,
@@ -258,6 +263,53 @@ namespace Netfox.Detective.ViewModels.Frame
                                 {
                                     Name = "Destination Address",
                                     Value = q.DestinationAddress
+                                }
+                            }
+                        };
+
+                        currentOffset += (uint) q.Header.Length;
+                    }
+                    if(p is ICMPv4Packet)
+                    {
+                        var q = p as ICMPv4Packet;
+                        yield return new GenericFiledVm
+                        {
+                            Offset = currentOffset,
+                            Length = length - currentOffset,
+                            Id = "IpView",
+                            Name = "Internet Control Message Protocol",
+                            Value = $"{q.TypeCode} id=0x{q.ID:x4} seq={q.Sequence}",
+                            Content = new object[]
+                            {
+                                new
+                                {
+                                    Name = "Type",
+                                    Value = (ushort)q.TypeCode >> 8
+                                },
+                                new
+                                {
+                                    Name = "Code",
+                                    Value = (ushort)q.TypeCode & 0x00FF
+                                },
+                                new
+                                {
+                                    Name = "Checksum",
+                                    Value = "0x"+q.Checksum.ToString("x4")
+                                },
+                                new
+                                {
+                                    Name = "Identifier",
+                                    Value = "0x"+q.ID.ToString("x4")
+                                },
+                                new
+                                {
+                                    Name = "Sequence number",
+                                    Value = q.Sequence
+                                },
+                                new
+                                {
+                                    Name = "Data",
+                                    Value = BitConverter.ToString(q.Data).Replace("-","").ToLower()
                                 }
                             }
                         };
@@ -426,7 +478,8 @@ namespace Netfox.Detective.ViewModels.Frame
                                 new
                                 {
                                     Name = "TCP Options",
-                                    Value = "...TODO..."
+                                    // TODO: Someone haven't implemented TCP Options
+                                    Value = "...TODO..." 
                                 }
                             }
                         };
@@ -489,7 +542,7 @@ namespace Netfox.Detective.ViewModels.Frame
                                     new
                                     {
                                         Name = "ASCII Data",
-                                        Value = Encoding.ASCII.GetString(q.PayloadData)
+                                        Value = RawAsciiBytes(q.PayloadData)
                                     }
                                 }
                             };
@@ -514,7 +567,7 @@ namespace Netfox.Detective.ViewModels.Frame
                                     new
                                     {
                                         Name = "ASCII Data",
-                                        Value = Encoding.ASCII.GetString(q.PayloadData)
+                                        Value = RawAsciiBytes(q.PayloadData)
                                     }
                                 }
                             };
@@ -527,7 +580,12 @@ namespace Netfox.Detective.ViewModels.Frame
             }
         }
 
-        private string RawAsciiBytes(byte[] bytes, int index, int count, bool allowLineBreak = false)
+        private static string RawAsciiBytes(byte[] bytes, bool allowLineBreak = false)
+        {
+            return RawAsciiBytes(bytes, 0, bytes.Length, allowLineBreak);
+        }
+
+        private static string RawAsciiBytes(byte[] bytes, int index, int count, bool allowLineBreak = false)
         {
             var result = string.Empty;
             var lastIndex = index + count;

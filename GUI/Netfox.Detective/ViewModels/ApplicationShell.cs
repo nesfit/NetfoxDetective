@@ -16,19 +16,21 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using AlphaChiTech.Virtualization;
 using Castle.Core;
 using Castle.MicroKernel;
 using Castle.Windsor;
 using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
 using Netfox.Core.Collections;
 using Netfox.Core.Interfaces;
 using Netfox.Core.Interfaces.ViewModels;
 using Netfox.Core.Interfaces.Views;
-using Netfox.Core.Messages.Base;
 using Netfox.Detective.Core.BaseTypes.Views;
+using Netfox.Detective.Messages;
+using Netfox.Detective.Messages.Application;
+using Netfox.Detective.Messages.Investigations;
 using Netfox.Detective.Services;
 using Netfox.Detective.ViewModels.BgTasks;
 using Netfox.Detective.ViewModels.Conversations;
@@ -50,11 +52,12 @@ namespace Netfox.Detective.ViewModels
 
         private bool _isExited;
 
+        private IDetectiveMessenger _messenger;
         public ApplicationShell(WindsorContainer applicationOrAppWindsorContainer, WorkspacesManagerVm workspacesManagerVm) : base(applicationOrAppWindsorContainer)
         {
             this.ApplicationWindsorContainer = applicationOrAppWindsorContainer;
             this.WorkspacesManagerVm = workspacesManagerVm;
-
+            this._messenger = this.ApplicationWindsorContainer.Resolve<IDetectiveMessenger>();
             this.AvailableAnalyzers.Subscribe(analyzer => this.OnPropertyChanged(nameof(this.AvailableAnalyzers)));
         }
 
@@ -71,7 +74,8 @@ namespace Netfox.Detective.ViewModels
         public InvestigationsManagerVm InvestigationsManagerVm => this.ApplicationWindsorContainer.Resolve<InvestigationsManagerVm>();
 
         [IgnoreAutoChangeNotification]
-        public WorkspacesManagerVm WorkspacesManagerVm { get;  }
+        public WorkspacesManagerVm WorkspacesManagerVm { get; }
+
         public CrossContainerHierarchyResolver CrossContainerHierarchyResolver { get; set; }
 
         //[IgnoreAutoChangeNotification]
@@ -128,6 +132,7 @@ namespace Netfox.Detective.ViewModels
 
         [IgnoreAutoChangeNotification]
         public RelayCommand<DetectiveWindowBase> ApplicationExit => new RelayCommand<DetectiveWindowBase>(this.Finish);
+
         [DoNotWire]
         public InvestigationVm CurrentInvestigationVm { get; set; }
 
@@ -138,11 +143,20 @@ namespace Netfox.Detective.ViewModels
 
         public void Finish()
         {
-            if(this._isExited) { return; }
-            this.BgTasksManagerVm.BgTasksManagerService.Stop();
-            this.WorkspacesManagerVm.WorkspacesManagerService.CloseCurrentWorkspace();
+            if (this._isExited)
+            {
+                return;
+            }
+
+          //  this.BgTasksManagerVm.BgTasksManagerService.Stop();
+            this._messenger.AsyncSend(new ExitedApplicationMessage());
+            //this.WorkspacesManagerVm.WorkspacesManagerService.CloseCurrentWorkspace();
             this.SettingsWindow.Close();
-            foreach(var windowsVms in this.Windows) { windowsVms.Close(); }
+            foreach (var windowsVms in this.Windows)
+            {
+                windowsVms.Close();
+            }
+            
             this._isExited = true;
         }
 
@@ -161,6 +175,7 @@ namespace Netfox.Detective.ViewModels
         {
             this.Finish();
             window?.Close();
+            Application.Current.Shutdown(); // this is workaround since window is always null
         }
 
         /// <summary>
@@ -191,37 +206,46 @@ namespace Netfox.Detective.ViewModels
 
         public void RegisterMessageHandlers()
         {
-            Messenger.Default.Register<InvestigationMessage>(this, this.InvestigationActionHandler);
             //Messenger.Default.Register<DetailContentCreatedMessage>(this, this.ShowDetailPaneHandler);
+            this._messenger.Register<OpenedInvestigationMessage>(this, this.OpenedInvestigationMessageReceived);
         }
 
         public void RegisterWindowView(DetectiveWindowBase window)
         {
             var viewModel = window.DataContext as DetectiveWindowViewModelBase;
             //todo Debug.Assert(viewModel != null, "viewModel != null");
-            if(viewModel != null) { this.Windows.Add(viewModel); }
+            if (viewModel != null)
+            {
+                this.Windows.Add(viewModel);
+            }
         }
 
-        private void InvestigationActionHandler(InvestigationMessage message)
+        private void OpenedInvestigationMessageReceived(OpenedInvestigationMessage msg)
         {
-            if(message.Type == InvestigationMessage.MessageType.CurrentInvestigationChanged) { this.CurrentInvestigationVm = message.InvestigationVm as InvestigationVm; }
+            this.CurrentInvestigationVm = msg.InvestigationVm as InvestigationVm;
         }
 
         private void NavigateTo(DetectiveViewModelBase viewModel)
         {
             var paneViewModel = viewModel as DetectivePaneViewModelBase;
-            if(paneViewModel != null)
+            if (paneViewModel != null)
             {
-                if(!this.ViewPanesVMs.Contains(paneViewModel)) { this.ViewPanesVMs.Add(paneViewModel); }
+                if (!this.ViewPanesVMs.Contains(paneViewModel))
+                {
+                    this.ViewPanesVMs.Add(paneViewModel);
+                }
+
                 this.SelectPane(paneViewModel);
                 return;
             }
+
             var windowViewModel = viewModel as DetectiveWindowViewModelBase;
-            if(windowViewModel != null)
+            if (windowViewModel != null)
             {
                 this.SelectWindow(windowViewModel);
                 return;
             }
+
             Debugger.Break(); //TODO implement when breaked
         }
 
@@ -237,29 +261,41 @@ namespace Netfox.Detective.ViewModels
                     this.NavigateTo(vm);
                     return;
                 }
-                if(viewModel is DetectiveWindowViewModelBase)
+
+                if (viewModel is DetectiveWindowViewModelBase)
                 {
                     var vm = viewModel as DetectiveWindowViewModelBase;
                     this.NavigateTo(vm);
                     return;
                 }
+
                 this.NavigateTo(viewModel);
                 this.Logger?.Warn($"{arguments.ViewModel.GetType().Name} is not a DetectivePaneViewModelBase");
-                return;
             }
-            catch(Exception ex) { this.Logger?.Error($"Navigation failed", ex); }
+            catch (Exception ex)
+            {
+                this.Logger?.Error($"Navigation failed", ex);
+            }
         }
 
         private void SelectPane(DetectivePaneViewModelBase detectiveViewModel)
         {
-            if(detectiveViewModel == null) { return; }
+            if (detectiveViewModel == null)
+            {
+                return;
+            }
+
             detectiveViewModel.IsHidden = false;
             detectiveViewModel.IsSelected = true;
         }
 
         private void SelectWindow(DetectiveWindowViewModelBase detectiveWindowViewModel)
         {
-            if(detectiveWindowViewModel == null) { return; }
+            if (detectiveWindowViewModel == null)
+            {
+                return;
+            }
+
             detectiveWindowViewModel.IsHidden = false;
         }
 
@@ -267,14 +303,21 @@ namespace Netfox.Detective.ViewModels
         {
             await Task.Run(() =>
             {
-                foreach(var availableAnalyzerType in this.CrossContainerHierarchyResolver.AvailableAnalyzerTypes.Where(t => typeof(IAnalyzerApplication).IsAssignableFrom(t)))
+                foreach (var availableAnalyzerType in this.CrossContainerHierarchyResolver.AvailableAnalyzerTypes.Where(t => typeof(IAnalyzerApplication).IsAssignableFrom(t)))
                 {
                     try
                     {
-                        if(this.AvailableAnalyzers.Any(a => a.GetType() == availableAnalyzerType)) return;
+                        if (this.AvailableAnalyzers.Any(a => a.GetType() == availableAnalyzerType))
+                        {
+                            return;
+                        }
+
                         this.AvailableAnalyzers.Add(this.ApplicationWindsorContainer.Resolve(availableAnalyzerType) as IAnalyzerApplication);
                     }
-                    catch(ComponentResolutionException ex) { this.Logger?.Error($"Initialization of Analyzer {availableAnalyzerType.Name} failed", ex); }
+                    catch (ComponentResolutionException ex)
+                    {
+                        this.Logger?.Error($"Initialization of Analyzer {availableAnalyzerType.Name} failed", ex);
+                    }
                 }
             });
         }

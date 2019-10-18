@@ -12,10 +12,13 @@
 //See the License for the specific language governing permissions and
 //limitations under the License.
 
+using System;
+
 namespace Netfox.SnooperDNS.Models.Message
 {
     public class DnsResponseOther: DnsResponse
     {
         public byte[] DataBytes { get; set; }
+        public override string ToString() { return $"{base.ToString()}, {nameof(this.DataBytes)}: {this.DataBytes}"; }
     }
 }

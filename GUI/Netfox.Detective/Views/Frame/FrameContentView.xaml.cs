@@ -13,9 +13,7 @@
 //limitations under the License.
 
 using System.ComponentModel;
-using System.Windows;
 using Netfox.Core.Interfaces.Views.Exports;
-using Netfox.Core.Messages.Base;
 using Netfox.Detective.ViewModels.Frame;
 using Netfox.Detective.ViewModelsDataEntity.ConversationsCollections;
 
@@ -34,42 +32,11 @@ namespace Netfox.Detective.Views.Frame
         {
             this.InitializeComponent();
 
-            //Task.Factory.StartNew(() =>
-            //{
-            //    Messenger.Default.Register<FrameMessage>(this, message => this.FrameActionHandler(message));
-            //    Messenger.Default.Register<CaptureMessage>(this, message => this.CaptureActionHandler(message));
-            //});
-        }
-
-        private void CaptureActionHandler(CaptureMessage message)
-        {
-            if(message.Type == CaptureMessage.MessageType.CurrentCaptureChanged) { this._captureVm = message.CaptureVm as CaptureVm; }
         }
 
         private void context_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if(e.PropertyName == "SelectedOffset" || e.PropertyName == "SelectedLength") { this.UpdateSelection(); }
-        }
-
-        private void FrameActionHandler(FrameMessage message)
-        {
-            if(message.Type == FrameMessage.MessageType.CurrentFrameChanged)
-            {
-                if(this._context != null) { this._context.PropertyChanged -= this.context_PropertyChanged; }
-
-                this._context = message.Frame as FrameVm;
-
-                if(this._context != null) { this._context.PropertyChanged += this.context_PropertyChanged; }
-
-                this.DataContext = this._context;
-
-                this.Visibility = (this._context != null? Visibility.Visible : Visibility.Hidden);
-                //this.ControlVisible = (this._context != null? Visibility.Visible : Visibility.Collapsed);
-                this.GenericFiledsView.UpdateExpandState();
-                this.GenericFiledsView.FrameVm = (FrameVm) message.Frame;
-                this.radHexDetailsDataGrid.DataContext = this._context;
-                this.UpdateSelection();
-            }
         }
 
         private void UpdateSelection()

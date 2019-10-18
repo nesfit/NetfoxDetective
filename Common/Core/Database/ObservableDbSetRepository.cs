@@ -22,7 +22,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AlphaChiTech.Virtualization;
-using AlphaChiTech.Virtualization.Interfaces;
+using AlphaChiTech.VirtualizingCollection.Interfaces;
 using Castle.Windsor;
 using PostSharp.Patterns.Contracts;
 
@@ -87,9 +87,11 @@ namespace Netfox.Core.Database
             this.QueryFilter = filter;
         }
 
+
         private void DbContextOnDbSetChanged(DbContext sender, DbSetChangedArgs args) { this.OnChange(); }
 
         public int Count => this.ConcurrentLock(() => this.QueryWithoutEagerLoading.Count());
+        public async Task<int> CountAsync() => await this.ConcurrentLock(async() => await this.QueryWithoutEagerLoading.CountAsync());
 
         public Type[] DbSetBaseClasses
             =>
@@ -259,6 +261,7 @@ namespace Netfox.Core.Database
         public bool IsSynchronized { get; } = true;
         public object SyncRoot => this.DbContext;
         public bool Contains(T item) { return this.ConcurrentLock(() => this.Query.Any(i => i.Id == item.Id)); }
+        public async Task<bool> ContainsAsync(T item) { return await this.ConcurrentLock(async() => await this.Query.AnyAsync(i => i.Id == item.Id)); }
 
         /// <summary>
         ///     Deletes the specified identifier permanently.
@@ -299,14 +302,18 @@ namespace Netfox.Core.Database
             //TODO fix .AsEnumerable() workaround
             return this.ConcurrentLock(() => this.Query.AsEnumerable().TakeWhile(i => i.Id != item.Id).Count());
         }
-
+        public async Task<int> IndexOfAsync(T item)
+        {
+            //TODO fix to async
+            return await this.ConcurrentLock(async () => await Task.Run(()=>this.Query.AsEnumerable().TakeWhile(i => i.Id != item.Id).Count()));
+        }
         public void OnChange()
         {
-            Debugger.Log(0, "Debug", "NEW OBSERVABLE COLLECTION CHANGED ");
             this.CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
 
         public T[] SkipTake(int skip, int take) { return this.ConcurrentLock(() => this.Query.Skip(skip).Take(take).ToArray()); }
+        public async Task<T[]> SkipTakeAsync(int skip, int take) { return await this.ConcurrentLock(async() => await this.Query.Skip(skip).Take(take).ToArrayAsync()); }
 
         /// <summary>
         ///     Releases unmanaged and - optionally - managed resources.

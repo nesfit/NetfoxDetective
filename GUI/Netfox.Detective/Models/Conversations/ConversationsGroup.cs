@@ -21,7 +21,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using AlphaChiTech.Virtualization;
-using AlphaChiTech.Virtualization.Interfaces;
+using AlphaChiTech.VirtualizingCollection.Interfaces;
 using Netfox.Core.Database;
 using Netfox.Framework.Models;
 using Netfox.Framework.Models.Interfaces;

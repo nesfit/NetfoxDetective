@@ -19,10 +19,10 @@ using System.IO;
 using System.Linq;
 using Castle.Windsor;
 using Netfox.Core.Enums;
-using Netfox.Detective.ViewModels.ApplicationSettingsVms;
 using Netfox.Framework.ApplicationProtocolExport.Snoopers;
 using Netfox.Framework.Models.Snoopers;
 using Netfox.SnooperHTTP.Models;
+using Netfox.SnooperMAFF.Interfaces;
 using Netfox.SnooperMAFF.Models.Archives;
 using Netfox.SnooperMAFF.Models.Common;
 using Netfox.SnooperMAFF.Models.Containers;
@@ -42,6 +42,8 @@ namespace Netfox.SnooperMAFF
         private List<Archive> _listOfArchives = new List<Archive>();
 
         private readonly DataContainer _oContainer = new DataContainer();
+
+        private IWrapperConstants _constains;
 
         public override string Name => "MAFF";
 
@@ -79,10 +81,10 @@ namespace Netfox.SnooperMAFF
         private bool GetConfigurationFromSettingsView()
         {
             //ApplicationSettings.Settings
-            Constants.GenerateSnapshots = MAFFSnooperSettingsVm.StaticGenerateSnapshots;
-            Constants.SnapshotsTimeSeparator = MAFFSnooperSettingsVm.StaticSnapshotsTimeSeparator;
-            Constants.ObjectRewrite = MAFFSnooperSettingsVm.StaticObjectRewrite;
-            return MAFFSnooperSettingsVm.StaticTurnOffConfigurationFile;
+            Constants.GenerateSnapshots = this._constains.GenerateSnapshots;
+            Constants.SnapshotsTimeSeparator = this._constains.SnapshotsTimeSeparator;
+            Constants.ObjectRewrite = this._constains.ObjectRewrite;
+            return this._constains.StaticTurnOffConfigurationFile;
         }
 
         /// <summary>
@@ -231,8 +233,14 @@ namespace Netfox.SnooperMAFF
 
         public SnooperMAFF() { }
 
-        public SnooperMAFF(WindsorContainer investigationWindsorContainer, IEnumerable<SnooperExportBase> sourceExports, DirectoryInfo exportDirectory) : base(
-            investigationWindsorContainer, sourceExports, exportDirectory) { }
+        public SnooperMAFF(
+            WindsorContainer investigationWindsorContainer,
+            IEnumerable<SnooperExportBase> sourceExports,
+            DirectoryInfo exportDirectory,
+            IWrapperConstants constants) : base(investigationWindsorContainer, sourceExports, exportDirectory)
+        {
+            this._constains = constants;
+        }
         #endregion //End Class Methods
     }
 }

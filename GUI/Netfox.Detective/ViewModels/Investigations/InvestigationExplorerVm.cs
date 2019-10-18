@@ -23,13 +23,13 @@ using System.Windows.Input;
 using Castle.Core;
 using Castle.Windsor;
 using GalaSoft.MvvmLight.CommandWpf;
-using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Threading;
 using Netfox.Core.Collections;
 using Netfox.Core.Helpers;
 using Netfox.Core.Interfaces.Views;
-using Netfox.Core.Messages.Base;
 using Netfox.Detective.Core;
+using Netfox.Detective.Messages;
+using Netfox.Detective.Messages.Investigations;
 using Netfox.Detective.ViewModels.Conversations;
 using Netfox.Detective.ViewModels.Exports;
 using Netfox.Detective.ViewModelsDataEntity.ConversationsCollections;
@@ -48,11 +48,12 @@ namespace Netfox.Detective.ViewModels.Investigations
         private object _lastSelected;
         private RelayCommandAsync _addCaptureCommand;
         private RelayCommandAsync<RoutedEventArgs> _cRemoveCaptureButtonCommand;
-
+        private IDetectiveMessenger _messenger; 
         public InvestigationExplorerVm(WindsorContainer applicationWindsorContainer) : base(applicationWindsorContainer)
         {
             DispatcherHelper.CheckBeginInvokeOnUI(() => this.View = this.ApplicationOrInvestigationWindsorContainer.Resolve<IInvestigationExplorerView>());
-            Task.Factory.StartNew(() => Messenger.Default.Register<InvestigationMessage>(this, this.InvestigationActionHandler));
+            this._messenger = this.ApplicationOrInvestigationWindsorContainer.Resolve<IDetectiveMessenger>();
+            Task.Factory.StartNew(() => this._messenger.Register<OpenedInvestigationMessage>(this, OpenedInvestigationMessageReceived));
             this.IsHidden = false;
             this.IsSelected = true;
             this.IsActive = true;
@@ -78,6 +79,9 @@ namespace Netfox.Detective.ViewModels.Investigations
             get { return this._investigationVm; }
             set
             {
+                if(this._investigationVm == value) { return;
+                    
+                }
                 this._investigationVm = value;
                 this.OnPropertyChanged(nameof(this.CAddLog));
             }
@@ -133,18 +137,15 @@ namespace Netfox.Detective.ViewModels.Investigations
             this.InvestigationVm.AddNewExportGroup();
         }
 
-        private void InvestigationActionHandler(InvestigationMessage message)
+        private void OpenedInvestigationMessageReceived(OpenedInvestigationMessage msg)
         {
-            if(message.Type == InvestigationMessage.MessageType.CurrentInvestigationChanged)
-            {
-                this.SetIsSelectedInvestigation(false);
-                this.InvestigationVm = message.InvestigationVm as InvestigationVm;
-                this.SetIsSelectedInvestigation(this.IsSelected);
+            this.SetIsSelectedInvestigation(false);
+            this.InvestigationVm = msg.InvestigationVm as InvestigationVm;
+            this.SetIsSelectedInvestigation(this.IsSelected);
 
-                this.CAddCapture.RaiseCanExecuteChanged();
-                this.CAddNewGroup.RaiseCanExecuteChanged();
-                this.CAddLog.RaiseCanExecuteChanged();
-            }
+            this.CAddCapture.RaiseCanExecuteChanged();
+            this.CAddNewGroup.RaiseCanExecuteChanged();
+            this.CAddLog.RaiseCanExecuteChanged();
         }
 
         [IgnoreAutoChangeNotification]

@@ -14,8 +14,8 @@
 
 using System.Windows.Controls;
 using System.Windows.Input;
-using Netfox.Core.Messages.Exports;
-using Netfox.Core.Messages.Views;
+using Netfox.Detective.Messages;
+using Netfox.Detective.Messages.Exports;
 using Netfox.Detective.ViewModelsDataEntity.Exports;
 
 namespace Netfox.Detective.Views.Exports.ExportsControls
@@ -34,8 +34,11 @@ namespace Netfox.Detective.Views.Exports.ExportsControls
             if(credential != null && credential.ResultVm != null)
             {
                 credential.ResultVm.SelectDataByDataObject(credential.DataVm, true);
-                ExportResultMessage.SendExportResultMessage(credential.ResultVm, ExportResultMessage.MessageType.ExportResultSelected);
-                BringToFrontMessage.SendBringToFrontMessage("ExportContentView");
+               
+                new DetectiveMvvmLightMessenger().AsyncSend(new SelectedExportResultMessage
+                {
+                    ExportVm = credential.ResultVm
+                });
             }
         }
     }

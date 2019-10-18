@@ -1,0 +1,67 @@
+﻿@viewModel Netfox.Web.App.ViewModels.Investigation.Export.ExportMessageViewModel, Netfox.Web.App
+@masterPage Views/Investigation/ExportBase.dotmaster
+
+<dot:Content ContentPlaceHolderID="Toolbar">
+</dot:Content>
+<dot:Content ContentPlaceHolderID="Content">
+    <div class="mod-filter">
+        <div class="row">
+            <div class="col-12 col-lg-10">
+                <dot:TextBox placeholder="Search text" Text="{value: Filters.SearchText}" class="form-control from" />
+            </div>
+            <div class="col-12 col-lg-2 filter-btn">
+                <dot:Button class="btn btn-primary" Text="Filter" Click="{command: Filter()}" />
+                <dot:Button class="btn btn-danger btn-reset" Text="Clear" Click="{command: Clear()}" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="range-duration col-4">
+                <label for="duration">Duration:</label>
+                <div class="wr row">
+                    <div class='input-group date datetimepicker'>
+                        <dot:TextBox placeholder="From" Text="{value: Filters.DurationFrom}" class="form-control" />
+                        <span class="input-group-addon input-group-append">
+                            <span class="input-group-text fas fa-calendar"></span>
+                        </span>
+                    </div>
+                    <div class="separator">-</div>
+                    <div class='input-group date datetimepicker'>
+                        <dot:TextBox placeholder="To" Text="{value: Filters.DurationTo}" class="form-control" />
+                        <span class="input-group-addon input-group-append">
+                            <span class="input-group-text fas fa-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <dot:GridView class="table" DataSource="{value: ExportObjects}">
+        <Columns>
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: FirstSeen}" FormatString="dd.MM.yyyy HH:mm:ss" HeaderText="Timestamp" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: Sender}" HeaderText="Sender" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: Receiver}" HeaderText="Receiver" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: Message}" HeaderText="Message" />
+        </Columns>
+    </dot:GridView>
+    <dot:DataPager class="pagination justify-content-center" DataSet="{value: ExportObjects}" RenderLinkForCurrentPage="true">
+        <FirstPageTemplate>
+            <span>First</span>
+        </FirstPageTemplate>
+        <LastPageTemplate>
+            <span>Last</span>
+        </LastPageTemplate>
+        <NextPageTemplate>Next</NextPageTemplate>
+        <PreviousPageTemplate>Previous</PreviousPageTemplate>
+    </dot:DataPager>
+    <script src="/Template/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="/Template/js/moment.js" type="text/javascript"></script>
+    <script src="/Template/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+    <script>
+
+    jQuery(document).ready(function ($) {
+             $('.datetimepicker').datetimepicker({
+                format: 'DD.MM.YYYY HH:mm:ss'
+            });
+        });
+    </script>
+</dot:Content>

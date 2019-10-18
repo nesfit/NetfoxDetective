@@ -17,5 +17,6 @@ namespace Netfox.SnooperDNS.Models.Message
     public class DnsResponse: DNSBase
     {
         public uint TTL { get; set; }
+        public override string ToString() { return $"{base.ToString()}, {nameof(this.TTL)}: {this.TTL}"; }
     }
 }

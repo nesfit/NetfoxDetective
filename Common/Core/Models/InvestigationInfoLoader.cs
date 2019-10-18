@@ -13,11 +13,11 @@
 //limitations under the License.
 
 using System.IO;
+using System.IO.Abstractions;
 using System.Runtime.Serialization;
 using System.Xml;
 using Castle.Core.Logging;
 using Netfox.Core.Interfaces;
-using Netfox.Core.Messages;
 
 namespace Netfox.Core.Models
 {
@@ -28,7 +28,7 @@ namespace Netfox.Core.Models
         public InvestigationInfoLoader(ILogger logger) {
             this.Logger = logger;
         }
-        public InvestigationInfo Load(FileInfo fileInfo)
+        public IInvestigationInfo Load(FileInfoBase fileInfo)
         {
             //todo catch exception in caller
             if(!fileInfo.Exists)

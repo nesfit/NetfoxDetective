@@ -12,6 +12,7 @@
 //See the License for the specific language governing permissions and
 //limitations under the License.
 
+using System;
 using System.Globalization;
 using System.Linq;
 using Netfox.Framework.ApplicationProtocolExport.Tests;
@@ -101,6 +102,18 @@ namespace Netfox.SnooperPOP.Tests
                 Assert.AreEqual(messages[i].Type, messagePatterns[i][1]);
                 Assert.AreEqual(messages[i].Value, messagePatterns[i][2]);
             }
+        }
+
+        [Test, Ignore("ondemand")]
+        public void M57Case()
+        {
+            this.FrameworkController.ProcessCapture(this.PrepareCaptureForProcessing(@"F:\pcaps\m57\m57.pcap"));
+
+            var conversations = this.L7Conversations.Where(c => c.IsXyProtocolConversation("POP3")).ToArray();
+            this.FrameworkController.ExportData(this.AvailableSnoopersTypes, conversations, this.CurrentTestBaseDirectory, true);
+
+            var emails = this.SnooperExports.Sum(exportBase => exportBase.ExportObjects.Count);
+            Console.WriteLine($"POP3 emails: {emails}");
         }
     }
 }

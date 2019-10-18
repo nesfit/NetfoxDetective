@@ -14,9 +14,9 @@
 
 using System.Threading.Tasks;
 using Castle.Windsor;
-using GalaSoft.MvvmLight.Messaging;
-using Netfox.Core.Messages.Exports;
 using Netfox.Detective.Core;
+using Netfox.Detective.Messages;
+using Netfox.Detective.Messages.Exports;
 using Netfox.Detective.ViewModelsDataEntity.Exports;
 
 namespace Netfox.Detective.ViewModels.Exports
@@ -26,7 +26,9 @@ namespace Netfox.Detective.ViewModels.Exports
         public GenericEventsExplorerVm(WindsorContainer applicationWindsorContainer) : base(applicationWindsorContainer)
         {
             this.DockPositionPosition = DetectiveDockPosition.DockedLeft;
-            Parallel.Invoke(() => Messenger.Default.Register<ExportResultMessage>(this, this.ExportResultActionHandler));
+            var messenger = applicationWindsorContainer.Resolve<IDetectiveMessenger>();
+
+            Parallel.Invoke(() => messenger.Register<SelectedExportResultMessage>(this, this.ExportResultActionHandler));
         }
 
         #region Overrides of DetectivePaneViewModelBase
@@ -35,6 +37,6 @@ namespace Netfox.Detective.ViewModels.Exports
 
         public ExportVm ExportResult { get; set; }
 
-        private void ExportResultActionHandler(ExportResultMessage exportResultMessage) { this.ExportResult = exportResultMessage.ExportVm as ExportVm; }
+        private void ExportResultActionHandler(SelectedExportResultMessage exportResultMessage) { this.ExportResult = exportResultMessage.ExportVm as ExportVm; }
     }
 }

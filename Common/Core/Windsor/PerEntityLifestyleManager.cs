@@ -25,7 +25,7 @@ namespace Netfox.Core.Windsor
         public override object Resolve(Castle.MicroKernel.Context.CreationContext context, Castle.MicroKernel.IReleasePolicy releasePolicy)
         {
             var param = context.AdditionalArguments["model"];
-            if(this._instances.Keys.Contains(param)) { return this._instances[param]; }
+            if(param != null && this._instances.TryGetValue(param, out var retrievedInstance)) { return retrievedInstance; }
 
             var instanceVm = base.Resolve(context, releasePolicy);
             if(instanceVm is IDataEntityVm) // only IDataEntityVm VMs are bound per entity... other constructors are not

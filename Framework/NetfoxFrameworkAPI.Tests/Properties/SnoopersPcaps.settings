@@ -5,31 +5,6 @@
 <Setting Name="app_identification_streamSkypeHttpTls_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\app_identification\streamSkypeHttpTls.cap</Value></Setting>
 <Setting Name="app_identification_testM1_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\app_identification\testM1.cap</Value></Setting>
 <Setting Name="app_identification_testM2_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\app_identification\testM2.cap</Value></Setting>
-<Setting Name="benchmark_1_100_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\1\100.cap</Value></Setting>
-<Setting Name="benchmark_1_200_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\1\200.cap</Value></Setting>
-<Setting Name="benchmark_1_300_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\1\300.cap</Value></Setting>
-<Setting Name="benchmark_1_50_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\1\50.cap</Value></Setting>
-<Setting Name="benchmark_2_100_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\2\100.cap</Value></Setting>
-<Setting Name="benchmark_2_12_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\2\12.cap</Value></Setting>
-<Setting Name="benchmark_2_150_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\2\150.cap</Value></Setting>
-<Setting Name="benchmark_2_200_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\2\200.cap</Value></Setting>
-<Setting Name="benchmark_2_25_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\2\25.cap</Value></Setting>
-<Setting Name="benchmark_2_50_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\2\50.cap</Value></Setting>
-<Setting Name="benchmark_2_75_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\2\75.cap</Value></Setting>
-<Setting Name="benchmark_4_100_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\4\100.cap</Value></Setting>
-<Setting Name="benchmark_4_12_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\4\12.cap</Value></Setting>
-<Setting Name="benchmark_4_150_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\4\150.cap</Value></Setting>
-<Setting Name="benchmark_4_200_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\4\200.cap</Value></Setting>
-<Setting Name="benchmark_4_25_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\4\25.cap</Value></Setting>
-<Setting Name="benchmark_4_50_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\4\50.cap</Value></Setting>
-<Setting Name="benchmark_4_75_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\4\75.cap</Value></Setting>
-<Setting Name="benchmark_isa_100_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\isa\100.cap</Value></Setting>
-<Setting Name="benchmark_isa_12_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\isa\12.cap</Value></Setting>
-<Setting Name="benchmark_isa_150_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\isa\150.cap</Value></Setting>
-<Setting Name="benchmark_isa_200_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\isa\200.cap</Value></Setting>
-<Setting Name="benchmark_isa_25_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\isa\25.cap</Value></Setting>
-<Setting Name="benchmark_isa_50_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\isa\50.cap</Value></Setting>
-<Setting Name="benchmark_isa_75_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\isa\75.cap</Value></Setting>
 <Setting Name="email_imap_smtp_collector_selected_tcp_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\email\imap_smtp_collector_selected_tcp.cap</Value></Setting>
 <Setting Name="email_pop_smtp_1_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\email\pop_smtp_1.cap</Value></Setting>
 <Setting Name="email_pop_smtp_1_filtered_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\email\pop_smtp_1_filtered.cap</Value></Setting>
@@ -44,6 +19,7 @@
 <Setting Name="features_sSSH_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\features\sSSH.cap</Value></Setting>
 <Setting Name="features_SYN_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\features\SYN.cap</Value></Setting>
 <Setting Name="features_three_conver_putty_ssh_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\features\three_conver_putty_ssh.cap</Value></Setting>
+<Setting Name="GRE_ip_gre_ip_icmp_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\GRE\ip.gre.ip.icmp.cap</Value></Setting>
 <Setting Name="http_caps_http_all_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\http_caps\http_all.cap</Value></Setting>
 <Setting Name="http_caps_http_pc1_conversation_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\http_caps\http_pc1_conversation.cap</Value></Setting>
 <Setting Name="http_caps_http_pc2_conversation_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\http_caps\http_pc2_conversation.cap</Value></Setting>
@@ -70,16 +46,6 @@
 <Setting Name="voip_MLUVI_G723_G729_GSM_G711_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\voip\MLUVI_G723_G729_GSM_G711.cap</Value></Setting>
 <Setting Name="voip_rtp_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\voip\rtp.cap</Value></Setting>
 <Setting Name="voip_rtp2_cap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\voip\rtp2.cap</Value></Setting>
-<Setting Name="benchmark_10_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\10.pcap</Value></Setting>
-<Setting Name="benchmark_100_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\100.pcap</Value></Setting>
-<Setting Name="benchmark_20_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\20.pcap</Value></Setting>
-<Setting Name="benchmark_200_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\200.pcap</Value></Setting>
-<Setting Name="benchmark_30_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\30.pcap</Value></Setting>
-<Setting Name="benchmark_300_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\300.pcap</Value></Setting>
-<Setting Name="benchmark_40_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\40.pcap</Value></Setting>
-<Setting Name="benchmark_400_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\400.pcap</Value></Setting>
-<Setting Name="benchmark_50_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\50.pcap</Value></Setting>
-<Setting Name="benchmark_500_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\benchmark\500.pcap</Value></Setting>
 <Setting Name="dns_dns_sec_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\dns\dns_sec.pcap</Value></Setting>
 <Setting Name="dns_dns_xvican01_01_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\dns\dns_xvican01_01.pcap</Value></Setting>
 <Setting Name="dns_dns_xvican01_02_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\dns\dns_xvican01_02.pcap</Value></Setting>
@@ -93,6 +59,13 @@
 <Setting Name="ftp_ftp_xkarpi03_04_delete_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\ftp\ftp_xkarpi03_04_delete.pcap</Value></Setting>
 <Setting Name="ftp_ftp_xkarpi03_05_download_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\ftp\ftp_xkarpi03_05_download.pcap</Value></Setting>
 <Setting Name="ftp_ftp_xkarpi03_06_text_upload_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\ftp\ftp_xkarpi03_06_text_upload.pcap</Value></Setting>
+<Setting Name="GSE_UDP_DVB_S2_GSE_8_UPs_in_BB_frame_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\GSE\UDP DVB-S2 GSE 8 UPs in BB frame.pcap</Value></Setting>
+<Setting Name="GSE_UDP_DVB_S2_GSE_complete_UP_2_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\GSE\UDP DVB-S2 GSE complete UP 2.pcap</Value></Setting>
+<Setting Name="GSE_UDP_DVB_S2_GSE_complete_UP_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\GSE\UDP DVB-S2 GSE complete UP.pcap</Value></Setting>
+<Setting Name="GSE_UDP_DVB_S2_GSE_fragmented_UP_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\GSE\UDP DVB-S2 GSE fragmented UP.pcap</Value></Setting>
+<Setting Name="GSE_UDP_DVB_S2_GSE_intermediate_UP_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\GSE\UDP DVB-S2 GSE intermediate UP.pcap</Value></Setting>
+<Setting Name="m57_m57_smtp_1_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\m57\m57_smtp_1.pcap</Value></Setting>
+<Setting Name="m57_m57_smtp_2_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\m57\m57_smtp_2.pcap</Value></Setting>
 <Setting Name="minecraft_xberan33_minecraft_at_port_27746_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\minecraft\xberan33_minecraft_at_port_27746.pcap</Value></Setting>
 <Setting Name="minecraft_xberan33_minecraft_at_port_27999_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\minecraft\xberan33_minecraft_at_port_27999.pcap</Value></Setting>
 <Setting Name="minecraft_xberan33_minecraft_at_port_37892_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\minecraft\xberan33_minecraft_at_port_37892.pcap</Value></Setting>
@@ -138,8 +111,6 @@
 <Setting Name="small_pcaps_malformed_last_packet_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\small_pcaps\malformed_last_packet.pcap</Value></Setting>
 <Setting Name="small_pcaps_tcp_fastretranssmit_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\small_pcaps\tcp_fastretranssmit.pcap</Value></Setting>
 <Setting Name="small_pcaps_tcp_fragment_overlaps_old_data_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\small_pcaps\tcp_fragment_overlaps_old_data.pcap</Value></Setting>
-<Setting Name="testing_set_220_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\testing_set\220.pcap</Value></Setting>
-<Setting Name="testing_set_50_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\testing_set\50.pcap</Value></Setting>
 <Setting Name="voip_asterisk_koleje_test_call_gsm_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\voip\asterisk-koleje-test-call-gsm.pcap</Value></Setting>
 <Setting Name="voip_asterisk_koleje_test_call_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\voip\asterisk-koleje-test-call.pcap</Value></Setting>
 <Setting Name="voip_ekiga_netbox_to_cesnet_test_call_number_pcap" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\voip\ekiga_netbox-to-cesnet_test_call_number.pcap</Value></Setting>
@@ -257,8 +228,6 @@
 <Setting Name="small_pcaps_tcp_more_frames_pcapng" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\small_pcaps\tcp_more_frames.pcapng</Value></Setting>
 <Setting Name="small_pcaps_tcp_two_frames_pcapng" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\small_pcaps\tcp_two_frames.pcapng</Value></Setting>
 <Setting Name="spdy_twit6_spdystreams_pcapng" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\spdy\twit6_spdystreams.pcapng</Value></Setting>
-<Setting Name="testing_set_100_pcapng" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\testing_set\100.pcapng</Value></Setting>
-<Setting Name="testing_set_150_pcapng" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\testing_set\150.pcapng</Value></Setting>
 <Setting Name="twitter_twitter1_pcapng" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\twitter\twitter1.pcapng</Value></Setting>
 <Setting Name="twitter_twitter2_pcapng" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\twitter\twitter2.pcapng</Value></Setting>
 <Setting Name="webmail_webmail_gmail_pcapng" Type="System.String" Scope="Application"><Value Profile="(Default)">..\..\..\..\..\..\TestingData\webmail\webmail_gmail.pcapng</Value></Setting>

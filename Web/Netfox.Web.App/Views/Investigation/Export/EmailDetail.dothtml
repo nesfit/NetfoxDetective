@@ -1,0 +1,102 @@
+﻿@viewModel Netfox.Web.App.ViewModels.Investigation.Export.EmailDetailViewModel, Netfox.Web.App
+@masterPage Views/BlankLayout.dotmaster
+
+<dot:Content ContentPlaceHolderID="Content">
+    <h4>Email Info</h4>
+    <div class="row info">
+        <div class="col-6">
+            <div class="row">
+                <div class="col-6">From:</div>
+                <div class="col-6">{{value: Email.From}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">To:</div>
+                <div class="col-6">{{value: Email.To}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Cc:</div>
+                <div class="col-6">{{value: Email.Cc}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Bcc:</div>
+                <div class="col-6">{{value: Email.Bcc}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Date:</div>
+                <div class="col-6">
+                    <dot:Literal Text="{value: Email.Timestamp}" FormatString="dd.MM.yyyy HH:mm:ss" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">Subject:</div>
+                <div class="col-6">
+                    <dot:Literal Text="{value: Email.Subject}" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">Source:</div>
+                <div class="col-6">{{value: Email.Source}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Destination:</div>
+                <div class="col-6">{{value: Email.Destination}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Message-ID:</div>
+                <div class="col-6">
+                    <dot:Literal Text="{value: Email.MessageID}" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">Charset:</div>
+                <div class="col-6">{{value: Email.ContentTypeCharset}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Content type:</div>
+                <div class="col-6">{{value: Email.ContentType + "/" + Email.ContentSubtype}}</div>
+            </div>
+        </div>
+    </div>
+    <ul class="nav nav-tabs tab-panel" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="headr-tab" data-toggle="tab" href="#header" role="tab" aria-controls="Header" aria-selected="true">Header</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="content-tab" data-toggle="tab" href="#content" role="tab" aria-controls="Content" aria-selected="false">Content</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="content-tab" data-toggle="tab" href="#attachment" role="tab" aria-controls="Attachments" aria-selected="false" Visible="{value: ShowFiles}">Files</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane show active" id="header" role="tabpanel" aria-labelledby="header-tab">
+            <iframe width="100%" height="400" src="{value: Email.StoredHeadersFilePath}"></iframe>
+        </div>
+        <div class="tab-pane" id="content" role="tabpanel" aria-labelledby="content-tab">
+            <iframe width="100%" height="400" src="{value: Email.StoredContentFilePath}"></iframe>
+        </div>
+        <div class="tab-pane" id="attachment" role="tabpanel" aria-labelledby="attachment-tab">
+            <dot:GridView class="table" DataSource="{value: Attachments}">
+                <Columns>
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: ContentDispositionFileName}" HeaderText="Filename" />
+                    <dot:GridViewTextColumn AllowSorting="false" ValueBinding="{value: ContentType + "/" + ContentSubtype}" HeaderText="ContentType" />
+                    <dot:GridViewTemplateColumn AllowSorting="false">
+                        <ContentTemplate>
+                            <a target="_parent" href="{value: StoredContentFilePath}">Download</a>
+                        </ContentTemplate>
+                    </dot:GridViewTemplateColumn>
+            </dot:GridView>
+            <dot:DataPager class="pagination justify-content-center" DataSet="{value: Attachments}" RenderLinkForCurrentPage="true">
+                <FirstPageTemplate>
+                    <span>First</span>
+                </FirstPageTemplate>
+                <LastPageTemplate>
+                    <span>Last</span>
+                </LastPageTemplate>
+                <NextPageTemplate>Next</NextPageTemplate>
+                <PreviousPageTemplate>Previous</PreviousPageTemplate>
+            </dot:DataPager>
+        </div>
+    </div>
+</dot:Content>
+

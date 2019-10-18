@@ -239,43 +239,6 @@ namespace Netfox.SnooperWebmails
             if (this.SelectedConversations != null)
             {
                 base.ProcessAssignedConversations();
-                //this.SelectedConversations.LockSelectedConversations();
-
-                //long conversationIndex;
-
-                //ILxConversation currentConversation;
-                ////Main cycle on all conversations
-                //while (this.SelectedConversations.TryGetNextConversations(this.GetType(), out currentConversation, out conversationIndex))
-                //{
-                //    var selectedL7Conversations = new List<L7Conversation>();
-
-                //    if (currentConversation.GetType() == typeof(L7Conversation)) //todo refactor to SnooperBase.. or make more readable.. to method or somenting...
-                //    {
-                //        selectedL7Conversations.Add(currentConversation as L7Conversation);
-                //    }
-                //    else if (currentConversation.GetType() == typeof(L4Conversation))
-                //    {
-                //        selectedL7Conversations.AddRange((currentConversation as L4Conversation).L7Conversations);
-                //    }
-                //    else if (currentConversation.GetType() == typeof(L3Conversation))
-                //    {
-                //        selectedL7Conversations.AddRange((currentConversation as L3Conversation).L7Conversations);
-                //    }
-
-                //    foreach (var selectedL7Conversation in selectedL7Conversations)
-                //    {
-                //        this._currentConversation = selectedL7Conversation;
-                //        //eventExporter.ActualizeOpContext();
-
-                //        if (!this.ForceExportOnAllConversations && !this.CurrentConversation.isXYProtocolConversation(this.ProtocolNBARName)) { continue; }
-                //        // RunBody(CurrentConversation, conversationIndex);
-                //        this.OnConversationProcessingBegin();
-
-                //        this.ProcessConversation();
-
-                //        this.OnConversationProcessingEnd();
-                //    }
-                //}
             }
             else
             {

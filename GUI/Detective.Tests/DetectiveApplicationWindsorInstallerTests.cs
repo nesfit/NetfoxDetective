@@ -135,13 +135,9 @@ namespace Netfox.Detective.Tests
             Assert.IsNotNull(component);
         }
 
-
-        protected void AssertIEntityViewModels() { Assert.IsTrue(this.ContainsComponent(typeof(WorkspaceVm), LifestyleType.Custom)); }
-
         protected void AssertServices()
         {
             Assert.IsTrue(this.ContainsComponent(typeof(BgTasksManagerService), LifestyleType.Singleton));
-            Assert.IsTrue(this.ContainsComponent(typeof(WorkspacesManagerService), LifestyleType.Singleton));
             Assert.IsTrue(this.ContainsComponent(typeof(NavigationService), LifestyleType.Singleton));
             Assert.IsTrue(this.ContainsComponent(typeof(LogService), LifestyleType.Singleton));
             Assert.IsTrue(this.ContainsComponent(typeof(ISystemServices), typeof(SystemServices), LifestyleType.Singleton));

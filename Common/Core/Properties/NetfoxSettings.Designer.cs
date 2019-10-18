@@ -12,7 +12,7 @@ namespace Netfox.Core.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.0.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.2.0.0")]
     public sealed partial class NetfoxSettings : global::System.Configuration.ApplicationSettingsBase {
         
         private static NetfoxSettings defaultInstance = ((NetfoxSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new NetfoxSettings())));
@@ -71,27 +71,21 @@ namespace Netfox.Core.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("nfw")]
         public string WorkspaceFileExtension {
             get {
                 return ((string)(this["WorkspaceFileExtension"]));
             }
-            set {
-                this["WorkspaceFileExtension"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("nfi")]
         public string InvestigationFileExtension {
             get {
                 return ((string)(this["InvestigationFileExtension"]));
-            }
-            set {
-                this["InvestigationFileExtension"] = value;
             }
         }
         
@@ -120,27 +114,21 @@ namespace Netfox.Core.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("mdf")]
         public string DatabaseFileExtension {
             get {
                 return ((string)(this["DatabaseFileExtension"]));
             }
-            set {
-                this["DatabaseFileExtension"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("%userprofile%\\Netfox Detective Workspaces")]
         public string DefaultWorkspaceStoragePath {
             get {
                 return ((string)(this["DefaultWorkspaceStoragePath"]));
-            }
-            set {
-                this["DefaultWorkspaceStoragePath"] = value;
             }
         }
         
@@ -156,15 +144,12 @@ namespace Netfox.Core.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=:memory:;")]
         public string DefaultInMemoryConnectionString {
             get {
                 return ((string)(this["DefaultInMemoryConnectionString"]));
-            }
-            set {
-                this["DefaultInMemoryConnectionString"] = value;
             }
         }
         
@@ -189,6 +174,18 @@ namespace Netfox.Core.Properties {
             }
             set {
                 this["ToLogMessages"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DecapsulateGseOverUdp {
+            get {
+                return ((bool)(this["DecapsulateGseOverUdp"]));
+            }
+            set {
+                this["DecapsulateGseOverUdp"] = value;
             }
         }
     }

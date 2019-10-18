@@ -1,0 +1,61 @@
+﻿@viewModel Netfox.Web.App.ViewModels.Settings.ProfileViewModel, Netfox.Web.App
+@masterPage Views/Settings/settings.dotmaster
+
+    <dot:Content ContentPlaceHolderID="Toolbar">
+        <dot:Button class="btn" Text="Change password" Validation.Enabled="false" Click="{command: IsPasswordDialogDisplayed = true }" />
+    </dot:Content>
+
+    <dot:Content ContentPlaceHolderID="Content">
+        <div class="col-6">
+            <div class="form-group row">
+                <div class="col-2 col-form-label font-weight-bold">Firstname</div>
+                <div class="col-10 col-form-label">
+                    {{value: User.Firstname }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-2 col-form-label font-weight-bold">Surname</div>
+                <div class="col-10 col-form-label">
+                    {{value: User.Surname }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-2 col-form-label font-weight-bold">Role</div>
+                <div class="col-10  col-form-label">
+                    {{value: User.Role.Name}}
+                </div>
+            </div>
+        </div>
+        <bp:ModalDialog class="change-password-dialog" Height="430px" IsDisplayed="{value: IsPasswordDialogDisplayed}" >
+            <HeaderTemplate>
+                Change password
+            </HeaderTemplate>
+            <ContentTemplate>
+                <form class="form-change-password col-12">
+                    <div class="alert alert-danger" role="alert" Visible="{value: ErrorMessage != null}">
+                        {{value: ErrorMessage}}
+                    </div>
+                    <div class="validation alert alert-danger">
+                        <dot:ValidationSummary />
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-12 col-form-label">Password</label>
+                        <div class="col-12">
+                            <dot:TextBox class="form-control" ValueType="Text" Type="Password" Text="{value: Password}" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-12 col-form-label">New password</label>
+                        <div class="col-12">
+                            <dot:TextBox class="form-control" ValueType="Text" Type="Password" Text="{value: NewPassword}" />
+                        </div>
+                    </div>
+                </form>
+                <p class="text-right">
+                    <dot:Button class="btn btn-primary" Text="Change password" Click="{command: _this.ChangePassword()}" />
+                    <dot:Button class="btn" Text="Cancel" Validation.Enabled="false" Click="{command: _this.Cancel()}" />
+                </p>
+            </ContentTemplate>
+        </bp:ModalDialog>
+    </dot:Content>
+

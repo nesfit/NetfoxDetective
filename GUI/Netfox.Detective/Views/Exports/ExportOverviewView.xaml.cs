@@ -19,7 +19,7 @@ namespace Netfox.Detective.Views.Exports
     /// <summary>
     ///     Interaction logic for ExportOverviewView.xaml
     /// </summary>
-    public partial class ExportOverviewView : DetectiveApplicationPaneViewBase, IExportOverviewView
+    public partial class ExportOverviewView : DetectiveDataEntityPaneViewBase, IExportOverviewView
     {
         public ExportOverviewView()
         {

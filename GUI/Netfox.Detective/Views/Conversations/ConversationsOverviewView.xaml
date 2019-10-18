@@ -13,8 +13,8 @@
     mc:Ignorable="d"
     d:DesignHeight="700" d:DesignWidth="800"
     x:Name="ConversationsOverviewViewPane"
-
     d:DataContext="{d:DesignInstance conversations1:ConversationsOverviewVm}">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -26,7 +26,6 @@
                         d:DataContext="{d:DesignInstance conversationsCollections:CaptureVm}"
                         DataContext="{Binding ConversationsVm}"
                         Visibility="{Binding  Path=DataContext.IsCaptureVm, ElementName=ConversationsOverviewViewPane, Converter={StaticResource Converter.BoolToVisibilityConverter}}">
-
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -39,38 +38,25 @@
                         Width="25" Height="25"
                         Margin="0 0 5 0"
                         Grid.Column="0" />
-
                     <Border Grid.Column="1" Style="{StaticResource Style.Border.Header}" VerticalAlignment="Center">
-
                         <TextBlock Margin="4 1 0 0" Style="{StaticResource Style.TextBlock.Header}"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Text="Capture" />
-
                     </Border>
                     <TextBox IsReadOnly="True" Grid.Column="2" FontWeight="Bold" Margin="10,5,6,3"
                              Text="{Binding Path=Capture.FilePath, Mode=OneWay}" />
-
                 </Grid>
-
-
                 <telerik:RadExpander Background="White" Margin="0,5,0,0"
                                      Style="{StaticResource ResourceKey=Style.RadExpander}" IsExpanded="True">
-
                     <telerik:RadExpander.Header>
-
                         <Border Grid.Row="0" Style="{StaticResource Style.Border.Header}" VerticalAlignment="Center">
-
                             <TextBlock Margin="4 1 0 0" Style="{StaticResource Style.TextBlock.Header}"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"
                                        Text="File" />
-
                         </Border>
-
                     </telerik:RadExpander.Header>
-
-
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="120" />
@@ -83,13 +69,12 @@
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-
                         <TextBlock Style="{StaticResource Style.TextBlock.Label}"
                                    Grid.Row="1" Grid.Column="0" Margin="6,3,3,3" Text="File Size:" />
                         <TextBlock Style="{StaticResource Style.TextBlock.Content}"
                                    Grid.Row="1" Grid.Column="1" Margin="8,3,3,3"
+                                   TextAlignment="Left"
                                    Text="{Binding Path=Capture.FileInfo.Length}" />
-
                         <TextBlock Style="{StaticResource Style.TextBlock.Label}" VerticalAlignment="Center"
                                    Grid.Row="2" Grid.Column="0" Margin="6,6,3,6" Text="SHA1 Checksum:" Height="16" />
                         <TextBox IsReadOnly="True" VerticalAlignment="Center"
@@ -97,7 +82,6 @@
                                  Foreground="{Binding Path=Capture.IsChecksumCorrect, Converter={StaticResource Converter.BoolToRedConverterInvert}}"
                                  Grid.Row="2" Grid.Column="1" Margin="0,3"
                                  Text="{Binding Path=Capture.PcapHashCurrent, Mode=OneWay, Converter={StaticResource Converter.ByteArrayToHexString}}" Height="22" />
-
                         <TextBlock Style="{StaticResource Style.TextBlock.Label}" VerticalAlignment="Center"
                                    Grid.Row="2" Grid.Column="2" Margin="6,6,3,6" Text="Should be :" Height="16"
                                    Visibility="{Binding Path=Capture.IsChecksumCorrect, Converter={StaticResource Converter.BoolToVisibilityConverterInvert}}" />
@@ -107,15 +91,12 @@
                                  Grid.Row="2" Grid.Column="3" Margin="0,3,-9,3"
                                  Text="{Binding Path=Capture.PcapHashOriginal, Mode=OneWay, Converter={StaticResource Converter.ByteArrayToHexString}}" Height="22" />
                     </Grid>
-
                 </telerik:RadExpander>
-
             </StackPanel>
             <StackPanel Margin="5 5 5 0" Background="White" x:Name="ConversationsGroupHeader"
                         d:DataContext="{d:DesignInstance conversationsCollections:ConversationsGroupVm}"
                         DataContext="{Binding ConversationsVm}"
                         Visibility="{Binding Path=DataContext.IsConversationGroupVm, ElementName=ConversationsOverviewViewPane, Converter={StaticResource Converter.BoolToVisibilityConverter}}">
-
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -128,20 +109,15 @@
                         Width="25" Height="25"
                         Margin="0 0 5 0"
                         Grid.Column="0" />
-
                     <Border Grid.Column="1" Style="{StaticResource Style.Border.Header}" VerticalAlignment="Center">
                         <TextBlock Margin="4 1 0 0" Style="{StaticResource Style.TextBlock.Header}"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Text="Conversations group" />
-
                     </Border>
                     <TextBox IsReadOnly="True" Grid.Column="2" FontWeight="Bold" Margin="10,5,6,3"
                              Text="{Binding Path=ConversationsGroup.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-
                 </Grid>
-
-
                 <telerik:RadExpander Background="White" Margin="0,5,0,0"
                                      Style="{StaticResource ResourceKey=Style.RadExpander}" IsExpanded="True">
                     <telerik:RadExpander.Header>
@@ -169,30 +145,12 @@
                         <TextBlock Style="{StaticResource Style.TextBlock.Content}"
                                    Grid.Row="1" Grid.Column="1" Margin="8,3,3,3"
                                    Text="{Binding Path=ConversationsGroup.Name}" />
-
-                        <!--<TextBlock Style="{StaticResource Style.TextBlock.Label}" VerticalAlignment="Center"
-					           Grid.Row="2" Grid.Column="0" Margin="6,6,3,6" Text="SHA1 Checksum:" Height="16" />
-					<TextBox IsReadOnly="True" VerticalAlignment="Center"
-					         BorderThickness="1" Width="280" BorderBrush="Transparent" HorizontalAlignment="Left"
-					         Foreground="{Binding Path=Capture.IsChecksumCorrect, Converter={StaticResource Converter.BoolToRedConverterInvert}}"
-					         Grid.Row="2" Grid.Column="1" Margin="0,3"
-					         Text="{Binding Path=Capture.PcapHash, Mode=OneWay}" Height="22" />
-
-					<TextBlock Style="{StaticResource Style.TextBlock.Label}" VerticalAlignment="Center"
-					           Grid.Row="2" Grid.Column="2" Margin="6,6,3,6" Text="Should be :" Height="16"
-					           Visibility="{Binding Path=Capture.IsChecksumCorrect, Converter={StaticResource Converter.BoolToVisibilityConverterInvert}}" />
-					<TextBox IsReadOnly="True" VerticalAlignment="Center"
-					         BorderThickness="1" Width="280" BorderBrush="Transparent" HorizontalAlignment="Left"
-					         Visibility="{Binding Path=Capture.IsChecksumCorrect, Converter={StaticResource Converter.BoolToVisibilityConverterInvert}}"
-					         Grid.Row="2" Grid.Column="3" Margin="0,3,-9,3"
-					         Text="{Binding Path=Capture.PcapHash, Mode=OneWay}" Height="22" />-->
                     </Grid>
                 </telerik:RadExpander>
             </StackPanel>
             <StackPanel Margin="5 5 5 0" Background="White" x:Name="Encryption"
                         d:DataContext="{d:DesignInstance conversationsCollections:ConversationsGroupVm}"
                         DataContext="{Binding ConversationsVm}">
-
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -205,13 +163,11 @@
                         Width="25" Height="25"
                         Margin="0 0 5 0"
                         Grid.Column="0" />
-
                     <Border Grid.Column="1" Style="{StaticResource Style.Border.Header}" VerticalAlignment="Center">
                         <TextBlock Margin="4 1 0 0" Style="{StaticResource Style.TextBlock.Header}"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Text="SSL/TLS" />
-
                     </Border>
                 </Grid>
                 <Grid>
@@ -221,16 +177,13 @@
                         <ColumnDefinition Width="72" />
                         <ColumnDefinition Width="271*" />
                     </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
                     <TextBlock Style="{StaticResource Style.TextBlock.Label}"
                                Grid.Row="0" Grid.Column="0" Margin="6,3,3,3" Text="Cypher key file:" />
                     <TextBlock Style="{StaticResource Style.TextBlock.Content}"
                                Grid.Row="0" Grid.Column="1" Margin="8,3,3,3"
                                Text="{Binding Path=ConversationsGroup.Name}" />
                     <Button Content="Add cypher key" Grid.Column="3" Command="{Binding CAddCypherKeyFromFile}"
-                            MaxWidth="100" HorizontalAlignment="Right" />
+                            MaxWidth="110" HorizontalAlignment="Right" />
                 </Grid>
             </StackPanel>
 
@@ -257,9 +210,7 @@
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Center"
                                    Text="Application protocol extraction" />
-
                     </Border>
-                    <!--<plugins1:PluginsActivator Grid.Column="3" />-->
                 </Grid>
                 <telerik:RadExpander Background="White" Margin="0,5,0,0"
                                      Style="{StaticResource ResourceKey=Style.RadExpander}" IsExpanded="True">
@@ -272,8 +223,6 @@
                         </Border>
                     </telerik:RadExpander.Header>
                     <StackPanel>
-
-
                         <snoopers:UsedSnoopersUc DataContext="{Binding}" />
                     </StackPanel>
                 </telerik:RadExpander>
@@ -281,18 +230,5 @@
         </StackPanel>
         <conversations:ConversationsContentUc Grid.Row="1" x:Name="ConversationsContent"
                                                DataContext="{Binding ConversationsVm}" />
-
-        <!--<telerik:RadExpander
-            Visibility="{Binding Path=AnyPluginsView, ElementName=EntityPluginsViewsControl, Converter={StaticResource Converter.BoolToVisibilityConverter}}"
-            Style="{StaticResource ResourceKey=Style.RadExpander}" Grid.Row="2" IsExpanded="True">
-            <telerik:RadExpander.Header>
-                <TextBlock Text="Plugins" />
-            </telerik:RadExpander.Header>
-            <telerik:RadExpander.Content>
-                <plugins1:EntityPluginsViewsControl x:Name="EntityPluginsViewsControl" EntityType="Capture" />
-            </telerik:RadExpander.Content>
-        </telerik:RadExpander>-->
-
     </Grid>
-
 </views:DetectiveDataEntityPaneViewBase>

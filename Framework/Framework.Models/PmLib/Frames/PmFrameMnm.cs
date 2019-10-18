@@ -40,13 +40,10 @@ namespace Netfox.Framework.Models.PmLib.Frames
             PmLinkType pmLinkType,
             DateTime timeStamp,
             Int32 oriLength,
-            Int32 incLength) : base(pmCapture, pmLinkType, timeStamp, incLength)
+            Int32 incLength) : base(pmCapture, pmLinkType, timeStamp, incLength, PmFrameType.Mnm, fraIndex, oriLength)
         {
-            this.PmFrameType = PmFrameType.Mnm;
             this.FrameOffset = fraOffset;
             this.L2Offset = this.FrameOffset + 16;
-            this.FrameIndex = fraIndex;
-            this.OriginalLength = oriLength;
         }
         public PmFrameMnm() : base() { }
 

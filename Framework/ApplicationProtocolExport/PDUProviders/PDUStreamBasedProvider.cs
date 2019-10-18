@@ -75,7 +75,7 @@ namespace Netfox.Framework.ApplicationProtocolExport.PDUProviders
         private readonly List<PDU> _conversationPDUs;
 
         /// <summary>
-        ///     The total readed pdu bytes.
+        ///     The total read pdu bytes.
         /// </summary>
         internal Int64 TotalReadedPDUbytes;
 

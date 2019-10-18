@@ -19,7 +19,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
-using AlphaChiTech.Virtualization.Interfaces;
+using AlphaChiTech.VirtualizingCollection.Interfaces;
 using Castle.Core.Logging;
 using Castle.Windsor;
 using Netfox.Core;

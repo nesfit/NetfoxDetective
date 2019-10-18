@@ -38,6 +38,7 @@ namespace Netfox.Logger
             this.CreateLogger("default");
         }
 
+        public void CloseLoggingDirectory() { NetfoxFileAppender.Close();}
         public void ChangeLoggingDirectory(DirectoryInfo directoryInfo)
         {
             if(directoryInfo == null)
@@ -136,6 +137,13 @@ namespace Netfox.Logger
 
         #region Implementation of ILogger
         public ILogger CreateChildLogger(string loggerName) { return this.Logger?.CreateChildLogger(loggerName); }
+        public void Trace(string message) { this.Logger.Trace(message); }
+        public void Trace(Func<string> messageFactory) { this.Logger.Trace(messageFactory); }
+        public void Trace(string message, Exception exception) { this.Logger.Trace(message, exception); }
+        public void TraceFormat(string format, params object[] args) { this.Logger.Trace(string.Format(format, args));}
+        public void TraceFormat(Exception exception, string format, params object[] args) { this.Logger.Trace(string.Format(format, args), exception); }
+        public void TraceFormat(IFormatProvider formatProvider, string format, params object[] args) { this.Logger.Trace(string.Format(formatProvider, format, args)); }
+        public void TraceFormat(Exception exception, IFormatProvider formatProvider, string format, params object[] args) { this.Logger.Trace(string.Format(formatProvider, format, args), exception); }
         public void Debug(string message) { this.Logger?.Debug(message); }
         public void Debug(Func<string> messageFactory) { this.Logger?.Debug(messageFactory); }
         public void Debug(string message, Exception exception) { this.Logger?.Debug(message, exception); }
@@ -171,6 +179,7 @@ namespace Netfox.Logger
         public void WarnFormat(Exception exception, string format, params object[] args) { this.Logger?.WarnFormat(exception, format, args); }
         public void WarnFormat(IFormatProvider formatProvider, string format, params object[] args) { this.Logger?.WarnFormat(formatProvider, format, args); }
         public void WarnFormat(Exception exception, IFormatProvider formatProvider, string format, params object[] args) { this.Logger?.WarnFormat(exception, formatProvider, format, args); }
+        public bool IsTraceEnabled { get; }
         public bool IsDebugEnabled => this.Logger.IsDebugEnabled;
 
         public bool IsErrorEnabled => this.Logger.IsErrorEnabled;

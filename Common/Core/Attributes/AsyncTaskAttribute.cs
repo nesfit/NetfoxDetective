@@ -16,41 +16,61 @@ using System;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
-using System.Threading.Tasks;
 using Castle.Core.Logging;
 using Castle.Windsor;
 using Netfox.Core.Interfaces;
-using Netfox.Core.Messages;
 using PostSharp.Aspects;
 
 namespace Netfox.Core.Attributes
 {
-  
     [Serializable]
     public class AsyncTaskAttribute : OnMethodBoundaryAspect, ILoggable
     {
-        public AsyncTaskAttribute() { this.ApplyToStateMachine = false; }
-        public WindsorContainer WindsorContainer { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
+        [NonSerialized] private CancellationToken _cancellationToken;
+        public AsyncTaskAttribute() { this.SemanticallyAdvisedMethodKinds = SemanticallyAdvisedMethodKinds.Async; }
+        public IWindsorContainer WindsorContainer { get; set; }
+        public String Title { get; set; } = String.Empty;
+        public String Description { get; set; } = String.Empty;
+
+        public IBgTask BgTaskVm { get; private set; }
+
+        public ILogger Logger { get; set; }
+
         public override void OnEntry(MethodExecutionArgs args)
         {
-            var windsorPropertyInfo = args.Instance.GetType().GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetProperty).FirstOrDefault(p => p.PropertyType == typeof(WindsorContainer));
-            if (windsorPropertyInfo != null) { this.WindsorContainer = windsorPropertyInfo.GetValue(args.Instance) as WindsorContainer; }
+            var windsorPropertyInfo = args.Instance.GetType().GetProperties(BindingFlags.Public|BindingFlags.NonPublic|BindingFlags.Instance|BindingFlags.GetProperty)
+                .FirstOrDefault(p => p.PropertyType == typeof(WindsorContainer) || p.PropertyType == typeof(IWindsorContainer));
+            if(windsorPropertyInfo != null) this.WindsorContainer = windsorPropertyInfo.GetValue(args.Instance) as WindsorContainer;
             this.ResolveLogger();
 
-            this.Logger?.Info($"{this.Title} - Started, {this.Description}");
+            this.LogMethodStart();
 
             this.RegisterWithTaskManager(args);
         }
 
-        private void ResolveLogger()
+        private void LogMethodStart() { this.Logger?.Info($"{this?.Title} - Started, {this?.Description}"); }
+
+        #region Overrides of OnMethodBoundaryAspect
+        public override void OnException(MethodExecutionArgs args)
         {
-            if (!this.WindsorContainer?.Kernel.HasComponent(typeof(ILogger)) ?? false) return;
-            this.Logger =  this.WindsorContainer?.Resolve<ILogger>();
+            this.LogMethodException(args);
+            this.ReportErrorToTaskManager();
         }
 
-        public ILogger Logger { get; set; }
+        private void ReportErrorToTaskManager() { this.BgTaskVm?.Finish(TaskResultState.Error); }
+
+        private void LogMethodException(MethodExecutionArgs args) { this.Logger?.Info($"{this?.Title} - Exception, {args.Exception.Message}"); }
+        #endregion
+
+        public override void OnSuccess(MethodExecutionArgs args)
+        {
+            this.LogMethodSuccessfulFinish();
+            this.FinishTaskInTaskManager();
+        }
+
+        private void FinishTaskInTaskManager() { this.BgTaskVm?.Finish(TaskResultState.Ok); }
+
+        private void LogMethodSuccessfulFinish() { this.Logger?.Info($"{this?.Title} - Finished, {this?.Description}"); }
 
         private void RegisterWithTaskManager(MethodExecutionArgs args)
         {
@@ -60,32 +80,16 @@ namespace Netfox.Core.Attributes
             {
                 var bgTasksManagerService = this.WindsorContainer?.Resolve<IBgTasksManagerService>();
                 var cancelationToken = args.Arguments.FirstOrDefault(a => a is CancellationToken);
-                if(cancelationToken != null) { this._cancelationToken = (CancellationToken) cancelationToken; }
-                this.BgTaskVm = bgTasksManagerService?.CreateTask(this.Title, this.Description, this._cancelationToken);
+                if(cancelationToken != null) this._cancellationToken = (CancellationToken) cancelationToken;
+                this.BgTaskVm = bgTasksManagerService?.CreateTask(this?.Title, this?.Description, this._cancellationToken);
             }
-            catch(Exception ex) {
-                this.Logger?.Error($"{this.Title} - Error in task registration",ex);
-            }
+            catch(Exception ex) { this.Logger?.Error($"{this?.Title} - Error in task registration", ex); }
         }
 
-        public IBgTask BgTaskVm { get; private set; }
-        [NonSerialized] private CancellationToken _cancelationToken;
-        public override void OnSuccess(MethodExecutionArgs args)
+        private void ResolveLogger()
         {
-            try
-            {
-                var task = (Task)args.ReturnValue;
-                task.ContinueWith(t =>
-                {
-                    this.Logger?.Info($"{this.Title} - Finished, {this.Description}");
-                    this.BgTaskVm?.Finish(TaskResultState.Ok);
-                }, this._cancelationToken);
-            }
-            catch (Exception ex)
-            {
-                this.Logger?.Info($"{this.Title} - Exception, {ex.Message}");
-                this.BgTaskVm?.Finish(TaskResultState.Error);
-            }
+            if(!this.WindsorContainer?.Kernel.HasComponent(typeof(ILogger)) ?? false) return;
+            this.Logger = this.WindsorContainer?.Resolve<ILogger>();
         }
     }
 }

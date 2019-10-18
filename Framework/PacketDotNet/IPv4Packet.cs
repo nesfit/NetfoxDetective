@@ -131,6 +131,7 @@ namespace PacketDotNet
         ///     Fragmentation offset
         ///     The offset specifies a number of octets (i.e., bytes).
         ///     A 13-bit unsigned integer.
+        /// NOTE: FragmentOffset is here measured in 8 byte increments. For example Wireshark shows 'Fragment offset' in bytes, therefore its shows 8 times bigger value.
         /// </summary>
         public virtual int FragmentOffset
         {

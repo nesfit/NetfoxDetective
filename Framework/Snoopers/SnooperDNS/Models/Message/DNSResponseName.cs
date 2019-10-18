@@ -17,5 +17,6 @@ namespace Netfox.SnooperDNS.Models.Message
     public class DnsResponseName: DnsResponse
     {
         public string RDataName { get; set; }
+        public override string ToString() { return $"{base.ToString()}, {nameof(this.RDataName)}: {this.RDataName}"; }
     }
 }

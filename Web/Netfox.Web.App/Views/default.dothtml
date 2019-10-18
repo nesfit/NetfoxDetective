@@ -1,0 +1,47 @@
+﻿@viewModel Netfox.Web.App.ViewModels.DefaultViewModel, Netfox.Web.App
+@masterPage Views/BaseLayout.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <div class="dashboard">
+        <div class="mod-quick-icons">
+            <ul>
+                <li Visible="{value: IsAdmin}">
+                    <dot:RouteLink RouteName="Settings_User">
+                        <div class="icon fas fa-user-plus"></div>
+                        <span>Add User</span>
+                    </dot:RouteLink>
+                </li>
+                <li>
+                    <dot:RouteLink RouteName="Investigations_Investigation">
+                        <div class="icon fas fa-search"><div class="fas fa-plus"></div></div>
+                        <span>Add Investigation</span>
+                    </dot:RouteLink>
+                </li>
+                <li>
+                    <dot:RouteLink RouteName="Investigations_overview">
+                        <div class="icon fas fa-search"></div>
+                        <span>Investigations</span>
+                    </dot:RouteLink>
+                </li>
+                <li Visible="{value: IsAdmin}">
+                    <dot:RouteLink RouteName="Settings_UserManagement">
+                        <div class="icon fas fa-users"></div>
+                        <span>User Management</span>
+                    </dot:RouteLink>
+                </li>
+            </ul>
+        </div>
+        <div class="mod-last-investigations">
+            <h2>Last used investigation</h2>
+            <dot:GridView class="w-100 table" DataSource="{value: LastInvestigation}">
+                <RowDecorators>
+                    <dot:Decorator class="clickable" Events.Click="{command: _parent.RedirectToInvestigation(Id)}">
+                </RowDecorators>
+                <Columns>
+                    <dot:GridViewTextColumn ValueBinding="{value: Name}" HeaderText="Name" />
+                    <dot:GridViewTextColumn ValueBinding="{value: LastAccess}" FormatString="dd.MM.yyyy hh:mm:ss" HeaderText="Last Access" />
+                </Columns>
+            </dot:GridView>
+        </div>
+    </div>
+</dot:Content>

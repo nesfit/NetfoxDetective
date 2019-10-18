@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RootNamespace>Netfox.Framework.CaptureProcessor</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\CCore\CCore.csproj" />
+    <ProjectReference Include="..\CModels\CModels.csproj" />
+    <ProjectReference Include="..\CPacketDotNet\CPacketDotNet.csproj" />
+    <ProjectReference Include="..\ApplicationRecognizers\CNBARDatabase\CNBARDatabase.csproj" />
+    <ProjectReference Include="..\ApplicationRecognizers\CNbar\CNbar.csproj" />
+    <ProjectReference Include="..\ApplicationRecognizers\CRTP\CRTP.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ApplicationRecognizer\" />
+  </ItemGroup>
+</Project>

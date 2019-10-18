@@ -28,8 +28,6 @@ namespace Netfox.Detective.ViewModels.Outputs
 {
     public sealed class MainOutputVm : DetectiveApplicationPaneViewModelBase
     {
-        public NetfoxOutputAppender NetfoxOutputAppender { get; }
-
         public MainOutputVm(WindsorContainer applicationWindsorContainer, NetfoxOutputAppender netfoxOutputAppender) : base(applicationWindsorContainer)
         {
             this.NetfoxOutputAppender = netfoxOutputAppender;
@@ -41,7 +39,8 @@ namespace Netfox.Detective.ViewModels.Outputs
         }
 
         public override string HeaderText => "Main output";
-        
+        public NetfoxOutputAppender NetfoxOutputAppender { get; }
+
         public LoggingEvent SelectedLogMessage { get; set; }
 
         [IgnoreAutoChangeNotification]
@@ -52,18 +51,25 @@ namespace Netfox.Detective.ViewModels.Outputs
                 return new RelayCommand(() =>
                 {
                     var selectedLogMessage = this.SelectedLogMessage;
-                    if(selectedLogMessage != null) { Clipboard.SetData(DataFormats.Text, selectedLogMessage.ToString()); }
+                    if (selectedLogMessage != null)
+                    {
+                        Clipboard.SetData(DataFormats.Text, selectedLogMessage.ToString());
+                    }
                 });
             }
         }
+
         [SafeForDependencyAnalysis]
         public ObservableCollection<LoggingEvent> OutputMessages => this.NetfoxOutputAppender.OutputMessages;
 
         private void OutputMessagesOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs args)
         {
-            if(args == null || args.NewItems.Count == 0) { return; }
-            var sysmsg = args.NewItems[0] as LoggingEvent;
+            if (args?.NewItems == null || args.NewItems.Count == 0)
+            {
+                return;
+            }
 
+            var sysmsg = args.NewItems[0] as LoggingEvent;
             this.SelectedLogMessage = sysmsg;
         }
     }

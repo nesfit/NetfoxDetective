@@ -12,7 +12,7 @@ namespace Netfox.NBARDatabase.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.1.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.2.0.0")]
     public sealed partial class NBARprotocols : global::System.Configuration.ApplicationSettingsBase {
         
         private static NBARprotocols defaultInstance = ((NBARprotocols)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new NBARprotocols())));
@@ -122,51 +122,39 @@ namespace Netfox.NBARDatabase.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("dns")]
         public string dns {
             get {
                 return ((string)(this["dns"]));
             }
-            set {
-                this["dns"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("ApplicationRecognizer/SPID/DefaultProtocolModelDatabase.xml")]
         public string DefaultProtocolModelDatabase {
             get {
                 return ((string)(this["DefaultProtocolModelDatabase"]));
             }
-            set {
-                this["DefaultProtocolModelDatabase"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("NBARDatabase/nbar11.xml")]
         public string NBARTaxonomy {
             get {
                 return ((string)(this["NBARTaxonomy"]));
             }
-            set {
-                this["NBARTaxonomy"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("ApplicationRecognizer/SPID/SPID_config.xml")]
         public string SPID_config {
             get {
                 return ((string)(this["SPID_config"]));
-            }
-            set {
-                this["SPID_config"] = value;
             }
         }
     }

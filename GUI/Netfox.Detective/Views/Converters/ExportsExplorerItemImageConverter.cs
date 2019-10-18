@@ -23,12 +23,12 @@ namespace Netfox.Detective.Views.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if(!value.GetType().IsAssignableFrom(typeof(ExportsExplorerVm.ExplorerItem.ItemType))) { return null; }
+            if (!value.GetType().IsAssignableFrom(typeof(ExportsExplorerVm.ExplorerItem.ItemType))) { return null; }
 
-            var type = value is ExportsExplorerVm.ExplorerItem.ItemType? (ExportsExplorerVm.ExplorerItem.ItemType) value : ExportsExplorerVm.ExplorerItem.ItemType.Investigation;
+            var type = value is ExportsExplorerVm.ExplorerItem.ItemType ? (ExportsExplorerVm.ExplorerItem.ItemType)value : ExportsExplorerVm.ExplorerItem.ItemType.Investigation;
 
 
-            switch(type)
+            switch (type)
             {
                 case ExportsExplorerVm.ExplorerItem.ItemType.Investigation:
                     return "pack://application:,,,/Netfox.Detective;component/Views/Resources/Icons/db.png";

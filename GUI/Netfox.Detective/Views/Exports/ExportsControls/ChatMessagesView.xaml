@@ -20,7 +20,7 @@
     </UserControl.Resources>
     <telerik:RadGridView EnableRowVirtualization="True"
                          x:Name="ChatMessagesGridView"
-                         ItemsSource="{Binding Path=ChatMessages}"
+                         ItemsSource="{Binding Path=ChatMessages.Result}"
                          SelectedItem="{Binding Path=SelectedExportResult, Mode=TwoWay, Converter={StaticResource Converter.ExportObjectToExportResultVm}}"
                          AutoGenerateColumns="False" IsReadOnly="True"
                          Style="{StaticResource Style.DataGridView}">

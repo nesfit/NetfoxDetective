@@ -14,6 +14,7 @@ namespace PacketDotNet
             };
 
             //Temporary solution. Consider flags...
+            // TODO BUG: Implementation of GRE flags and optional header fields is missing.
 
             // store the payload bytes
             this.payloadPacketOrData = new PacketOrByteArraySegment
@@ -35,6 +36,7 @@ namespace PacketDotNet
         public Packet GetEncapsuledPacket()
         {
             var bas = new ByteArraySegment(this.header.Bytes, this.header.Offset + this.header.Length, 50);
+            // TODO BUG: GRE could contain other packets than IPv4, e.g. IPv6.
             Packet packet = new IPv4Packet(bas);
             return packet;
         }

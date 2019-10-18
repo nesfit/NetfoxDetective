@@ -67,16 +67,7 @@ namespace Netfox.SnooperSMTP
                 this.Valid = false;
                 return;
             }
-
-            //Console.WriteLine("FTPMsg created, frame numbers: " + string.Join(",", Frames.ToArray()));
-            //if(!_streamProvider.GetCurrentPDU().Conversation.ApplicationTags.Any())
-            //{
-            //    this.Valid = false;
-            //    this.InvalidReason = "no application tag";
-            //    this.ExportSources.Add(_streamProvider.GetCurrentPDU());
-            //    return;
-            //}
-
+            
             this.ExportSources.Add(_streamProvider.GetCurrentPDU());
 
             var _line = this._reader.ReadLine();

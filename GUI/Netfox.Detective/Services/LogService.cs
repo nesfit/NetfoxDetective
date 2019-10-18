@@ -15,10 +15,11 @@
 using System.Threading.Tasks;
 using Castle.Core;
 using Castle.Core.Logging;
-using GalaSoft.MvvmLight.Messaging;
 using Netfox.Core.Interfaces;
-using Netfox.Core.Messages.Base;
 using Netfox.Core.Properties;
+using Netfox.Detective.Messages;
+using Netfox.Detective.Messages.Investigations;
+using Netfox.Detective.Messages.Workspaces;
 using Netfox.Detective.Models.Base;
 using Netfox.Logger;
 
@@ -28,28 +29,24 @@ namespace Netfox.Detective.Services
     {
         public NetfoxLogger NetfoxLogger { get; private set; }
 
-        public LogService(NetfoxLogger netfoxLogger)
+        public LogService(NetfoxLogger netfoxLogger, IDetectiveMessenger messenger)
         {
             this.NetfoxLogger = netfoxLogger;
-            Task.Factory.StartNew(() => Messenger.Default.Register<InvestigationMessage>(this, this.InvestigationMessageHandler));
+            Task.Factory.StartNew(() => messenger.Register<OpenedInvestigationMessage>(this, this.OpenedInvestigationMessageReceived));
+            Task.Factory.StartNew(() => messenger.Register<ClosedWorkspaceMessage>(this, this.ClosedWorkspaceMessageReceived));
             this.LoadSettings();
         }
-        
 
-        private void InvestigationMessageHandler(InvestigationMessage investigationMessage)
+        private void OpenedInvestigationMessageReceived(OpenedInvestigationMessage msg)
         {
-            if(investigationMessage == null) { return; }
-            switch(investigationMessage.Type)
-            {
-                case InvestigationMessage.MessageType.InvestigationCreated:
-                    break;
-                case InvestigationMessage.MessageType.CurrentInvestigationChanged:
-                    var investigation = investigationMessage.Investigation as Investigation;
-                    this.NetfoxLogger.ChangeLoggingDirectory(investigation?.InvestigationInfo?.LogsDirectoryInfo);
-                    break;
-            }
+            var investigation = msg.Investigation as Investigation;
+            this.NetfoxLogger.ChangeLoggingDirectory(investigation?.InvestigationInfo?.LogsDirectoryInfo);
         }
 
+        private void ClosedWorkspaceMessageReceived(ClosedWorkspaceMessage msg)
+        {
+            NetfoxLogger.CloseLoggingDirectory();
+        }
 
         private void LoadSettings()
         {

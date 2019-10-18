@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7AC74F27-BDB5-4DE7-8A88-C33EE5E5ED28}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Netfox.Web.BL</RootNamespace>
+    <AssemblyName>Netfox.Web.BL</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Castle.Core" Version="4.4.0" />
+    <PackageReference Include="Castle.Windsor" Version="4.1.1" />
+    <PackageReference Include="EntityFramework" Version="6.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <Reference Include="System" />
+    <PackageReference Include="System.Collections.Immutable" Version="1.5.0" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <PackageReference Include="System.IO.Abstractions" Version="2.0.0.144" />
+    <PackageReference Include="System.Linq.Dynamic" Version="1.0.7" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <PackageReference Include="UnitOfWork.EF6Repository" Version="1.0.5" />
+    <PackageReference Include="UnitOfWork.EF6UnitOfWork" Version="1.0.5" />
+    <PackageReference Include="UnitOfWork" Version="1.0.5" />
+    <PackageReference Include="UnitOfWork.Repository" Version="1.0.5" />
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
+    <PackageReference Include="DotVVM.Core" Version="1.1.9.4" />
+    <PackageReference Include="Riganti.Utils.Infrastructure.AutoMapper" Version="2.3.0" />
+    <PackageReference Include="Riganti.Utils.Infrastructure.Core" Version="2.3.0" />
+    <PackageReference Include="Riganti.Utils.Infrastructure.DotVVM" Version="2.3.0" />
+    <PackageReference Include="Riganti.Utils.Infrastructure.EntityFramework" Version="2.3.0" />
+    <PackageReference Include="Riganti.Utils.Infrastructure.Services" Version="2.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessLayer.cs" />
+    <Compile Include="DTO\EmailAttachmentDTO.cs" />
+    <Compile Include="DTO\ExportCallDetail.cs" />
+    <Compile Include="DTO\ExportCallStreamDTO.cs" />
+    <Compile Include="DTO\ExportedProtocolsDTO.cs" />
+    <Compile Include="DTO\CaptureDTO.cs" />
+    <Compile Include="DTO\InvestigationStatisticsDTO.cs" />
+    <Compile Include="DTO\ExportStatisticsDTO.cs" />
+    <Compile Include="DTO\ExportFilterDTO.cs" />
+    <Compile Include="DTO\FrameFilterDTO.cs" />
+    <Compile Include="DTO\ConversationFilterDTO.cs" />
+    <Compile Include="DTO\ConvesationStatisticsDTO.cs" />
+    <Compile Include="DTO\ExportCallDTO.cs" />
+    <Compile Include="DTO\ExportChatMessageDTO.cs" />
+    <Compile Include="DTO\ExportEmailDTO.cs" />
+    <Compile Include="DTO\ExportFileMessageDTO.cs" />
+    <Compile Include="DTO\IFilterDTO.cs" />
+    <Compile Include="DTO\InvestigationDTO.cs" />
+    <Compile Include="DTO\KeyValueDTO.cs" />
+    <Compile Include="DTO\L3ConversationDTO.cs" />
+    <Compile Include="DTO\L4ConversationDetailDTO.cs" />
+    <Compile Include="DTO\L4ConversationDTO.cs" />
+    <Compile Include="DTO\L7ConversationDetailDTO.cs" />
+    <Compile Include="DTO\L7ConversationDTO.cs" />
+    <Compile Include="DTO\LoginDTO.cs" />
+    <Compile Include="DTO\LxConversationBaseDTO.cs" />
+    <Compile Include="DTO\PmFrameBaseDetailDTO.cs" />
+    <Compile Include="DTO\PmFrameBaseDTO.cs" />
+    <Compile Include="DTO\SnooperExportBaseDTO.cs" />
+    <Compile Include="DTO\SnooperExportObjectListDTO.cs" />
+    <Compile Include="DTO\UserDetailDTO.cs" />
+    <Compile Include="DTO\UserDTO.cs" />
+    <Compile Include="DTO\InvestigationFilterDTO.cs" />
+    <Compile Include="DTO\UserFilterDTO.cs" />
+    <Compile Include="DTO\UserInvestigationDTO.cs" />
+    <Compile Include="Facades\Base\AppCrudFacadeBase.cs" />
+    <Compile Include="Facades\Base\AppFilteredCrudFacadeBase.cs" />
+    <Compile Include="Facades\Base\IListFacade.cs" />
+    <Compile Include="Facades\Base\IFilteredListFacade.cs" />
+    <Compile Include="Facades\Base\IDetailFacade.cs" />
+    <Compile Include="Facades\Base\NetfoxFacadeBase.cs" />
+    <Compile Include="Facades\CaptureFacade.cs" />
+    <Compile Include="Facades\ExportFacade.cs" />
+    <Compile Include="Facades\HangfireFacade.cs" />
+    <Compile Include="Facades\InvestigationFacade.cs" />
+    <Compile Include="Facades\StatsFacade.cs" />
+    <Compile Include="Facades\LoginFacade.cs" />
+    <Compile Include="Facades\NetfoxAPIFacade.cs" />
+    <Compile Include="Facades\UserFacade.cs" />
+    <Compile Include="Infrastructure\ISnooperWeb.cs" />
+    <Compile Include="Mappings\IMapping.cs" />
+    <Compile Include="Mappings\NetfoxEntityMapping.cs" />
+    <Compile Include="Mappings\NetfoxWebMapping.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\INetfoxProvider.cs" />
+    <Compile Include="Providers\NetfoxRepositoryProvider.cs" />
+    <Compile Include="Providers\NetfoxUnitOfWorkProvider.cs" />
+    <Compile Include="Queries\CallStreamQuery.cs" />
+    <Compile Include="Queries\EmailQuery.cs" />
+    <Compile Include="Queries\CallQuery.cs" />
+    <Compile Include="Queries\FrameQuery.cs" />
+    <Compile Include="Queries\ChatMessageQuery.cs" />
+    <Compile Include="Queries\L7ConversationQuery.cs" />
+    <Compile Include="Queries\L4ConversationQuery.cs" />
+    <Compile Include="Queries\NetfoxQueryBase.cs" />
+    <Compile Include="Queries\AppQueryBase.cs" />
+    <Compile Include="Queries\FirstLevel\AppFirstLevelQueryBase.cs" />
+    <Compile Include="Queries\LastInvestigationListQuery.cs" />
+    <Compile Include="Queries\InvestigationListQuery.cs" />
+    <Compile Include="Queries\AllStatsQuery.cs" />
+    <Compile Include="Queries\L3ConversationQuery.cs" />
+    <Compile Include="Queries\UserQuery.cs" />
+    <Compile Include="Queries\UserListQuery.cs" />
+    <Compile Include="Queries\RoleListQuery.cs" />
+    <Compile Include="Queries\StatsQuery.cs" />
+    <Compile Include="Queries\VerifyCredetialQuery.cs" />
+    <Compile Include="Repositories\AppRepositoryBase.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Core\Core.csproj">
+      <Project>{75B3E6D5-8007-4E1F-8A92-1774A5B1D7F1}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Persistence\Persistence.csproj">
+      <Project>{3d0d8663-1838-43b2-bae8-7f0029edf9e2}</Project>
+      <Name>Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\ApplicationProtocolExport\ApplicationProtocolExport.csproj">
+      <Project>{0BA2F363-66AF-4F36-9C96-5C30224A88DA}</Project>
+      <Name>ApplicationProtocolExport</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\Framework.Models\Framework.Models.csproj">
+      <Project>{5613CE65-51D2-49E5-BA0D-7CB5D8CB94D9}</Project>
+      <Name>Framework.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\NetfoxFrameworkAPI\NetfoxFrameworkAPI.csproj">
+      <Project>{67297EA0-DF87-42DC-9F68-957C25568D36}</Project>
+      <Name>NetfoxFrameworkAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\PacketDotNet\PacketDotNet.csproj">
+      <Project>{55abba4c-aaf9-4726-a592-0c92436cec92}</Project>
+      <Name>PacketDotNet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Misc\VirtualizingObservableCollection\VirtualizingCollection\VirtualizingCollection.csproj">
+      <Project>{ac56d9d2-b06e-4003-96fb-798adf255829}</Project>
+      <Name>VirtualizingCollection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Netfox.Web.DAL\Netfox.Web.DAL.csproj">
+      <Project>{5c15deaa-a406-40e0-a5d1-16a1d1fecb20}</Project>
+      <Name>Netfox.Web.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <PackageReference Include="UnitOfWork.BaseDataEntity" Version="1.0.5" />
+  </ItemGroup>
+</Project>

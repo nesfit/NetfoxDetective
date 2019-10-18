@@ -25,7 +25,8 @@ using GalaSoft.MvvmLight.Command;
 using Netfox.Core.Collections;
 using Netfox.Core.Helpers;
 using Netfox.Core.Interfaces.ViewModels;
-using Netfox.Core.Messages.Exports;
+using Netfox.Detective.Messages;
+using Netfox.Detective.Messages.Exports;
 using Netfox.Detective.Models.Base;
 using Netfox.Detective.Models.Exports;
 using Netfox.Detective.ViewModels.CommunicationNetwork;
@@ -43,13 +44,19 @@ namespace Netfox.Detective.ViewModelsDataEntity.Exports
 
         private readonly object _exportsDistributionLock = new object();
         private readonly object _periodLock = new object();
+        private readonly object _emailsLock = new object();
+        private readonly object _callsLock = new object();
+        private readonly object _chatMessagesLock = new object();
         private ExportVm _selectedExport;
         private NotifyTaskCompletion<KeyValue<DateTime, long>[]> _exportsDistribution;
         private NotifyTaskCompletion<DataSummaryItem[]> _dataSummary;
         private NotifyTaskCompletion<KeyValue<string, long>[]> _dataTypesDistribution;
         private NotifyTaskCompletion<string> _period;
         private NotifyTaskCompletion<ExportVm[]> _allExport;
-
+        private NotifyTaskCompletion<ConcurrentObservableCollection<EmailVm>> _emails;
+        private NotifyTaskCompletion<ConcurrentObservableCollection<CallVm>> _calls;
+        private NotifyTaskCompletion<ConcurrentObservableCollection<ChatMessageVm>> _chatMessages;
+        private readonly IDetectiveMessenger _detectiveMessenger;
         public ExportGroupVm(WindsorContainer applicationWindsorContainer, ExportGroup model) : base(applicationWindsorContainer, model)
         {
             this.ExportGroup = model;
@@ -63,12 +70,14 @@ namespace Netfox.Detective.ViewModelsDataEntity.Exports
 
             this.Exports.CollectionChanged += this.ExportResults_CollectionChanged;
             this.ExportGroups.CollectionChanged += this.ExportGroups_CollectionChanged;
+
+            this._detectiveMessenger = applicationWindsorContainer.Resolve<IDetectiveMessenger>();
         }
 
-        public ViewModelVirtualizingIoCObservableCollection<ExportVm, SnooperExportBase> Exports { get;  }
+        public ViewModelVirtualizingIoCObservableCollection<ExportVm, SnooperExportBase> Exports { get; }
 
         public ViewModelVirtualizingIoCObservableCollection<ExportGroupVm, ExportGroup> ExportGroups { get; }
-        public ExportGroup ExportGroup { get;}
+        public ExportGroup ExportGroup { get; }
 
         public string Name
         {
@@ -88,7 +97,10 @@ namespace Netfox.Detective.ViewModelsDataEntity.Exports
                 {
                     if(this._selectedExport != null)
                     {
-                        ExportResultMessage.SendExportResultMessage(this._selectedExport, ExportResultMessage.MessageType.ExportResultSelected);
+                        this._detectiveMessenger.AsyncSend(new SelectedExportResultMessage
+                            {
+                                ExportVm = this._selectedExport
+                            });
                     }
                 });
             }
@@ -106,19 +118,95 @@ namespace Netfox.Detective.ViewModelsDataEntity.Exports
                 {
                     return this._allExport
                            ?? (this._allExport =
-                               new NotifyTaskCompletion<ExportVm[]>(()=>Task.Run(() => this.RecursiveExportResults(this).ToArray()), () => this.OnPropertyChanged(nameof(this.AllExport)), new ExportVm[]{}, false));
+                               new NotifyTaskCompletion<ExportVm[]>(() => Task.Run(() => this.RecursiveExportResults(this).ToArray()), () => this.OnPropertyChanged(nameof(this.AllExport)), new ExportVm[] { }, false));
                 }
             }
         }
 
         [IgnoreAutoChangeNotification]
-        public ConcurrentObservableCollection<CallVm> Calls { get; } = new ConcurrentObservableCollection<CallVm>();
+        public NotifyTaskCompletion<ConcurrentObservableCollection<EmailVm>> Emails
+        {
+            get
+            {
+                lock (this._emailsLock)
+                {
+                    return this._emails
+                           ?? (this._emails =
+                               new NotifyTaskCompletion<ConcurrentObservableCollection<EmailVm>>(() => Task.Run(() => this.GetEmails()), () => this.OnPropertyChanged(nameof(this.Emails))));
+                }
+            }
+        }
+
+        private ConcurrentObservableCollection<EmailVm> GetEmails()
+        {
+            var emails = new ConcurrentObservableCollection<EmailVm>();
+            if (this.Exports.Any())
+            {
+                foreach (var exportVm in this.Exports)
+                {
+                    emails.AddItems(exportVm.Emails);
+                }
+            }
+
+            return emails;
+        }
 
         [IgnoreAutoChangeNotification]
-        public ConcurrentObservableCollection<ChatMessageVm> ChatMessages { get; } = new ConcurrentObservableCollection<ChatMessageVm>();
+        public NotifyTaskCompletion<ConcurrentObservableCollection<CallVm>> Calls
+        {
+            get
+            {
+                lock (this._callsLock)
+                {
+                    return this._calls
+                           ?? (this._calls =
+                               new NotifyTaskCompletion<ConcurrentObservableCollection<CallVm>>(() => Task.Run(() => this.GetCalls()), () => this.OnPropertyChanged(nameof(this.Calls))));
+                }
+            }
+        }
+
+        private ConcurrentObservableCollection<CallVm> GetCalls()
+        {
+            var calls = new ConcurrentObservableCollection<CallVm>();
+            if (this.Exports.Any())
+            {
+                foreach (var exportVm in this.Exports)
+                {
+                    calls.AddItems(exportVm.Calls);
+                }
+            }
+
+            return calls;
+        }
 
         [IgnoreAutoChangeNotification]
-        public ConcurrentObservableCollection<EmailVm> Emails { get; } = new ConcurrentObservableCollection<EmailVm>();
+        public NotifyTaskCompletion<ConcurrentObservableCollection<ChatMessageVm>> ChatMessages
+        {
+            get
+            {
+                lock (this._chatMessagesLock)
+                {
+                    return this._chatMessages
+                           ?? (this._chatMessages =
+                               new NotifyTaskCompletion<ConcurrentObservableCollection<ChatMessageVm>>(() => Task.Run(() => this.GetChatMessages()), () => this.OnPropertyChanged(nameof(this.ChatMessages))));
+                }
+            }
+        }
+
+        private ConcurrentObservableCollection<ChatMessageVm> GetChatMessages()
+        {
+            var chatMessages = new ConcurrentObservableCollection<ChatMessageVm>();
+            if (this.Exports.Any())
+            {
+                foreach (var exportVm in this.Exports)
+                {
+                    chatMessages.AddItems(exportVm.ChatMessages);
+                }
+            }
+
+            return chatMessages;
+        }
+
         public bool IsGroup => true;
 
         [IgnoreAutoChangeNotification]
@@ -144,13 +232,20 @@ namespace Netfox.Detective.ViewModelsDataEntity.Exports
 
             var first = results.FirstOrDefault();
 
-            if(first != null) { firstTimeStamp = first.Export.TimeStampFirst; }
+            if (first != null)
+            {
+                firstTimeStamp = first.Export.TimeStampFirst;
+            }
 
             var last = results.LastOrDefault();
 
-            if(last != null) { lastTimeStamp = first.Export.TimeStampLast; }
+            if (last != null)
+            {
+                lastTimeStamp = first.Export.TimeStampLast;
+            }
 
-            var newPeriod = $"{(firstTimeStamp != DateTime.MinValue? firstTimeStamp.ToString() : "????")} - {(lastTimeStamp != DateTime.MaxValue? lastTimeStamp.ToString() : "????")}";
+            var newPeriod =
+                $"{(firstTimeStamp != DateTime.MinValue ? firstTimeStamp.ToString() : "????")} - {(lastTimeStamp != DateTime.MaxValue ? lastTimeStamp.ToString() : "????")}";
 
             return newPeriod;
         }
@@ -174,20 +269,23 @@ namespace Netfox.Detective.ViewModelsDataEntity.Exports
             ExportVm[] recursiveResults = this.AllExport;
 
             // get all data
-            var data = from er in recursiveResults
-                group er by er.ExporterType
-                into cg
-                select new KeyValue<string, long>(cg.Key, cg.Count());
+            if (recursiveResults.Any())
+            {
+                var data = from er in recursiveResults
+                           group er by er.ExporterType
+                    into cg
+                           select new KeyValue<string, long>(cg.Key, cg.Count());
 
 
-            var sum = data.Sum(x => x.Value);
-            var result = (from d in data
-                group d by (double) d.Value / sum > 0.05? d.Key : "Other"
-                into dg
-                select new KeyValue<string, long>(String.IsNullOrWhiteSpace(dg.Key)? "(unknown)" : dg.Key, dg.Sum(x => x.Value))).ToArray();
+                var sum = data.Sum(x => x.Value);
+                var result = (from d in data
+                              group d by (double)d.Value / sum > 0.05 ? d.Key : "Other"
+                    into dg
+                              select new KeyValue<string, long>(string.IsNullOrWhiteSpace(dg.Key) ? "(unknown)" : dg.Key, dg.Sum(x => x.Value))).ToArray();
+                return result;
+            }
 
-
-            return result;
+            return null;
         }
 
         [IgnoreAutoChangeNotification]
@@ -207,29 +305,29 @@ namespace Netfox.Detective.ViewModelsDataEntity.Exports
         private DataSummaryItem[] GetDataSummary()
         {
             ExportVm[] recursiveResults = this.AllExport;
+            if (recursiveResults.Any())
+            {
+                // get all data
+                var data = from er in recursiveResults
+                           group er by er.ExporterType
+                    into cg
+                           select new KeyValue<string, long>(cg.Key, cg.Count());
 
-            // get all data
-            var data = from er in recursiveResults
-                group er by er.ExporterType
-                into cg
-                select new KeyValue<string, long>(cg.Key, cg.Count());
+                var sum = data.Sum(x => x.Value);
+                // show only those who has more than 5% and also up to top 5 protocols:
+                var result = (from d in data
+                              orderby d.Value descending
+                              select new DataSummaryItem
+                              {
+                                  Name = String.IsNullOrWhiteSpace(d.Key) ? "(unknown)" : d.Key,
+                                  TotalCount = d.Value,
+                                  Percent = (float)d.Value / sum * 100
+                              }).ToArray();
 
-            //  var enumerated = data.ToList();
+                return result;
+            }
 
-            //  return data;
-
-            var sum = data.Sum(x => x.Value);
-            // show only those who has more than 5% and also up to top 5 protocols:
-            var result = (from d in data
-                orderby d.Value descending
-                select new DataSummaryItem
-                {
-                    Name = String.IsNullOrWhiteSpace(d.Key)? "(unknown)" : d.Key,
-                    TotalCount = d.Value,
-                    Percent = (float) d.Value / sum * 100
-                }).ToArray();
-
-            return result;
+            return null;
         }
 
         [IgnoreAutoChangeNotification]
@@ -241,28 +339,22 @@ namespace Netfox.Detective.ViewModelsDataEntity.Exports
                 {
                     return this._exportsDistribution
                            ?? (this._exportsDistribution =
-                               new NotifyTaskCompletion<KeyValue<DateTime, long>[]>(() => Task.Run(()=> this.GetExportsDistribution()), () => this.OnPropertyChanged(nameof(this.ExportsDistribution)), false));
+                               new NotifyTaskCompletion<KeyValue<DateTime, long>[]>(() => Task.Run(() => this.GetExportsDistribution()), () => this.OnPropertyChanged(nameof(this.ExportsDistribution)), false));
                 }
             }
         }
-        private  KeyValue<DateTime, long>[] GetExportsDistribution()
+        private KeyValue<DateTime, long>[] GetExportsDistribution()
         {
             return (from p in (ExportVm[])this.AllExport
-                          group p by new DateTime(p.TimeStamp.Year, p.TimeStamp.Month, p.TimeStamp.Day, p.TimeStamp.Hour, p.TimeStamp.Minute, p.TimeStamp.Second, DateTimeKind.Utc)
+                    group p by new DateTime(p.TimeStamp.Year, p.TimeStamp.Month, p.TimeStamp.Day, p.TimeStamp.Hour, p.TimeStamp.Minute, p.TimeStamp.Second, DateTimeKind.Utc)
                         into pg
-                              orderby pg.Key
-                              select new KeyValue<DateTime, long>(pg.Key, pg.Count(), pg.FirstOrDefault())).ToArray();
+                    orderby pg.Key
+                    select new KeyValue<DateTime, long>(pg.Key, pg.Count(), pg.FirstOrDefault())).ToArray();
         }
 
 
 
         public NodeModel[] CommunicationNodes => null;
-
-        [IgnoreAutoChangeNotification]
-        public ICommand CAddNewGroup => new RelayCommand(this.AddNewGroup);
-
-        [IgnoreAutoChangeNotification]
-        public ICommand CDelete => new RelayCommand(this.Delete);
 
         public ExportVm SelectedExportResult { get; set; }
 
@@ -271,49 +363,21 @@ namespace Netfox.Detective.ViewModelsDataEntity.Exports
 
         [IgnoreAutoChangeNotification]
         public RelayCommand<ExportVm> CSelectExport => new RelayCommand<ExportVm>(exportVm => this.SelectedExport = exportVm);
-
-        public void AddNewGroup()
-        {
-            Debugger.Break();
-            //this.ExportGroup.AddNewGroup("New group");
-        }
-
-        public void Delete() { this.ExportGroup.Delete(true); }
-
-        public void MoveGroup(ExportGroupVm newParentGroup)
-        {
-            //if(newParentGroup == null || newParentGroup.ExportGroup.Id == this.ExportGroup.ParentId) { return; }
-
-            //var database = this.ExportGroup.PersistenceProvider;
-            //this.ExportGroup.PersistenceProvider.Delete(this.ExportGroup, true, true);
-            //this.ExportGroup.ParentId = newParentGroup.ExportGroup.Id;
-            //database.Insert(this.ExportGroup, true, true);
-        }
-
-        public void MoveGroupToParentId(string newParent)
-        {
-            //if(string.IsNullOrEmpty(newParent) || newParent == this.ExportGroup.ParentId) { return; }
-
-            //var database = this.ExportGroup.PersistenceProvider;
-            //this.ExportGroup.PersistenceProvider.Delete(this.ExportGroup, true, true);
-            //this.ExportGroup.ParentId = newParent;
-            //database.Insert(this.ExportGroup, true, true);
-        }
-
+        
         public void NewExportAdded(ExportVm exportVm) { }
 
         public IEnumerable<ExportVm> RecursiveExportResults(ExportGroupVm exportGroup)
         {
-            foreach(var result in exportGroup.Exports)
+            foreach (var result in exportGroup.Exports)
             {
                 yield return result;
             }
 
-            foreach(var group in exportGroup.ExportGroups)
+            foreach (var group in exportGroup.ExportGroups)
             {
                 var subResults = this.RecursiveExportResults(group);
 
-                foreach(var childResult in subResults)
+                foreach (var childResult in subResults)
                 {
                     yield return childResult;
                 }
@@ -327,40 +391,36 @@ namespace Netfox.Detective.ViewModelsDataEntity.Exports
             this.DataTypesDistribution.ReRun();
             this.DataSummary.ReRun();
             this.ExportsDistribution.ReRun();
+            this.ChatMessages.ReRun();
+            this.Emails.ReRun();
+            this.Calls.ReRun();
 
-            this.OnPropertyChanged("CommunicationNodes");
-            this.OnPropertyChanged("ExportsDistribution");
-            this.OnPropertyChanged("DataSummary");
-            this.OnPropertyChanged("DataTypesDistribution");
-            this.OnPropertyChanged("Period");
-            this.OnPropertyChanged("AllExport");
-            this.OnPropertyChanged("ExportsCount");
-            this.OnPropertyChanged("AllImages");
-            this.OnPropertyChanged("AllMessages");
-            this.OnPropertyChanged("AllCredentials");
-            this.OnPropertyChanged("AllCalls");
-            this.OnPropertyChanged("AllWebPages");
-
-            this.OnPropertyChanged(nameof(this.Calls));
-            this.OnPropertyChanged(nameof(this.Emails));
-            this.OnPropertyChanged(nameof(this.Exports));
+            this.OnPropertyChanged(nameof(CommunicationNodes));
+            this.OnPropertyChanged(nameof(ExportsDistribution));
+            this.OnPropertyChanged(nameof(DataSummary));
+            this.OnPropertyChanged(nameof(DataTypesDistribution));
+            this.OnPropertyChanged(nameof(Period));
+            this.OnPropertyChanged(nameof(AllExport));
+            this.OnPropertyChanged(nameof(ExportsCount));
+            this.OnPropertyChanged(nameof(Emails));
+            this.OnPropertyChanged(nameof(ChatMessages));
+            this.OnPropertyChanged(nameof(Calls));
         }
-        
 
         private void Data_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if(e.PropertyName == nameof(this.Name)) { this.OnPropertyChanged(nameof(this.Name)); }
+            if (e.PropertyName == nameof(this.Name)) { this.OnPropertyChanged(nameof(this.Name)); }
         }
 
         private void ExportGroups_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e) { this.Updated(); }
 
         private void ExportGroupsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
         {
-            if(notifyCollectionChangedEventArgs.Action != NotifyCollectionChangedAction.Add) { return; }
-            foreach(var exportGroupObj in notifyCollectionChangedEventArgs.NewItems)
+            if (notifyCollectionChangedEventArgs.Action != NotifyCollectionChangedAction.Add) { return; }
+            foreach (var exportGroupObj in notifyCollectionChangedEventArgs.NewItems)
             {
                 var exportGroup = exportGroupObj as ExportGroupVm;
-                if(exportGroup == null)
+                if (exportGroup == null)
                 {
                     continue;
                 }
@@ -372,11 +432,9 @@ namespace Netfox.Detective.ViewModelsDataEntity.Exports
 
         private void ExportsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
         {
-            switch(notifyCollectionChangedEventArgs.Action)
+            switch (notifyCollectionChangedEventArgs.Action)
             {
                 case NotifyCollectionChangedAction.Add:
-                    this.NewExportAdded(notifyCollectionChangedEventArgs);
-                    break;
                 case NotifyCollectionChangedAction.Remove:
                 case NotifyCollectionChangedAction.Replace:
                 case NotifyCollectionChangedAction.Move:
@@ -388,27 +446,12 @@ namespace Netfox.Detective.ViewModelsDataEntity.Exports
             }
         }
 
-        private void NewExportAdded(NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs)
-        {
-            foreach(var exportObj in notifyCollectionChangedEventArgs.NewItems)
-            {
-                var export = exportObj as ExportVm;
-                if(export == null)
-                {
-                    continue;
-                }
-                foreach(var call in export.Calls) { this.Calls.Add(call); }
-                foreach(var email in export.Emails) { this.Emails.Add(email); }
-                foreach(var chatMessage in export.ChatMessages) { this.ChatMessages.Add(chatMessage); }
-            }
-        }
-
         public class DataSummaryItem
         {
             public string Name { get; set; }
             public long TotalCount { get; set; }
             public float Percent { get; set; }
         }
-        
+
     }
 }

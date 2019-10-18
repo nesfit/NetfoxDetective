@@ -30,9 +30,8 @@ namespace Netfox.Framework.Models.PmLib.Frames
         ///     Constructor used when creating new one or indexing existing
         /// </summary>
         public PmFrameVirtualBlank(PmFrameBase template, Int64 fraLength, DateTime dateTime)
-            : base(template.PmCapture, PmLinkType.Null, dateTime, fraLength)
+            : base(template.PmCapture, PmLinkType.Null, dateTime, fraLength, PmFrameType.VirtualBlank, template.FrameIndex, fraLength)
         {
-            this.PmFrameType = PmFrameType.VirtualBlank;
             this.L7PayloadLength = fraLength;
             this.FrameOffset = 0;
             this.L2Offset = 0;

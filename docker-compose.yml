@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  netfox.web.app:
+    image: ${DOCKER_REGISTRY-}netfoxwebapp
+    build:
+      context: .\Web\Netfox.Web.App
+      dockerfile: Dockerfile

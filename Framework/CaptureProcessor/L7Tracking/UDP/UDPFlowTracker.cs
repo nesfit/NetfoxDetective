@@ -61,9 +61,9 @@ namespace Netfox.Framework.CaptureProcessor.L7Tracking.UDP
 
         private void ProcessCurrentUDPFlow()
         {
-            var tcpFlow = this.CurrentUDPFlow;
+            var udpFlow = this.CurrentUDPFlow;
             this.CurrentUDPFlow = null;
-            this.UDPFlowReassembler.ProcessUDPFlow(tcpFlow);
+            this.UDPFlowReassembler.ProcessUDPFlow(udpFlow);
         }
     }
 }

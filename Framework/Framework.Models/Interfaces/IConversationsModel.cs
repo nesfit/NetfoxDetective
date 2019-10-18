@@ -12,7 +12,7 @@
 //See the License for the specific language governing permissions and
 //limitations under the License.
 
-using AlphaChiTech.Virtualization.Interfaces;
+using AlphaChiTech.VirtualizingCollection.Interfaces;
 using Netfox.Framework.Models.PmLib.Frames;
 using Netfox.Framework.Models.Snoopers;
 

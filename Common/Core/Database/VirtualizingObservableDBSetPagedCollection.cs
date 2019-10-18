@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using AlphaChiTech.Virtualization;
+using AlphaChiTech.VirtualizingCollection.Interfaces;
 using Castle.Windsor;
 
 namespace Netfox.Core.Database
@@ -26,12 +27,12 @@ namespace Netfox.Core.Database
         public VirtualizingObservableDBSetPagedCollection(IWindsorContainer investigationOrAppWindsorContainer, IObservableNetfoxDBContext dbContext)
             : base(new PageDbSetSourceProvider<T>(new ObservableDbSetRepository<T>(investigationOrAppWindsorContainer, dbContext)))
         { }
-        public VirtualizingObservableDBSetPagedCollection(IWindsorContainer investigationOrAppWindsorContainer, IObservableNetfoxDBContext dbContext, IEnumerable<string> eagerLoadProperties = null)
+        public VirtualizingObservableDBSetPagedCollection(IWindsorContainer investigationOrAppWindsorContainer, IObservableNetfoxDBContext dbContext, IEnumerable<string> eagerLoadProperties)
             : base(new PageDbSetSourceProvider<T>(new ObservableDbSetRepository<T>(investigationOrAppWindsorContainer, dbContext, null, eagerLoadProperties)))
         { }
         public VirtualizingObservableDBSetPagedCollection(IWindsorContainer investigationOrAppWindsorContainer, IObservableNetfoxDBContext dbContext,  Expression<Func<T, Boolean>> filter)
             : base(new PageDbSetSourceProvider<T>(new ObservableDbSetRepository<T>(investigationOrAppWindsorContainer, dbContext, filter, null))) { }
-        public VirtualizingObservableDBSetPagedCollection(IWindsorContainer investigationOrAppWindsorContainer, IObservableNetfoxDBContext dbContext,  Expression<Func<T, Boolean>> filter, IEnumerable<string> eagerLoadProperties = null)
+        public VirtualizingObservableDBSetPagedCollection(IWindsorContainer investigationOrAppWindsorContainer, IObservableNetfoxDBContext dbContext,  Expression<Func<T, Boolean>> filter, IEnumerable<string> eagerLoadProperties)
             : base(new PageDbSetSourceProvider<T>(new ObservableDbSetRepository<T>(investigationOrAppWindsorContainer, dbContext,  filter, eagerLoadProperties)))
         { }
 

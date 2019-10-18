@@ -21,6 +21,13 @@ namespace Netfox.NetfoxFrameworkAPI.Tests
         {
             #region Implementation of ILogger
             public ILogger CreateChildLogger(string loggerName) { return null; }
+            public void Trace(string message) {  }
+            public void Trace(Func<string> messageFactory) {  }
+            public void Trace(string message, Exception exception) {  }
+            public void TraceFormat(string format, params object[] args) { }
+            public void TraceFormat(Exception exception, string format, params object[] args) {  }
+            public void TraceFormat(IFormatProvider formatProvider, string format, params object[] args) {  }
+            public void TraceFormat(Exception exception, IFormatProvider formatProvider, string format, params object[] args) {  }
             public void Debug(string message) { }
             public void Debug(Func<string> messageFactory) { }
             public void Debug(string message, Exception exception) { }
@@ -56,6 +63,7 @@ namespace Netfox.NetfoxFrameworkAPI.Tests
             public void WarnFormat(Exception exception, string format, params object[] args) { }
             public void WarnFormat(IFormatProvider formatProvider, string format, params object[] args) { }
             public void WarnFormat(Exception exception, IFormatProvider formatProvider, string format, params object[] args) { }
+            public bool IsTraceEnabled { get; }
             public bool IsDebugEnabled { get; }
             public bool IsErrorEnabled { get; }
             public bool IsFatalEnabled { get; }

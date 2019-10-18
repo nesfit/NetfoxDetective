@@ -7,8 +7,10 @@ Tested projects need to include  ```[assembly: InternalsVisibleTo ("XXX.Tests")]
 
 When you create a new project, you are obligated to create a new UnitTest project as well. All UnitTest projects use [NUnit Framework](https://www.nunit.org/).
 Add these NuGet packages to newly created test project.
+
 * NUnit
 * NUnit3TestAdapter
+
 New UnitTest project has to be located in the same folder as the tested project. Alwayes change a configuration in ```Configuration Manager/Platform``` to ```x64``` and remove ```Any CPU```.
 
 ## Existing projects
@@ -24,3 +26,9 @@ Test method names represents MethodName_StateUnderTest_ExpectedBehavior:
  * withdrawMoney_InvalidAccount_ExceptionThrown
  * admitStudent_MissingMandatoryFields_FailToAdmit
 
+## Capture files
+Capture files used for testing should be located under `\TestingData` git submodule. Paths to capture files should be
+managed using application settings in `\Framework\NetfoxFrameworkAPI.Tests\Properties\`. These settings should be
+generated using `\Framework\NetfoxFrameworkAPI.Tests\PcapsSettingsFileGenerator.cs`. Do not forget to regenerate
+corresponding properties files, e.g. `Pcaps.Designer.cs` from `Pcaps.settings`. To do so, in Microsoft Visual Studio
+right-click the settings file and select `Run Custom Tool`.

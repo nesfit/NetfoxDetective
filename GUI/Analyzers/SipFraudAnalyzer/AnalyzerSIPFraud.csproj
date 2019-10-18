@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\..\packages\PostSharp.5.0.30\build\PostSharp.props" Condition="Exists('..\..\..\packages\PostSharp.5.0.30\build\PostSharp.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -21,6 +20,7 @@
     <AssemblyVersion>1.0.3.0</AssemblyVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <ApplicationVersion>0.0.0.1</ApplicationVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -44,24 +44,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core, Version=4.1.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Castle.Core.4.1.1\lib\net45\Castle.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.Windsor, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Castle.Windsor.4.0.0\lib\net45\Castle.Windsor.dll</HintPath>
-    </Reference>
-    <Reference Include="GalaSoft.MvvmLight, Version=5.3.0.19026, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\MvvmLightLibs.5.3.0.0\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.3.0.19032, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\MvvmLightLibs.5.3.0.0\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.3.0.19032, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\MvvmLightLibs.5.3.0.0\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="InfragisticsWPF4.Controls.Maps.XamMap.v16.1">
       <HintPath>..\..\..\lib\Infragistics16_1\InfragisticsWPF4.Controls.Maps.XamMap.v16.1.dll</HintPath>
     </Reference>
@@ -77,54 +59,21 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\lib\Infragistics16_1\InfragisticsWPF4.v16.1.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="PostSharp, Version=5.0.30.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\PostSharp.Redist.5.0.30\lib\net45\PostSharp.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="PostSharp.Patterns.Aggregation, Version=5.0.30.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\PostSharp.Patterns.Aggregation.Redist.5.0.30\lib\net45\PostSharp.Patterns.Aggregation.dll</HintPath>
-    </Reference>
-    <Reference Include="PostSharp.Patterns.Common, Version=5.0.30.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\PostSharp.Patterns.Common.Redist.5.0.30\lib\net46\PostSharp.Patterns.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="PostSharp.Patterns.Model, Version=5.0.30.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\PostSharp.Patterns.Model.Redist.5.0.30\lib\net40\PostSharp.Patterns.Model.dll</HintPath>
-    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="mscorlib" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Reactive.Core, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\System.Reactive.Core.3.1.1\lib\net46\System.Reactive.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.Interfaces, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\System.Reactive.Interfaces.3.1.1\lib\net45\System.Reactive.Interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.Linq, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\System.Reactive.Linq.3.1.1\lib\net46\System.Reactive.Linq.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.PlatformServices, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\System.Reactive.PlatformServices.3.1.1\lib\net46\System.Reactive.PlatformServices.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.Windows.Threading, Version=3.0.1000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\System.Reactive.Windows.Threading.3.1.1\lib\net45\System.Reactive.Windows.Threading.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows" />
-    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\MvvmLightLibs.5.3.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
     <Reference Include="Telerik.Windows.Controls">
       <HintPath>..\..\..\lib\RCWPF\2016.1.217.45\Telerik.Windows.Controls.dll</HintPath>
     </Reference>
@@ -143,27 +92,19 @@
     </Reference>
     <Reference Include="UIAutomationProvider" />
     <Reference Include="UIAutomationTypes" />
-    <Reference Include="VDS.Common, Version=1.8.0.0, Culture=neutral, PublicKeyToken=ab5f4eb908061bf0, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VDS.Common.1.8.0\lib\net40-client\VDS.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="vm.Aspects.Diagnostics.ObjectDumper, Version=1.7.11.0, Culture=neutral, PublicKeyToken=39c66c470a75c367, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\AspectObjectDumper.1.7.11\lib\net462\vm.Aspects.Diagnostics.ObjectDumper.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
-    <Reference Include="WinSCPnet, Version=1.3.7.7601, Culture=neutral, PublicKeyToken=2271ec4a3c56d0bf, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\WinSCP.5.9.6\lib\WinSCPnet.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\ISipFraudArchitectureView.cs" />
     <Compile Include="Models\ConnectionModel.cs" />
     <Compile Include="Models\ClusterNodeModel.cs" />
     <Compile Include="Models\JsonModels.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" /><Compile Include="$(SolutionDir)SharedAssemblyInfo.cs"><Link>Properties\SharedAssemblyInfo.cs</Link></Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="$(SolutionDir)SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Services\NemeaProxy.cs" />
-    <Compile Include="Services\NemeaProxyTests.cs" />
     <Compile Include="Services\SSHFileDownloadService.cs" />
-    <Compile Include="Services\SSHFileDownloadServiceTests.cs" />
     <Compile Include="ViewModels\NemeaSipFraudStatsVm.cs" />
     <Compile Include="ViewModels\SipFraudAnalyzerVm.cs" />
     <Compile Include="ViewModels\SipFraudArchitectureVm.cs" />
@@ -220,7 +161,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="packages.config" />
     <None Include="SipFraudAnalyzer.licenseheader" />
     <None Include="TestingData\sip_fraud.pcap">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -243,9 +183,9 @@
       <Project>{ae511769-eb8a-41de-b52e-22eddc94d03a}</Project>
       <Name>SnooperSIP</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Misc\VirtualizingObservableCollection\VirtualizingObservableCollection.csproj">
-      <Project>{6026893c-a0ae-4117-8143-d1ed198a983e}</Project>
-      <Name>VirtualizingObservableCollection</Name>
+    <ProjectReference Include="..\..\..\Misc\VirtualizingObservableCollection\VirtualizingCollection\VirtualizingCollection.csproj">
+      <Project>{488DC774-50E3-4EA7-AE93-B6ED703D399B}</Project>
+      <Name>VirtualizingCollection</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Netfox.Detective\Netfox.Detective.csproj">
       <Project>{9FB36484-9F8F-4B22-8A21-9F5E66318214}</Project>
@@ -265,9 +205,90 @@
     <EmbeddedResource Include="Properties\Licenses.licx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="WinSCP.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <PackageReference Include="AspectObjectDumper">
+      <Version>1.10.2</Version>
+    </PackageReference>
+    <PackageReference Include="Castle.Core">
+      <Version>4.4.0</Version>
+    </PackageReference>
+    <PackageReference Include="Castle.Windsor">
+      <Version>4.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="CommonServiceLocator">
+      <Version>2.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="MvvmLightLibs">
+      <Version>5.4.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="PostSharp">
+      <Version>6.2.10</Version>
+    </PackageReference>
+    <PackageReference Include="PostSharp.Patterns.Aggregation">
+      <Version>6.2.10</Version>
+    </PackageReference>
+    <PackageReference Include="PostSharp.Patterns.Aggregation.Redist">
+      <Version>6.2.10</Version>
+    </PackageReference>
+    <PackageReference Include="PostSharp.Patterns.Common">
+      <Version>6.2.10</Version>
+    </PackageReference>
+    <PackageReference Include="PostSharp.Patterns.Common.Redist">
+      <Version>6.2.10</Version>
+    </PackageReference>
+    <PackageReference Include="PostSharp.Patterns.Model">
+      <Version>6.2.10</Version>
+    </PackageReference>
+    <PackageReference Include="PostSharp.Patterns.Model.Redist">
+      <Version>6.2.10</Version>
+    </PackageReference>
+    <PackageReference Include="PostSharp.Redist">
+      <Version>6.2.10</Version>
+    </PackageReference>
+    <PackageReference Include="System.Collections.Immutable">
+      <Version>1.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Reactive">
+      <Version>4.1.6</Version>
+    </PackageReference>
+    <PackageReference Include="System.Reactive.Core">
+      <Version>4.1.6</Version>
+    </PackageReference>
+    <PackageReference Include="System.Reactive.Interfaces">
+      <Version>4.1.6</Version>
+    </PackageReference>
+    <PackageReference Include="System.Reactive.Linq">
+      <Version>4.1.6</Version>
+    </PackageReference>
+    <PackageReference Include="System.Reactive.PlatformServices">
+      <Version>4.1.6</Version>
+    </PackageReference>
+    <PackageReference Include="System.Reactive.Windows.Threading">
+      <Version>4.1.6</Version>
+    </PackageReference>
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe">
+      <Version>4.5.2</Version>
+    </PackageReference>
+    <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Threading.Tasks.Extensions">
+      <Version>4.5.3</Version>
+    </PackageReference>
+    <PackageReference Include="System.ValueTuple">
+      <Version>4.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="UnitOfWork.BaseDataEntity">
+      <Version>1.0.5</Version>
+    </PackageReference>
+    <PackageReference Include="VDS.Common">
+      <Version>1.10.0</Version>
+    </PackageReference>
+    <PackageReference Include="WinSCP">
+      <Version>5.15.3</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
@@ -281,23 +302,6 @@ xcopy /C/H/R/S/Y "$(TargetDir)Services\netfox2nemea.ppk" "$(SolutionDir)GUI\Netf
 xcopy /C/H/R/S/Y "$(TargetDir)InfragisticsWPF4.Controls.Maps.XamNetworkNode.v16.1.dll" "$(SolutionDir)GUI\Netfox.Detective\$(OutDir)"
 xcopy /C/H/R/S/Y "$(TargetDir)InfragisticsWPF4.DataVisualization.v16.1.dll" "$(SolutionDir)GUI\Netfox.Detective\$(OutDir)"
 xcopy /C/H/R/S/Y "$(TargetDir)InfragisticsWPF4.v16.1.dll" "$(SolutionDir)GUI\Netfox.Detective\$(OutDir)"
-
-
-</PostBuildEvent>
+  </PostBuildEvent>
   </PropertyGroup>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\..\..\packages\PostSharp.5.0.30\build\PostSharp.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\PostSharp.5.0.30\build\PostSharp.props'))" />
-    <Error Condition="!Exists('..\..\..\packages\PostSharp.5.0.30\build\PostSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\PostSharp.5.0.30\build\PostSharp.targets'))" />
-  </Target>
-  <Import Project="..\..\..\packages\PostSharp.5.0.30\build\PostSharp.targets" Condition="Exists('..\..\..\packages\PostSharp.5.0.30\build\PostSharp.targets')" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

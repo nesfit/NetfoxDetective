@@ -12,12 +12,18 @@
 //See the License for the specific language governing permissions and
 //limitations under the License.
 
+using System.Threading.Tasks;
+using Netfox.Core.Interfaces;
 using Netfox.Core.Models;
+using Netfox.Detective.Interfaces.Models.Base;
 using Netfox.Detective.Models.Base;
+using Netfox.Detective.ViewModelsDataEntity.Investigations;
 
 namespace Netfox.Detective.Interfaces {
     public interface IInvestigationFactory
     {
-        Investigation Create(InvestigationInfo investigationInfo);
+        IInvestigation CreateInternal(IInvestigationInfo investigationInfo);
+        Task<IInvestigation> Create(IInvestigationInfo investigationInfo);
+        
     }
 }

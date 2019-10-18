@@ -105,7 +105,7 @@ namespace Netfox.SnooperRTP.Models
 
         public DateTime? End { get; set; }
         [NotMapped]
-        public string From => this.SourceEndPoint.ToString();
+        public string From => (this.SourceEndPoint?.ToString()) ?? this.SourceEndpointString;
         [NotMapped]
         public virtual IList<ICallStream> PossibleCallStreams { get; private set; } = new List<ICallStream>();
 
@@ -113,7 +113,7 @@ namespace Netfox.SnooperRTP.Models
         public IEnumerable<string> PossibleCodecs { get; set; }
         public DateTime? Start { get; set; }
         [NotMapped]
-        public string To => this.DestinationEndPoint.ToString();
+        public string To => (this.DestinationEndPoint?.ToString()) ?? this.DestinationEndpointString;
 
         public string WavFilePath { get; set; }
 

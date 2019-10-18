@@ -13,7 +13,7 @@
 //limitations under the License.
 
 using Netfox.Detective.Tests;
-using Netfox.SnooperXMPP.Infrastructure;
+using Netfox.SnooperXMPP.WPF.Infrastructure;
 using NUnit.Framework;
 
 namespace Netfox.SnooperXMPP.Tests

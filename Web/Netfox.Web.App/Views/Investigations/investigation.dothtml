@@ -1,0 +1,71 @@
+﻿@viewModel Netfox.Web.App.ViewModels.Investigations.InvestigationViewModel, Netfox.Web.App
+@masterPage Views/Investigations/investigations.dotmaster
+
+<dot:Content ContentPlaceHolderID="Toolbar">
+    <dot:Button class="btn btn-primary" Text="Save" Click="{command: Save()}" />
+    <dot:RouteLink class="btn" Text="Cancel" RouteName="Investigations_overview" />
+</dot:Content>
+<dot:Content ContentPlaceHolderID="Content">
+    <ul class="nav nav-tabs tab-panel" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general" aria-selected="true">General</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#investigators" role="tab" aria-controls="investigators" aria-selected="false">Investigators</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+            <form class="form-edit-investigation col-6">
+                <div class="validation alert alert-danger">
+                    <dot:ValidationSummary IncludeErrorsFromChildren="true" />
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Name</label>
+                    <div class="col-10">
+                        <dot:TextBox class="form-control" ValueType="Text" Text="{value: Investigation.Name}" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Owner</label>
+                    <div class="col-10">
+                        <dot:ComboBox class="form-control" DataSource="{value: Users}" SelectedValue="{value: Investigation.OwnerID}" ValueMember="Id" DisplayMember="Username" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Description</label>
+                    <div class="col-10">
+                        <dot:TextBox class="form-control" ValueType="Text" Text="{value: Investigation.Description}" Type="MultiLine" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="tab-pane" id="investigators" role="tabpanel" aria-labelledby="investigators-tab">
+            <dot:GridView class="table" DataSource="{value: InvestigatorsHelper.Items}">
+                <Columns>
+                    <dot:GridViewTemplateColumn HeaderCssClass="select-item">
+                        <HeaderTemplate>
+                            <dot:CheckBox Checked="{value: IsAllSelected}" <!--Changed="{command: SelectAllInvestigators()}"--> />
+                        </HeaderTemplate>
+                        <ContentTemplate>
+                            <dot:CheckBox CheckedItems="{value: _parent.InvestigatorIDs}" CheckedValue="{value: Id}" />
+                        </ContentTemplate>
+                    </dot:GridViewTemplateColumn>
+                    <dot:GridViewTextColumn ValueBinding="{value: Firstname + " " + Surname}" HeaderText="Name" />
+                    <dot:GridViewTextColumn ValueBinding="{value: Username}" HeaderText="Username" />
+                </Columns>
+            </dot:GridView>
+            <dot:DataPager DataSet="{value: InvestigatorsHelper.Items}" RenderLinkForCurrentPage="true">
+                <FirstPageTemplate>
+                    <span>First</span>
+                </FirstPageTemplate>
+                <LastPageTemplate>
+                    <span>Last</span>
+                </LastPageTemplate>
+                <NextPageTemplate>Next</NextPageTemplate>
+                <PreviousPageTemplate>Previous</PreviousPageTemplate>
+            </dot:DataPager>
+        </div>
+    </div>         
+</dot:Content>
+

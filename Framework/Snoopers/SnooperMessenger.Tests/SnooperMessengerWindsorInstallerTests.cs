@@ -13,7 +13,7 @@
 //limitations under the License.
 
 using Netfox.Detective.Tests;
-using Netfox.SnooperMessenger.Infrastructure;
+using Netfox.SnooperMessenger.WPF.Infrastructure;
 using NUnit.Framework;
 
 namespace Netfox.SnooperMessenger.Tests

@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RootNamespace>Netfox.Core</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Enums\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Interfaces\Model\" />
+    <Folder Include="Interfaces\Model\Exports\" />
+    <Folder Include="Collections\" />
+    <Folder Include="Models\" />
+    <Folder Include="Models\Exports\" />
+    <Folder Include="Attributes\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Interfaces\ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Castle.Windsor" Version="4.1.0" />
+    <PackageReference Include="System.Reactive" Version="3.1.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Class1.cs" />
+  </ItemGroup>
+</Project>

@@ -20,11 +20,9 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Castle.Windsor;
 using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
 using Netfox.Core.Helpers;
 using Netfox.Core.Interfaces.Model.Exports;
 using Netfox.Core.Interfaces.ViewModels;
-using Netfox.Core.Messages.Base;
 using Netfox.Detective.ViewModelsDataEntity.Exports.Detail;
 using Netfox.Detective.ViewModelsDataEntity.Exports.ModelWrappers;
 using Netfox.Framework.Models.Snoopers;
@@ -71,8 +69,6 @@ namespace Netfox.Detective.ViewModelsDataEntity.Exports
             //this.SnooperExportedObjects = new ViewModelsIoCObservableCollection<SnooperExportedObjectBaseVm, SnooperExportedObjectBase>(new List<SnooperExportedObjectBase>(), this.InvestigationOrAppWindsorContainer);
             //else this.SnooperExportedObjects = new ViewModelsIoCObservableCollection<SnooperExportedObjectBaseVm, SnooperExportedObjectBase>(this.Export.ExportObjects, this.InvestigationOrAppWindsorContainer);
             //data.ExportResultUpdated += this.Data_ExportResultUpdated;
-
-            Task.Factory.StartNew(() => Messenger.Default.Register<FrameMessage>(this, this.FrameMessageActionHandler));
         }
 
         [IgnoreAutoChangeNotification]
@@ -274,12 +270,12 @@ namespace Netfox.Detective.ViewModelsDataEntity.Exports
 
         public void Updated()
         {
-            this.OnPropertyChanged("Name");
-            this.OnPropertyChanged("TimeStampFirst");
-            this.OnPropertyChanged("EventsCount");
-            this.OnPropertyChanged("Period");
-            this.OnPropertyChanged("ClientAddress");
-            this.OnPropertyChanged("ServerAddress");
+            this.OnPropertyChanged(nameof(Name));
+            this.OnPropertyChanged(nameof(TimeStamp));
+            this.OnPropertyChanged(nameof(EventsCount));
+            this.OnPropertyChanged(nameof(Period));
+            this.OnPropertyChanged(nameof(SourceEndPoint));
+            this.OnPropertyChanged(nameof(DestinationEndPoint));
         }
 
         //private void SelectConversation()
@@ -289,14 +285,6 @@ namespace Netfox.Detective.ViewModelsDataEntity.Exports
         //}
 
         private bool CanSelectConversationExecute() { return true; }
-
-        private void FrameMessageActionHandler(FrameMessage message)
-        {
-            //if (message.Type == FrameMessage.MessageType.CurrentFrameByExportedDataResult)
-            //{
-            //    if (this.Export.Id == message.ExportResultId) { this.SelectFrame(message.FrameId, message.BringToFront); }
-            //}
-        }
 
         private TimeSpan GetDuration()
         {

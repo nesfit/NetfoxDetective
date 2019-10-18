@@ -143,8 +143,8 @@ namespace Netfox.AnalyzerAppIdent.ViewModels
                     var l7Conversations = selectedl7ConvsInNvestigation.Include(l7 => l7.Frames)
                         .Include(l7 => l7.L3Conversation)
                         .Include(l7 => l7.L4Conversation)
-                        .Include(l7 => l7.L7PDUs.Select(l7PDU => l7PDU.FrameList))
-                        .Include(l7 => l7.L7PDUs.Select(l7PDU => l7PDU.L7Conversation)).ToArray();
+                        .Include(l7 => l7.UnorderedL7PDUs.Select(l7PDU => l7PDU.FrameList))
+                        .Include(l7 => l7.UnorderedL7PDUs.Select(l7PDU => l7PDU.L7Conversation)).ToArray();
 
                     if(!l7Conversations.Any())
                     {

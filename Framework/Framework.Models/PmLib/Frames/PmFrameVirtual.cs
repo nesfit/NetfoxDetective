@@ -35,11 +35,11 @@ namespace Netfox.Framework.Models.PmLib.Frames
             Int64 fraIndex,
             DateTime timeStamp,
             Int64 incLength,
-            Int64 l2Offset) : base(pmCapture, PmLinkType.Raw, timeStamp, incLength)
+            Int64 l2Offset) : base(pmCapture, PmLinkType.Raw, timeStamp, incLength, PmFrameType.Virtual,fraIndex, incLength)
         {
+            // NOTE: value of incLength passed to base constructor also as originalLength
             this.L2Offset = l2Offset;
             this.FrameOffset = l2Offset;
-            this.FrameIndex = fraIndex;
         }
 
         private PmFrameVirtual() : base() { }

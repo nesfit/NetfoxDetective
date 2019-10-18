@@ -37,8 +37,8 @@ namespace Netfox.SnooperDNS.Models
         public List<IExportSource> ExportSources;
         public ushort Flags;
         public ushort MessageId;
-        public PersistableJsonSerializable<DNSBase> Queries;
-        public PersistableJsonSerializable<DnsResponse> Answer, Authority, Additional;
+        public PersistableJsonSerializableDNSBase Queries;
+        public PersistableJsonSerializableDNSResponse Answer, Authority, Additional;
         private ushort _countQuestion, _countAnswer, _countAuthority, _countAdditional;
         private long _beginMessage;
 
@@ -57,10 +57,10 @@ namespace Netfox.SnooperDNS.Models
             this.InvalidReason = string.Empty;
             this.ExportSources = new List<IExportSource>();
             this._beginMessage = 0;
-            this.Queries = new PersistableJsonSerializable<DNSBase>();
-            this.Answer = new PersistableJsonSerializable<DnsResponse>();
-            this.Authority = new PersistableJsonSerializable<DnsResponse>();
-            this.Additional = new PersistableJsonSerializable<DnsResponse>();
+            this.Queries = new PersistableJsonSerializableDNSBase();
+            this.Answer = new PersistableJsonSerializableDNSResponse();
+            this.Authority = new PersistableJsonSerializableDNSResponse();
+            this.Additional = new PersistableJsonSerializableDNSResponse();
             // do the parsing itself
             this.Parse();
         }

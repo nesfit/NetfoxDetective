@@ -1,0 +1,33 @@
+﻿@viewModel Netfox.Web.App.ViewModels.LoginViewModel, Netfox.Web.App
+@masterPage Views/Layout.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent" Validation.Target="{value: LoginData}">
+    <div id="main">
+        <div class="login-form-wrapper h-100">
+            <div class="w-100 h-100 d-table">
+                <div class="d-table-cell align-middle">
+                    <div class="login-form">
+                            <div class="login-form-header">
+                                <img src="/Template/images/logo.png" />
+                                <h2 class="text-center">Log in</h2>
+                            </div>
+                            <div class="login-form-content">
+                                <form>
+                                    <div class="alert alert-danger" role="alert" Visible="{value: ErrorMessage != null}">
+                                        {{value: ErrorMessage}}
+                                    </div>
+                                    <div class="validation alert alert-danger">
+                                        <dot:ValidationSummary />
+                                    </div>
+                                    <dot:TextBox Text="{value: LoginData.Username}" placeholder="Username" class="form-control" />
+                                    <dot:TextBox Text="{value: LoginData.Password}" placeholder="Password" class="form-control" Type="Password" />
+                                    <dot:Button Click="{command: DoLogin()}" class="btn btn-primary text-center" IsSubmitButton="true">Login</dot:Button>
+                                </form>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</dot:Content>
+

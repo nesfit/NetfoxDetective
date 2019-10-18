@@ -26,12 +26,11 @@
                                        Text="{Binding Path=Value}" />
                         </StackPanel>
                     </HierarchicalDataTemplate>
-
-
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
+    
     <telerik:RadTreeView x:Name="TreeView" Expanded="treeViewExpanded" Collapsed="treeViewCollapsed"
                          Background="White" BorderThickness="0" Margin="1"
                          telerik:AnimationManager.IsAnimationEnabled="False"

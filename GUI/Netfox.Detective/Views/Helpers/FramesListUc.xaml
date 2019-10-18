@@ -11,7 +11,7 @@
                                  d:DesignHeight="400" d:DesignWidth="600">
     <UserControl.Resources>
         <ResourceDictionary>
-            <converters:FrameTypeToColorConverter x:Key="Converter.FrameTypeToColorConverter" />
+            <converters:PmFrameBaseToBackgroundColorConverter x:Key="Converter.PmFrameBaseToBackgroundColorConverter" />
         </ResourceDictionary>
     </UserControl.Resources>
     <DataGrid EnableRowVirtualization="True" EnableColumnVirtualization="True" IsSynchronizedWithCurrentItem="True"
@@ -20,7 +20,7 @@
               AutoGenerateColumns="False" IsReadOnly="True"
               x:Name="FramesDataGrid"
               d:DataContext="{d:DesignInstance frame:FrameVm}"
-              ScrollViewer.IsDeferredScrollingEnabled="True">
+              ScrollViewer.IsDeferredScrollingEnabled="True" Style="{DynamicResource Style.DataGrid}">
         <telerik:EventToCommandBehavior.EventBindings>
             <telerik:EventBinding Command="{Binding CSelectDoubleClikedItem}" EventName="MouseDoubleClick"
                                   CommandParameter="{Binding SelectedItem}" />
@@ -29,12 +29,11 @@
             <telerik:EventBinding Command="{Binding CSelectItem}" EventName="SelectionChanged"
                                   CommandParameter="{Binding SelectedItem}" />
         </telerik:EventToCommandBehavior.EventBindings>
-        <DataGrid.Resources>
-            <Style TargetType="TextBlock">
-                <Setter Property="Foreground"
-                        Value="{Binding PacketType, Converter={StaticResource Converter.FrameTypeToColorConverter}}" />
+        <DataGrid.RowStyle>
+            <Style TargetType="DataGridRow">
+                <Setter Property="Background" Value="{Binding Frame, Converter={StaticResource Converter.PmFrameBaseToBackgroundColorConverter}}" />
             </Style>
-        </DataGrid.Resources>
+        </DataGrid.RowStyle>
         <DataGrid.Columns>
             <!--<DataGridTextColumn Header="TimeStamp" Binding="{Binding TimeStamp}" />
                                 <DataGridTextColumn Header="Source" Binding="{Binding Source}" />

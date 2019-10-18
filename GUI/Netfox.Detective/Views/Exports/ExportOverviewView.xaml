@@ -1,4 +1,4 @@
-﻿<views:DetectiveApplicationPaneViewBase xmlns:ig="http://schemas.infragistics.com/xaml"
+﻿<views:DetectiveDataEntityPaneViewBase xmlns:ig="http://schemas.infragistics.com/xaml"
                                         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
                                         x:Class="Netfox.Detective.Views.Exports.ExportOverviewView"
                                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -12,7 +12,7 @@
                                         d:DesignHeight="500" d:DesignWidth="800"
                                         Visibility="{Binding Path=IsHidden, Converter={StaticResource Converter.BoolToVisibilityConverterInvert}}"
                                         d:DataContext="{d:DesignInstance exports:ExportOverviewVm, IsDesignTimeCreatable=False}">
-    <views:DetectiveApplicationPaneViewBase.Resources>
+    <views:DetectiveDataEntityPaneViewBase.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
@@ -37,16 +37,11 @@
 
                     <DataTemplate x:Key="InstantItemTemplate">
                         <Border Height="50" Margin="0,0,0,5">
-
                             <Rectangle Height="25" Width="25"
-
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
                                        Fill="LightSkyBlue" />
-
-
                         </Border>
-
                     </DataTemplate>
 
                     <DataTemplate x:Key="ItemWithDurationTemplate">
@@ -58,17 +53,13 @@
                                     <TextBlock Text="{Binding Path=DataItem.TimeStamp}" />
                                     <TextBlock Margin="10 0 0 0" Text="{Binding Path=DataItem.Name}" />
                                 </StackPanel>
-
                             </Grid>
                         </Border>
                     </DataTemplate>
-
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
-
-
         </ResourceDictionary>
-    </views:DetectiveApplicationPaneViewBase.Resources>
+    </views:DetectiveDataEntityPaneViewBase.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -78,10 +69,6 @@
         </Grid.RowDefinitions>
 
         <Grid Margin="5">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-
             <Border Style="{StaticResource Style.Border.Header}">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -101,18 +88,12 @@
 
                     <TextBox Text="{Binding Path=ExportGroupVm.Name}" Margin="10 2 0 0" Grid.Column="2"
                              VerticalAlignment="Center" />
-
-                    <!--<plugins:PluginsActivator Margin="10 0 0 0" Grid.Column="3" />-->
                 </Grid>
-
             </Border>
-
-
         </Grid>
 
         <telerik:RadExpander Grid.Row="1" Background="White" Margin="0,5,0,0"
                              Style="{StaticResource ResourceKey=Style.RadExpander}" IsExpanded="True">
-
             <telerik:RadExpander.Header>
                 <Border Style="{StaticResource Style.Border.Header}">
                     <TextBlock Margin="6 1 0 0" Style="{StaticResource Style.TextBlock.Header}"
@@ -122,7 +103,6 @@
             </telerik:RadExpander.Header>
 
             <telerik:RadExpander.Content>
-
                 <Grid Margin="0 5 0 0">
                     <Grid.RowDefinitions>
                         <RowDefinition />
@@ -156,73 +136,63 @@
         </telerik:RadExpander>
 
         <Grid Grid.Row="2" Margin="5">
-            <Grid.RowDefinitions>
-                <RowDefinition />
-            </Grid.RowDefinitions>
-
-
             <telerik:RadTabControl Grid.Row="0" Margin="0 5 0 0">
-
                 <!-- PIE CHARTS-->
                 <telerik:RadTabItem Header="Overview">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30*" />
-                            <ColumnDefinition Width="179*" />
-                            <ColumnDefinition Width="63*" />
-                            <ColumnDefinition Width="109*" />
-                            <ColumnDefinition Width="407*" />
-                        </Grid.ColumnDefinitions>
+                    <ScrollViewer>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*" />
+                                <ColumnDefinition Width="179*" />
+                                <ColumnDefinition Width="63*" />
+                                <ColumnDefinition Width="109*" />
+                                <ColumnDefinition Width="407*" />
+                            </Grid.ColumnDefinitions>
 
-                        <telerik:RadPieChart x:Name="PieChartProtocols" Palette="Summer" Grid.ColumnSpan="3"
-                                             Foreground="Black">
+                            <telerik:RadPieChart x:Name="PieChartProtocols" Palette="Summer" Grid.ColumnSpan="3"
+                                                 Foreground="Black">
+                                <telerik:PieSeries
+                                    ValueBinding="Value"
+                                    ItemsSource="{Binding Path=ExportGroupVm.DataTypesDistribution.Result}"
+                                    RadiusFactor="0.77">
 
-                            <telerik:PieSeries
-                                ValueBinding="Value"
-                                ItemsSource="{Binding Path=ExportGroupVm.DataTypesDistribution}"
-                                RadiusFactor="0.77">
+                                    <telerik:PieSeries.LegendSettings>
+                                        <telerik:DataPointLegendSettings TitleBinding="Key" />
+                                    </telerik:PieSeries.LegendSettings>
 
-                                <telerik:PieSeries.LegendSettings>
-                                    <telerik:DataPointLegendSettings TitleBinding="Key" />
-                                </telerik:PieSeries.LegendSettings>
+                                    <telerik:PieSeries.LabelDefinitions>
+                                        <telerik:ChartSeriesLabelDefinition Margin="-20,0,0,0" />
+                                    </telerik:PieSeries.LabelDefinitions>
 
-                                <telerik:PieSeries.LabelDefinitions>
-                                    <telerik:ChartSeriesLabelDefinition Margin="-20,0,0,0" />
-                                </telerik:PieSeries.LabelDefinitions>
+                                    <telerik:PieSeries.AngleRange>
+                                        <telerik:AngleRange StartAngle="270" SweepAngle="360" />
+                                    </telerik:PieSeries.AngleRange>
+                                </telerik:PieSeries>
+                            </telerik:RadPieChart>
 
-                                <telerik:PieSeries.AngleRange>
-                                    <telerik:AngleRange StartAngle="270" SweepAngle="360" />
-                                </telerik:PieSeries.AngleRange>
-                            </telerik:PieSeries>
+                            <telerik:RadLegend Grid.Column="3" x:Name="PieLegendProtocols" VerticalAlignment="Center"
+                                               Foreground="Black"
+                                               Items="{Binding LegendItems, ElementName=PieChartProtocols}"
+                                               Margin="0,158,0,159" />
 
-                        </telerik:RadPieChart>
-
-                        <telerik:RadLegend Grid.Column="3" x:Name="PieLegendProtocols" VerticalAlignment="Center"
-                                           Foreground="Black"
-                                           Items="{Binding LegendItems, ElementName=PieChartProtocols}"
-                                           Margin="0,158,0,159" />
-
-                        <DataGrid Grid.Column="4" x:Name="ProtocolsDataGrid" Width="Auto" Margin="5"
-                                  Style="{StaticResource ResourceKey=Style.DataGrid}"
-                                  ColumnHeaderStyle="{StaticResource ResourceKey=Style.GridView.Header}"
-                                  IsReadOnly="True" IsManipulationEnabled="False"
-
-                                  ItemsSource="{Binding Path=ExportGroupVm.DataSummary, Mode=OneWay}"
-                                  SelectionMode="Single" AutoGenerateColumns="False" EnableRowVirtualization="False">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Binding="{Binding Name, Mode=OneWay}" CanUserResize="False"
-                                                    Header="Type" />
-                                <DataGridTextColumn Binding="{Binding TotalCount, Mode=OneWay}" CanUserResize="False"
-                                                    Header="Total Count" />
-                                <DataGridTextColumn Binding="{Binding Percent, Mode=OneWay}" CanUserResize="False"
-                                                    Header="  %  " />
-                            </DataGrid.Columns>
-
-                        </DataGrid>
-
-                    </Grid>
+                            <DataGrid Grid.Column="4" x:Name="ProtocolsDataGrid" Width="Auto" Margin="5"
+                                      Style="{StaticResource ResourceKey=Style.DataGrid}"
+                                      ColumnHeaderStyle="{StaticResource ResourceKey=Style.GridView.Header}"
+                                      IsReadOnly="True" IsManipulationEnabled="False"
+                                      ItemsSource="{Binding Path=ExportGroupVm.DataSummary.Result, Mode=OneWay}"
+                                      SelectionMode="Single" AutoGenerateColumns="False" EnableRowVirtualization="False">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding Name, Mode=OneWay}" CanUserResize="False"
+                                                        Header="Type" />
+                                    <DataGridTextColumn Binding="{Binding TotalCount, Mode=OneWay}" CanUserResize="False"
+                                                        Header="Total Count" />
+                                    <DataGridTextColumn Binding="{Binding Percent, Mode=OneWay}" CanUserResize="False"
+                                                        Header="  %  " />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                    </ScrollViewer>
                 </telerik:RadTabItem>
-
 
                 <!-- TIMELINE 
                 <telerik:RadTabItem Header="Timeline">
@@ -252,31 +222,6 @@
   
                 </telerik:RadTabItem>
                 -->
-                <telerik:RadTabItem Header="Communication Map">
-
-                    <!--<ig:XamNetworkNode x:Name="xamPeerMapView"
-					                   ItemsSource="{Binding Path=ExportGroupVm.CommunicationNodes, Mode=OneWay}"
-                                       IsEnabled="False"
-					                   LineStartCap="Ellipse"
-					                   LineEndCap="Arrow"
-					                   LineEndCapSize="5"
-					                   LineStartCapSize="5"
-					                   ExpansionIndicatorVisibility="Visible">
-
-						<ig:XamNetworkNode.GlobalNodeLayouts>
-							<ig:NetworkNodeNodeLayout
-								ToolTipContentTemplate="{StaticResource toolTipContentTemplate}"
-								TargetTypeName="NodeModel"
-								DisplayMemberPath="Label"
-								ToolTipMemberPath="ToolTip"
-								ConnectionsMemberPath="Connections"
-								ConnectionTargetMemberPath="Target" />
-
-						</ig:XamNetworkNode.GlobalNodeLayouts>
-					</ig:XamNetworkNode>-->
-
-                </telerik:RadTabItem>
-
 
                 <!-- EXPORTS -->
                 <telerik:RadTabItem Header="Exports"
@@ -303,13 +248,13 @@
 
                 <!-- MESSAGES -->
                 <telerik:RadTabItem Header="Chat Messages"
-                                    IsEnabled="{Binding Path=ExportGroupVm.ChatMessages, Converter={StaticResource Converter.EnumerableAnyToBoolConverter}}">
+                                    IsEnabled="{Binding Path=ExportGroupVm.ChatMessages.Result, Converter={StaticResource Converter.EnumerableAnyToBoolConverter}}">
 
                     <exportsControls:ChatMessagesView DataContext="{Binding Path=ExportGroupVm}" />
                 </telerik:RadTabItem>
-                <!-- MESSAGES -->
+                <!-- EMAILS -->
                 <telerik:RadTabItem Header="Emails"
-                                    IsEnabled="{Binding Path=ExportGroupVm.Emails, Converter={StaticResource Converter.EnumerableAnyToBoolConverter}}">
+                                    IsEnabled="{Binding Path=ExportGroupVm.Emails.Result, Converter={StaticResource Converter.EnumerableAnyToBoolConverter}}">
 
                     <exportsControls:EmailsResultsUc DataContext="{Binding Path=ExportGroupVm}" />
                 </telerik:RadTabItem>
@@ -318,13 +263,12 @@
                 <telerik:RadTabItem Header="Credentials"
                                     IsEnabled="False">
 
-
                     <exportsControls:CredentialsView DataContext="{Binding Path=ExportGroupVm}" />
                 </telerik:RadTabItem>
 
                 <!-- CALLS -->
                 <telerik:RadTabItem Header="Calls"
-                                    IsEnabled="{Binding Path=ExportGroupVm.Calls, Converter={StaticResource Converter.EnumerableAnyToBoolConverter}}">
+                                    IsEnabled="{Binding Path=ExportGroupVm.Calls.Result, Converter={StaticResource Converter.EnumerableAnyToBoolConverter}}">
 
                     <exportsControls:CallsView DataContext="{Binding Path=ExportGroupVm}" />
                 </telerik:RadTabItem>
@@ -332,14 +276,9 @@
                 <!-- WEB PAGES -->
                 <telerik:RadTabItem Header="Web pages"
                                     IsEnabled="False">
-
-
                     <exportsControls:WebPagesGridView DataContext="{Binding Path=ExportGroupVm}" />
                 </telerik:RadTabItem>
-
-
             </telerik:RadTabControl>
-
         </Grid>
 
         <!--<telerik:RadExpander
@@ -354,4 +293,4 @@
         </telerik:RadExpander>-->
 
     </Grid>
-</views:DetectiveApplicationPaneViewBase>
+</views:DetectiveDataEntityPaneViewBase>

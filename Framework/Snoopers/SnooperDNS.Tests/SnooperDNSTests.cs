@@ -12,12 +12,15 @@
 //See the License for the specific language governing permissions and
 //limitations under the License.
 
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Netfox.Framework.ApplicationProtocolExport.Tests;
 using Netfox.Framework.Models.Snoopers;
 using Netfox.NetfoxFrameworkAPI.Tests.Properties;
 using Netfox.SnooperDNS.Models;
+using Netfox.SnooperDNS.Models.Message;
 using NUnit.Framework;
 
 namespace Netfox.SnooperDNS.Tests
@@ -31,9 +34,7 @@ namespace Netfox.SnooperDNS.Tests
 
         private void CheckQueryAndAnswer(ushort messageID, IReadOnlyList<ushort> flags, IReadOnlyList<string> messages, DNSParseMsg.DNSResponseType responseType, string filePath)
         {
-            this.FrameworkController.ProcessCapture(this.PrepareCaptureForProcessing(filePath));
-            var conversations = this.L7Conversations.ToArray();
-            this.FrameworkController.ExportData(this.SnoopersToUse, conversations, this.CurrentTestBaseDirectory, true);
+            this.LoadPcapAndExportData(filePath);
 
             SnooperExportDNS exportedObjectsReference = null;
             foreach (var exportedObjects in this.SnooperExports.ToArray()) //Get SnooperDNS exported objects
@@ -71,6 +72,61 @@ namespace Netfox.SnooperDNS.Tests
             }
         }
 
+        private void LoadPcapAndExportData(String filePath)
+        {
+            Console.WriteLine($"{DateTime.Now} -- Pcap parsing start");
+            this.FrameworkController.ProcessCapture(this.PrepareCaptureForProcessing(filePath));
+            Console.WriteLine($"{DateTime.Now} -- Pcap parsing finished");
+
+            var conversations = this.L7Conversations.Where(conversation => conversation.SourceEndPoint.Port == 53 || conversation.DestinationEndPoint.Port == 53).ToArray();
+
+            Console.WriteLine($"{DateTime.Now} -- Export start");
+            this.FrameworkController.ExportData(this.SnoopersToUse, conversations, this.CurrentTestBaseDirectory, true);
+          Console.WriteLine($"{DateTime.Now} -- Export finished");
+
+            var dnsQueries = this.SnooperExports.Sum(exportBase => exportBase.ExportObjects.Sum(exportObjectBase => 
+            {
+                if (!(exportObjectBase is SnooperExportedDataObjectDNS dnsExport) || dnsExport.Answer.Any()) return 0;
+
+                return dnsExport.Queries.Count;
+            }));
+
+
+            var dnsAnswer = this.SnooperExports.Sum(exportBase => exportBase.ExportObjects.Sum(exportObjectBase =>
+            {
+                if (!(exportObjectBase is SnooperExportedDataObjectDNS dnsExport)) return 0;
+
+                return dnsExport.Answer.Count;
+            }));
+
+
+            var dnsAdditional = this.SnooperExports.Sum(exportBase => exportBase.ExportObjects.Sum(exportObjectBase =>
+            {
+                if (!(exportObjectBase is SnooperExportedDataObjectDNS dnsExport)) return 0;
+
+                return dnsExport.Additional.Count;
+            }));
+
+
+            var dnsAuthority = this.SnooperExports.Sum(exportBase => exportBase.ExportObjects.Sum(exportObjectBase =>
+            {
+                if (!(exportObjectBase is SnooperExportedDataObjectDNS dnsExport)) return 0;
+
+                return dnsExport.Authority.Count;
+            }));
+
+            Console.WriteLine($"DNS queries: {dnsQueries}");
+            Console.WriteLine($"DNS answers: {dnsAnswer}");
+            Console.WriteLine($"DNS additional: {dnsAdditional}");
+            Console.WriteLine($"DNS authority: {dnsAuthority}");
+        }
+
+        [Test, Ignore("OnDemand")]
+        public void M57Case()
+        {
+            this.LoadPcapAndExportData(@"F:\pcaps\m57\m57.pcap ");
+        }
+        
         [Test]
         public void DNSTest_responseA_xvican01_via_FrameworkController2()
         {

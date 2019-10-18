@@ -17,22 +17,25 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Castle.MicroKernel;
 using Castle.Windsor;
 using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
 using Netfox.Core.Attributes;
 using Netfox.Core.Collections;
 using Netfox.Core.Helpers;
 using Netfox.Core.Interfaces;
 using Netfox.Core.Interfaces.ViewModels;
-using Netfox.Core.Messages.Base;
-using Netfox.Core.Messages.Exports;
-using Netfox.Core.Messages.Views;
-using Netfox.Core.Models;
+using Netfox.Detective.Interfaces;
+using Netfox.Detective.Interfaces.ViewModelsDataEntity.Investigations;
+using Netfox.Detective.Messages;
+using Netfox.Detective.Messages.Captures;
+using Netfox.Detective.Messages.Conversations;
+using Netfox.Detective.Messages.ConversationsGroup;
+using Netfox.Detective.Messages.Exports;
+using Netfox.Detective.Messages.Investigations;
+using Netfox.Detective.Messages.Workspaces;
 using Netfox.Detective.Models;
 using Netfox.Detective.Models.Base;
 using Netfox.Detective.Models.Conversations;
@@ -53,7 +56,7 @@ using Netfox.NetfoxFrameworkAPI.Interfaces;
 
 namespace Netfox.Detective.ViewModelsDataEntity.Investigations
 {
-    public class InvestigationVm : ConversationsVm<Investigation>, IInitializable
+    public class InvestigationVm : ConversationsVm<Investigation>, IInitializable, IInvestigationVm
     {
         private readonly object _initLock = new object();
         private readonly object _updateApplicationAnalyzersLock = new object();
@@ -63,8 +66,10 @@ namespace Netfox.Detective.ViewModelsDataEntity.Investigations
         private ConversationsGroupVm _currentConversationsGroupVm;
         private ExportGroupVm _currentExportGroup;
         private bool _exportToRootGroups;
-
-        public InvestigationVm(IWindsorContainer applicationWindsorContainer, ISnooperFactory snooperFactory, IFrameworkControllerFactory frameworkControllerFactory, Investigation model, ExportService exportService) : base(applicationWindsorContainer, model,exportService)
+        private IDetectiveMessenger _messenger;
+        private ISerializationPersistor<Investigation> _investigationSerializationPersistor;
+        public InvestigationVm(IWindsorContainer applicationWindsorContainer, ISnooperFactory snooperFactory, IFrameworkControllerFactory frameworkControllerFactory, Investigation model, ExportService exportService, IDetectiveMessenger messenger,
+            ISerializationPersistor<Investigation> investigationSerializationPersistor) : base(applicationWindsorContainer, model,exportService)
         {
             this.SnooperFactory = snooperFactory;
             this.Investigation = model;
@@ -84,6 +89,9 @@ namespace Netfox.Detective.ViewModelsDataEntity.Investigations
 
             this.ExportGroupName = "Exports - " + DateTime.Now;
             this.CreateSubGroup = true;
+           
+            this._messenger = messenger;
+            this._investigationSerializationPersistor = investigationSerializationPersistor;
         }
 
         public override ViewModelVirtualizingIoCObservableCollection<SnooperVm, ISnooper> AvailableSnoopers
@@ -135,10 +143,17 @@ namespace Netfox.Detective.ViewModelsDataEntity.Investigations
                 Task.Factory.StartNew(() =>
                 {
                     if(this._currentCapture == null) { return; }
-                    CaptureMessage.SendCaptureMessage(this._currentCapture, CaptureMessage.MessageType.CurrentCaptureChanged, false);
+                    this._messenger.AsyncSend(new ChangedCaptureMessage
+                    {
+                        CaptureVm = this._currentCapture,
+                        BringToFront = false
+                    });
+                   
                 });
             }
         }
+
+
 
         public ConcurrentObservableHashSet<CaptureVm> SelectedCaptureVms { get; } = new ConcurrentObservableHashSet<CaptureVm>();
 
@@ -158,7 +173,7 @@ namespace Netfox.Detective.ViewModelsDataEntity.Investigations
                     if(this._currentConversationsGroupVm == null) { return; }
 
                     await this._currentConversationsGroupVm.Init();
-                    ConversationsGroupMessage.SendConversationsGroupMessage(value, ConversationsGroupMessage.MessageType.GroupVmSelected);
+                    this._messenger.AsyncSend(new SelectedConversationsGroupMessage{ConversationsGroupVm = value});
                 });
             }
         }
@@ -178,8 +193,11 @@ namespace Netfox.Detective.ViewModelsDataEntity.Investigations
                     if(this._currentExportGroup == null) { return; }
 
                     await this._currentExportGroup.Init();
-
-                    ExportGroupMessage.SendExportGroupMessage(this._currentExportGroup, ExportGroupMessage.MessageType.CurrentExportGroupChanged);
+                   
+                    this._messenger.AsyncSend(new ChangedExportGroupMessage
+                    {
+                        ExportGroupVm = this._currentExportGroup
+                    });
                 });
             }
         }
@@ -231,13 +249,15 @@ namespace Netfox.Detective.ViewModelsDataEntity.Investigations
 
         public ICommand CProtocolsRecognition => new RelayCommand(this.CProtocolsRecognitionxecute, this.CanCProtocolsRecognitionExecute);
 
+ 
         public async Task Initialize()
         {
+  
             await Task.WhenAll(Task.Run(() =>
             {
-                Messenger.Default.Register<ConversationMessage>(this, this.ConversationMessageHandler);
-                Messenger.Default.Register<CaptureMessage>(this, this.CaptureMessageHandler);
-                Messenger.Default.Register<WorkspaceMessage>(this, this.WorkspaceMessageHandler);
+                this._messenger.Register<AddConversationToExportMessage>(this, this.AddConversationToExportMessageReceived);
+                this._messenger.Register<AddCaptureToExportMessage>(this, this.AddCaptureToExportMessageReceived);
+                this._messenger.Register<ClosedWorkspaceMessage>(this, this.ClosedWorkspaceMessageReceived);
             }));
             if(this.Investigation.InvestigationInfo.IsInMemory)
             {
@@ -246,7 +266,11 @@ namespace Netfox.Detective.ViewModelsDataEntity.Investigations
             }
             await this.UpdateInvestigationAnalyzers();
         }
-
+        
+        private void ClosedWorkspaceMessageReceived(ClosedWorkspaceMessage msg)
+        {
+            this.Close();
+        }
         private async Task AddExistingPcaps()
         {
             foreach(var pcap in this.Investigation.InvestigationInfo.SourceCaptureDirectoryInfo.GetDirectories().SelectMany(d=>d.EnumerateFiles())) {
@@ -270,7 +294,7 @@ namespace Netfox.Detective.ViewModelsDataEntity.Investigations
 
             var targetDirectoryInfo = this.Investigation.InvestigationInfo.SourceCaptureDirectoryInfo.CreateSubdirectory(fileName + "-" + Guid.NewGuid());
             targetDirectoryInfo.Create();
-            var coppiedFileInfo = new FileInfo(Path.Combine(targetDirectoryInfo.FullName, captureFilePathInfo.Name));
+            var coppiedFileInfo = new FileInfo(PathHelper.CombineLongPath(targetDirectoryInfo.FullName, captureFilePathInfo.Name));
 
             await this.CopyCaptureTaskAsync(captureFilePathInfo, coppiedFileInfo);
             await this.AddCaptureFrameworkControllerAsync(coppiedFileInfo);
@@ -369,7 +393,7 @@ namespace Netfox.Detective.ViewModelsDataEntity.Investigations
         {
             if(this.IsOpened) { return; }
             this.IsOpened = true;
-            InvestigationMessage.SendInvestigationMessage(this, InvestigationMessage.MessageType.CurrentInvestigationChanged);
+            this._messenger.AsyncSend(new OpenedInvestigationMessage { InvestigationVm = this});
         }
 
         public void ProtocolsRecognition()
@@ -425,16 +449,19 @@ namespace Netfox.Detective.ViewModelsDataEntity.Investigations
 
         internal void Save()
         {
-            var serializer = new DataContractSerializer(typeof(InvestigationInfo));
-            try
-            {
-                using(var writer = new FileStream(this.Investigation.InvestigationInfo.InvestigationFileInfo.FullName, FileMode.Create)) {
-                    serializer.WriteObject(writer, this.Investigation.InvestigationInfo);
-                }
-            }
-            catch(IOException ex) {
-                this.Logger?.Error("Saving investigation failed",ex);
-            }
+            //var serializer = new DataContractSerializer(typeof(InvestigationInfo));
+            //try
+            //{
+            //    using(var writer = new FileStream(this.Investigation.InvestigationInfo.InvestigationFileInfo.FullName, FileMode.Create)) {
+            //        serializer.WriteObject(writer, this.Investigation.InvestigationInfo);
+            //    }
+            //}
+            //catch(IOException ex) {
+            //    this.Logger?.Error("Saving investigation failed",ex);
+            //}
+
+            
+            this._investigationSerializationPersistor.Save(this.Investigation);
         }
 
         [AsyncTask(Title = nameof(AddCaptureFrameworkControllerAsync), Description = "Adding capture file.")]
@@ -479,47 +506,27 @@ namespace Netfox.Detective.ViewModelsDataEntity.Investigations
 
         private bool CanRemoveGroup() { return this.CurrentExportGroup != null; }
 
-        private void CaptureMessageHandler(CaptureMessage message)
+        private void AddCaptureToExportMessageReceived(AddCaptureToExportMessage msg)
         {
-            switch(message.Type)
+            Task.Factory.StartNew(() =>
             {
-                case CaptureMessage.MessageType.CurrentCaptureChangedById:
-                    Task.Factory.StartNew(() =>
-                    {
-                        //todo this.SetCurrentCaptureById(message.CaptureId);
+                var capture = msg.CaptureVm as CaptureVm;
 
-                        if(message.BringToFront) { BringToFrontMessage.SendBringToFrontMessage("CaptureView"); }
-                    });
-                    break;
-                case CaptureMessage.MessageType.AddCaptureToExport:
-                    Task.Factory.StartNew(() =>
-                    {
-                        var capture = message.CaptureVm as CaptureVm;
+                this.AddCaptureToExport(capture);
 
-                        this.AddCaptureToExport(capture);
-
-                        this.NavigationService.Show(typeof(SelectiveExportVm));
-                    });
-                    break;
-            }
+                this.NavigationService.Show(typeof(SelectiveExportVm));
+            });
         }
 
-        private void ConversationMessageHandler(ConversationMessage conversationMessage)
+        
+        private void AddConversationToExportMessageReceived(AddConversationToExportMessage msg)
         {
-            if(conversationMessage == null) { return; }
-            switch(conversationMessage.Type)
+            Task.Factory.StartNew(() =>
             {
-                case ConversationMessage.MessageType.CurrentConversationChanged:
-                    break;
-                case ConversationMessage.MessageType.AddConversationToExport:
-                    Task.Factory.StartNew(() =>
-                    {
-                        var cvm = conversationMessage.ConversationVm as ConversationVm;
-                        if(cvm != null) { this.ToExportConversations.Add(cvm.Conversation); }
-                    });
-                    this.NavigationService.Show(typeof(SelectiveExportVm));
-                    break;
-            }
+                var cvm = msg.ConversationVm as ConversationVm;
+                if (cvm != null) { this.ToExportConversations.Add(cvm.Conversation); }
+            });
+            this.NavigationService.Show(typeof(SelectiveExportVm));
         }
 
         private void ConversationsGroups_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -610,25 +617,6 @@ namespace Netfox.Detective.ViewModelsDataEntity.Investigations
                     }
                 }
             });
-        }
-
-        private void WorkspaceMessageHandler(WorkspaceMessage workspaceMessage)
-        {
-            if(workspaceMessage == null) { return; }
-            switch(workspaceMessage.MessageType)
-            {
-                case WorkspaceMessage.Type.Created:
-                    break;
-                case WorkspaceMessage.Type.ToCreate:
-                    break;
-                case WorkspaceMessage.Type.Opened:
-                    break;
-                case WorkspaceMessage.Type.Closed:
-                    this.Close();
-                    break;
-                case WorkspaceMessage.Type.Opening:
-                    break;
-            }
         }
     }
 }

@@ -12,9 +12,11 @@
 //See the License for the specific language governing permissions and
 //limitations under the License.
 
+using System;
 using System.Globalization;
 using System.Linq;
 using Netfox.Framework.ApplicationProtocolExport.Tests;
+using Netfox.Framework.Models.Snoopers;
 using Netfox.Framework.Models.Snoopers.Email;
 using Netfox.NetfoxFrameworkAPI.Tests.Properties;
 using Netfox.SnooperSMTP.Models;
@@ -88,7 +90,7 @@ namespace Netfox.SnooperSMTP.Tests
             Assert.AreEqual(emails[0].TimeStamp.ToString(new CultureInfo("cs-CZ", false)), "19.08.2013 15:40:43");
             Assert.AreEqual(emails[0].From, "TestPC01 <testpc01@seznam.cz>");
             Assert.AreEqual(emails[0].To, "testpc02@seznam.cz");
-            Assert.AreEqual(emails[0].RawContent, "1 Ve zku?ebn? dob? m??e zru?it pracovn? pom?r zam?stnavatel i \r\nzam?stnanec a ??dn? z nich nemus? uv?d?t d?vody sv?ho rozhodnut?.\r\n2 Firma u? v p??pad? d??ve privilegovan?ch zam?stnanc? nemus? ??dat o \r\np?edchoz? souhlas p??slu?n? odborov? org?n.\r\n3 Zku?ebn? dobu lze sjednat pouze p?ed vznikem pracovn?ho pom?ru.");
+            Assert.AreEqual(emails[0].RawContent, "1 Ve zku?ebn? dob? m??e zru?it pracovn? pom?r zam?stnavatel i \r\nzam?stnanec a ??dn? z nich nemus? uv?d?t d?vody sv?ho rozhodnut?.\r\n2 Firma u? v p??pad? d??ve privilegovan?ch zam?stnanc? nemus? ??dat o \r\np?edchoz? souhlas p??slu?n? odborov? org?n.\r\n3 Zku?ebn? dobu lze sjednat pouze p?ed vznikem pracovn?ho pom?ru.\r\n.");
             Assert.AreEqual(emails[0].Subject, "1 - 3");
 
             Assert.AreEqual(19, this.GetExportedObjectCount());
@@ -199,6 +201,62 @@ namespace Netfox.SnooperSMTP.Tests
             Assert.AreEqual(0, exportedObjectBases.Length);
 
             Assert.AreEqual(0, this.GetExportedObjectCount());
+        }
+
+        [Test]
+        public void M57Case_smtp_1()
+        {
+            this.FrameworkController.ProcessCapture(this.PrepareCaptureForProcessing(SnoopersPcaps.Default.m57_m57_smtp_1_pcap));
+
+            var conversations = this.L7Conversations.Where(c => c.IsXyProtocolConversation("SMTP")).ToArray();
+            this.FrameworkController.ExportData(this.AvailableSnoopersTypes, conversations, this.CurrentTestBaseDirectory, true);
+
+            var emails = this.SnooperExports.Sum(exportBase => exportBase.ExportObjects.Count);
+            Console.WriteLine($"SMTP emails: {emails}");
+        }
+
+        [Test]
+        public void M57Case_smtp_2()
+        {
+            this.FrameworkController.ProcessCapture(this.PrepareCaptureForProcessing(SnoopersPcaps.Default.m57_m57_smtp_1_pcap));
+
+            var conversations = this.L7Conversations.Where(c => c.IsXyProtocolConversation("SMTP")).ToArray();
+            this.FrameworkController.ExportData(this.AvailableSnoopersTypes, conversations, this.CurrentTestBaseDirectory, true);
+
+            var emails = this.SnooperExports.Sum(exportBase => exportBase.ExportObjects.Count);
+            Console.WriteLine($"SMTP emails: {emails}");
+        }
+
+        [Test, Ignore("ondemand")]
+        public void M57Case_smtp()
+        {
+            this.FrameworkController.ProcessCapture(this.PrepareCaptureForProcessing(@"F:\pcaps\m57\m57_smtp.pcap"));
+
+            var conversations = this.L7Conversations.Where(c => c.IsXyProtocolConversation("SMTP")).ToArray();
+            this.FrameworkController.ExportData(this.AvailableSnoopersTypes, conversations, this.CurrentTestBaseDirectory, true);
+
+            var emails = this.SnooperExports.Sum(exportBase => exportBase.ExportObjects.Count);
+            Console.WriteLine($"SMTP emails: {emails}");
+        }
+
+        [Test]
+        public void M57Case_smtp_all()
+        {
+            this.FrameworkController.ProcessCapture(this.PrepareCaptureForProcessing(@"F:\pcaps\m57\m57.pcap"));
+
+            var conversations = this.L7Conversations.Where(c => c.IsXyProtocolConversation("SMTP")).ToArray();
+            this.FrameworkController.ExportData(this.AvailableSnoopersTypes, conversations, this.CurrentTestBaseDirectory, true);
+
+            var emails = this.SnooperExports.Sum(exportBase => exportBase.ExportObjects.Count);
+            Console.WriteLine($"SMTP emails: {emails}");
+
+            foreach(var export in this.SnooperExports.SelectMany(i=>i.ExportObjects))
+            {
+                var mail = export as MIMEemail;
+
+                Console.WriteLine($"{mail?.SourceEndPoint}-{mail?.DestinationEndPoint}, To:{mail?.To}, From:{mail?.From}, Subject:{mail?.Subject}"); 
+
+            }
         }
     }
 }

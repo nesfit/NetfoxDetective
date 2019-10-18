@@ -341,9 +341,17 @@ namespace Netfox.Persistence
             }
         }
 
+        private static readonly ConcurrentDictionary<Type, IEnumerable<PropertyInfo>> _typeCache = new ConcurrentDictionary<Type, IEnumerable<PropertyInfo>>();
+
         private IEnumerable<PropertyInfo> GetPersistingProperties<TEntity>()
         {
-            var propertyInfos = typeof(TEntity).GetProperties();
+
+            return _typeCache.GetOrAdd(typeof(TEntity), this.GetPersistingPropertiesReflection);
+        }
+
+        private IEnumerable<PropertyInfo> GetPersistingPropertiesReflection(Type type)
+        {
+            var propertyInfos = type.GetProperties();
             var properties = propertyInfos
                 .Where(p => this.IsTypePersistent(p.PropertyType) || this.IsTypeOfCollectionOPersistent(p.PropertyType) || this.IsDeclaredOnDbContext(p.PropertyType))
                 .Where(p => p.CustomAttributes.All(a => a.AttributeType != typeof(NotMappedAttribute)));

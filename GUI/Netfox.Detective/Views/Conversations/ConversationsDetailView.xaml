@@ -21,56 +21,39 @@
         </ResourceDictionary>
     </views:DetectiveDataEntityPaneViewBase.Resources>
 
-    <Grid DataContext="{Binding ConversationsVm}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+    <ScrollViewer>
+        <Grid DataContext="{Binding ConversationsVm}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-        <StackPanel Margin="5 5 5 0" Orientation="Vertical" Background="White">
+            <StackPanel Margin="5 5 5 0" Orientation="Vertical" Background="White">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/Icons/cube.png"
+                        Width="25" Height="25" Grid.Column="0"
+                        Margin="0 0 5 0" />
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Image
-                    Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/Icons/cube.png"
-                    Width="25" Height="25" Grid.Column="0"
-                    Margin="0 0 5 0" />
+                    <Border Grid.Column="1" Style="{StaticResource Style.Border.Header}" VerticalAlignment="Center">
+                        <TextBlock Margin="4 1 0 0" Style="{StaticResource Style.TextBlock.Header}"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   Text="Conversations detail" />
+                    </Border>
 
-                <Border Grid.Column="1" Style="{StaticResource Style.Border.Header}" VerticalAlignment="Center">
+                    <TextBox Grid.Column="2" FontWeight="Bold" Margin="10,5,6,3" Text="{Binding Path=Data.Name}" />
+                </Grid>
+            </StackPanel>
 
-                    <TextBlock Margin="4 1 0 0" Style="{StaticResource Style.TextBlock.Header}"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Center"
-                               Text="Conversations detail" />
-                </Border>
-
-                <TextBox Grid.Column="2" FontWeight="Bold" Margin="10,5,6,3" Text="{Binding Path=Data.Name}" />
-
-                <!--<plugins1:PluginsActivator Grid.Column="3" />-->
-
-            </Grid>
-
-
-        </StackPanel>
-
-        <conversations:ConversationsDetailViewUc Grid.Row="1" x:Name="ConversationsDetail" />
-
-        <!--<telerik:RadExpander
-			Visibility="{Binding Path=AnyPluginsView, ElementName=EntityPluginsViewsControl, Converter={StaticResource Converter.BoolToVisibilityConverter}}"
-			Style="{StaticResource ResourceKey=Style.RadExpander}" Grid.Row="2" IsExpanded="True">
-			<telerik:RadExpander.Header>
-				<TextBlock Text="Plugins" />
-			</telerik:RadExpander.Header>
-			<telerik:RadExpander.Content>
-				<plugins1:EntityPluginsViewsControl x:Name="EntityPluginsViewsControl" EntityType="ConversationsGroup" />
-			</telerik:RadExpander.Content>
-		</telerik:RadExpander>-->
-    </Grid>
-
+            <conversations:ConversationsDetailViewUc Grid.Row="1" x:Name="ConversationsDetail" />
+        </Grid>
+    </ScrollViewer>
 </views:DetectiveDataEntityPaneViewBase>

@@ -35,7 +35,7 @@ namespace Netfox.Framework.CaptureProcessor.L7Tracking.UDP
         public FlowStore FlowStore { get; }
         public DaRFlowDirection FlowDirection { get; }
         private L4Conversation L4Conversation { get; }
-        private TimeSpan UdpSessionAliveTimeout { get; }
+        private TimeSpan UdpSessionAliveTimeout { get; } // TODO BUG: UdpSessionAliveTimeout is not used 
 
         public void ProcessUDPFlow(FramesFirstSeenSortedCollection udpFlowFrames)
         {
@@ -79,6 +79,7 @@ namespace Netfox.Framework.CaptureProcessor.L7Tracking.UDP
 
             extractedBytes = 0;
             var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            // TODO BUG: UdpSessionAliveTimeout is not used below.
             var limit = 2 * 60 * 1000; // max difference in timestamps of two IPv4 fragments
 
             //Select framew with the same Ipv4FIdentification
@@ -125,6 +126,6 @@ namespace Netfox.Framework.CaptureProcessor.L7Tracking.UDP
 
 
             return fragmentList;
-        }
+        } // TODO accepted: Ducplicit code with TCPFLowReassembler.
     }
 }

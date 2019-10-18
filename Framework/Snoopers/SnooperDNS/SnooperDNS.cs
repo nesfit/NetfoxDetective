@@ -52,8 +52,6 @@ namespace Netfox.SnooperDNS
 
         protected override void ProcessConversation()
         {
-            Console.WriteLine(@"SnooperDNS.ProcessConversation() called");
-
             // we need a stream to read from
             var stream = new PDUStreamBasedProvider(this.CurrentConversation, EfcPDUProviderType.Mixed);
             // now we can create a reader that will be reading from the stream we just created
@@ -102,7 +100,6 @@ namespace Netfox.SnooperDNS
                 };
 
                 //export
-                    //TODO there should be list of guids (frames, other objects)
                     foreach (var exportSource in message.ExportSources)
                         exportedObject.ExportSources.Add(exportSource);
                     this.SnooperExport.AddExportObject(exportedObject);

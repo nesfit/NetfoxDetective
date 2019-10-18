@@ -13,7 +13,7 @@
 //limitations under the License.
 
 using Netfox.Detective.Tests;
-using Netfox.SnooperHangouts.Infrastructure;
+using Netfox.SnooperHangouts.WPF.Infrastructure;
 using NUnit.Framework;
 
 namespace Netfox.SnooperHangouts.Tests

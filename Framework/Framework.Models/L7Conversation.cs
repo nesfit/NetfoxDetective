@@ -311,23 +311,7 @@ namespace Netfox.Framework.Models
         }
         public override String ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("AppTags> ");
-            foreach(var applicationTag in this.ApplicationTags)
-            {
-                sb.Append(applicationTag);
-                sb.Append(", ");
-            }
-            sb.Append(this.L4ProtocolType);
-            sb.Append(" ");
-            sb.Append(this.SourceEndPoint);
-            sb.Append(" ");
-            sb.Append(this.DestinationEndPoint);
-            sb.Append(" UpPDUs> ");
-            sb.Append(this.UpFlowPDUs?.Count() ?? 0);
-            sb.Append(" DownPDUs> ");
-            sb.Append(this.DownFlowPDUs?.Count() ?? 0);
-            return sb.ToString();
+            return $"{this.ProtocolType}, {this.SourceEndPoint}-{this.DestinationEndPoint}, {this.FirstSeen}-{this.LastSeen}, {this.L3ProtocolType}, {this.L4ProtocolType}, {nameof(this.CipherSuite)}: {this.CipherSuite},  {nameof(this.AppTag)}: {this.AppTag}, {nameof(this.AppTagProvider)}: {this.AppTagProvider}{Environment.NewLine}{nameof(this.UpConversationStatistic)}: {this.UpConversationStatistic}{Environment.NewLine}{nameof(this.DownConversationStatistic)}: {this.DownConversationStatistic}{Environment.NewLine}{nameof(ConversationStats)}: {ConversationStats}";
         }
         private List<L7PDU> MergeUpDownPdus(IEnumerable<L7PDU> upFlowPdusEnumerable, IEnumerable<L7PDU> downFlowPDUseEnumerable)
         {
@@ -455,5 +439,7 @@ namespace Netfox.Framework.Models
             return e1 && e2 &&e3&&e4;
         }
         #endregion
+
+
     }
 }

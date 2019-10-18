@@ -1,0 +1,65 @@
+﻿@viewModel Netfox.Web.App.ViewModels.Investigation.Export.CallDetailViewModel, Netfox.Web.App
+@masterPage Views/BlankLayout.dotmaster
+
+<dot:Content ContentPlaceHolderID="Content">
+    <h4>Call Info</h4>
+    <div class="row info">
+        <div class="col-6">
+            <div class="row">
+                <div class="col-6">From:</div>
+                <div class="col-6">{{value: Call.From}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">To:</div>
+                <div class="col-6">{{value: Call.To}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Start:</div>
+                <div class="col-6">
+                    <dot:Literal Text="{value: Call.Start}" FormatString="dd.MM.yyyy HH:mm:ss" RenderSpanElement="false" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">End:</div>
+                <div class="col-6">
+                    <dot:Literal Text="{value: Call.End}" FormatString="dd.MM.yyyy HH:mm:ss" RenderSpanElement="false" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">Duration:</div>
+                <div class="col-6">{{value: Call.DurationText}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Call Id:</div>
+                <div class="col-6">{{value: Call.CallId}}</div>
+            </div>
+        </div>
+    </div>
+    <h4>Posiable call stream</h4>
+    <dot:GridView class="table" DataSource="{value: Streams}">
+        <Columns>
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: Start}" FormatString="dd.MM.yyyy HH:mm:ss" HeaderText="Start" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: End}" FormatString="dd.MM.yyyy HH:mm:ss" HeaderText="End" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: DurationText}" HeaderText="Duration" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: From}" HeaderText="From" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: To}" HeaderText="To" />
+            <dot:GridViewTemplateColumn AllowSorting="false" HeaderText="">
+                <audio controls>
+                    <source src="{{value: WavFilePath}}" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+            </dot:GridViewTemplateColumn>
+        </Columns>
+    </dot:GridView>
+    <dot:DataPager class="pagination justify-content-center" DataSet="{value: Streams}" RenderLinkForCurrentPage="true">
+        <FirstPageTemplate>
+            <span>First</span>
+        </FirstPageTemplate>
+        <LastPageTemplate>
+            <span>Last</span>
+        </LastPageTemplate>
+        <NextPageTemplate>Next</NextPageTemplate>
+        <PreviousPageTemplate>Previous</PreviousPageTemplate>
+    </dot:DataPager>
+</dot:Content>
+

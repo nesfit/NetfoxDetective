@@ -12,12 +12,13 @@
 //See the License for the specific language governing permissions and
 //limitations under the License.
 
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Castle.Windsor;
 using GalaSoft.MvvmLight.Command;
-using Netfox.Core.Messages.Base;
+using Netfox.Detective.Messages;
+using Netfox.Detective.Messages.Captures;
+using Netfox.Detective.Messages.Conversations;
 using Netfox.Detective.Services;
 using Netfox.Detective.ViewModels.Frame;
 using Netfox.Detective.ViewModels.Investigations;
@@ -27,17 +28,14 @@ namespace Netfox.Detective.ViewModelsDataEntity.ConversationsCollections
 {
     public class CaptureVm : ConversationsVm<PmCaptureBase>
     {
+        private readonly IDetectiveMessenger _messenger;
         #region Constructor
         public CaptureVm(IWindsorContainer applicationWindsorContainer, PmCaptureBase model, ExportService exportService) : base(applicationWindsorContainer, model, exportService)
         {
             this.Capture = model;
             //this.Conversations.NewVmCreated += this.ConversationsOnNewVmCreated;
 
-            Task.Factory.StartNew(() =>
-            {
-                //Messenger.Default.Register<ConversationMessage>(this, this.ConversationActionHandler);
-                //Messenger.Default.Register<FrameMessage>(this, this.FrameActionHandler);
-            });
+            this._messenger = this.ApplicationOrInvestigationWindsorContainer.Resolve<IDetectiveMessenger>();
         }
         #endregion
 
@@ -70,36 +68,6 @@ namespace Netfox.Detective.ViewModelsDataEntity.ConversationsCollections
 
         #region External events handlers
         // private void ConversationsOnNewVmCreated(ConversationVm newViewModel) { newViewModel.ExportResultsProvider = this.ExportResultsProvider; }
-        #endregion
-
-        #region Messaging handlers
-        //private void ConversationActionHandler(ConversationMessage message)
-        //{
-        //    if(message.Type == ConversationMessage.MessageType.CurrentConversationChangedByIndex)
-        //    {
-        //        if(message.CaptureId == this.Capture.Id)
-        //        {
-        //            this.SetCurrentConversationByIndex(message.ConversationIndex);
-
-        //            if(message.BringToFront) { BringToFrontMessage.SendBringToFrontMessage("ConversationDetailView"); }
-        //        }
-        //    }
-        //}
-
-        //private void FrameActionHandler(FrameMessage message)
-        //{
-        //    if(message.Type == FrameMessage.MessageType.CurrentFrameByCaptureIdAndConvIndex)
-        //    {
-        //        if(message.CaptureId == this.Capture.Id)
-        //        {
-        //            this.SetCurrentConversationByIndex(message.ConversationIndex);
-
-        //            if(this.CurrentConversation != null) { this.CurrentConversation.CurrentPacketById(message.FrameId); }
-
-        //            if(message.BringToFront) { BringToFrontMessage.SendBringToFrontMessage("FrameContentView"); }
-        //        }
-        //    }
-        //}
         #endregion
 
         #region Capture actions
@@ -147,7 +115,11 @@ namespace Netfox.Detective.ViewModelsDataEntity.ConversationsCollections
         #region AddCaptureToExportList
         private void AddCaptureToExportList()
         {
-            ConversationMessage.SendConversationMessage(this.CurrentConversation, ConversationMessage.MessageType.AddConversationToExport, false);
+            this._messenger.AsyncSend(new AddConversationToExportMessage
+            {
+                ConversationVm = this.CurrentConversation,
+                BringToFront = false
+            });
         }
 
         public ICommand CAddCaptureToExportList => new RelayCommand(this.AddCaptureToExportList);
@@ -201,9 +173,11 @@ namespace Netfox.Detective.ViewModelsDataEntity.ConversationsCollections
 
             if(investigationExplorerVm.InvestigationVm != null && capture != null)
             {
-                //investigationExplorerVm.InvestigationVm.AddCaptureToExport(capture);
-                CaptureMessage.SendCaptureMessage(capture, CaptureMessage.MessageType.AddCaptureToExport, true);
-                //ConversationMessage.SendConversationMessage(this.CurrentConversation, ConversationMessage.MessageType.AddConversationToExport, false);
+                this._messenger.AsyncSend(new AddCaptureToExportMessage
+                {
+                    CaptureVm = capture,
+                    BringToFront = true
+                });
             }
         }
 

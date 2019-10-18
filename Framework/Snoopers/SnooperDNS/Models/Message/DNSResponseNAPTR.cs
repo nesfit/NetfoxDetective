@@ -12,6 +12,8 @@
 //See the License for the specific language governing permissions and
 //limitations under the License.
 
+using System;
+
 namespace Netfox.SnooperDNS.Models.Message
 {
     public class DnsResponseNAPTR: DnsResponse
@@ -22,6 +24,12 @@ namespace Netfox.SnooperDNS.Models.Message
         public char[] Flags { get; set; }
         public string Services { get; set; }
         public string Regexp { get; set; }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()}, {nameof(this.Order)}: {this.Order}, {nameof(this.Preference)}: {this.Preference}, {nameof(this.Flags)}: {this.Flags}, {nameof(this.Services)}: {this.Services}, {nameof(this.Regexp)}: {this.Regexp}, {nameof(this.Replacement)}: {this.Replacement}";
+        }
+
         public string Replacement { get; set; }
     }
 }

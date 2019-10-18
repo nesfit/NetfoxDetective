@@ -16,7 +16,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary
                     Source="pack://application:,,,/Netfox.Detective;component/Views/Styles/DetectiveMainStyle.xaml" />
-
                 <ResourceDictionary>
                     <Style x:Key="conversationstrackBallInfoStyle" TargetType="telerik:TrackBallInfoControl">
                         <Setter Property="Template">
@@ -42,12 +41,12 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
 
         <telerik:RadExpander Background="White" Margin="5,5,5,0" Grid.Row="0"
                              Style="{StaticResource ResourceKey=Style.RadExpander}" IsExpanded="True">
@@ -57,12 +56,10 @@
             </telerik:RadExpander.Header>
 
             <telerik:RadExpander.Content>
-
                 <StackPanel Grid.IsSharedSizeScope="True" DataContext="{Binding ConversationsStatisticsVm}">
                     <StackPanel x:Name="Statistics">
                         <Grid Margin="5 0 5 0" >
                             <Grid.RowDefinitions>
-
                                 <RowDefinition />
                                 <RowDefinition />
                             </Grid.RowDefinitions>
@@ -103,7 +100,6 @@
                             <TextBlock Style="{StaticResource Style.TextBlock.Content}"
                                        Grid.Row="1" Grid.Column="3" Margin="6,3,3,3"
                                        Text="{Binding ConversationsStatistics.UniqueHostsCount}" />
-
                         </Grid>
 
                         <Grid Margin="5 5 5 10"
@@ -207,7 +203,7 @@
                                 Content="Show VoIP overview"
                                 Command="{Binding CShowVoIPOverView}"
                                 Style="{StaticResource LinkButton}"
-                                HorizontalAlignment="Left" VerticalAlignment="Center" Width="80" />
+                                HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" />
 
                         <!--<Button Margin="10 5 10 10"
 						        Content="Advanced protocols recognition"
@@ -231,12 +227,8 @@
                            Text="Structure" />
             </Border>
             <telerik:RadTabControl Grid.Row="1" Margin="5">
-
-
                 <!-- PIE CHARTS-->
-
                 <telerik:RadTabItem Header="Application protocols" DataContext="{Binding ConversationsStatisticsVm}">
-
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="200*" />
@@ -245,12 +237,10 @@
                         </Grid.ColumnDefinitions>
 
                         <telerik:RadPieChart x:Name="PieChartAppProtocols" Palette="Summer" Foreground="Black">
-
                             <telerik:PieSeries
                                 ValueBinding="Value"
                                 ItemsSource="{Binding Path=ConversationsStatistics.AppProtocolsDistribution}"
                                 RadiusFactor="0.8">
-
 
                                 <telerik:PieSeries.LegendSettings>
                                     <telerik:DataPointLegendSettings TitleBinding="Key" />
@@ -264,7 +254,6 @@
                                     <telerik:AngleRange StartAngle="270" SweepAngle="360" />
                                 </telerik:PieSeries.AngleRange>
                             </telerik:PieSeries>
-
                         </telerik:RadPieChart>
 
                         <telerik:RadLegend Grid.Column="1" x:Name="PieLegendProtocols" VerticalAlignment="Center"
@@ -286,15 +275,12 @@
                                 <DataGridTextColumn Binding="{Binding Percent, Mode=OneWay}" CanUserResize="False"
                                                     Header="  %  " />
                             </DataGrid.Columns>
-
                         </DataGrid>
-
                     </Grid>
                 </telerik:RadTabItem>
 
                 <telerik:RadTabItem Header="Transport protocols" DataContext="{Binding ConversationsStatisticsVm}"
                                     Visibility="{Binding ConversationsStatistics.TransportProtocolsDistribution, Converter={StaticResource Converter.NullToVisibility}}">
-
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="200*" />
@@ -303,12 +289,10 @@
                         </Grid.ColumnDefinitions>
 
                         <telerik:RadPieChart x:Name="PieChartTransportProtocols" Palette="Summer" Foreground="Black">
-
                             <telerik:PieSeries
                                 ValueBinding="Value"
                                 ItemsSource="{Binding Path=ConversationsStatistics.TransportProtocolsDistribution}"
                                 RadiusFactor="0.8">
-
 
                                 <telerik:PieSeries.LegendSettings>
                                     <telerik:DataPointLegendSettings TitleBinding="Key" />
@@ -322,7 +306,6 @@
                                     <telerik:AngleRange StartAngle="270" SweepAngle="360" />
                                 </telerik:PieSeries.AngleRange>
                             </telerik:PieSeries>
-
                         </telerik:RadPieChart>
 
                         <telerik:RadLegend Grid.Column="1" VerticalAlignment="Center" Margin="5"
@@ -343,17 +326,12 @@
                                 <DataGridTextColumn Binding="{Binding Percent, Mode=OneWay}" CanUserResize="False"
                                                     Header="  %  " />
                             </DataGrid.Columns>
-
                         </DataGrid>
-
                     </Grid>
-
                 </telerik:RadTabItem>
-
 
                 <!--TIMELINE-->
                 <telerik:RadTabItem Header="Timeline" DataContext="{Binding ConversationsStatisticsVm}">
-
                     <Grid Background="White" Margin="5 5 5 0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -366,22 +344,18 @@
                             <TextBlock x:Name="radTimelineBytesInfo" Text="       " />
                         </StackPanel>
 
-
                         <telerik:RadCartesianChart Grid.Row="1" x:Name="conversationchart" Palette="Windows8"
                                                    Margin="5"
 
                                                    TrackBallLineStyle="{StaticResource TrackBallLineStyle}"
                                                    TrackBallInfoStyle="{StaticResource TrackBallInfoStyle}"
                                                    Zoom="{Binding Path=Zoom, ElementName=CaptureViewControl,Mode=TwoWay}">
-                            <!--MouseDoubleClick="Conversationchart_OnMouseDoubleClick"-->
 
                             <telerik:RadCartesianChart.InputBindings>
                                 <MouseBinding Gesture="LeftDoubleClick" Command="{Binding CConversationChartDClick}" />
                             </telerik:RadCartesianChart.InputBindings>
 
-
                             <telerik:RadCartesianChart.Behaviors>
-
                                 <telerik:ChartPanAndZoomBehavior ZoomMode="Horizontal" />
                                 <!--<telerik:ChartTrackBallBehavior
 									TrackInfoUpdated="ChartTrackBallBehavior_TrackInfoUpdated"
@@ -432,21 +406,15 @@
                                                 StrokeThickness="1"
                                                 ValueBinding="Value"
                                                 CategoryBinding="Key" />
-
-
                         </telerik:RadCartesianChart>
                     </Grid>
-
                 </telerik:RadTabItem>
 
                 <!--HOSTS-->
                 <telerik:RadTabItem Header="Hosts Traffic" DataContext="{Binding ConversationsStatisticsVm}">
-
                     <telerik:RadCartesianChart x:Name="Hostschart"
                                                Palette="Windows8"
-
                                                Margin="5">
-
 
                         <telerik:RadCartesianChart.VerticalAxis>
                             <telerik:LinearAxis Title="Traffic [B]" FontSize="11" />
@@ -473,24 +441,17 @@
                                            CombineMode="Stack"
                                            CategoryBinding="Host"
                                            ValueBinding="DownTraffic" />
-
                     </telerik:RadCartesianChart>
-
                 </telerik:RadTabItem>
 
-
                 <telerik:RadTabItem Header="Conversations">
-
-
                     <Grid Background="White" Margin="5 5 5 0" x:Name="CGrid">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition />
                         </Grid.RowDefinitions>
 
-
                         <Grid>
-
                             <Grid.RowDefinitions>
                                 <RowDefinition />
                                 <RowDefinition />
@@ -544,14 +505,14 @@
                             <!--Busy indicator-->
                             <Label
                                 Visibility="{Binding ElementName=ThisControl, Path=ConversationsByTrafficOrDuration.IsNotCompleted,
-      Converter={StaticResource Converter.BoolToVisibilityConverter}}"
+                                Converter={StaticResource Converter.BoolToVisibilityConverter}}"
                                 Content="Loading..." HorizontalAlignment="Center" Foreground="DarkGreen" />
 
                             <!--Error details-->
                             <Label
                                 Content="{Binding ElementName=ThisControl, Path=ConversationsByTrafficOrDuration.ErrorMessagesAll}"
                                 Visibility="{Binding ElementName=ThisControl, Path=ConversationsByTrafficOrDuration.IsFaulted,
-      Converter={StaticResource Converter.BoolToVisibilityConverter}}"
+                                Converter={StaticResource Converter.BoolToVisibilityConverter}}"
                                 Foreground="Red" />
 
                             <telerik:RadCartesianChart x:Name="Conversationschart"
@@ -561,10 +522,7 @@
                                                        ClipToBounds="True"
                                                        PanOffset="{Binding Path=PanOffset, ElementName=ThisControl, Mode=TwoWay}"
                                                        Visibility="{Binding ElementName=ThisControl, Path=ShowConversationsTraffic, Converter={StaticResource Converter.BoolToVisibilityConverter}}">
-                                <!--ZoomChanged="Conversationschart_OnZoomChanged"-->
-                                <!--MouseDoubleClick="Conversations_OnMouseDoubleClick"-->
-
-
+                                
                                 <telerik:RadCartesianChart.VerticalAxis>
                                     <telerik:LinearAxis Title="Traffic [B]"
                                                         LabelStyle="{StaticResource yaxisLabelStyle}">
@@ -599,19 +557,7 @@
 
                                 <telerik:RadCartesianChart.Behaviors>
                                     <telerik:ChartPanAndZoomBehavior ZoomMode="Horizontal" />
-
-                                    <!--<telerik:ChartTrackBallBehavior
-									TrackInfoUpdated="Conversations_OnTrackInfoUpdated"
-									ShowIntersectionPoints="True" />-->
-
-                                    <!--<telerik:ChartSelectionBehavior
-									SelectionChanged="ChartSelectionBehavior_OnSelectionChanged"
-
-									DataPointSelectionMode="Single" />-->
-
-
                                 </telerik:RadCartesianChart.Behaviors>
-
 
                                 <telerik:BarSeries
                                     ItemsSource="{Binding ElementName=ThisControl, Path=ConversationsByTrafficOrDuration.Result}"
@@ -624,8 +570,6 @@
                                     CombineMode="Stack"
                                     CategoryBinding="Name"
                                     ValueBinding="DownFlowBytes" />
-
-
                             </telerik:RadCartesianChart>
 
                             <telerik:RadCartesianChart x:Name="Conversationschart2"
@@ -636,9 +580,6 @@
                                                        ClipToBounds="True"
 
                                                        Visibility="{Binding ElementName=ThisControl, Path=ShowConversationsDuration, Converter={StaticResource Converter.BoolToVisibilityConverter}}">
-                                <!--ZoomChanged="Conversationschart2_OnZoomChanged"
-						                           MouseDoubleClick="Conversations_OnMouseDoubleClick"-->
-
 
                                 <telerik:RadCartesianChart.VerticalAxis>
                                     <telerik:LinearAxis
@@ -675,17 +616,6 @@
 
                                 <telerik:RadCartesianChart.Behaviors>
                                     <telerik:ChartPanAndZoomBehavior ZoomMode="Horizontal" />
-
-                                    <!--<telerik:ChartTrackBallBehavior
-									TrackInfoUpdated="Conversations_OnTrackInfoUpdated"
-									ShowIntersectionPoints="False" />-->
-
-                                    <!--<telerik:ChartSelectionBehavior
-									SelectionChanged="ChartSelectionBehavior_OnSelectionChanged"
-
-									DataPointSelectionMode="Single" />-->
-
-
                                 </telerik:RadCartesianChart.Behaviors>
 
                                 <telerik:BarSeries
@@ -696,14 +626,9 @@
 
                             </telerik:RadCartesianChart>
                         </StackPanel>
-
-
                     </Grid>
                 </telerik:RadTabItem>
-
             </telerik:RadTabControl>
         </Grid>
-
-
     </Grid>
 </UserControl>

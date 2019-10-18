@@ -15,6 +15,7 @@
 using System;
 using System.Diagnostics;
 using System.Net;
+using System.Web.Hosting;
 
 namespace Netfox.SnooperRTP.Models
 {
@@ -105,7 +106,7 @@ namespace Netfox.SnooperRTP.Models
                         WindowStyle = ProcessWindowStyle.Hidden
                     }
                 };
-                p.StartInfo.FileName = SoxPath;
+                p.StartInfo.FileName = HostingEnvironment.ApplicationPhysicalPath + "bin\\" + SoxPath;
                 p.StartInfo.Arguments = "--type " + _type + " --rate 8000 --encoding " + _encoding + " \"" + rawFilePath + "\" --type wavpcm -s --channels 1 \"" + rawFilePath
                                         + ".wav\"";
                 p.StartInfo.UseShellExecute = false;
@@ -152,7 +153,7 @@ namespace Netfox.SnooperRTP.Models
                         WindowStyle = ProcessWindowStyle.Hidden
                     }
                 };
-                p.StartInfo.FileName = _decoderPath;
+                p.StartInfo.FileName = HostingEnvironment.ApplicationPhysicalPath + "bin\\" + _decoderPath;
                 p.StartInfo.Arguments = "\"" + rawFilePath + "\" \"" + rawFilePath + ".s16\"";
                 p.StartInfo.UseShellExecute = false;
                 p.StartInfo.RedirectStandardOutput = true;
@@ -177,7 +178,7 @@ namespace Netfox.SnooperRTP.Models
                         WindowStyle = ProcessWindowStyle.Hidden
                     }
                 };
-                p.StartInfo.FileName = SoxPath;
+                p.StartInfo.FileName = HostingEnvironment.ApplicationPhysicalPath + "bin\\" + SoxPath;
                 p.StartInfo.Arguments = "--rate 8000 --channels 1 \"" + rawFilePath + ".s16\" --type wavpcm -s \"" + rawFilePath + ".wav\"";
                 p.StartInfo.UseShellExecute = false;
                 p.StartInfo.RedirectStandardOutput = true;
@@ -280,7 +281,7 @@ namespace Netfox.SnooperRTP.Models
                         WindowStyle = ProcessWindowStyle.Hidden
                     }
                 };
-                p.StartInfo.FileName = _decoderPath;
+                p.StartInfo.FileName = HostingEnvironment.ApplicationPhysicalPath + "bin\\" + _decoderPath;
                 p.StartInfo.Arguments = "\"" + this.Filename + "\" \"" + this.Filename + ".s16\"";
                 p.StartInfo.UseShellExecute = false;
                 p.StartInfo.RedirectStandardOutput = true;
@@ -305,7 +306,7 @@ namespace Netfox.SnooperRTP.Models
                         WindowStyle = ProcessWindowStyle.Hidden
                     }
                 };
-                p.StartInfo.FileName = SoxPath;
+                p.StartInfo.FileName = HostingEnvironment.ApplicationPhysicalPath + "bin\\"  + SoxPath;
                 p.StartInfo.Arguments = "--rate 8000 --channels 1 \"" + this.Filename + ".s16\" --type wavpcm -s \"" + this.Filename + ".wav\"";
                 p.StartInfo.UseShellExecute = false;
                 p.StartInfo.RedirectStandardOutput = true;

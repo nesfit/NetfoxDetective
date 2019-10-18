@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Netfox.Web.DAL.Properties" GeneratedClassName="NetfoxWebSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="InvestigationsFolder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/Investigations/</Value>
+    </Setting>
+    <Setting Name="InvestigationPrefix" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">NFX_</Value>
+    </Setting>
+    <Setting Name="DefaultInvestigationName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">NFX</Value>
+    </Setting>
+    <Setting Name="PathToBin" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/bin/</Value>
+    </Setting>
+    <Setting Name="ConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=PQ19\SQLEXPRESS;User ID=nfx;Password=8oikBd8S;Initial Catalog=NetfoxDB;MultipleActiveResultSets=true;</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

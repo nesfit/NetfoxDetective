@@ -13,7 +13,7 @@
 //limitations under the License.
 
 using Netfox.Detective.Tests;
-using Netfox.SnooperTwitter.Infrastructure;
+using Netfox.SnooperTwitter.WPF.Infrastructure;
 using NUnit.Framework;
 //using Netfox.SnooperTwitter.Interfaces;
 //using Netfox.SnooperTwitter.ViewModels;

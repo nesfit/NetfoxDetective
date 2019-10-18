@@ -1,0 +1,14 @@
+﻿@viewModel Netfox.Web.App.ViewModels.BlankLayoutViewModel, Netfox.Web.App
+@masterPage Views/Layout.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <div id="blank-detail">
+        <dot:ContentPlaceHolder ID="Content" />
+    </div>
+    <style>
+    body {
+        overflow-x: hidden;
+    }
+    </style>
+</dot:Content>
+

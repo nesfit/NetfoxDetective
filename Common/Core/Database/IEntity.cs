@@ -15,13 +15,13 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Netfox.Core.Interfaces.Views;
+using UnitOfWork.BaseDataEntity;
 
 namespace Netfox.Core.Database
 {
-    public interface IEntity
+    public interface IEntity : IDataEntity
     {
-        [Key]
-        Guid Id { get; } 
         DateTime FirstSeen { get; }
     }
 }

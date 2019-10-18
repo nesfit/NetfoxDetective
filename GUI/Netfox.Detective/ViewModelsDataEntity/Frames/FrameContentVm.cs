@@ -12,7 +12,10 @@
 //See the License for the specific language governing permissions and
 //limitations under the License.
 
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Documents;
 using Castle.Windsor;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Threading;
@@ -63,6 +66,22 @@ namespace Netfox.Detective.ViewModelsDataEntity.Frames
             var frameModel =
                 this.FrameVm.ApplicationOrInvestigationWindsorContainer.Resolve<VirtualizingObservableDBSetPagedCollection<PmFrameBase>>()
                     .FirstOrDefault(f => f.FrameIndex == this.FrameVm.FrameIndex - 1 && f.PmCapture == this.FrameVm.FwFrame.PmCapture);
+            if(frameModel == null) { return; }
+            this.FrameVm = this.FrameVm.ApplicationOrInvestigationWindsorContainer.Resolve<FrameVm>(new
+            {
+                model = frameModel,
+                investigationOrAppWindsorContainer = this.ApplicationOrInvestigationWindsorContainer
+            });
+        });
+
+        [IgnoreAutoChangeNotification]
+        public RelayCommand<Guid> CChangeFrame => new RelayCommand<Guid>((frameId) =>
+        {
+            if(this.FrameVm == null) { return; }
+            this.FrameVm.ApplicationOrInvestigationWindsorContainer.Release(this);
+            var frameModel =
+                this.FrameVm.ApplicationOrInvestigationWindsorContainer.Resolve<VirtualizingObservableDBSetPagedCollection<PmFrameBase>>()
+                    .FirstOrDefault(f => f.Id == frameId && f.PmCapture == this.FrameVm.FwFrame.PmCapture);
             if(frameModel == null) { return; }
             this.FrameVm = this.FrameVm.ApplicationOrInvestigationWindsorContainer.Resolve<FrameVm>(new
             {

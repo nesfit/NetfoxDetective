@@ -267,3 +267,8 @@ __pycache__/
 
 # Cake - Uncomment if you are using it
 # tools/
+/Web/Netfox.Web/temp
+/Web/Netfox.Web/Investigations
+/Web/Netfox.Web.App/Investigations
+/Web/Netfox.Web.App/tmp
+/Web/Netfox.Web.App/Temp/returnedFiles

@@ -13,7 +13,7 @@
 //limitations under the License.
 
 using Netfox.Detective.Tests;
-using Netfox.SnooperSIP.Infrastructure;
+using Netfox.SnooperSIP.WPF.Infrastructure;
 using NUnit.Framework;
 
 namespace Netfox.SnooperSIP.Tests

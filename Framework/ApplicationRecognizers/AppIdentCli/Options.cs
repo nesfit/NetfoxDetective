@@ -44,10 +44,5 @@ namespace Netfox.AppIdentCli
         [Option('n', "use-full-name", HelpText = "Use application protocol full name including application name.")]
         public bool IsUseFullName { get; set; }
 
-        [HelpOption]
-        public string GetUsage()
-        {
-            return HelpText.AutoBuild(this, (HelpText current) => HelpText.DefaultParsingErrorsHandler(this, current));
-        }
     }
 }

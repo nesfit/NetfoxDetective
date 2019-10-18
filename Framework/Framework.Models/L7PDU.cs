@@ -54,6 +54,7 @@ namespace Netfox.Framework.Models
         private void CopyL7Pdu(L7PDU l7Pdu)
         {
             this.UnorderedFrameList.AddRange(l7Pdu.UnorderedFrameList.Select(f => new PmFrameVirtual(f)));
+            foreach(var frame in this.UnorderedFrameList) { frame.L7PduRefId = this.Id; }
             this.ExtractedBytes = l7Pdu.ExtractedBytes;
             this.FlowDirection = l7Pdu.FlowDirection;
             this.IsContainingCorruptedData = l7Pdu.IsContainingCorruptedData;
@@ -114,7 +115,7 @@ namespace Netfox.Framework.Models
             {
                 var frames = this.FrameList.ToList();
                 frames.RemoveAll(pmFrame => pmFrame.L7PayloadLength < 1);
-                var len = frames.Sum(pmFrame => pmFrame.IncludedLength - (pmFrame.MessageOffset - pmFrame.L2Offset));
+                var len = frames.Sum(pmFrame => pmFrame.L7PayloadLength);
                 var ms = new MemoryStream(new Byte[len], 0, (Int32) len, true, true);
                 foreach(var data in frames.Select(pmFrame => pmFrame.L7Data())) ms.Write(data, 0, data.Length);
                 return ms.GetBuffer();
@@ -214,6 +215,11 @@ namespace Netfox.Framework.Models
             if(!this.UnorderedFrameList.Any()) { this.BaseFlow.RemoveL7PDU(this); }
             removedFrame.L7Pdu = null;
             return removedFrame;
+        }
+
+        public override string ToString()
+        {
+            return $"{this.SourceEndPoint}-{this.DestinationEndPoint}, {this.FirstSeen}-{this.LastSeen}, {nameof(this.ExtractedBytes)}: {this.ExtractedBytes}, {nameof(this.FlowDirection)}: {this.FlowDirection}, {nameof(this.IsContainingCorruptedData)}: {this.IsContainingCorruptedData}, {nameof(this.MissingBytes)}: {this.MissingBytes}, {nameof(this.MissingFrameSequences)}: {this.MissingFrameSequences}, {nameof(this.PDULength)}: {this.PDULength}{Environment.NewLine}{nameof(this.L7Conversation)}: {this.L7Conversation}";
         }
     }
 }

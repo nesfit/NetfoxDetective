@@ -1,0 +1,10 @@
+﻿@viewModel Netfox.Web.App.ViewModels.Investigation.ExportBaseViewModel, Netfox.Web.App
+@masterPage Views/Investigation/layoutInvestigation.dotmaster
+
+<dot:Content ContentPlaceHolderID="Toolbar">
+    <dot:ContentPlaceHolder ID="Toolbar" />
+</dot:Content>
+<dot:Content ContentPlaceHolderID="Content">
+    <dot:ContentPlaceHolder ID="Content" />
+</dot:Content>
+

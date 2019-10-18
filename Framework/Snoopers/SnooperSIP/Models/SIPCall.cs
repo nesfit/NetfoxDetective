@@ -18,6 +18,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Net;
 using System.Text;
+using Netfox.Core.Database.PersistableJsonSeializable;
 using Netfox.Core.Database.Wrappers;
 using Netfox.Core.Interfaces.Model.Exports;
 using Netfox.Framework.Models.Snoopers;
@@ -39,8 +40,14 @@ namespace Netfox.SnooperSIP.Models
             this.RejectReason = string.Empty;
             //this.ExportedPayloads = new RTPExportedPayload[0];
             this.CallId = string.Empty;
+            this.RTPAddressesString = new PersistableJsonSerializableString();
+            this.PossibleCodecsString = new PersistableJsonSerializableString();
         }
-        
+
+        public PersistableJsonSerializableString RTPAddressesString { get; set; }
+        public PersistableJsonSerializableString PossibleCodecsString { get; set; }
+
+
         public List<IPEndPointEF> RTPAddresses { get; private set; } = new List<IPEndPointEF>();
         [NotMapped]
         public TimeSpan? Duration => this?.End - this?.Start;
@@ -188,7 +195,11 @@ namespace Netfox.SnooperSIP.Models
                 }
                 if(!found)
                 {
-                    try { this.RTPAddresses.Add(new IPEndPointEF(IPAddress.Parse(message.Body.RTPAddress), int.Parse(message.Body.RTPPort))); }
+                    try
+                    {
+                        this.RTPAddresses.Add(new IPEndPointEF(IPAddress.Parse(message.Body.RTPAddress), int.Parse(message.Body.RTPPort)));
+                        this.RTPAddressesString.Add(new IPEndPointEF(IPAddress.Parse(message.Body.RTPAddress), int.Parse(message.Body.RTPPort)).ToString());
+                    }
                     catch
                     {
                         //TODO throw some kind of "improper IP:port format" exception
@@ -203,6 +214,7 @@ namespace Netfox.SnooperSIP.Models
                     {
                         var list = this.PossibleCodecs as List<string>;
                         list.Add(codec);
+                        this.PossibleCodecsString.Add(codec);
                     }
                 }
         }

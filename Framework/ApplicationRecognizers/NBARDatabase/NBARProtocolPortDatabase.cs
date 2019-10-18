@@ -17,6 +17,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Web.Hosting;
 using Netfox.NBARDatabase.Properties;
 
 namespace Netfox.NBARDatabase
@@ -41,12 +42,16 @@ namespace Netfox.NBARDatabase
             {
                 taxonomyFilePath = NBARprotocols.Default.NBARTaxonomy;
             }
-                else
-                {
-                    var cwd = Directory.GetCurrentDirectory();
-                    Console.WriteLine(cwd);
-                        throw new ArgumentException("NBAR protocol port database do not exists!");
-                }
+            else if (File.Exists(HostingEnvironment.ApplicationPhysicalPath + "/bin/" + NBARprotocols.Default.NBARTaxonomy))
+            {
+                taxonomyFilePath = HostingEnvironment.ApplicationPhysicalPath + "/bin/" + NBARprotocols.Default.NBARTaxonomy;
+            }
+            else
+            {
+                var cwd = Directory.GetCurrentDirectory();
+                Console.WriteLine(cwd);
+                    throw new ArgumentException("NBAR protocol port database do not exists!");
+            }
             this.ProtocolTCPPortDictionary = new ConcurrentDictionary<UInt32, List<NBAR2TaxonomyProtocol>>();
             this.ProtocolUDPPortDictionary = new ConcurrentDictionary<UInt32, List<NBAR2TaxonomyProtocol>>();
 

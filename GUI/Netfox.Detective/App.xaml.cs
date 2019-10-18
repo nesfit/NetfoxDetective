@@ -18,7 +18,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Threading;
-using AlphaChiTech.Virtualization;
+using AlphaChiTech.VirtualizingCollection;
 using Castle.Core.Logging;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
@@ -27,7 +27,10 @@ using Castle.Windsor.Installer;
 using GalaSoft.MvvmLight.Threading;
 using Netfox.Core.Infrastructure;
 using Netfox.Core.Interfaces;
-using Netfox.Detective.Services;
+using Netfox.Detective.Interfaces;
+using Netfox.Detective.Messages;
+using Netfox.Detective.Messages.Workspaces;
+using Netfox.Detective.Models.WorkspacesAndSessions;
 using Telerik.Windows.Controls;
 
 namespace Netfox.Detective
@@ -123,7 +126,7 @@ namespace Netfox.Detective
         }
 
         /// <summary>
-        ///     Check commang line arguments.
+        ///     Check command line arguments.
         ///     Argument could be only file paths to associated files:
         ///     *.nfw - netfox workspace
         ///     *.nfi - netfox investigation
@@ -158,10 +161,16 @@ namespace Netfox.Detective
             this.Logger?.Info("Application Exits");
         }
 
-        private async void OpenSelectedWorkspace(string workspaceFilePath)
+        private void OpenSelectedWorkspace(string workspaceFilePath)
         {
-            var workspaceManager = this.ApplicationWindsorContainer.Resolve<WorkspacesManagerService>();
-            await workspaceManager.OpenWorkspace(workspaceFilePath);
+            var messenger = this.ApplicationWindsorContainer.Resolve<IDetectiveMessenger>();
+            var workspacePersistor = this.ApplicationWindsorContainer.Resolve<ISerializationPersistor<Workspace>>();
+
+            var workspace = workspacePersistor.Load(workspaceFilePath);
+            messenger.Send(new LoadedWorkspaceMessage
+            {
+                Workspace = workspace
+            });
         }
 
         private static void SetCurrentWorkingDirectoryToAssemblyBase()

@@ -10,7 +10,7 @@
              d:DataContext="{d:DesignInstance exports:ExportGroupVm, IsDesignTimeCreatable=False}">
     <Grid>
         <telerik:RadGridView EnableRowVirtualization="True"
-                             ItemsSource="{Binding Path=Calls}"
+                             ItemsSource="{Binding Path=Calls.Result}"
                              AutoGenerateColumns="False" IsReadOnly="True"
                              Style="{StaticResource Style.DataGridView}"
                              x:Name="CallsDataGrid">

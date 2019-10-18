@@ -16,14 +16,21 @@ using System;
 
 namespace Netfox.SnooperDNS.Models.Message
 {
-    public class DnsResponseSOA: DnsResponse
+    public class DnsResponseSOA : DnsResponse
     {
-        public string MName { get; set; }
-        public string RName { get; set; }
+        public String MName { get; set; }
+        public String RName { get; set; }
         public UInt32 Serial { get; set; }
+
         public UInt32 Refresh { get; set; }
         public UInt32 Retry { get; set; }
         public UInt32 Expire { get; set; }
         public UInt32 Minimum { get; set; }
+
+        public override String ToString()
+        {
+            return
+                $"{base.ToString()}, {nameof(this.MName)}: {this.MName}, {nameof(this.RName)}: {this.RName}, {nameof(this.Serial)}: {this.Serial}, {nameof(this.Refresh)}: {this.Refresh}, {nameof(this.Retry)}: {this.Retry}, {nameof(this.Expire)}: {this.Expire}, {nameof(this.Minimum)}: {this.Minimum}";
+        }
     }
 }

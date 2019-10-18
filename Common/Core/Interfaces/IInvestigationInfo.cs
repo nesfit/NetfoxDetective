@@ -16,12 +16,13 @@ using System;
 using System.ComponentModel;
 using System.Data.SqlClient;
 using System.IO;
+using System.IO.Abstractions;
 using Castle.Core.Logging;
 
 namespace Netfox.Core.Interfaces {
     public interface IInvestigationInfo {
-        DirectoryInfo InvestigationsDirectoryInfo { get; set; }
-        DirectoryInfo InvestigationDirectoryInfo { get; }
+        DirectoryInfoBase InvestigationsDirectoryInfo { get; set; }
+        DirectoryInfoBase InvestigationDirectoryInfo { get; }
         string InvestigationName { get; set; }
         string Author { get; set; }
         string Description { get; set; }

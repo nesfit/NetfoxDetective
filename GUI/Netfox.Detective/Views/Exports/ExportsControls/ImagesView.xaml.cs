@@ -17,8 +17,8 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Netfox.Core.Messages.Exports;
-using Netfox.Core.Messages.Views;
+using Netfox.Detective.Messages;
+using Netfox.Detective.Messages.Exports;
 using Netfox.Detective.ViewModelsDataEntity.Exports;
 
 namespace Netfox.Detective.Views.Exports.ExportsControls
@@ -68,8 +68,11 @@ namespace Netfox.Detective.Views.Exports.ExportsControls
             if(image != null && image.ResultVm != null)
             {
                 image.ResultVm.SelectDataByDataObject(image.DataVm, true);
-                ExportResultMessage.SendExportResultMessage(image.ResultVm, ExportResultMessage.MessageType.ExportResultSelected);
-                BringToFrontMessage.SendBringToFrontMessage("ExportContentView");
+              
+                new DetectiveMvvmLightMessenger().AsyncSend(new SelectedExportResultMessage
+                {
+                    ExportVm = image.ResultVm
+                });
             }
         }
 

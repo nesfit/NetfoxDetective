@@ -1,0 +1,21 @@
+﻿@viewModel Netfox.Web.App.ViewModels.Settings.SettingsViewModel, Netfox.Web.App
+@masterPage Views/Masterpage.dotmaster
+
+<dot:Content ContentPlaceHolderID="ColumnLeft">
+    <ul class="nav" id="sidebar-menu">
+        <li>
+            <dot:RouteLink class="{value: ActivePage == 'Settings_profile' ? 'active' : '' }" RouteName="Settings_profile" Text="Profile" />
+        </li>
+        <li>
+            <dot:RouteLink class="{value: (ActivePage == 'Settings_UserManagement' || ActivePage == 'Settings_User') ? 'active' : '' }" RouteName="Settings_UserManagement" Text="User Management" />
+        </li>
+    </ul>
+</dot:Content>
+
+<dot:Content ContentPlaceHolderID="Toolbar">
+    <dot:ContentPlaceHolder ID="Toolbar" />
+</dot:Content>
+
+<dot:Content ContentPlaceHolderID="Content">
+    <dot:ContentPlaceHolder ID="Content" />
+</dot:Content>

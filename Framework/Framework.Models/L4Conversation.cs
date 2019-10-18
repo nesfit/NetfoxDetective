@@ -103,7 +103,7 @@ namespace Netfox.Framework.Models
         public Guid L3ConversationRefId { get; private set; }
 
         [ForeignKey(nameof(L3ConversationRefId))]
-        public L3Conversation L3Conversation
+        public virtual L3Conversation L3Conversation
         {
             get { return this._l3Conversation; }
             set

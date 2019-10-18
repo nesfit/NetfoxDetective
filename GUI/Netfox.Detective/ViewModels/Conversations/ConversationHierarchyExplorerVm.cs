@@ -18,12 +18,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Castle.Windsor;
 using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Threading;
 using Netfox.Core.Interfaces.Views;
-using Netfox.Core.Messages.Base;
 using Netfox.Detective.Core;
 using Netfox.Detective.Interfaces;
+using Netfox.Detective.Messages;
+using Netfox.Detective.Messages.Conversations;
 using Netfox.Detective.ViewModelsDataEntity.Conversations;
 using Netfox.Framework.Models;
 using Netfox.Framework.Models.Interfaces;
@@ -39,7 +39,7 @@ namespace Netfox.Detective.ViewModels.Conversations
         private RelayCommand _CRemoveConversation;
         private RelayCommand _CShowConversationDetail;
         private ILxConversation _selectedConversation;
-
+        private readonly IDetectiveMessenger _messenger;
         public ConversationHierarchyExplorerVm(IWindsorContainer applicationWindsorContainer, ICrossContainerHierarchyResolver crossContainerHierarchyResolver) : base(applicationWindsorContainer)
         {
             this.CrossContainerHierarchyResolver = crossContainerHierarchyResolver;
@@ -47,7 +47,9 @@ namespace Netfox.Detective.ViewModels.Conversations
             this.DockPositionPosition = DetectiveDockPosition.DockedRight;
             this.IsHidden = false;
             this.IsSelected = true;
-            Task.Factory.StartNew(() => { Messenger.Default.Register<ConversationMessage>(this, this.ConversationMessageHandler); });
+
+            this._messenger = this.ApplicationOrInvestigationWindsorContainer.Resolve<IDetectiveMessenger>();
+            Task.Factory.StartNew(() => { this._messenger.Register<ChangedCurrentConversationMessage>(this, this.OpenedConversationMessageReceived); });
         }
 
         #region Overrides of DetectivePaneViewModelBase
@@ -140,7 +142,13 @@ namespace Netfox.Detective.ViewModels.Conversations
         private void BroadcastSelectedConversationChange()
         {
             if(!this._canBroadcastSelectedConversationChange) { return; }
-            ConversationMessage.SendConversationMessage(this.SelectedConversationVm, ConversationMessage.MessageType.CurrentConversationChanged, false);
+
+            this._messenger.AsyncSend(new ChangedCurrentConversationMessage
+            {
+                BringToFront = false,
+                ConversationVm = this.SelectedConversationVm
+            });
+            
         }
 
         private void ChangeRootConversation(ConversationVm conversation)
@@ -153,12 +161,11 @@ namespace Netfox.Detective.ViewModels.Conversations
             this.RootConversations.Add(rootConversationModel);
         }
 
-        private void ConversationMessageHandler(ConversationMessage conversationMessage)
+        private void OpenedConversationMessageReceived(ChangedCurrentConversationMessage msg)
         {
-            if(conversationMessage.Type != ConversationMessage.MessageType.CurrentConversationChanged) { return; }
             this._canBroadcastSelectedConversationChange = false;
 
-            var selectedConversationVm = conversationMessage.ConversationVm as ConversationVm;
+            var selectedConversationVm = msg.ConversationVm as ConversationVm;
             this.ChangeRootConversation(selectedConversationVm);
             this.SelectedConversationVm = selectedConversationVm;
             this.SelectedConversation = selectedConversationVm?.Conversation;

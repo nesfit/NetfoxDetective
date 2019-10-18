@@ -10,11 +10,11 @@
              d:DataContext="{d:DesignInstance conversationsCollections:MockConversationsVm, IsDesignTimeCreatable=false}">
     <Grid>
         <StackPanel>
-            <CheckBox Margin="10 10 0 10" Grid.Row="0"
-                      Content="Apply export on all conversations (don't use application tags)"
+            <CheckBox Margin="10 10 0 10"
                       VerticalAlignment="Center"
-                      x:Name="DontUseApplicationTagsForceOnAllConversations"
-                      Grid.Column="0" />
+                      x:Name="DontUseApplicationTagsForceOnAllConversations">
+                <TextBlock TextWrapping="Wrap" Text="Apply export on all conversations (don't use application tags)"></TextBlock>
+            </CheckBox>
             <CheckBox Margin="10 0 0 0" Grid.Row="3" Content="Show results during operation (slower)"
                       VerticalAlignment="Center"
                       x:Name="ShowExportedObjectsDuringExportation"
@@ -31,7 +31,7 @@
                 </telerik:RadListBox.ItemsPanel>
                 <telerik:RadListBox.ItemTemplate>
                     <DataTemplate>
-                        <CheckBox IsChecked="{Binding Path=IsEnabled}" Margin="10 5 5 5" Width="100"
+                        <CheckBox IsChecked="{Binding Path=IsEnabled}" Margin="10 5 5 5" MinWidth="100"
                                   Content="{Binding Path=Name, Mode=OneWay}">
                             <CheckBox.Foreground>
                                 <MultiBinding Converter="{StaticResource Converter.BoolAndBoolToBlueAndRedConverter}">

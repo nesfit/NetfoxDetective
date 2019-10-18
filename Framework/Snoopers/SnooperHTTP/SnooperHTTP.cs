@@ -118,9 +118,11 @@ namespace Netfox.SnooperHTTP
                         if(request != null)
                         {
                             /* export request with no response ?? */
-                            exportedObject = new SnooperExportedDataObjectHTTP(this.SnooperExport);
-                            exportedObject.TimeStamp = request.TimeStamp;
-                            exportedObject.Message = request;
+                            exportedObject = new SnooperExportedDataObjectHTTP(this.SnooperExport)
+                            {
+                                TimeStamp = request.TimeStamp,
+                                Message = request
+                            };
                             exportedObject.ExportSources.AddRange(request.ExportSources);
                             this.SnooperExport.AddExportObject(exportedObject);
                         }
@@ -169,9 +171,11 @@ namespace Netfox.SnooperHTTP
             // export last request if needed
             if(request != null)
             {
-                var exportedObject = new SnooperExportedDataObjectHTTP(this.SnooperExport);
-                exportedObject.TimeStamp = request.TimeStamp;
-                exportedObject.Message = request;
+                var exportedObject = new SnooperExportedDataObjectHTTP(this.SnooperExport)
+                {
+                    TimeStamp = request.TimeStamp,
+                    Message = request
+                };
                 exportedObject.ExportSources.AddRange(request.ExportSources);
                 this.SnooperExport.AddExportObject(exportedObject);
             }
@@ -181,53 +185,12 @@ namespace Netfox.SnooperHTTP
         protected override void RunBody()
         {
             base.ProcessAssignedConversations();
-            //if(this.SelectedConversations == null) return;
-
-            //this.SelectedConversations.LockSelectedConversations();
-
-            //long conversationIndex;
-
-            //ILxConversation currentConversation;
-            ////Main cycle on all conversations
-            //while (this.SelectedConversations.TryGetNextConversations(this.GetType(), out currentConversation, out conversationIndex))
-            //{
-            //    var selectedL7Conversations = new List<L7Conversation>();
-
-            //    if (currentConversation.GetType() == typeof(L7Conversation)) //todo refactor to SnooperBase.. or make more readable.. to method or somenting...
-            //    {
-            //        selectedL7Conversations.Add(currentConversation as L7Conversation);
-            //    }
-            //    else if (currentConversation.GetType() == typeof(L4Conversation))
-            //    {
-            //        selectedL7Conversations.AddRange((currentConversation as L4Conversation).L7Conversations);
-            //    }
-            //    else if (currentConversation.GetType() == typeof(L3Conversation))
-            //    {
-            //        selectedL7Conversations.AddRange((currentConversation as L3Conversation).L7Conversations);
-            //    }
-
-            //    foreach (var selectedL7Conversation in selectedL7Conversations)
-            //    {
-            //        this._currentConversation = selectedL7Conversation;
-            //        //eventExporter.ActualizeOpContext();
-
-            //        if (!this.ForceExportOnAllConversations && !this.CurrentConversation.isXYProtocolConversation(this.ProtocolNBARName)) { continue; }
-            //        // RunBody(CurrentConversation, conversationIndex);
-            //        this.OnConversationProcessingBegin();
-
-            //        this.ProcessConversation();
-
-            //        this.OnConversationProcessingEnd();
-            //    }
-            //}
         }
 
         protected override SnooperExportBase CreateSnooperExport() => new SnooperExportHTTP();
 
         public SnooperHTTP()
-        {
-          //  this.wi.Register(Component.For<HTTPExportsView, IHTTPExportsView>().ImplementedBy<HTTPExportsView>().LifestyleTransient());
-        }
+        {}
         public SnooperHTTP(WindsorContainer investigationWindsorContainer, SelectedConversations conversations, DirectoryInfo exportDirectory, bool ignoreApplicationTags)
             : base(investigationWindsorContainer, conversations, exportDirectory, ignoreApplicationTags)
         { }

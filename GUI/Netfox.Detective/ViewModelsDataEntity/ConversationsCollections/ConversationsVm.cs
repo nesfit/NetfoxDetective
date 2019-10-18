@@ -26,12 +26,12 @@ using System.Threading.Tasks;
 using Castle.Core.Internal;
 using Castle.Windsor;
 using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
 using Netfox.Core.Collections;
 using Netfox.Core.Database;
 using Netfox.Core.Helpers;
 using Netfox.Core.Interfaces.ViewModels;
-using Netfox.Core.Messages.Base;
+using Netfox.Detective.Messages;
+using Netfox.Detective.Messages.Conversations;
 using Netfox.Detective.Models.Base;
 using Netfox.Detective.Models.Conversations;
 using Netfox.Detective.Services;
@@ -77,6 +77,7 @@ namespace Netfox.Detective.ViewModelsDataEntity.ConversationsCollections
         private ViewModelVirtualizingIoCObservableCollection<ConversationVm, L4Conversation> _l4Conversations;
         private ViewModelVirtualizingIoCObservableCollection<ConversationVm, L7Conversation> _l7Conversations;
 
+        private readonly IDetectiveMessenger _messenger;
         protected ConversationsVm(IWindsorContainer applicationWindsorContainer, TType model, ExportService exportService) : base(applicationWindsorContainer, model)
         {
             this.ExportService = exportService;
@@ -91,7 +92,8 @@ namespace Netfox.Detective.ViewModelsDataEntity.ConversationsCollections
             this.UsedSnoopers = new ViewModelVirtualizingIoCObservableCollection<SnooperVm, ISnooper>(this.Model.UsedSnoopers, this.InvestigationWindsorContainer);
             this.UsedSnoopers.CollectionChanged += this.UsedSnoopersOnCollectionChanged;
 
-            Task.Factory.StartNew(() => { Messenger.Default.Register<ConversationMessage>(this, this.ConversationMessageHandler); });
+            this._messenger = this.ApplicationOrInvestigationWindsorContainer.Resolve<IDetectiveMessenger>();
+            Task.Factory.StartNew(() => { this._messenger.Register<ChangedCurrentConversationMessage>(this, this.OpenedConversationMessageReceived); });
         }
 
         public IConversationsModel Model { get; }
@@ -108,11 +110,14 @@ namespace Netfox.Detective.ViewModelsDataEntity.ConversationsCollections
 
                 this._currentFrame = value;
                 this.OnPropertyChanged();
-                if(this.CurrentFrame == null) { FrameMessage.SendFrameMessage(this.CurrentFrame, FrameMessage.MessageType.CurrentFrameChanged, false); }
-                //if (this._currentConversation != null)
-                //{
-                //    ConversationMessage.SendConversationMessage(this._currentConversation, ConversationMessage.MessageType.CurrentConversationChanged, false);
-                //}
+                if(this.CurrentFrame == null)
+                {
+                    this._messenger.AsyncSend(new ChangedCurrentConversationMessage
+                    {
+                        ConversationVm = this.CurrentFrame,
+                        BringToFront = false
+                    });
+                }
             }
         }
 
@@ -247,7 +252,12 @@ namespace Netfox.Detective.ViewModelsDataEntity.ConversationsCollections
                 this._currentConversation = value;
                 this.OnPropertyChanged();
                 if(this._currentConversation != null && this._canBroadcastSelectedConversationChange) {
-                    ConversationMessage.SendConversationMessage(this._currentConversation, ConversationMessage.MessageType.CurrentConversationChanged, false);
+                   
+                    this._messenger.AsyncSend(new ChangedCurrentConversationMessage
+                    {
+                        ConversationVm = this._currentConversation,
+                        BringToFront = false
+                    });
                 }
             }
         }
@@ -462,11 +472,10 @@ namespace Netfox.Detective.ViewModelsDataEntity.ConversationsCollections
             }
         }
 
-        private void ConversationMessageHandler(ConversationMessage conversationMessage)
+        private void OpenedConversationMessageReceived(ChangedCurrentConversationMessage msg)
         {
-            if(conversationMessage.Type != ConversationMessage.MessageType.CurrentConversationChanged) { return; }
             this._canBroadcastSelectedConversationChange = false;
-            this.CurrentConversation = conversationMessage.ConversationVm as ConversationVm;
+            this.CurrentConversation = msg.ConversationVm as ConversationVm;
             this._canBroadcastSelectedConversationChange = true;
         }
 

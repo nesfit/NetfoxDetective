@@ -15,7 +15,7 @@
 using System;
 using System.Windows;
 using Castle.Core.Logging;
-using Microsoft.Practices.ServiceLocation;
+using CommonServiceLocator;
 using Microsoft.Win32;
 using Netfox.Core.Interfaces;
 using Netfox.Detective.ViewModels.Interfaces;

@@ -1,0 +1,22 @@
+﻿@viewModel Netfox.Web.App.ViewModels.LayoutViewModel, Netfox.Web.App
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+
+    <link href="/Template/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Template/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <link href="/Template/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Template/css/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Template/css/template.css" rel="stylesheet" type="text/css" />
+
+    <script src="/Template/js/chart.min.js" type="text/javascript"></script>
+
+    <dot:RequiredResource Name="jquery-ui" />
+    <dot:RequiredResource Name="scripts" />
+    <title>Netfox.Web {{value: Title.Length > 0 ? ' | ' + Title : '' }}</title>
+</head>
+    <body class="{value: PageCSSClass}">
+        <dot:ContentPlaceHolder ID="MainContent" />
+    </body>
+</html>

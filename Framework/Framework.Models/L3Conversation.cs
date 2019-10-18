@@ -46,7 +46,7 @@ namespace Netfox.Framework.Models
         [NotMapped]
         private ICollection<PmFrameBase> _nonL4Frames;
 
-        protected L3Conversation()
+        public L3Conversation()
         {
             this.Captures = new List<PmCaptureBase>();
             this.L4Conversations = new List<L4Conversation>();
@@ -236,23 +236,8 @@ namespace Netfox.Framework.Models
 
         IEnumerable<PmFrameBase> ILxConversation.Frames => this.Frames;
 
-       [NotMapped]
-        public ICollection<PmFrameBase> Frames
-        {
-            get
-            {
-                if(this._frames == null)
-                {
-                    Expression<Func<PmFrameBase, Boolean>> func = f => f.L3ConversationRefId == this.Id;
-                    this._frames = this.InvestigationWindsorContainer?.Resolve<VirtualizingObservableDBSetPagedCollection<PmFrameBase>>(new
-                    { 
-                        filter = func
-                    });
-                }
-                return this._frames;
-            }
-            private set { this._frames = value; }
-        }
+        [InverseProperty(nameof(PmFrameBase.L3Conversation))]
+        public virtual ICollection<PmFrameBase> Frames { get; protected set; }
         
         private IPAddress _ipAddress1;
         private IPAddress _ipAddress2;

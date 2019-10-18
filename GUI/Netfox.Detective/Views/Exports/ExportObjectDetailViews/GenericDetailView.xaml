@@ -6,6 +6,7 @@
              xmlns:collections="clr-namespace:System.Collections;assembly=mscorlib"
              xmlns:generic="clr-namespace:System.Collections.Generic;assembly=mscorlib"
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:exports="clr-namespace:Netfox.Detective.ViewModelsDataEntity.Exports"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300"
              d:DataContext="{d:DesignInstance exports:ExportVm, d:IsDesignTimeCreatable=False}">
@@ -33,36 +34,9 @@
             <TextBox Grid.Column="2" FontWeight="Bold" Margin="10,5,6,3" Text="{Binding Path=Name, Mode=OneWay}" />
 
         </Grid>
-        <!--<telerik:RadGridView ItemsSource="{Binding SelectedSnooperExportObject, Converter={StaticResource ObjectToStringDictionaryPropertiesMap}, Mode=OneWay}" AutoGenerateColumns="True" />-->
         <telerik:RadGridView
             DataContext="{Binding SelectedSnooperExportObject, Converter={StaticResource ObjectToStringDictionaryPropertiesMap}, Mode=OneWay}"
             ItemsSource="{Binding Result}" AutoGenerateColumns="True">
-            <!--<telerik:RadGridView.Columns>
-
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding Path=Result.Key, Mode=OneWay}" Header="Property " />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding Path=Result.Value, Mode=OneWay}" Header="Value " />
-
-            </telerik:RadGridView.Columns>-->
         </telerik:RadGridView>
-        <!--<ListView
-			ItemsSource="{Binding SelectedSnooperExportObject.SnooperExportedObject, Converter={StaticResource ObjectToStringDictionaryPropertiesMap}}">
-			<ListBox.ItemTemplate>
-				<DataTemplate>
-					<StackPanel Orientation="Horizontal" d:DataContext="{d:DesignInstance generic:IDictionary, IsDesignTimeCreatable=False}">
-						<Label Content="{Binding Key}" />
-						<TextBlock xml:space="preserve" />
-						<Label Content="{Binding Value}" />
-					</StackPanel>
-				</DataTemplate>
-			</ListBox.ItemTemplate>
-			--><!--<ListView.ItemTemplate>
-				<DataTemplate>
-					<StackPanel Orientation="Horizontal">
-						<TextBlock Text="{Binding Key}" />
-						<TextBlock Text="{Binding Value}" />
-					</StackPanel>
-				</DataTemplate>
-			</ListView.ItemTemplate>--><!--
-		</ListView>-->
     </Grid>
 </UserControl>

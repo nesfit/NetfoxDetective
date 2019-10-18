@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RootNamespace>Netfox.NBARDatabase</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="NBARDatabase\" />
+  </ItemGroup>
+</Project>

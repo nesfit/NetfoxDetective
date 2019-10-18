@@ -13,7 +13,7 @@
 //limitations under the License.
 
 using Netfox.Detective.Tests;
-using Netfox.SnooperFTP.Infrastructure;
+using Netfox.SnooperFTP.WPF.Infrastructure;
 
 namespace Netfox.SnooperFTP.Tests
 {

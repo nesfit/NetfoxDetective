@@ -13,7 +13,7 @@
 //limitations under the License.
 
 using Netfox.Detective.Tests;
-using Netfox.SnooperIMAP.Infrastructure;
+using Netfox.SnooperIMAP.WPF.Infrastructure;
 using NUnit.Framework;
 
 namespace Netfox.SnooperIMAP.Tests

@@ -20,12 +20,13 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using AlphaChiTech.Virtualization;
-using AlphaChiTech.Virtualization.Interfaces;
+using AlphaChiTech.VirtualizingCollection.Interfaces;
 using Castle.Windsor;
 using Netfox.Core.Database;
 using Netfox.Core.Interfaces;
 using Netfox.Core.Interfaces.ViewModels;
 using Netfox.Core.Models;
+using Netfox.Detective.Interfaces.Models.Base;
 using Netfox.Detective.Models.Conversations;
 using Netfox.Detective.Models.Exports;
 using Netfox.Framework.Models;
@@ -43,7 +44,7 @@ namespace Netfox.Detective.Models.Base
     ///     ConversationsVm of investigation.
     /// </summary>
     [NotifyPropertyChanged]
-    public class Investigation : IConversationsModel, IWindsorContainerChanger, INotifyPropertyChanged, IInitializable
+    public class Investigation : IInvestigation
     {
         private IObservableCollection<PmFrameBase> _allFrames;
         private IObservableCollection<PmCaptureBase> _captures;
@@ -58,7 +59,7 @@ namespace Netfox.Detective.Models.Base
         private IObservableCollection<SnooperExportBase> _snooperExports;
         private IObservableCollection<SourceLog.SourceLog> _sourceLogs;
 
-        public Investigation(InvestigationInfo investigationInfo)
+        public Investigation(IInvestigationInfo investigationInfo)
         {
             this.InvestigationInfo = investigationInfo;
             this.InvestigationInfo.LastRecentlyUsed = DateTime.UtcNow;
@@ -71,7 +72,7 @@ namespace Netfox.Detective.Models.Base
             => this._captures ?? (this._captures = this.InvestigationWindsorContainer.Resolve<VirtualizingObservableDBSetPagedCollection<PmCaptureBase>>());
 
         [DataMember]
-        public InvestigationInfo InvestigationInfo { get; }
+        public IInvestigationInfo InvestigationInfo { get; }
 
         [NotMapped]
         public ConcurrentIObservableVirtualizingObservableCollection<OperationLog> OperationLogs

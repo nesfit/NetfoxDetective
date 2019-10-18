@@ -14,8 +14,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
+using Castle.MicroKernel.Handlers;
 using Castle.Windsor;
 using Netfox.Core.Database;
 using Netfox.Core.Models.Exports;
@@ -37,6 +39,7 @@ namespace Netfox.Framework.ApplicationProtocolExport.Snoopers
         protected IEnumerable<SnooperExportBase> SourceExports;
 
         private DirectoryInfo _exportBaseDirectory;
+        private readonly List<SnooperExportBase> _snooperExportCache = new List<SnooperExportBase>();
 
         /// <summary>
         ///     Parameterless constructor has to be always present in derived classes
@@ -48,14 +51,21 @@ namespace Netfox.Framework.ApplicationProtocolExport.Snoopers
 
         protected SnooperBase(
             WindsorContainer investigationWindsorContainer,
-            SelectedConversations conversations,
-            DirectoryInfo exportDirectory,
-            
-            Boolean ignoreApplicationTags)
+            DirectoryInfo exportDirectory)
         {
             this.InvestigationWindsorContainer = investigationWindsorContainer;
             this.ExportBaseDirectory = new DirectoryInfo(Path.Combine(exportDirectory.FullName, this.Name));
-            //this.CreateExportDirectory();
+            this.SnooperExportCollection = this.InvestigationWindsorContainer.Resolve<VirtualizingObservableDBSetPagedCollection<SnooperExportBase>>();
+        }
+
+        public VirtualizingObservableDBSetPagedCollection<SnooperExportBase> SnooperExportCollection { get; set; }
+
+        protected SnooperBase(
+            WindsorContainer investigationWindsorContainer,
+            SelectedConversations conversations,
+            DirectoryInfo exportDirectory,
+            Boolean ignoreApplicationTags) : this(investigationWindsorContainer, exportDirectory)
+        {
             this.SelectedConversations = conversations;
             this.ForceExportOnAllConversations = ignoreApplicationTags;
         }
@@ -63,18 +73,14 @@ namespace Netfox.Framework.ApplicationProtocolExport.Snoopers
         protected SnooperBase(
             WindsorContainer investigationWindsorContainer,
             IEnumerable<SnooperExportBase> sourceExports,
-            DirectoryInfo exportDirectory)
+            DirectoryInfo exportDirectory) : this(investigationWindsorContainer, exportDirectory)
         {
-            this.InvestigationWindsorContainer = investigationWindsorContainer;
-            this.ExportBaseDirectory = new DirectoryInfo(Path.Combine(exportDirectory.FullName, this.Name));
-            //this.CreateExportDirectory();
             this.SourceExports = sourceExports;
+            
         }
 
-        protected SnooperBase(WindsorContainer investigationWindsorContainer, IEnumerable<FileInfo> sourceFiles, DirectoryInfo exportDirectory)
+        protected SnooperBase(WindsorContainer investigationWindsorContainer, IEnumerable<FileInfo> sourceFiles, DirectoryInfo exportDirectory): this(investigationWindsorContainer, exportDirectory)
         {
-            this.InvestigationWindsorContainer = investigationWindsorContainer;
-            this.ExportBaseDirectory = new DirectoryInfo(Path.Combine(exportDirectory.FullName, this.Name));
             //this.CreateExportDirectory();
             this.SourceFiles = sourceFiles;
         }
@@ -127,6 +133,8 @@ namespace Netfox.Framework.ApplicationProtocolExport.Snoopers
             }
 
             this.SnooperExport?.CheckExportState();
+
+            this.FlushExportCache();
         }
 
         public override String ToString()
@@ -166,33 +174,28 @@ namespace Netfox.Framework.ApplicationProtocolExport.Snoopers
         {
             this.SelectedConversations.LockSelectedConversations();
 
-            long conversationIndex;
-            var sleuthType = this.GetType();
-            ILxConversation currentConversation;
             //Main cycle on all conversations
-            while(this.SelectedConversations.TryGetNextConversations(this.GetType(), out currentConversation, out conversationIndex))
+            while(this.SelectedConversations.TryGetNextConversations(this.GetType(), out var currentConversation, out _))
             {
                 var selectedL7Conversations = new List<L7Conversation>();
 
-                if(currentConversation is L7Conversation) //todo refactor to SnooperBase.. or make more readable.. to method or somenting...
+                if(currentConversation is L7Conversation l7Conversation) //todo refactor to SnooperBase.. or make more readable.. to method or somenting...
                 {
-                    selectedL7Conversations.Add(currentConversation as L7Conversation);
+                    selectedL7Conversations.Add(l7Conversation);
                 }
-                else if(currentConversation is L4Conversation) {
-                    selectedL7Conversations.AddRange((currentConversation as L4Conversation).L7Conversations);
+                else if(currentConversation is L4Conversation l4Conversation) {
+                    selectedL7Conversations.AddRange(l4Conversation.L7Conversations);
                 }
-                else if(currentConversation is L3Conversation) { selectedL7Conversations.AddRange((currentConversation as L3Conversation).L7Conversations); }
+                else if(currentConversation is L3Conversation l3Conversation) { selectedL7Conversations.AddRange(l3Conversation.L7Conversations); }
 
                 foreach(var selectedL7Conversation in selectedL7Conversations)
                 {
                     this.CurrentConversation = selectedL7Conversation;
-                    //eventExporter.ActualizeOpContext();
 
                     if(!this.ForceExportOnAllConversations && !this.CurrentConversation.IsXyProtocolConversation(this.ProtocolNBARName))
                     {
                         continue;
                     }
-                    // RunBody(CurrentConversation, conversationIndex);
                     this.OnConversationProcessingBegin();
 
                     this.ProcessConversation();
@@ -201,6 +204,19 @@ namespace Netfox.Framework.ApplicationProtocolExport.Snoopers
                 }
             }
         }
+
+        private void FlushExportCache()
+        {
+            try
+            {
+                this.SnooperExportCollection.AddRange(this._snooperExportCache);
+            }
+            catch (HandlerException)
+            {
+                Debugger.Break();
+            }
+        }
+
 
         protected abstract void ProcessConversation();
 
@@ -211,18 +227,18 @@ namespace Netfox.Framework.ApplicationProtocolExport.Snoopers
             this.SnooperExport.OnAfterDataExporting();
             this._snooperExportsList.Add(this.SnooperExport);
             this.OnSnooperExport(this.SnooperExport);
-            //Console.WriteLine(this);
         }
 
         private void OnSnooperExport(SnooperExportBase snooperExportBase)
         {
-            //using (var dbx = this.InvestigationWindsorContainer.Resolve<NetfoxDbContext>())
-            //{
-            //    dbx.SnooperExports.Add(snooperExportBase);
-            //    dbx.SaveChanges();
-            //}
-            var exports = this.InvestigationWindsorContainer.Resolve<VirtualizingObservableDBSetPagedCollection<SnooperExportBase>>();
-            exports.Add(snooperExportBase);
+            if(this.SnooperExportCollection.IsNotifyImmidiately)
+            {
+                this.SnooperExportCollection.Add(snooperExportBase);
+            }
+            else
+            {
+                this._snooperExportCache.Add(snooperExportBase);
+            }
         }
     }
 }

@@ -48,7 +48,7 @@ namespace Netfox.Detective.Services
         public void Show(Type typeofvm, object model, bool focus = true)
         {
             var handler = this.NavigateTo;
-            var viewModel = this.CrossContainerHierarchyResolver.Resolve(typeofvm,model);
+            var viewModel = this.CrossContainerHierarchyResolver.Resolve(typeofvm, model);
             handler?.Invoke(new NavigationServiceArgs(viewModel, focus));
         }
 

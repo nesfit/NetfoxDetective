@@ -11,7 +11,9 @@
     xmlns:workspaces="clr-namespace:Netfox.Detective.ViewModels.Workspaces"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance workspaces:NewWorkspaceInvestigationWizardVm, IsDesignTimeCreatable=False}"
-    Header="{Binding Path=HeaderText}">
+    Header="{Binding Path=HeaderText}"
+    MinWidth="500"
+    MinHeight="320">
     <telerik:RadWindow.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -39,7 +41,7 @@
             <telerik:RadTabItem Header="Workspace">
                 <Grid Margin="10">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="39*" />
+                        <RowDefinition Height="39*" MinHeight="40"/>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -77,8 +79,8 @@
                     </StackPanel>
 
                     <telerik:RadButton Grid.Row="4" Grid.Column="1" x:Name="StepButton3"
-                                       HorizontalAlignment="Right" Width="100"
-                                       Content="Create workspace" Margin="5" Command="{Binding CreateNewWorkspace}" />
+                                       HorizontalAlignment="Right" Width="120"
+                                       Content="Create workspace" Margin="5 10 5 5" Command="{Binding CreateNewWorkspace}" />
                 </Grid>
             </telerik:RadTabItem>
             <telerik:RadTabItem Header="Investigation">

@@ -66,6 +66,8 @@ Before you start installing NFX Detective, please check that your system meets t
 * Visual Studio 2017 Enterprise
 * [Microsoft .NET Framework 4.7 Developer Pack](https://www.microsoft.com/en-us/download/details.aspx?id=55168)
 * [SQL Server 2016 SP1 Express](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) - for data persistence support
+* [DotVVM](https://www.dotvvm.com/install)
+
 * [Git LFS](https://git-lfs.github.com/)
  * `git config --global lfs.dialtimeout 0`
  * Without this the HTTP session while pushing LFS tracked file will timeout.

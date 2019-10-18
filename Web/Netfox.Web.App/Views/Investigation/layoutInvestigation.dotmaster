@@ -1,0 +1,103 @@
+﻿@viewModel Netfox.Web.App.ViewModels.Investigation.LayoutInvestigationViewModel, Netfox.Web.App
+@masterPage Views/Masterpage.dotmaster
+
+<dot:Content ContentPlaceHolderID="ColumnLeft">
+    <ul class="nav" id="sidebar-menu">
+        <li>
+            <div class="header">
+                <a class="parent collapsed" data-toggle="collapse" data-parent="#sidebar-menu" data-target="#p1" aria-controls="#p1">Captures</a>
+                <button type="button" class="upload fas fa-plus" data-toggle="modal" data-target="#exampleModalCenter">
+                </button>
+                
+            </div>
+            <div class="collapse" id="p1">
+                <dot:Repeater DataSource="{value: CaptureList}" WrapperTagName="ul">
+                    <ItemTemplate>
+                        <li>
+                            <dot:RouteLink RouteName="Investigation_Capture" Param-CaptureId="{value: Id}" Param-InvestigationId="{value: _parent.InvestigationId}" Text="{value: Name}" />
+                        </li>
+                    </ItemTemplate>
+                </dot:Repeater>
+            </div>
+        </li>
+        <li>
+            <div class="header">
+                <a class="parent exports collapsed" data-toggle="collapse" data-parent="#sidebar-menu" data-target="#p2" aria-controls="#p2">Exports<span class="caret arrow"></span></a>
+            </div>
+            <div class="collapse" id="p2">
+                <dot:Repeater DataSource="{value: ExportList}" WrapperTagName="ul">
+                    <ItemTemplate>
+                        <li><a href="{value: Value}">{{value: Key}}</a></li>
+                    </ItemTemplate>
+                </dot:Repeater>
+            </div>
+        </li>
+    </ul>
+    <input type="hidden" class="refcnt" name="counter" value="{{value: RefreshCounter}}"></input>
+    <dot:InlineScript>
+            jQuery(document).ready(function ($) {
+            var cnt = 0;
+                setInterval(function () {
+                    refCnt = jQuery('.refcnt').val();
+                    if (cnt == refCnt)
+                    {
+                        $('.refresh-button').click();
+                        cnt++;
+                    }
+                 
+                //dotvvm.postbackScript('UpdateInvestigationMenu()')('root', this, [], '', false, "dotvvm.viewModelObservables['root']", null, null);
+            }, 5000);
+    });
+        
+    </dot:InlineScript>
+</dot:Content>
+
+<dot:Content ContentPlaceHolderID="Toolbar">
+    <dot:ContentPlaceHolder ID="Toolbar" />
+</dot:Content>
+
+<dot:Content ContentPlaceHolderID="Content">
+    <dot:ContentPlaceHolder ID="Content" />
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Upload Capture</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <bp:FileUpload Data="{value: Upload}" AllowedFileTypes=".pcap,.pcapng" class="modal-upload" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <dot:Button class="btn btn-primary" Text="Upload" Click="{command: _this.Process()}" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Detail Modal -->
+    <div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="DetailModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="DetailModalLongTitle">Detail</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <iframe src="" scrolling="no" onload="rr(this)"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</dot:Content>
+
+<dot:Content ContentPlaceHolderID="TitleButton">
+    <div class="com-button">
+        <dot:Button class="refresh-button fas fa-sync-alt" ButtonTagName="button" Click="{command: UpdateInvestigationMenu()}" />
+    </div>
+</dot:Content>

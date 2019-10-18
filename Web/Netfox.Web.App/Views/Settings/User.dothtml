@@ -1,0 +1,52 @@
+﻿@viewModel Netfox.Web.App.ViewModels.Settings.UserViewModel, Netfox.Web.App
+@masterPage Views/Settings/Settings.dotmaster
+
+<dot:Content ContentPlaceHolderID="Toolbar">
+    <dot:Button class="btn btn-primary" Text="Save" Click="{command: Save()}" />
+    <dot:Button class="btn" Text="Cancel" Click="{command: Cancel()}" />
+</dot:Content>
+
+<dot:Content ContentPlaceHolderID="Content">
+      <form class="form-edit-user col-6" DataContext="{value: User}">
+        <div class="validation alert alert-danger" >
+            <dot:ValidationSummary IncludeErrorsFromChildren="true" />
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Username</label>
+            <div class="col-10">
+                <dot:TextBox class="form-control" ValueType="Text" Text="{value: Username}" />
+            </div>
+        </div>
+        <div class="form-group row" Visible="{value: _root.IsNewUser}">
+            <label class="col-2 col-form-label">Password</label>
+            <div class="col-10">
+                <dot:TextBox class="form-control" Type="Password" Text="{value: _root.Password}" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Firstname</label>
+            <div class="col-10">
+                <dot:TextBox class="form-control" ValueType="Text" Text="{value: Firstname}" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Surname</label>
+            <div class="col-10">
+                <dot:TextBox class="form-control" ValueType="Text" Text="{value: Surname}" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Active</label>
+            <div class="col-10">
+                <dot:CheckBox Checked="{value: IsEnable}" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Role</label>
+            <div class="col-10">
+                <dot:ComboBox class="form-control" DataSource="{value: _root.Roles}" SelectedValue="{value: _root.SelectedRoleID}" ValueMember="Id" DisplayMember="Name" />
+            </div>
+        </div>
+    </form>
+</dot:Content>
+

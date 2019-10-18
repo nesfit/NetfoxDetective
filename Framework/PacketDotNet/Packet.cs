@@ -144,6 +144,7 @@ namespace PacketDotNet
             get { return this.payloadPacketOrData.ThePacket; }
             set
             {
+                // TODO BUG: Check that packet cannot have any its parent as its payload.
                 if(this == value) { throw new InvalidOperationException("A packet cannot have itself as its payload."); }
 
                 this.payloadPacketOrData.ThePacket = value;

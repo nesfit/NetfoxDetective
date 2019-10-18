@@ -16,10 +16,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq.Dynamic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Markup;
+using System.Linq;
 using Netfox.Core.Helpers;
 
 namespace Netfox.Detective.Views.Converters
@@ -50,12 +52,9 @@ namespace Netfox.Detective.Views.Converters
                         try
                         {
                             propVal = prop.GetValue(value);
-                            if(!(propVal is string) && propVal is IEnumerable)
+                            if(!(propVal is string) && propVal is IEnumerable<object> collection)
                             {
-                                var sb = new StringBuilder();
-                                var collection = propVal as IEnumerable;
-                                foreach(var item in collection) { sb.AppendFormat("{0}, ", item); }
-                                propVal = sb.ToString();
+                                propVal = string.Join($", {Environment.NewLine}", collection.Select(i => i.ToString()));
                             }
                         }
                         catch(Exception) {

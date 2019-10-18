@@ -28,7 +28,15 @@ using PacketDotNet;
 
 namespace Netfox.Framework.CaptureProcessor.L3L4ConversationTracking
 {
-    internal class L3L4ConversationTrackerBlock : ITargetBlock<PmFrameBase>, ISourceBlock<L3Conversation>, ISourceBlock<PmCaptureL3Conversation>,ISourceBlock<PmCaptureL4Conversation>, ISourceBlock<L4ConversationExtended>, ISourceBlock<PmFrameBase>, ISourceBlock<L3ConversationStatistics>, ISourceBlock<L4ConversationStatistics>
+    internal class L3L4ConversationTrackerBlock :
+        ITargetBlock<PmFrameBase>,
+        ISourceBlock<L3Conversation>,
+        ISourceBlock<PmCaptureL3Conversation>,
+        ISourceBlock<PmCaptureL4Conversation>,
+        ISourceBlock<L4ConversationExtended>,
+        ISourceBlock<PmFrameBase>,
+        ISourceBlock<L3ConversationStatistics>,
+        ISourceBlock<L4ConversationStatistics>
     {
         public IL3ConversationFactory L3ConversationFactory { get; }
         public IL4ConversationFactory L4ConversationFactory { get; }
@@ -143,6 +151,9 @@ namespace Netfox.Framework.CaptureProcessor.L3L4ConversationTracking
                 case IPProtocolType.IPV6:
                 case IPProtocolType.TCP:
                 case IPProtocolType.UDP:
+                case IPProtocolType.ICMP:
+                case IPProtocolType.ICMPV6:
+                case IPProtocolType.GRE:
                     return this.L3ConversationFactory.Create(packet.SrcAddress, packet.DstAddress);
                 default:
                     return this.L3ConversationFactory.Create(PmFrameBase.NullEndPoint.Address, PmFrameBase.NullEndPoint.Address);
@@ -153,7 +164,8 @@ namespace Netfox.Framework.CaptureProcessor.L3L4ConversationTracking
         {
             L4FlowKey l4FlowKey;
             if(packet.IpProtocol == IPProtocolType.IP || packet.IpProtocol == IPProtocolType.IPV6 || packet.IpProtocol == IPProtocolType.TCP
-               || packet.IpProtocol == IPProtocolType.UDP)
+               || packet.IpProtocol == IPProtocolType.UDP || packet.IpProtocol == IPProtocolType.ICMP || packet.IpProtocol == IPProtocolType.ICMPV6
+               || packet.IpProtocol == IPProtocolType.GRE)
             {
                 l4FlowKey = new L4FlowKey
                 {
@@ -179,7 +191,8 @@ namespace Netfox.Framework.CaptureProcessor.L3L4ConversationTracking
         {
             if(
                 !(packet.IpProtocol == IPProtocolType.TCP || packet.IpProtocol == IPProtocolType.UDP || packet.IpProtocol == IPProtocolType.IP
-                  || packet.IpProtocol == IPProtocolType.IPV6)) //skip non IP frames
+                  || packet.IpProtocol == IPProtocolType.IPV6 || packet.IpProtocol == IPProtocolType.ICMP || packet.IpProtocol == IPProtocolType.ICMPV6
+                  || packet.IpProtocol == IPProtocolType.GRE)) //skip non IP frames
             {
                 await this.L3Updater(this.NullL3Conversation,packet);
                 return;
@@ -212,19 +225,19 @@ namespace Netfox.Framework.CaptureProcessor.L3L4ConversationTracking
                 var addl4Conversation = true;
                 if(packet.IsL4Frame) // packet with no L4 header
                 {
-                l4Conversation = this.CreateL4Conversation(packet, l3Conversation, packet.L7PayloadLength);
-                this._l4ConversationTable.AddOrUpdate(l4FlowKey, l4Conversation, (key, inDictinaryl4Conversation) =>
-                {
-                    l4Conversation = inDictinaryl4Conversation;
-                    addl4Conversation = false;
-                    return inDictinaryl4Conversation;
-                });
-                if(addl4Conversation)
-                {
-                    await this.L4Conversations.SendAsync(l4Conversation);
-                    await this.L4ConversationStatistics.SendAsync(l4Conversation.UpConversationStatistic);
-                    await this.L4ConversationStatistics.SendAsync(l4Conversation.DownConversationStatistic);
-                }
+                    l4Conversation = this.CreateL4Conversation(packet, l3Conversation, packet.L7PayloadLength);
+                    this._l4ConversationTable.AddOrUpdate(l4FlowKey, l4Conversation, (key, inDictinaryl4Conversation) =>
+                    {
+                        l4Conversation = inDictinaryl4Conversation;
+                        addl4Conversation = false;
+                        return inDictinaryl4Conversation;
+                    });
+                    if(addl4Conversation)
+                    {
+                        await this.L4Conversations.SendAsync(l4Conversation);
+                        await this.L4ConversationStatistics.SendAsync(l4Conversation.UpConversationStatistic);
+                        await this.L4ConversationStatistics.SendAsync(l4Conversation.DownConversationStatistic);
+                    }
                 }
             }
             else

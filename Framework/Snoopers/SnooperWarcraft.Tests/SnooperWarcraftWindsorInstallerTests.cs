@@ -14,11 +14,12 @@
 
 using Castle.Core;
 using Netfox.Detective.Tests;
-using Netfox.SnooperWarcraft.Infrastructure;
 using Netfox.SnooperWarcraft.Interfaces;
-using Netfox.SnooperWarcraft.ViewModels;
-using Netfox.SnooperWarcraft.Views;
+using Netfox.SnooperWarcraft.WPF.Views;
+using Netfox.SnooperWarcraft.WPF.Infrastructure;
+using Netfox.SnooperWarcraft.WPF.ViewModels;
 using NUnit.Framework;
+using WarcraftConversationView = Netfox.SnooperWarcraft.WPF.Views.WarcraftConversationView;
 
 namespace Netfox.SnooperWarcraft.Tests
 {

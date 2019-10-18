@@ -21,9 +21,11 @@ using Netfox.Framework.ApplicationProtocolExport.Tests;
 using Netfox.Framework.Models;
 using Netfox.NetfoxFrameworkAPI.Tests.Properties;
 using Netfox.SnooperHTTP.Models;
-using Netfox.SnooperHTTP.ViewModels;
 using NUnit.Framework;
-using Netfox.SnooperHTTP.View;
+using Netfox.SnooperHTTP.WPF.View;
+using Netfox.SnooperHTTP.WPF.ViewModels;
+using HTTPExportsView = Netfox.SnooperHTTP.WPF.View.HTTPExportsView;
+using TestWindow = Netfox.SnooperHTTP.WPF.View.TestWindow;
 
 namespace Netfox.SnooperHTTP.Tests
 {

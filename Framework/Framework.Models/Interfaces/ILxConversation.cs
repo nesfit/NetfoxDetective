@@ -19,6 +19,7 @@ using Netfox.Core.Interfaces.Model.Exports;
 using Netfox.Framework.Models.PmLib.Frames;
 using Netfox.NBARDatabase;
 using PacketDotNet;
+using UnitOfWork.BaseDataEntity;
 
 namespace Netfox.Framework.Models.Interfaces
 {

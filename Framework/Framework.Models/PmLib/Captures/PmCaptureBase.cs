@@ -33,7 +33,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using AlphaChiTech.Virtualization;
-using AlphaChiTech.Virtualization.Interfaces;
+using AlphaChiTech.VirtualizingCollection.Interfaces;
 using Castle.Windsor;
 using Netfox.Core.Attributes;
 using Netfox.Core.Collections;
@@ -157,7 +157,7 @@ namespace Netfox.Framework.Models.PmLib.Captures
                         this._l7Conversations = this.InvestigationWindsorContainer.Resolve<VirtualizingObservableDBSetPagedCollection<L7Conversation>>(new
                         {
                             filter = func,
-                            eagerLoadProperties = new[] { nameof(L7Conversation.L7PDUs), nameof(L7Conversation.ConversationFlowStatistics), nameof(L7Conversation.L4Conversation), $"{nameof(L7Conversation.UnorderedL7PDUs)}.{nameof(L7PDU.UnorderedFrameList)}" }
+                            eagerLoadProperties = new[] { nameof(L7Conversation.UnorderedL7PDUs), nameof(L7Conversation.ConversationFlowStatistics), nameof(L7Conversation.L4Conversation), $"{nameof(L7Conversation.UnorderedL7PDUs)}.{nameof(L7PDU.UnorderedFrameList)}" }
                         });
                     
                 }

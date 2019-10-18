@@ -141,7 +141,10 @@ namespace Netfox.Framework.Models
         #endregion
 
         #region Overrides of Object
-        public override string ToString() { return base.ToString(); }
+        public override string ToString()
+        {
+            return $"{nameof(this.FirstSeen)}: {this.FirstSeen}, {nameof(this.LastSeen)}: {this.LastSeen}, {nameof(this.Duration)}: {this.Duration}, {nameof(this.FlowDirection)}: {this.FlowDirection}, {nameof(this.Bytes)}: {this.Bytes}, {nameof(this.Frames)}: {this.Frames}, {nameof(this.MalformedFrames)}: {this.MalformedFrames}";
+        }
 
         public override bool Equals(object obj)
         {
@@ -154,5 +157,7 @@ namespace Netfox.Framework.Models
         }
         public override int GetHashCode() { return this.Id.GetHashCode(); }
         #endregion
+
+
     }
 }

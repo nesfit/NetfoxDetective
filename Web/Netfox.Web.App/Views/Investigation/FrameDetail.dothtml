@@ -1,0 +1,179 @@
+﻿@viewModel Netfox.Web.App.ViewModels.Investigation.FrameDetailViewModel, Netfox.Web.App
+@masterPage Views/BlankLayout.dotmaster
+
+<dot:Content ContentPlaceHolderID="Content">
+    <div class="wrapper frame-detail" >
+        <h4>Frame Info</h4>
+        <div class="row info">
+            <div class="col-4">
+                <div class="row">
+                    <div class="col-6">Timestamp:</div>
+                    <div class="col-6"><dot:Literal Text="{value: Frame.FirstSeen}" FormatString="dd.MM.yyyy HH:mm:ss" RenderSpanElement="false" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-6">Source:</div>
+                    <div class="col-6">{{value: Frame.SourceEndPoint}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6">Destination:</div>
+                    <div class="col-6">{{value: Frame.DestinationEndPoint}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6">Protocol:</div>
+                    <div class="col-6">{{value: Frame.IpProtocol}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-6">Length:</div>
+                    <div class="col-6">{{value: Frame.OriginalLength}}</div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h4>L3 Conversation</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>First seen</th>
+                            <th>Last seen</th>
+                            <th>Transport</th>
+                            <th>Client</th>
+                            <th>Server</th>
+                            <th>Frames Up</th>
+                            <th>Frames Down</th>
+                            <th>Bytes Up</th>
+                            <th>Bytes Down</th>
+                            <th>Malformed Frames</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <dot:Literal Text="{value: Frame.L3Conversation.FirstSeen}" FormatString="dd.MM.yyyy HH:mm:ss" RenderSpanElement="false" />
+                            </td>
+                            <td>
+                                <dot:Literal Text="{value: Frame.L3Conversation.LastSeen}" FormatString="dd.MM.yyyy HH:mm:ss" RenderSpanElement="false" />
+                            </td>
+                            <td>{{value: Frame.L3Conversation.Transport}}</td>
+                            <td>{{value: Frame.L3Conversation.IPAddress1}}</td>
+                            <td>{{value: Frame.L3Conversation.IPAddress2}}</td>
+                            <td>{{value: Frame.L3Conversation.UpFlowFramesCount}}</td>
+                            <td>{{value: Frame.L3Conversation.DownFlowFramesCount}}</td>
+                            <td>{{value: Frame.L3Conversation.UpFlowBytes}}</td>
+                            <td>{{value: Frame.L3Conversation.DownFlowBytes}}</td>
+                            <td>{{value: Frame.L3Conversation.MalformedFrames}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <h4>L4 Conversation</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>First seen</th>
+                            <th>Last seen</th>
+                            <th>Transport</th>
+                            <th>Client</th>
+                            <th>Server</th>
+                            <th>Frames Up</th>
+                            <th>Frames Down</th>
+                            <th>Bytes Up</th>
+                            <th>Bytes Down</th>
+                            <th>Malformed Frames</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <dot:Literal Text="{value: Frame.L4Conversation.FirstSeen}" FormatString="dd.MM.yyyy HH:mm:ss" RenderSpanElement="false" />
+                            </td>
+                            <td>
+                                <dot:Literal Text="{value: Frame.L4Conversation.LastSeen}" FormatString="dd.MM.yyyy HH:mm:ss" RenderSpanElement="false" />
+                            </td>
+                            <td>{{value: Frame.L4Conversation.Transport}}</td>
+                            <td>{{value: Frame.L4Conversation.SourceEndPoint}}</td>
+                            <td>{{value: Frame.L4Conversation.DestinationEndPoint}}</td>
+                            <td>{{value: Frame.L4Conversation.UpFlowFramesCount}}</td>
+                            <td>{{value: Frame.L4Conversation.DownFlowFramesCount}}</td>
+                            <td>{{value: Frame.L4Conversation.UpFlowBytes}}</td>
+                            <td>{{value: Frame.L4Conversation.DownFlowBytes}}</td>
+                            <td>{{value: Frame.L4Conversation.MalformedFrames}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <h4>L7 Conversation</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>First seen</th>
+                            <th>Last seen</th>
+                            <th>Last seen</th>
+                            <th>Client</th>
+                            <th>Server</th>
+                            <th>Frames Up</th>
+                            <th>Frames Down</th>
+                            <th>Bytes Up</th>
+                            <th>Bytes Down</th>
+                            <th>Bytes Down</th>
+                            <th>Bytes Down</th>
+                            <th>Malformed Frames</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <dot:Literal Text="{value: Frame.L3Conversation.FirstSeen}" FormatString="dd.MM.yyyy HH:mm:ss" RenderSpanElement="false" />
+                            </td>
+                            <td>
+                                <dot:Literal Text="{value: Frame.L3Conversation.LastSeen}" FormatString="dd.MM.yyyy HH:mm:ss" RenderSpanElement="false" />
+                            </td>
+                            <td>{{value: Frame.L7Conversation.Transport}}</td>
+                            <td>{{value: Frame.L7Conversation.SourceEndPoint}}</td>
+                            <td>{{value: Frame.L7Conversation.DestinationEndPoint}}</td>
+                            <td>{{value: Frame.L7Conversation.UpFlowFramesCount}}</td>
+                            <td>{{value: Frame.L7Conversation.DownFlowFramesCount}}</td>
+                            <td>{{value: Frame.L7Conversation.UpFlowBytes}}</td>
+                            <td>{{value: Frame.L7Conversation.DownFlowBytes}}</td>
+                            <td>{{value: Frame.L7Conversation.ExtractedBytes}}</td>
+                            <td>{{value: Frame.L7Conversation.MissingBytes}}</td>
+                            <td>{{value: Frame.L7Conversation.MalformedFrames}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+         
+        <h4>Content</h4>
+        <div class="data-content">
+            <div class="head row">
+                <div class="col-8 text-center">
+                    Hex
+                </div>
+                <div class="col-4 text-center">
+                    ASCII
+                </div>
+            </div>
+            <div class="row">
+                <div class="hex col-8">
+                    <dot:Repeater DataSource="{value: HexData}" RenderSettings.Mode="Server">
+                        <ItemTemplate>
+                            <div class="byte">{{value: _this}}</div>
+                        </ItemTemplate>
+                    </dot:Repeater>
+                </div>
+                <div class="ascii col-4">
+                    <dot:Repeater DataSource="{value: AsciiData}" RenderSettings.Mode="Server">
+                        <ItemTemplate>
+                            <div class="byte">{{value: _this}}</div>
+                        </ItemTemplate>
+                    </dot:Repeater>
+                </div>
+        </div>
+            </div>
+</dot:Content>
+
+
+

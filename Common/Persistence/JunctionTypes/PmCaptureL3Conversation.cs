@@ -21,7 +21,6 @@ namespace Netfox.Persistence.JunctionTypes
     [Table("PmCaptureL3Conversations")]
     public class PmCaptureL3Conversation : PmCaptureConversation
     {
-        private PmCaptureL3Conversation() { }
         public PmCaptureL3Conversation(Guid captureId, Guid conversationId) : base(captureId, conversationId) { }
         public PmCaptureL3Conversation(IEntity capture, IEntity conversation) : base(capture, conversation) { }
     }

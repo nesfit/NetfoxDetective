@@ -292,6 +292,7 @@ namespace Netfox.Framework.Models.PmLib
 
         /// <summary>
         ///     In case of IPv4 packet it returns FragmentOffset field from IPv4 header
+        ///     FragmentOffset is here measured in 8 byte increments. For example Wireshark shows 'Fragment offset' in bytes, therefore its shows 8 times bigger value.
         /// </summary>
         public Int32 Ipv4FragmentOffset
         {

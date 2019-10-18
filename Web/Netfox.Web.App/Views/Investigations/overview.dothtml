@@ -1,0 +1,43 @@
+﻿@viewModel Netfox.Web.App.ViewModels.Investigations.InvestigationOverviewViewModel, Netfox.Web.App
+@masterPage Views/Investigations/investigations.dotmaster
+
+<dot:Content ContentPlaceHolderID="Toolbar">
+    <dot:RouteLink class="btn" Text="New investigation" RouteName="Investigations_Investigation" />
+    <dot:Button class="btn" Text="Remove" Click="{command: RemoveSelectedInvestigations()}" />
+</dot:Content>
+<dot:Content ContentPlaceHolderID="Content">
+    <dot:GridView class="table" DataSource="{value: Helper.Items}">
+        <Columns>
+            <dot:GridViewTemplateColumn HeaderCssClass="select-item">
+                <HeaderTemplate>
+                    <dot:CheckBox Checked="{value: IsAllSelected}" Changed="{command: SelectAll()}" />
+                </HeaderTemplate>
+                <ContentTemplate>
+                    <dot:CheckBox CheckedItems="{value: _parent.InvestigationIDs}" CheckedValue="{value: Id}" />
+                </ContentTemplate>
+            </dot:GridViewTemplateColumn>
+            <dot:GridViewTemplateColumn HeaderText="Name">
+                <ContentTemplate>
+                    <dot:RouteLink RouteName="Investigation" Param-InvestigationId="{value: Id}" Text="{value: Name}" />
+            </dot:GridViewTemplateColumn>
+            <dot:GridViewTextColumn ValueBinding="{value: Owner.Firstname + " " + Owner.Surname}" HeaderText="Owner" />
+            <dot:GridViewTextColumn ValueBinding="{value: Description}" HeaderText="Description" />
+            <dot:GridViewTemplateColumn HeaderText="Actions">
+                <ContentTemplate>
+                    <dot:RouteLink class="btn-action" RouteName="Investigations_Investigation" Param-InvestigationId="{value: Id}" Visible="{value: CanEditRemove}"Text="Edit"><span class="fas fa-pen"></span></dot:RouteLink>
+                    <dot:LinkButton class="btn-action" Click="{command: _parent.RemoveInvestigation(Id)}" Visible="{value:CanEditRemove}"><span class="far fa-trash-alt"></span></dot:LinkButton>
+                </ContentTemplate>
+            </dot:GridViewTemplateColumn>
+        </Columns>
+    </dot:GridView>
+    <dot:DataPager DataSet="{value: Helper.Items}" RenderLinkForCurrentPage="true">
+        <FirstPageTemplate>
+            <span>First</span>
+        </FirstPageTemplate>
+        <LastPageTemplate>
+            <span>Last</span>
+        </LastPageTemplate>
+        <NextPageTemplate>Next</NextPageTemplate>
+        <PreviousPageTemplate>Previous</PreviousPageTemplate>
+    </dot:DataPager>
+</dot:Content>

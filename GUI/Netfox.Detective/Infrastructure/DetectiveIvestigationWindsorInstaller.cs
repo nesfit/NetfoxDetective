@@ -16,6 +16,7 @@ using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using Netfox.Detective.Interfaces;
+using Netfox.Detective.Interfaces.Models.Base;
 using Netfox.Detective.Models.Base;
 using Netfox.Detective.Services;
 using Netfox.Detective.ViewModelsDataEntity.Investigations;
@@ -49,7 +50,7 @@ namespace Netfox.Detective.Infrastructure {
         protected internal override void RegisterOtherTypes(IWindsorContainer container)
         {
             base.RegisterOtherTypes(container);
-            container.Register(Component.For<Investigation>().OnlyNewServices());
+            container.Register(Component.For<IInvestigation, Investigation>().OnlyNewServices());
             container.Register(Component.For<InvestigationVm>().OnlyNewServices());
         }
 

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RootNamespace>Netfox.RTP</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\CCore\CCore.csproj" />
+    <ProjectReference Include="..\..\CModels\CModels.csproj" />
+    <ProjectReference Include="..\CNBARDatabase\CNBARDatabase.csproj" />
+  </ItemGroup>
+</Project>

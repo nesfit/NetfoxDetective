@@ -18,10 +18,9 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Castle.Core;
-using GalaSoft.MvvmLight.Messaging;
-using Netfox.Core.Messages.Base;
-using Netfox.Core.Messages.Exports;
-using Netfox.Core.Messages.Views;
+using Netfox.Detective.Messages;
+using Netfox.Detective.Messages.Exports;
+using Netfox.Detective.Messages.Investigations;
 using Netfox.Detective.ViewModelsDataEntity.Exports;
 using Netfox.Detective.ViewModelsDataEntity.Investigations;
 
@@ -32,13 +31,15 @@ namespace Netfox.Detective.ViewModels.Exports
         private InvestigationVm _currentInvestigation;
         private ObservableCollection<ExplorerItem> _currentItems;
         private ObservableCollection<ExplorerItem> _currentPath;
-
+        private readonly IDetectiveMessenger _messenger;
         public ExportsExplorerVm()
         {
+            this._messenger = new DetectiveMvvmLightMessenger();
             Task.Factory.StartNew(() =>
             {
-                Messenger.Default.Register<ExportGroupMessage>(this, this.ExportGroupActionHandler);
-                Messenger.Default.Register<InvestigationMessage>(this, this.InvestigationActionHandler);
+                this._messenger.Register<ChangedExportGroupMessage>(this,this.ExportGroupActionHandler);
+
+                this._messenger.Register<OpenedInvestigationMessage>(this, this.InvestigationActionHandler);
             });
         }
         [DoNotWire]
@@ -76,9 +77,9 @@ namespace Netfox.Detective.ViewModels.Exports
 
         public void Navigate(ExplorerItem item)
         {
-            if(this._currentInvestigation == null) { return; }
+            if (this._currentInvestigation == null) { return; }
 
-            if(item == null || item.Type == ExplorerItem.ItemType.Investigation)
+            if (item == null || item.Type == ExplorerItem.ItemType.Investigation)
             {
                 this.CurrentPath = new ObservableCollection<ExplorerItem>
                 {
@@ -93,15 +94,15 @@ namespace Netfox.Detective.ViewModels.Exports
             }
             else
             {
-                if(item.Type != ExplorerItem.ItemType.Investigation)
+                if (item.Type != ExplorerItem.ItemType.Investigation)
                 {
-                    if(this.CurrentPath.Contains(item))
+                    if (this.CurrentPath.Contains(item))
                     {
                         var newPath = new ObservableCollection<ExplorerItem>();
-                        foreach(var explorerItem in this.CurrentPath)
+                        foreach (var explorerItem in this.CurrentPath)
                         {
                             newPath.Add(explorerItem);
-                            if(explorerItem == item) { break; }
+                            if (explorerItem == item) { break; }
                         }
                         this.CurrentPath = newPath;
                     }
@@ -114,7 +115,7 @@ namespace Netfox.Detective.ViewModels.Exports
                     this.CurrentItems = new ObservableCollection<ExplorerItem>();
                 }
 
-                switch(item.Type)
+                switch (item.Type)
                 {
                     case ExplorerItem.ItemType.Group:
 
@@ -131,8 +132,10 @@ namespace Netfox.Detective.ViewModels.Exports
                     case ExplorerItem.ItemType.Data:
 
                         //todo  item.Result.SelectDataByDataObject(item.Data, true);
-                        ExportResultMessage.SendExportResultMessage(item.Result, ExportResultMessage.MessageType.ExportResultSelected);
-                        BringToFrontMessage.SendBringToFrontMessage("ExportContentView");
+                        this._messenger.AsyncSend(new SelectedExportResultMessage
+                        {
+                            ExportVm = item.Result
+                        });
 
                         break;
                 }
@@ -142,7 +145,7 @@ namespace Netfox.Detective.ViewModels.Exports
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             var handler = this.PropertyChanged;
-            if(handler != null) { handler(this, new PropertyChangedEventArgs(propertyName)); }
+            if (handler != null) { handler(this, new PropertyChangedEventArgs(propertyName)); }
         }
 
         //private void AddExportedDataToCurrentItems(ExportVm result, IEnumerable<ExportDataVm> datas)
@@ -162,7 +165,7 @@ namespace Netfox.Detective.ViewModels.Exports
 
         private void AddGroupsToCurrentItems(IEnumerable<ExportGroupVm> exportGroups)
         {
-            foreach(var exportsGroup in exportGroups)
+            foreach (var exportsGroup in exportGroups)
             {
                 this.CurrentItems.Add(new ExplorerItem
                 {
@@ -176,7 +179,7 @@ namespace Netfox.Detective.ViewModels.Exports
 
         private void AddResultsToCurrentItems(IEnumerable<ExportVm> exportResults)
         {
-            foreach(var result in exportResults)
+            foreach (var result in exportResults)
             {
                 this.CurrentItems.Add(new ExplorerItem
                 {
@@ -189,18 +192,15 @@ namespace Netfox.Detective.ViewModels.Exports
             }
         }
 
-        private void ExportGroupActionHandler(ExportGroupMessage message)
+        private void ExportGroupActionHandler(ChangedExportGroupMessage message)
         {
-            if(message.Type == ExportGroupMessage.MessageType.CurrentExportGroupChanged) { var ceg = message.ExportGroupVm as ExportGroupVm; }
+            var ceg = message.ExportGroupVm as ExportGroupVm; 
         }
 
-        private void InvestigationActionHandler(InvestigationMessage message)
+        private void InvestigationActionHandler(OpenedInvestigationMessage message)
         {
-            if(message.Type == InvestigationMessage.MessageType.CurrentInvestigationChanged)
-            {
-                var cinv = message.InvestigationVm as InvestigationVm;
-                if(cinv != null) { this.CurrentInvestigation = cinv; }
-            }
+            var cinv = message.InvestigationVm as InvestigationVm;
+            if (cinv != null) { this.CurrentInvestigation = cinv; }
         }
 
         public class ExplorerItem

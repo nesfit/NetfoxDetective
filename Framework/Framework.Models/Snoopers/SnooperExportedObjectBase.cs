@@ -41,6 +41,10 @@ namespace Netfox.Framework.Models.Snoopers
         private IPEndPoint _sourceEndPoint;
         private IPEndPoint _destinationEndPoint;
 
+
+        private string _sourceEndPointString;
+        private string _destinationEndPointString;
+
         protected SnooperExportedObjectBase() { } //EF
 
         protected SnooperExportedObjectBase(SnooperExportBase exportBase) { exportBase.CurrentObjectBase = this; }
@@ -72,6 +76,22 @@ namespace Netfox.Framework.Models.Snoopers
                 return this.FirstSeen;
             }
             set { this.FirstSeen = value; }
+        }
+
+        public string SourceEndpointString {
+            get
+            {
+                return this.ExportSource?.SourceEndPoint.ToString() ?? this._sourceEndPointString;
+            }
+            set { this._sourceEndPointString = value; }
+        }
+        public string DestinationEndpointString
+        {
+            get
+            {
+                return this.ExportSource?.DestinationEndPoint.ToString() ?? this._destinationEndPointString;
+            }
+            set { this._destinationEndPointString = value; }
         }
 
         //public IEnumerable<L7PDU> SourcePDUs => this.ExpandSourceList(this.ExportSources).Cast<L7PDU>();
@@ -106,8 +126,15 @@ namespace Netfox.Framework.Models.Snoopers
         [IgnoreAutoChangeNotification]
         public IPEndPoint SourceEndPoint
         {
-            get { return this.ExportSource?.SourceEndPoint ?? this._sourceEndPoint; }
-            set { this._sourceEndPoint = value; }
+            get
+            {
+                return this.ExportSource?.SourceEndPoint ?? this._sourceEndPoint;
+            }
+            set
+            {
+                this.SourceEndpointString = value.ToString();
+                this._sourceEndPoint = value;
+            }
         }
 
         [IgnoreAutoChangeNotification]
@@ -115,7 +142,11 @@ namespace Netfox.Framework.Models.Snoopers
         public IPEndPoint DestinationEndPoint
         {
             get { return this.ExportSource?.DestinationEndPoint ?? this._destinationEndPoint; }
-            set { this._destinationEndPoint = value; }
+            set
+            {
+                this.DestinationEndpointString = value.ToString();
+                this._destinationEndPoint = value;
+            }
         }
 
         #region Implementation of IEntity

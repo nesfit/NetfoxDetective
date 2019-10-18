@@ -92,7 +92,9 @@ namespace Netfox.Framework.ApplicationProtocolExport.PDUProviders
         /// <param name="buffer"></param>
         /// <param name="index"></param>
         /// <param name="count"></param>
-        /// <returns></returns>
+        /// <returns>The total number of bytes read into the buffer. This can be less than the number of bytes
+        /// requested if that many bytes are not currently available, or zero (0) if the end of the
+        /// stream has been reached.</returns>
         public Int32 Read(Byte[] buffer, Int32 index, Int32 count)
         {
             if(!this._baseStreamRewinded) { throw new InvalidOperationException("Read(byte[], ...) is valid only WITH rewinded base stream"); }
@@ -106,6 +108,8 @@ namespace Netfox.Framework.ApplicationProtocolExport.PDUProviders
         public override Int32 ReadBlock(Char[] buffer, Int32 index, Int32 count) { throw new NotImplementedException(); }
         public override Task<Int32> ReadBlockAsync(Char[] buffer, Int32 index, Int32 count) { throw new NotImplementedException(); }
 
+        /// <exception cref="ObjectDisposedException">Thrown when the stream is closed.</exception>
+        /// <exception cref="EndOfStreamException">Thrown when the end of the stream is reached.</exception>
         public byte ReadByte()
         {
             if(this.PDUStreamBasedProvider == null) { throw new ObjectDisposedException("The stream is closed."); }

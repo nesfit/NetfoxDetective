@@ -18,8 +18,9 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Linq;
 using AlphaChiTech.Virtualization;
-using AlphaChiTech.Virtualization.Interfaces;
+
 using AlphaChiTech.Virtualization.Pageing;
+using AlphaChiTech.VirtualizingCollection.Interfaces;
 using PostSharp.Patterns.Contracts;
 
 namespace Netfox.Core.Database

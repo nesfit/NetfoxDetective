@@ -12,6 +12,7 @@
 //See the License for the specific language governing permissions and
 //limitations under the License.
 
+using System;
 using System.Globalization;
 using System.Linq;
 using Netfox.Framework.ApplicationProtocolExport.Tests;
@@ -146,6 +147,18 @@ namespace Netfox.SnooperIMAP.Tests
 
             Assert.AreEqual(1, this.SnooperExports.Count);
             Assert.AreEqual(1, this.GetExportedObjectCount());
+        }
+
+        [Test, Ignore("ondemand")]
+        public void M57Case()
+        {
+            this.FrameworkController.ProcessCapture(this.PrepareCaptureForProcessing(@"F:\pcaps\m57\m57.pcap"));
+
+            var conversations = this.L7Conversations.Where(c => c.IsXyProtocolConversation("IMAP")).ToArray();
+            this.FrameworkController.ExportData(this.AvailableSnoopersTypes, conversations, this.CurrentTestBaseDirectory, true);
+
+            var emails = this.SnooperExports.Sum(exportBase => exportBase.ExportObjects.Count);
+            Console.WriteLine($"DNS queries: {emails}");
         }
     }
 }

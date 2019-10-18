@@ -1,0 +1,631 @@
+﻿@viewModel Netfox.Web.App.ViewModels.Investigation.CaptureViewModel, Netfox.Web.App
+@masterPage Views/Investigation/layoutInvestigation.dotmaster
+
+<dot:Content ContentPlaceHolderID="Content">
+    <ul class="nav nav-tabs tab-panel" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="stat-tab" data-toggle="tab" href="#stats" role="tab" aria-controls="statistics" aria-selected="true">Statistics</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="app-tab" data-toggle="tab" href="#app" role="tab" aria-controls="app" aria-selected="false">Application protocols</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="transport-tab" data-toggle="tab" href="#transport" role="tab" aria-controls="transport" aria-selected="false">Transport protocols</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="l3-tab" data-toggle="tab" href="#l3" role="tab" aria-controls="l3" aria-selected="false">L3 Conversations</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="l4-tab" data-toggle="tab" href="#l4" role="tab" aria-controls="l4" aria-selected="false">L4 Conversations</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="l7-tab" data-toggle="tab" href="#l7" role="tab" aria-controls="l7" aria-selected="false">L7 Conversations</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="frames-tab" data-toggle="tab" href="#frames" role="tab" aria-controls="frames" aria-selected="false">Frames</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="export-tab" data-toggle="tab" href="#export" role="tab" aria-controls="export" aria-selected="false">Export</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <!-- Stats Tab -->
+        <div class="tab-pane show active" id="stats" role="tabpanel" aria-labelledby="stat-tab">
+            <div class="col-12 capture-statistics">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="row">
+                            <div class="col-6">Conversations:</div>
+                            <div class="col-6">{{value: ConversationsStatistics.TotalConversations}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">Recognized Protocols:</div>
+                            <div class="col-6">{{value: ConversationsStatistics.ReckognizedProtocolsCount}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">Up Flow Frames:</div>
+                            <div class="col-6">{{value: ConversationsStatistics.UpFlowFrames}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">Down Flow Frames:</div>
+                            <div class="col-6">{{value: ConversationsStatistics.DownFlowFrames}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">Total Flow Frames:</div>
+                            <div class="col-6">{{value: ConversationsStatistics.TotalFlowFrames}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">IPv4 Conversations:</div>
+                            <div class="col-6">{{value: ConversationsStatistics.IPv4Conversations}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">IPv6 Conversations:</div>
+                            <div class="col-6">{{value: ConversationsStatistics.IPv6Conversations}}</div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="row">
+                            <div class="col-6">Total Frames:</div>
+                            <div class="col-6">{{value: ConversationsStatistics.TotalFlowFrames}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">Unique Hosts:</div>
+                            <div class="col-6">{{value: ConversationsStatistics.UniqueHostsCount}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">Up Flow Bytes:</div>
+                            <div class="col-6">{{value: ConversationsStatistics.UpFlowBytes}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">Down Flow Bytes:</div>
+                            <div class="col-6">{{value: ConversationsStatistics.DownFlowBytes}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">Total Flow Bytes:</div>
+                            <div class="col-6">{{value: ConversationsStatistics.TotalFlowBytes}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">TCP Conversations:</div>
+                            <div class="col-6">{{value: ConversationsStatistics.TcpConversations}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">UDP Conversations:</div>
+                            <div class="col-6">{{value: ConversationsStatistics.UdpConversations}}</div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="row">
+                            <div class="col-6">Period:</div>
+                            <div class="col-6">{{value: ConversationsStatistics.Period}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6"></div>
+                            <div class="col-6"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">Up Flow TCP Lost Bytes:</div>
+                            <div class="col-6">{{value: ConversationsStatistics.UpFlowTcpLostBytes}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">Down Flow TCP Lost Bytes:</div>
+                            <div class="col-6">{{value: ConversationsStatistics.DownFlowTcpLostBytes}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">Total TCP Lost Bytes:</div>
+                            <div class="col-6">{{value: ConversationsStatistics.TotalFlowTcpLostBytes}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">Total TCP Bytes:</div>
+                            <div class="col-6">{{value: ConversationsStatistics.TotalTcpBytes}}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">Total Lost (TCP) %:</div>
+                            <div class="col-6">{{value: ConversationsStatistics.TotalFlowTcpLostBytePerc}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // Stats Tab -->
+        <!-- Application Protocols Tab -->
+        <div class="tab-pane" id="app" role="tabpanel" aria-labelledby="app-tab">
+            <div class="float-left" style="width: 400px; height:400px; margin-right: 200px;">
+                <canvas id="app-protocols-chart"></canvas>
+            </div>
+            <script RenderSettings.Mode="Server">
+                    var ctx = document.getElementById('app-protocols-chart').getContext('2d');
+                    var chart = new Chart(ctx, {
+                        // The type of chart we want to create
+                        type: 'pie',
+
+                        // The data for our dataset
+                        data: {
+                            labels:  JSON.parse('{{value: ChartLabels}}'.replace(/&quot;/g,'"')),
+                            datasets: [{
+                                borderColor: 'rgb(255,255,255)',
+                                backgroundColor: JSON.parse('{{value: ChartColors}}'.replace(/&quot;/g,'"')),
+                                data: {{value: ChartData}},
+                            }]
+                        },
+
+                        // Configuration options go here
+                        options: {}
+                    });
+            </script>
+            <div class="float-left">
+                <dot:GridView class="table" DataSource="{value: AppProtocols}">
+                    <Columns>
+                        <dot:GridViewTextColumn ValueBinding="{value: Name}" HeaderText="Name" />
+                        <dot:GridViewTextColumn ValueBinding="{value: TotalBytes}" HeaderText="Total Bytes" />
+                        <dot:GridViewTextColumn ValueBinding="{value: Percent}" HeaderText="Percent" />
+                    </Columns>
+                </dot:GridView>
+                <dot:DataPager class="pagination" DataSet="{value: AppProtocols}" RenderLinkForCurrentPage="true">
+                    <FirstPageTemplate>
+                        <span>First</span>
+                    </FirstPageTemplate>
+                    <LastPageTemplate>
+                        <span>Last</span>
+                    </LastPageTemplate>
+                    <NextPageTemplate>Next</NextPageTemplate>
+                    <PreviousPageTemplate>Previous</PreviousPageTemplate>
+                </dot:DataPager>
+            </div>
+        </div>
+        <!-- // Application Protocols Tab -->
+        <!-- Transport Protocols Tab -->
+        <div class="tab-pane" id="transport" role="tabpanel" aria-labelledby="transport-tab">
+            <div class="float-left" style="width: 400px; height:400px; margin-right: 200px;">
+                <canvas id="transport-protocols-chart"></canvas>
+            </div>
+            <script RenderSettings.Mode="Server">
+                    var ctx2 = document.getElementById('transport-protocols-chart').getContext('2d');
+                    var chart = new Chart(ctx2, {
+                        // The type of chart we want to create
+                        type: 'pie',
+
+                        // The data for our dataset
+                        data: {
+                            labels: ["TCP", "UDP"],
+                            datasets: [{
+                                borderColor: 'rgb(255, 255, 255)',
+                                borderWidth: '1',
+                                backgroundColor: ["#3fa7c4", "#9ed552"],
+
+                                data: [
+                                    '{{value: ConversationsStatistics.TransportProtocolsSummary[0].Percent}}'.replace(/,/g,'.'),
+                                    '{{value: ConversationsStatistics.TransportProtocolsSummary[1].Percent}}'.replace(/,/g,'.')
+                                ]
+                            }]
+                        },
+
+                        // Configuration options go here
+                        options: {
+                             callbacks: {
+                                 label: function (tooltipItem, data) {
+                                     var number = data.datasets[0].data[tooltipItem.index];
+                                     var label = data.labels[tooltipItem.index];
+                                     return label + " " + number + " %";
+                                 }
+                             }
+                        }
+                    });
+
+            </script>
+            <div class="float-left">
+                <dot:GridView class="table" DataSource="{value: TransportProtocols}">
+                    <Columns>
+                        <dot:GridViewTextColumn ValueBinding="{value: Name}" HeaderText="Name" />
+                        <dot:GridViewTextColumn ValueBinding="{value: TotalBytes}" HeaderText="Total Bytes" />
+                        <dot:GridViewTextColumn ValueBinding="{value: Percent}" HeaderText="%" />
+                    </Columns>
+                </dot:GridView>
+                <dot:DataPager class="pagination justify-content-center" DataSet="{value: TransportProtocols}" RenderLinkForCurrentPage="true">
+                    <FirstPageTemplate>
+                        <span>First</span>
+                    </FirstPageTemplate>
+                    <LastPageTemplate>
+                        <span>Last</span>
+                    </LastPageTemplate>
+                    <NextPageTemplate>Next</NextPageTemplate>
+                    <PreviousPageTemplate>Previous</PreviousPageTemplate>
+                </dot:DataPager>
+            </div>
+        </div>
+        <!-- // Transport Protocols Tab -->
+        <!-- L3 Conversation Tab -->
+        <div class="tab-pane" id="l3" role="tabpanel" aria-labelledby="l3-tab">
+            <div class="mod-filter">
+                <div class="row">
+                    <div class="col-12 col-lg-10">
+                        <dot:TextBox placeholder="Search text" Text="{value: L3Filters.SearchText}" class="form-control from" />
+                    </div>
+                    <div class="col-12 col-lg-2 filter-btn">
+                        <dot:Button class="btn btn-primary" Text="Filter" Click="{command: Filter("L3")}" />
+                        <dot:Button class="btn btn-danger btn-reset" Text="Clear" Click="{command: Clear("L3")}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="range-duration col-4">
+                        <label for="duration">Duration:</label>
+                        <div class="wr row">
+                            <div class='input-group date datetimepicker'>
+                                <dot:TextBox placeholder="From" Text="{value: L3Filters.DurationFrom}" class="form-control" />
+                                <span class="input-group-addon input-group-append">
+                                    <span class="input-group-text fas fa-calendar"></span>
+                                </span>
+                            </div>
+                            <div class="separator">-</div>
+                            <div class='input-group date datetimepicker'>
+                                <dot:TextBox placeholder="To" Text="{value: L3Filters.DurationTo}" class="form-control" />
+                                <span class="input-group-addon input-group-append">
+                                    <span class="input-group-text fas fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="range-bytes col-4" RenderSettings.Mode="Server">
+                        <label for="duration">Bytes:</label>
+                        <div id="slider_range" class="slider_range" data-min="{value: L3Filters.BytesMin.ToString()}" data-max="{value: L3Filters.BytesMax.ToString()}" data-step="10" data-val="Bytes">
+                            <div class="slider_input">
+                                <dot:TextBox Text="{value: L3Filters.BytesFrom}" value="{value: L3Filters.BytesFrom.ToString()}" class="form-control from" data-input="from" />
+                                <dot:TextBox Text="{value: L3Filters.BytesTo}" value="{value: L3Filters.BytesTo.ToString()}" class="form-control to" data-input="to" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="range-frames col-4" RenderSettings.Mode="Server">
+                        <label for="duration">Frames:</label>
+                        <div id="slider_range" class="slider_range" data-min="{value: L3Filters.FrameMin.ToString()}" data-max="{value: L3Filters.FrameMax.ToString()}" data-step="10" data-val="Frames">
+                            <div class="slider_input">
+                                <dot:TextBox Text="{value: L3Filters.FramesFrom}" value="{value: L3Filters.FramesFrom.ToString()}" ValueType="Text" class="form-control from" data-input="from" />
+                                <dot:TextBox Text="{value: L3Filters.FramesTo}" value="{value: L3Filters.FramesTo.ToString()}" ValueType="Text" class="form-control to" data-input="to" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <dot:GridView class="table" DataSource="{value: L3Convesations}">
+                <RowDecorators>
+                    <dot:Decorator onClick="loadPage(this);" data-title="{value:'Detail L3 Conversation ' + IPAddress1 + ' <-> ' + IPAddress2}" data-href="{value: '/Investigation/' + _parent.InvestigationId + '/L3Detail/' + Id }" class="clickable" />
+                </RowDecorators>
+                <Columns>
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: FirstSeen}" FormatString="dd.MM.yyyy HH:mm:ss" HeaderText="First seen" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: LastSeen}" FormatString="dd.MM.yyyy HH:mm:ss" HeaderText="Last seen" />
+                    <dot:GridViewTextColumn ValueBinding="{value: Transport}" HeaderText="Transport" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: IPAddress1}" HeaderText="Client" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: IPAddress2}" HeaderText="Server" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: UpFlowFramesCount}" HeaderText="Frames Up" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: DownFlowFramesCount}" HeaderText="Frames Down" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: UpFlowBytes}" HeaderText="Bytes Up" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: DownFlowBytes}" HeaderText="Bytes Down" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: MalformedFrames}" HeaderText="Malformed Frames" />
+                </Columns>
+            </dot:GridView>
+            <dot:DataPager class="pagination justify-content-center" DataSet="{value: L3Convesations}" RenderLinkForCurrentPage="true">
+                <FirstPageTemplate>
+                    <span>First</span>
+                </FirstPageTemplate>
+                <LastPageTemplate>
+                    <span>Last</span>
+                </LastPageTemplate>
+                <NextPageTemplate>Next</NextPageTemplate>
+                <PreviousPageTemplate>Previous</PreviousPageTemplate>
+            </dot:DataPager>
+        </div>
+        <!-- //L3 Conversation Tab -->
+        <!-- L4 Conversation Tab -->
+        <div class="tab-pane" id="l4" role="tabpanel" aria-labelledby="l4-tab">
+            <div class="mod-filter">
+                <div class="row">
+                    <div class="col-12 col-lg-10">
+                        <dot:TextBox placeholder="Search text" Text="{value: L4Filters.SearchText}" class="form-control from" />
+                    </div>
+                    <div class="col-12 col-lg-2 filter-btn">
+                        <dot:Button class="btn btn-primary" Text="Filter" Click="{command: Filter("L4")}" />
+                        <dot:Button class="btn btn-danger btn-reset" Text="Clear" Click="{command: Clear("L4")}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="range-duration col-4">
+                        <label for="duration">Duration:</label>
+                        <div class="wr row">
+                            <div class='input-group date datetimepicker'>
+                                <dot:TextBox placeholder="From" Text="{value: L4Filters.DurationFrom}" class="form-control" />
+                                <span class="input-group-addon input-group-append">
+                                    <span class="input-group-text fas fa-calendar"></span>
+                                </span>
+                            </div>
+                            <div class="separator">-</div>
+                            <div class='input-group date datetimepicker'>
+                                <dot:TextBox placeholder="To" Text="{value: L4Filters.DurationTo}" class="form-control" />
+                                <span class="input-group-addon input-group-append">
+                                    <span class="input-group-text fas fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="range-bytes col-4" RenderSettings.Mode="Server">
+                        <label for="duration">Bytes:</label>
+                        <div id="slider_range" class="slider_range" data-min="{value: L4Filters.BytesMin.ToString()}" data-max="{value: L4Filters.BytesMax.ToString()}" data-step="10" data-val="Bytes">
+                            <div class="slider_input">
+                                <dot:TextBox Text="{value: L4Filters.BytesFrom}" value="{value: L4Filters.BytesFrom.ToString()}" class="form-control from" data-input="from" />
+                                <dot:TextBox Text="{value: L4Filters.BytesTo}" value="{value: L4Filters.BytesTo.ToString()}" class="form-control to" data-input="to" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="range-frames col-4" RenderSettings.Mode="Server">
+                        <label for="duration">Frames:</label>
+                        <div id="slider_range" class="slider_range" data-min="{value: L4Filters.FrameMin.ToString()}" data-max="{value: L4Filters.FrameMax.ToString()}" data-step="10" data-val="Frames">
+                            <div class="slider_input">
+                                <dot:TextBox Text="{value: L4Filters.FramesFrom}" value="{value: L4Filters.FramesFrom.ToString()}" ValueType="Text" class="form-control from" data-input="from" />
+                                <dot:TextBox Text="{value: L4Filters.FramesTo}" value="{value: L4Filters.FramesTo.ToString()}" ValueType="Text" class="form-control to" data-input="to" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <dot:GridView class="table" DataSource="{value: L4Convesations}">
+                <RowDecorators>
+                    <dot:Decorator onClick="loadPage(this);" data-title="{value:'Detail L4 Conversation ' + SourceEndPoint + ' <-> ' + DestinationEndPoint}" data-href="{value: '/Investigation/' + _parent.InvestigationId + '/L4Detail/' + Id}" class="clickable" />
+                </RowDecorators>
+                <Columns>
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: FirstSeen}" FormatString="dd.MM.yyyy HH:mm:ss" HeaderText="First seen" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: LastSeen}" FormatString="dd.MM.yyyy HH:mm:ss" HeaderText="Last seen" />
+                    <dot:GridViewTextColumn ValueBinding="{value: Transport}" HeaderText="Transport" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: SourceEndPoint}" HeaderText="Client" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: DestinationEndPoint}" HeaderText="Server" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: UpFlowFramesCount}" HeaderText="Frames Up" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: DownFlowFramesCount}" HeaderText="Frames Down" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: UpFlowBytes}" HeaderText="Bytes Up" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: DownFlowBytes}" HeaderText="Bytes Down" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: MalformedFrames}" HeaderText="Malformed Frames" />
+                </Columns>
+            </dot:GridView>
+            <dot:DataPager class="pagination justify-content-center" DataSet="{value: L4Convesations}" RenderLinkForCurrentPage="true">
+                <FirstPageTemplate>
+                    <span>First</span>
+                </FirstPageTemplate>
+                <LastPageTemplate>
+                    <span>Last</span>
+                </LastPageTemplate>
+                <NextPageTemplate>Next</NextPageTemplate>
+                <PreviousPageTemplate>Previous</PreviousPageTemplate>
+            </dot:DataPager>
+        </div>
+        <!-- // L4 Conversation Tab -->
+        <!-- L7 Conversation Tab -->
+        <div class="tab-pane" id="l7" role="tabpanel" aria-labelledby="l7-tab">
+            <div class="mod-filter">
+                <div class="row">
+                    <div class="col-12 col-lg-10">
+                        <dot:TextBox placeholder="Search text" Text="{value: L7Filters.SearchText}" class="form-control from" />
+                    </div>
+                    <div class="col-12 col-lg-2 filter-btn">
+                        <dot:Button class="btn btn-primary" Text="Filter" Click="{command: Filter("L7")}" />
+                        <dot:Button class="btn btn-danger btn-reset" Text="Clear" Click="{command: Clear("L7")}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="range-duration col-4">
+                        <label for="duration">Duration:</label>
+                        <div class="wr row">
+                            <div class='input-group date datetimepicker'>
+                                <dot:TextBox placeholder="From" Text="{value: L7Filters.DurationFrom}" class="form-control" />
+                                <span class="input-group-addon input-group-append">
+                                    <span class="input-group-text fas fa-calendar"></span>
+                                </span>
+                            </div>
+                            <div class="separator">-</div>
+                            <div class='input-group date datetimepicker'>
+                                <dot:TextBox placeholder="To" Text="{value: L7Filters.DurationTo}" class="form-control" />
+                                <span class="input-group-addon input-group-append">
+                                    <span class="input-group-text fas fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="range-bytes col-4" RenderSettings.Mode="Server">
+                        <label for="duration">Bytes:</label>
+                        <div id="slider_range" class="slider_range" data-min="{value: L7Filters.BytesMin.ToString()}" data-max="{value: L7Filters.BytesMax.ToString()}" data-step="10" data-val="Bytes">
+                            <div class="slider_input">
+                                <dot:TextBox Text="{value: L7Filters.BytesFrom}" value="{value: L7Filters.BytesFrom.ToString()}" class="form-control from" data-input="from" />
+                                <dot:TextBox Text="{value: L7Filters.BytesTo}" value="{value: L7Filters.BytesTo.ToString()}" class="form-control to" data-input="to" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="range-frames col-4" RenderSettings.Mode="Server">
+                        <label for="duration">Frames:</label>
+                        <div id="slider_range" class="slider_range" data-min="{value: L7Filters.FrameMin.ToString()}" data-max="{value: L7Filters.FrameMax.ToString()}" data-step="10" data-val="Frames">
+                            <div class="slider_input">
+                                <dot:TextBox Text="{value: L7Filters.FramesFrom}" value="{value: L7Filters.FramesFrom.ToString()}" ValueType="Text" class="form-control from" data-input="from" />
+                                <dot:TextBox Text="{value: L7Filters.FramesTo}" value="{value: L7Filters.FramesTo.ToString()}" ValueType="Text" class="form-control to" data-input="to" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <dot:GridView class="table" DataSource="{value: L7Convesations}">
+                <RowDecorators>
+                    <dot:Decorator onClick="loadPage(this);" data-title="{value:'Detail L7 Conversation ' + SourceEndPoint + ' <-> ' + DestinationEndPoint}" data-href="{value: '/Investigation/' + _parent.InvestigationId + '/L7Detail/' + Id}" class="clickable" />
+                </RowDecorators>
+                <Columns>
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: FirstSeen}" FormatString="dd.MM.yyyy HH:mm:ss" HeaderText="First seen" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: LastSeen}" FormatString="dd.MM.yyyy HH:mm:ss" HeaderText="Last seen" />
+                    <dot:GridViewTextColumn ValueBinding="{value: Transport}" HeaderText="Transport" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: SourceEndPoint}" HeaderText="Client" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: DestinationEndPoint}" HeaderText="Server" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: Application}" HeaderText="Application" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: UpFlowFramesCount}" HeaderText="Frames Up" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: DownFlowFramesCount}" HeaderText="Frames Down" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: UpFlowBytes}" HeaderText="Bytes Up" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: DownFlowBytes}" HeaderText="Bytes Down" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: MalformedFrames}" HeaderText="Malformed Frames" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: ExtractedBytes}" HeaderText="Extracted Bytes" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: MissingBytes}" HeaderText="Missing Bytes" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: MissingFrames}" HeaderText="Missing Frames" />
+                </Columns>
+            </dot:GridView>
+            <dot:DataPager class="pagination justify-content-center" DataSet="{value: L7Convesations}" RenderLinkForCurrentPage="true">
+                <FirstPageTemplate>
+                    <span>First</span>
+                </FirstPageTemplate>
+                <LastPageTemplate>
+                    <span>Last</span>
+                </LastPageTemplate>
+                <NextPageTemplate>Next</NextPageTemplate>
+                <PreviousPageTemplate>Previous</PreviousPageTemplate>
+            </dot:DataPager>
+        </div>
+        <!-- // L7 Conversation Tab -->
+        <!-- Frame Tab -->
+        <div class="tab-pane" id="frames" role="tabpanel" aria-labelledby="frames-tab">
+            <div class="mod-filter">
+                <div class="row">
+                    <div class="col-12 col-lg-10">
+                        <dot:TextBox placeholder="Search text" Text="{value: FrameFilters.SearchText}" class="form-control from" />
+                    </div>
+                    <div class="col-12 col-lg-2 filter-btn">
+                        <dot:Button class="btn btn-primary" Text="Filter" Click="{command: Filter("Frame")}" />
+                        <dot:Button class="btn btn-danger btn-reset" Text="Clear" Click="{command: Clear("Frame")}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="range-duration col-4">
+                        <label for="duration">Duration:</label>
+                        <div class="wr row">
+                            <div class='input-group date datetimepicker'>
+                                <dot:TextBox placeholder="From" Text="{value: FrameFilters.DurationFrom}" class="form-control" />
+                                <span class="input-group-addon input-group-append">
+                                    <span class="input-group-text fas fa-calendar"></span>
+                                </span>
+                            </div>
+                            <div class="separator">-</div>
+                            <div class='input-group date datetimepicker'>
+                                <dot:TextBox placeholder="To" Text="{value: FrameFilters.DurationTo}" class="form-control" />
+                                <span class="input-group-addon input-group-append">
+                                    <span class="input-group-text fas fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="range-bytes col-4" RenderSettings.Mode="Server">
+                        <label for="duration">Bytes:</label>
+                        <div id="slider_range" class="slider_range" data-min="{value: FrameFilters.BytesMin.ToString()}" data-max="{value: FrameFilters.BytesMax.ToString()}" data-step="10" data-val="Bytes">
+                            <div class="slider_input">
+                                <dot:TextBox Text="{value: FrameFilters.BytesFrom}" value="{value: FrameFilters.BytesFrom.ToString()}" class="form-control from" data-input="from" />
+                                <dot:TextBox Text="{value: FrameFilters.BytesTo}" value="{value: FrameFilters.BytesTo.ToString()}" class="form-control to" data-input="to" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <dot:GridView class="table" DataSource="{value: Frames}">
+                <RowDecorators>
+                    <dot:Decorator onClick="loadPage(this);" data-title="Detail Frame" data-href="{value: '/Investigation/' + _parent.InvestigationId + '/FrameDetail/' + Id}" class="clickable" />
+                </RowDecorators>
+                <Columns>
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: FrameIndex}" HeaderText="#" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: FirstSeen}" FormatString="dd.MM.yyyy HH:mm:ss" HeaderText="Time" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: SourceEndPoint}" HeaderText="Source" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: DestinationEndPoint}" HeaderText="Target" />
+                    <dot:GridViewTextColumn ValueBinding="{value: IpProtocol}" HeaderText="Protocol" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: OriginalLength}" HeaderText="Frame Size" />
+                </Columns>
+            </dot:GridView>
+            <dot:DataPager class="pagination justify-content-center" DataSet="{value: Frames}" RenderLinkForCurrentPage="true">
+                <FirstPageTemplate>
+                    <span>First</span>
+                </FirstPageTemplate>
+                <LastPageTemplate>
+                    <span>Last</span>
+                </LastPageTemplate>
+                <NextPageTemplate>Next</NextPageTemplate>
+                <PreviousPageTemplate>Previous</PreviousPageTemplate>
+            </dot:DataPager>
+        </div>
+        <!-- // Frame Tab -->
+        <!-- Export Tab -->
+        <div class="tab-pane" id="export" role="tabpanel" aria-labelledby="export-tab">
+            <div class="info-panel">
+                <div class="panel-header">Exported protocols from capture</div>
+                <div class="panel-body">
+                    <div class="snooper-export">
+                        <div class="row">
+                            <div class="col-12">
+                                <dot:Repeater DataSource="{value: ExportedProtocols}">
+                                    <ItemTemplate>
+                                        <dot:Button class="btn btn-outline-danger btn-sm" ButtonTagName="button" Click="{command: _parent.RemoveExportProtocol(Name)}">
+                                            <dot:Literal Text="{value: Text}"></dot:Literal>
+                                            <i class="fas fa-times"></i>
+                                        </dot:Button>
+                                    </ItemTemplate>
+                                </dot:Repeater>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-panel">
+                <div class="panel-header">SSL/TLS</div>
+                <div class="panel-body">
+                    <div class="snooper-export">
+                        <div class="row">
+                            <div class="col-12">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cypherkeymodal">Add Cypher Key</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-panel">
+                <div class="panel-header">Exported Protocols</div>
+                <div class="panel-body">
+                    <div class="snooper-export">
+                        <dot:Repeater DataSource="{value: AvailableSnoopers}" RenderSettings.Mode="Server" class="row">
+                            <ItemTemplate>
+                                <div class="protocol-item col-12 col-sm-4 col-md-2">
+                                    <dot:CheckBox CheckedItems="{value: _parent.SelectedSnoopers}"
+                                                  CheckedValue="{value: Value}" Text="{value: Key}" />
+
+                                </div>
+                            </ItemTemplate>
+                        </dot:Repeater>
+                        <dot:Button class="btn btn-primary" Text="Export Data"
+                                    Click="{command: Export()}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // Export Tab -->
+        <div class="modal fade" id="cypherkeymodal" tabindex="-1" role="dialog" aria-labelledby="KeyModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="KeyModalLongTitle">Add Cypher Key</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <bp:FileUpload Data="{value: Upload}" AllowedFileTypes=".pem" class="modal-upload" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <dot:Button class="btn btn-primary" Text="Upload" Click="{command: _this.ProcessKey()}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/Template/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+        <script src="/Template/js/moment.js" type="text/javascript"></script>
+        <script src="/Template/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+        <script>
+            jQuery(document).ready(function ($) {
+                $('.datetimepicker').datetimepicker({
+                    format: 'DD.MM.YYYY HH:mm:ss'
+                });
+            });
+        </script>
+
+
+</dot:Content>

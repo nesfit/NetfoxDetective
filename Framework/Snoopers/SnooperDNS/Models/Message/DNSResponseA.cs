@@ -12,6 +12,7 @@
 //See the License for the specific language governing permissions and
 //limitations under the License.
 
+using System;
 using Netfox.Core.Database.Wrappers;
 
 namespace Netfox.SnooperDNS.Models.Message
@@ -19,5 +20,6 @@ namespace Netfox.SnooperDNS.Models.Message
     public class DnsResponseA: DnsResponse
     {
         public IPAddressEF IPAddress { get; set; }
+        public override string ToString() { return $"{base.ToString()}, {nameof(this.IPAddress)}: {this.IPAddress}"; }
     }
 }

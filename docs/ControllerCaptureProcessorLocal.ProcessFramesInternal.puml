@@ -1,0 +1,36 @@
+@startuml
+digraph G {
+	label="ControllerCaptureProcessorLocal.ProcessFramesInternal";
+	labelloc="t";
+	rankdir=LR;
+	
+	frames [shape=box3d];
+	frames -> l3L4ConversationTracker
+
+	l3L4ConversationTracker -> storeL3ConversationBlock;
+	l3L4ConversationTracker -> storePmCaptureL3ConversationBlock;
+	l3L4ConversationTracker -> storeL3StatisticsBlock;
+	l3L4ConversationTracker -> storePmCaptureL4ConversationBlock;
+
+	l3L4ConversationTracker -> l7ConversationTrackerBlock [label="PmFrameBase"];
+	l3L4ConversationTracker -> storeL4StatisticsBlock;
+	l3L4ConversationTracker -> l7ConversationTrackerBlock [label="L4ConversationExtended"];
+
+	l7ConversationTrackerBlock -> l7ConversationBroadcaster;
+	l7ConversationTrackerBlock -> storeFramesBlock;
+	l7ConversationTrackerBlock -> storeL7StatisticsBlock;
+	l7ConversationTrackerBlock -> storeL4ConversationBlock;
+	l7ConversationTrackerBlock -> storeL7PdusBlock;
+	l7ConversationTrackerBlock -> storePmCaptureL7ConversationBlock;
+
+    l7ConversationBroadcaster -> storeL7ConversationBlock;
+    l7ConversationBroadcaster -> l7DvbS2GseDecapsulator;
+    
+	subgraph cluster_DecapsulateGseOverUdp  {
+		l7DvbS2GseDecapsulator -> decapsulatedFrames;
+		label = "if DecapsulateGseOverUdp";
+		style=dashed;
+	}
+	decapsulatedFrames -> frames
+} 
+@enduml

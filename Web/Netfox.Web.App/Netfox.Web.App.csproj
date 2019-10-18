@@ -1,0 +1,490 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\PostSharp.6.2.10\build\PostSharp.props" Condition="Exists('..\..\packages\PostSharp.6.2.10\build\PostSharp.props')" />
+  <Import Project="..\..\packages\Microsoft.CodeAnalysis.Analyzers.2.9.4\build\Microsoft.CodeAnalysis.Analyzers.props" Condition="Exists('..\..\packages\Microsoft.CodeAnalysis.Analyzers.2.9.4\build\Microsoft.CodeAnalysis.Analyzers.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7B2933E5-1744-4673-8727-B3C3406D4C24}</ProjectGuid>
+    <ProjectTypeGuids>{94EE71E2-EE2A-480B-8704-AF46D2E58D94};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Netfox.Web.App</RootNamespace>
+    <AssemblyName>Netfox.Web.App</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress>true</Use64BitIISExpress>
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
+    <DockerComposeProjectPath>..\..\docker-compose.dcproj</DockerComposeProjectPath>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Ben.Demystifier" Version="0.1.4" />
+    <PackageReference Include="Castle.Core" Version="4.4.0" />
+    <PackageReference Include="DotVVM" Version="1.1.9.4" />
+    <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.2" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers">
+      <Version>1.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.2.1" />
+    <Reference Include="mscorlib" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="System.Buffers" Version="4.5.0" />
+    <PackageReference Include="System.Collections" Version="4.3.0" />
+    <PackageReference Include="System.Collections.Immutable" Version="1.5.0" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <PackageReference Include="System.ComponentModel" Version="4.3.0" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <PackageReference Include="System.Linq" Version="4.3.0" />
+    <PackageReference Include="System.Linq.Expressions" Version="4.3.0" />
+    <PackageReference Include="System.Memory" Version="4.5.3" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Numerics" />
+    <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.5.2" />
+    <PackageReference Include="System.Runtime.Extensions" Version="4.3.1" />
+    <Reference Include="System.Runtime.Remoting" />
+    <PackageReference Include="System.Runtime" Version="4.3.1" />
+    <Reference Include="System.Runtime.Serialization" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.1" />
+    <PackageReference Include="System.Threading" Version="4.3.0" />
+    <PackageReference Include="System.Threading.Tasks" Version="4.3.0" />
+    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.3" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <PackageReference Include="UnitOfWork.EF6Repository" Version="1.0.5" />
+    <PackageReference Include="UnitOfWork.EF6UnitOfWork" Version="1.0.5" />
+    <PackageReference Include="UnitOfWork" Version="1.0.5" />
+    <PackageReference Include="UnitOfWork.Repository" Version="1.0.5" />
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
+    <PackageReference Include="Castle.Windsor" Version="4.1.1" />
+    <PackageReference Include="DotVVM.BusinessPack" Version="1.1.9" />
+    <PackageReference Include="DotVVM.Utils.HtmlElements" Version="1.2.0" />
+    <PackageReference Include="Hangfire" Version="1.7.6" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Owin" Version="4.0.1" />
+    <PackageReference Include="Owin" Version="1.0" />
+    <PackageReference Include="PostSharp" Version="6.2.10" />
+    <PackageReference Include="Riganti.Utils.Infrastructure.AutoMapper" Version="2.3.0" />
+    <PackageReference Include="Riganti.Utils.Infrastructure.Core" Version="2.3.0" />
+    <PackageReference Include="Riganti.Utils.Infrastructure.EntityFramework" Version="2.3.0" />
+    <PackageReference Include="Riganti.Utils.Infrastructure.Services" Version="2.3.0" />
+    <PackageReference Include="System.Reflection" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helpers\DetailPageHelper.cs" />
+    <Compile Include="Helpers\FilteredListPageHelper.cs" />
+    <Compile Include="Helpers\IHelper.cs" />
+    <Compile Include="Helpers\ISaveCancelViewModel.cs" />
+    <Compile Include="Installers\AutoMapperInstaller.cs" />
+    <Compile Include="Installers\DataAccessInstaller.cs" />
+    <Compile Include="Installers\NetfoxInstaller.cs" />
+    <Compile Include="Installers\FacadeInstaller.cs" />
+    <Compile Include="Installers\PresentationInstaller.cs" />
+    <Compile Include="NetfoxRouteStrategy.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="DotvvmStartup.cs" />
+    <Compile Include="ViewModels\BlankLayoutViewModel.cs" />
+    <Compile Include="ViewModels\DbctxViewModel.cs" />
+    <Compile Include="ViewModels\DefaultViewModel.cs" />
+    <Compile Include="ViewModels\BaseLayoutViewModel.cs" />
+    <Compile Include="ViewModels\DownloadFileViewModel.cs" />
+    <Compile Include="ViewModels\Investigations\InvestigationOverviewViewModel.cs" />
+    <Compile Include="ViewModels\Investigations\InvestigationsViewModel.cs" />
+    <Compile Include="ViewModels\Investigations\InvestigationViewModel.cs" />
+    <Compile Include="ViewModels\Investigation\CaptureViewModel.cs" />
+    <Compile Include="ViewModels\Investigation\ExportDetailViewModel.cs" />
+    <Compile Include="ViewModels\Investigation\ExportBaseViewModel.cs" />
+    <Compile Include="ViewModels\Investigation\Export\CallDetailViewModel.cs" />
+    <Compile Include="ViewModels\Investigation\Export\EmailDetailViewModel.cs" />
+    <Compile Include="ViewModels\Investigation\Export\ExportCallViewModel.cs" />
+    <Compile Include="ViewModels\Investigation\Export\ExportEmailViewModel.cs" />
+    <Compile Include="ViewModels\Investigation\Export\ExportMessageViewModel.cs" />
+    <Compile Include="ViewModels\Investigation\FrameDetailViewModel.cs" />
+    <Compile Include="ViewModels\Investigation\L3DetailViewModel.cs" />
+    <Compile Include="ViewModels\Investigation\L4DetailViewModel.cs" />
+    <Compile Include="ViewModels\Investigation\L7DetailViewModel.cs" />
+    <Compile Include="ViewModels\Investigation\LayoutInvestigationViewModel.cs" />
+    <Compile Include="ViewModels\Investigation\OverviewViewModel.cs" />
+    <Compile Include="ViewModels\LayoutViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\MasterpageViewModel.cs" />
+    <Compile Include="ViewModels\Settings\ProfileViewModel.cs" />
+    <Compile Include="ViewModels\Settings\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\Settings\UserManagementViewModel.cs" />
+    <Compile Include="ViewModels\Settings\UserViewModel.cs" />
+    <Compile Include="WindsorViewModelLoader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Scripts\esm\popper-utils.js.map" />
+    <None Include="Scripts\esm\popper-utils.min.js.map" />
+    <None Include="Scripts\esm\popper.js.map" />
+    <None Include="Scripts\esm\popper.min.js.map" />
+    <None Include="Scripts\jquery-3.0.0.intellisense.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\jquery-3.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Template\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Template\css\bootstrap\bootstrap-grid.css" />
+    <Content Include="Template\css\bootstrap\bootstrap-grid.min.css" />
+    <Content Include="Template\css\bootstrap\bootstrap-reboot.css" />
+    <Content Include="Template\css\bootstrap\bootstrap-reboot.min.css" />
+    <Content Include="Template\css\bootstrap\bootstrap.css" />
+    <Content Include="Template\css\bootstrap\bootstrap.min.css" />
+    <Content Include="Template\css\jquery-ui.css" />
+    <Content Include="Template\css\jquery.fancybox.min.css" />
+    <Content Include="Template\css\template.css" />
+    <Content Include="Template\css\template.min.css">
+      <DependentUpon>template.css</DependentUpon>
+    </Content>
+    <Content Include="Template\fonts\fa\css\all.css" />
+    <Content Include="Template\fonts\fa\css\all.min.css" />
+    <Content Include="Template\fonts\fa\css\brands.css" />
+    <Content Include="Template\fonts\fa\css\brands.min.css" />
+    <Content Include="Template\fonts\fa\css\fontawesome.css" />
+    <Content Include="Template\fonts\fa\css\fontawesome.min.css" />
+    <Content Include="Template\fonts\fa\css\regular.css" />
+    <Content Include="Template\fonts\fa\css\regular.min.css" />
+    <Content Include="Template\fonts\fa\css\solid.css" />
+    <Content Include="Template\fonts\fa\css\solid.min.css" />
+    <Content Include="Template\fonts\fa\css\svg-with-js.css" />
+    <Content Include="Template\fonts\fa\css\svg-with-js.min.css" />
+    <Content Include="Template\fonts\fa\css\v4-shims.css" />
+    <Content Include="Template\fonts\fa\css\v4-shims.min.css" />
+    <Content Include="Template\fonts\fa\webfonts\fa-brands-400.svg" />
+    <Content Include="Template\fonts\fa\webfonts\fa-regular-400.svg" />
+    <Content Include="Template\fonts\fa\webfonts\fa-solid-900.svg" />
+    <Content Include="Template\images\logo.png" />
+    <Content Include="Template\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="Template\js\bootstrap\bootstrap.bundle.js" />
+    <Content Include="Template\js\bootstrap\bootstrap.bundle.min.js" />
+    <Content Include="Template\js\bootstrap\bootstrap.js" />
+    <Content Include="Template\js\bootstrap\bootstrap.min.js" />
+    <Content Include="Template\js\bootstrap\esm\popper-utils.js" />
+    <Content Include="Template\js\bootstrap\esm\popper-utils.min.js" />
+    <Content Include="Template\js\bootstrap\esm\popper.js" />
+    <Content Include="Template\js\bootstrap\esm\popper.min.js" />
+    <Content Include="Template\js\bootstrap\esm\popper.min.js.map" />
+    <Content Include="Template\js\bootstrap\esm\popper.js.map" />
+    <Content Include="Template\js\bootstrap\esm\popper-utils.min.js.map" />
+    <Content Include="Template\js\bootstrap\esm\popper-utils.js.map" />
+    <Content Include="Template\js\bootstrap\bootstrap.min.js.map" />
+    <Content Include="Template\js\bootstrap\bootstrap.js.map" />
+    <Content Include="Template\js\bootstrap\bootstrap.bundle.min.js.map" />
+    <Content Include="Template\js\bootstrap\bootstrap.bundle.js.map" />
+    <Content Include="Template\css\bootstrap\bootstrap.min.css.map" />
+    <Content Include="Template\css\bootstrap\bootstrap.css.map" />
+    <Content Include="Template\css\bootstrap\bootstrap-reboot.min.css.map" />
+    <Content Include="Template\css\bootstrap\bootstrap-reboot.css.map" />
+    <Content Include="Template\css\bootstrap\bootstrap-grid.min.css.map" />
+    <Content Include="Template\css\bootstrap\bootstrap-grid.css.map" />
+    <None Include=".dockerignore">
+      <DependentUpon>Dockerfile</DependentUpon>
+    </None>
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <Content Include="Template\fonts\fa\webfonts\fa-brands-400.eot" />
+    <Content Include="Template\fonts\fa\webfonts\fa-brands-400.ttf" />
+    <Content Include="Template\fonts\fa\webfonts\fa-brands-400.woff" />
+    <Content Include="Template\fonts\fa\webfonts\fa-brands-400.woff2" />
+    <Content Include="Template\fonts\fa\webfonts\fa-regular-400.eot" />
+    <Content Include="Template\fonts\fa\webfonts\fa-regular-400.ttf" />
+    <Content Include="Template\fonts\fa\webfonts\fa-regular-400.woff" />
+    <Content Include="Template\fonts\fa\webfonts\fa-regular-400.woff2" />
+    <Content Include="Template\fonts\fa\webfonts\fa-solid-900.eot" />
+    <Content Include="Template\fonts\fa\webfonts\fa-solid-900.ttf" />
+    <Content Include="Template\fonts\fa\webfonts\fa-solid-900.woff" />
+    <Content Include="Template\fonts\fa\webfonts\fa-solid-900.woff2" />
+    <Content Include="Controls\Menu.dotcontrol" />
+    <Content Include="libman.json" />
+    <None Include="Dockerfile" />
+    <None Include="Scripts\jquery-3.4.1.min.map" />
+    <None Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <None Include="Scripts\popper-utils.js.map" />
+    <None Include="Scripts\popper-utils.min.js.map" />
+    <None Include="Scripts\popper.js.map" />
+    <None Include="Scripts\popper.min.js.map" />
+    <None Include="Scripts\umd\popper-utils.js.map" />
+    <None Include="Scripts\umd\popper-utils.min.js.map" />
+    <None Include="Scripts\umd\popper.js.map" />
+    <None Include="Scripts\umd\popper.min.js.map" />
+    <None Include="Template\js\bootstrap\jquery-3.0.0-vsdoc.js" />
+    <Content Include="Template\js\bootstrap\jquery-3.0.0.js" />
+    <Content Include="Template\js\bootstrap\jquery-3.0.0.min.js" />
+    <Content Include="Template\js\bootstrap\jquery-3.0.0.slim.js" />
+    <Content Include="Template\js\bootstrap\jquery-3.0.0.slim.min.js" />
+    <Content Include="Template\js\bootstrap\popper-utils.js" />
+    <Content Include="Template\js\bootstrap\popper-utils.min.js" />
+    <Content Include="Template\js\bootstrap\popper.js" />
+    <Content Include="Template\js\bootstrap\popper.min.js" />
+    <Content Include="Template\js\bootstrap\umd\popper-utils.js" />
+    <Content Include="Template\js\bootstrap\umd\popper-utils.min.js" />
+    <Content Include="Template\js\bootstrap\umd\popper.js" />
+    <Content Include="Template\js\bootstrap\umd\popper.min.js" />
+    <Content Include="Template\js\bootstrap\jquery-3.0.0.slim.min.map" />
+    <Content Include="Template\js\bootstrap\jquery-3.0.0.min.map" />
+    <Content Include="Template\js\bootstrap\umd\popper.min.js.map" />
+    <Content Include="Template\js\bootstrap\umd\popper.js.map" />
+    <Content Include="Template\js\bootstrap\umd\popper-utils.min.js.map" />
+    <Content Include="Template\js\bootstrap\umd\popper-utils.js.map" />
+    <Content Include="Template\js\bootstrap\README.md" />
+    <Content Include="Template\js\bootstrap\popper.min.js.map" />
+    <Content Include="Template\js\bootstrap\popper.js.map" />
+    <Content Include="Template\js\bootstrap\popper-utils.min.js.map" />
+    <Content Include="Template\js\bootstrap\popper-utils.js.map" />
+    <Content Include="Template\js\chart.min.js" />
+    <Content Include="Template\js\jquery-3.3.1.min.js" />
+    <Content Include="Template\js\jquery-ui.js" />
+    <Content Include="Template\js\jquery.fancybox.min.js" />
+    <Content Include="Template\js\moment.js" />
+    <Content Include="Template\js\scripts.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\default.dothtml" />
+    <Content Include="Views\Investigation\capture.dothtml" />
+    <Content Include="Views\Investigation\ExportDetail.dotmaster" />
+    <Content Include="Views\Investigation\ExportBase.dotmaster" />
+    <Content Include="Views\Investigation\layoutInvestigation.dotmaster" />
+    <Content Include="Views\Investigation\Overview.dothtml" />
+    <Content Include="Views\Investigations\investigation.dothtml" />
+    <Content Include="Views\Investigations\investigations.dotmaster" />
+    <Content Include="Views\Investigations\overview.dothtml" />
+    <Content Include="Views\Settings\profile.dothtml" />
+    <Content Include="Views\Settings\Settings.dotmaster" />
+    <Content Include="Views\Settings\User.dothtml" />
+    <Content Include="Views\Settings\UserManagement.dothtml" />
+    <Content Include="Views\Layout.dotmaster" />
+    <Content Include="Views\Login.dothtml" />
+    <Content Include="Template\less\fonts.less" />
+    <Content Include="Template\less\template.less" />
+    <Content Include="Views\BaseLayout.dotmaster" />
+    <Content Include="Views\Masterpage.dotmaster" />
+    <Content Include="Template\less\component.less" />
+    <Content Include="Views\Investigation\Export\ExportMessage.dothtml" />
+    <Content Include="Views\BlankLayout.dotmaster" />
+    <Content Include="Views\Investigation\L3Detail.dothtml" />
+    <Content Include="Views\Investigation\L4Detail.dothtml" />
+    <Content Include="Views\Investigation\L7Detail.dothtml" />
+    <Content Include="Views\Investigation\FrameDetail.dothtml" />
+    <Content Include="Views\DownloadFile.dothtml" />
+    <Content Include="Views\dbctx.dothtml" />
+    <Content Include="Views\Investigation\Export\ExportCall.dothtml" />
+    <Content Include="Views\Investigation\Export\ExportEmail.dothtml" />
+    <Content Include="Views\Investigation\Export\CallDetail.dothtml" />
+    <Content Include="Views\Investigation\Export\EmailDetail.dothtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+    <TypeScriptCompile Include="Template\js\bootstrap\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Core\Core.csproj">
+      <Project>{75b3e6d5-8007-4e1f-8a92-1774a5b1d7f1}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Persistence\Persistence.csproj">
+      <Project>{3d0d8663-1838-43b2-bae8-7f0029edf9e2}</Project>
+      <Name>Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\ApplicationProtocolExport\ApplicationProtocolExport.csproj">
+      <Project>{0ba2f363-66af-4f36-9c96-5c30224a88da}</Project>
+      <Name>ApplicationProtocolExport</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\ApplicationRecognizers\NBARDatabase\NBARDatabase.csproj">
+      <Project>{0639f5b8-ba51-4efb-af76-d1c3bdbf81df}</Project>
+      <Name>NBARDatabase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\Framework.Models\Framework.Models.csproj">
+      <Project>{5613ce65-51d2-49e5-ba0d-7cb5d8cb94d9}</Project>
+      <Name>Framework.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\NetfoxFrameworkAPI\NetfoxFrameworkAPI.csproj">
+      <Project>{67297ea0-df87-42dc-9f68-957c25568d36}</Project>
+      <Name>NetfoxFrameworkAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Misc\VirtualizingObservableCollection\VirtualizingCollection\VirtualizingCollection.csproj">
+      <Project>{ac56d9d2-b06e-4003-96fb-798adf255829}</Project>
+      <Name>VirtualizingCollection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Netfox.Web.BL\Netfox.Web.BL.csproj">
+      <Project>{7ac74f27-bdb5-4de7-8a88-c33ee5e5ed28}</Project>
+      <Name>Netfox.Web.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Netfox.Web.DAL\Netfox.Web.DAL.csproj">
+      <Project>{5c15deaa-a406-40e0-a5d1-16a1d1fecb20}</Project>
+      <Name>Netfox.Web.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50733/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{94EE71E2-EE2A-480B-8704-AF46D2E58D94}" Configuration="Debug|x64">
+        <DotvvmPropertyPageProjectFlavorCfg />
+      </FlavorProperties>
+      <FlavorProperties GUID="{94EE71E2-EE2A-480B-8704-AF46D2E58D94}" Configuration="Release|x64">
+        <DotvvmPropertyPageProjectFlavorCfg />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="DotVVM.BusinessPack.Core" Version="1.1.9" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DotVVM.Core" Version="1.1.9.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DotVVM.Owin" Version="1.1.9.4" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Hangfire.Core" Version="1.7.6" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Hangfire.SqlServer" Version="1.7.6" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="jQuery" Version="3.4.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="3.2.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Owin.FileSystems" Version="4.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Owin.Host.SystemWeb" Version="4.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Owin.Security" Version="4.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Owin.Security.Cookies" Version="4.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Owin.StaticFiles" Version="4.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="popper.js" Version="1.14.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="PostSharp.Redist" Version="6.2.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Collections.Concurrent" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Diagnostics.Debug" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Globalization" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Reflection.Metadata" Version="1.6.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Resources.ResourceManager" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="UnitOfWork.BaseDataEntity" Version="1.0.5" />
+  </ItemGroup>
+</Project>

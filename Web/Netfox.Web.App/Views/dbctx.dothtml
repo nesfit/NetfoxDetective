@@ -1,0 +1,9 @@
+﻿@viewModel Netfox.Web.App.ViewModels.DbctxViewModel, Netfox.Web.App
+@masterPage Views/BaseLayout.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <dot:Button Click="{command: ctx1()}" Text="ctx1"></dot:Button>
+    <dot:Button Click="{command: ctx2()}" Text="ctx2"></dot:Button>
+
+</dot:Content>
+

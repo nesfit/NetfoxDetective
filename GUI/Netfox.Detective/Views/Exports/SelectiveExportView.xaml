@@ -23,17 +23,12 @@
                        Text="Export Application data" />
         </Border>
         <TextBlock Margin="10 0 0 0" Grid.Row="1" FontWeight="Bold" Text="Sletected conversations to export :" />
-
-
         <telerik:RadGridView Grid.Row="2" EnableRowVirtualization="True" Margin="10 5 5 10"
                              SelectedItem="{Binding CurrentConversation, Mode=TwoWay}"
                              AutoGenerateColumns="False" IsReadOnly="True"
                              Style="{StaticResource Style.DataGridView}"
                              ItemsSource="{Binding Path=InvestigationVm.ToExportConversations, Mode=OneWay}">
-
             <telerik:RadGridView.Columns>
-
-
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding Path=FirstSeen, Mode=OneWay}"
                                             Header="First Seen " />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding Path=LastSeen, Mode=OneWay}"
@@ -57,11 +52,8 @@
                     Header="Frms Down " />
                 <telerik:GridViewDataColumn
                     DataMemberBinding="{Binding Path=DownFlowBytes, Mode=OneWay}" Header="Bytes Down " />
-
-
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
-
         <!--
         <DataGrid Margin="10 5 5 10" Grid.Row="2" x:Name="radConversationSummaryDataGrid"
                   Style="{StaticResource ResourceKey=Style.DataGrid}"
@@ -90,12 +82,9 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Slected :" Margin="0 0 5 0" />
+            <TextBlock Text="Selected :" Margin="0 0 5 0" />
             <TextBlock Text="{Binding Path=InvestigationVm.ToExportConversations.Count}" Grid.Column="1"
                        Margin="0 0 5 0" />
-
-            
-
             <telerik:RadButton Grid.Column="4" Margin="0 0 5 0" Width="150" Content="Clear selection"
                                HorizontalAlignment="Right" Command="{Binding CClearToExport}" />
         </Grid>
@@ -104,11 +93,7 @@
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-
             <Grid Margin="5">
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -173,10 +158,7 @@
                         </Grid>
                     </GroupBox>
                 </Grid>
-
-
             </Grid>
-
 
             <Grid Grid.Row="1" Margin="-1,0,1,0">
                 <Grid.ColumnDefinitions>
@@ -187,9 +169,6 @@
                 <telerik:RadButton Margin="5 0 5 5" Grid.Column="1" Width="150" Content="Start Export"
                                    HorizontalAlignment="Right" Command="{Binding CExport}" />
             </Grid>
-
         </Grid>
-
-
     </Grid>
 </views:DetectiveApplicationPaneViewBase>

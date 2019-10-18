@@ -85,7 +85,7 @@ namespace Netfox.SnooperSMTP
             Debug.WriteLine(@"SnooperSMTP.ProcessConversation() called [" + this.CurrentConversation.SourceEndPoint + "->" + this.CurrentConversation.DestinationEndPoint + "]");
 
             // we need a stream to read from
-            var stream = new PDUStreamBasedProvider(this.CurrentConversation, EfcPDUProviderType.SingleMessage);
+            var stream = new PDUStreamBasedProvider(this.CurrentConversation, EfcPDUProviderType.Breaked);
             // now we can create a reader that will be reading from the stream we just created
             var reader = new PDUStreamReader(stream, Encoding.ASCII);
 
@@ -122,10 +122,7 @@ namespace Netfox.SnooperSMTP
                 switch (message.Type)
                 {
                     case SMTPMsg.SMTPMsgType.MAIL:
-                        //Debug.WriteLine("  password: " + _message.MessageContent);
-                        //exportedObject.Type = "RETR";
-                        //exportedObject.Value = message.MessageContent;
-                        byte[] toBytes = Encoding.ASCII.GetBytes(message.MessageContent);
+                        var toBytes = Encoding.ASCII.GetBytes(message.MessageContent);
 
                         var exportedObject = new MIMEemail(this.SnooperExport, toBytes, EMailContentType.Whole);
                         exportedObject.EMailType = EMailType.SMTPOrgEmail;
@@ -136,7 +133,6 @@ namespace Netfox.SnooperSMTP
                         this.SnooperExport.AddExportObject(exportedObject);
                         break;
                     default:
-                        //Debug.WriteLine("  unknown type of FTP message");
                         break;
                 }
 

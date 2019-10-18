@@ -1,0 +1,142 @@
+﻿@viewModel Netfox.Web.App.ViewModels.Investigation.Export.ExportCallViewModel, Netfox.Web.App
+@masterPage Views/Investigation/ExportBase.dotmaster
+
+<dot:Content ContentPlaceHolderID="Toolbar">
+</dot:Content>
+<dot:Content ContentPlaceHolderID="Content">
+    <ul class="nav nav-tabs tab-panel" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="calls-tab" data-toggle="tab" href="#calls" role="tab" aria-controls="Calls" aria-selected="true">Call</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="streams-tab" data-toggle="tab" href="#streams" role="tab" aria-controls="streams" aria-selected="false">Streams</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane show active" id="calls" role="tabpanel" aria-labelledby="calls-tab">
+            <div class="mod-filter">
+                <div class="row">
+                    <div class="col-12 col-lg-10">
+                        <dot:TextBox placeholder="Search text" Text="{value: CallFilters.SearchText}" class="form-control from" />
+                    </div>
+                    <div class="col-12 col-lg-2 filter-btn">
+                        <dot:Button class="btn btn-primary" Text="Filter" Click="{command: Filter("Call")}" />
+                        <dot:Button class="btn btn-danger btn-reset" Text="Clear" Click="{command: Clear("Call")}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="range-duration col-4">
+                        <label for="duration">Duration:</label>
+                        <div class="wr row">
+                            <div class='input-group date datetimepicker'>
+                                <dot:TextBox placeholder="From" Text="{value: CallFilters.DurationFrom}" class="form-control" />
+                                <span class="input-group-addon input-group-append">
+                                    <span class="input-group-text fas fa-calendar"></span>
+                                </span>
+                            </div>
+                            <div class="separator">-</div>
+                            <div class='input-group date datetimepicker'>
+                                <dot:TextBox placeholder="To" Text="{value: CallFilters.DurationTo}" class="form-control" />
+                                <span class="input-group-addon input-group-append">
+                                    <span class="input-group-text fas fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <dot:GridView class="table" DataSource="{value: Calls}">
+                <RowDecorators>
+                    <dot:Decorator onClick="loadPage(this);" data-title="{value:'Call ' + From + ' -> ' + To}" data-href="{value: '/Investigation/' + _parent.InvestigationId + '/Export/CallDetail?call_id=' + Id}" class="clickable" />
+                </RowDecorators>
+                <Columns>
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: Start}" FormatString="dd.MM.yyyy HH:mm:ss" HeaderText="Start" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: End}" FormatString="dd.MM.yyyy HH:mm:ss" HeaderText="End" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: DurationText}" HeaderText="Duration" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: From}" HeaderText="From" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: To}" HeaderText="To" />
+                </Columns>
+            </dot:GridView>
+            <dot:DataPager class="pagination justify-content-center" DataSet="{value: Calls}" RenderLinkForCurrentPage="true">
+                <FirstPageTemplate>
+                    <span>First</span>
+                </FirstPageTemplate>
+                <LastPageTemplate>
+                    <span>Last</span>
+                </LastPageTemplate>
+                <NextPageTemplate>Next</NextPageTemplate>
+                <PreviousPageTemplate>Previous</PreviousPageTemplate>
+            </dot:DataPager>
+        </div>
+        <div class="tab-pane" id="streams" role="tabpanel" aria-labelledby="streams-tab">
+            <div class="mod-filter">
+                <div class="row">
+                    <div class="col-12 col-lg-10">
+                        <dot:TextBox placeholder="Search text" Text="{value: StreamFilters.SearchText}" class="form-control from" />
+                    </div>
+                    <div class="col-12 col-lg-2 filter-btn">
+                        <dot:Button class="btn btn-primary" Text="Filter" Click="{command: Filter("Stream")}" />
+                        <dot:Button class="btn btn-danger btn-reset" Text="Clear" Click="{command: Clear("Stream")}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="range-duration col-4">
+                        <label for="duration">Duration:</label>
+                        <div class="wr row">
+                            <div class='input-group date datetimepicker'>
+                                <dot:TextBox placeholder="From" Text="{value: StreamFilters.DurationFrom}" class="form-control" />
+                                <span class="input-group-addon input-group-append">
+                                    <span class="input-group-text fas fa-calendar"></span>
+                                </span>
+                            </div>
+                            <div class="separator">-</div>
+                            <div class='input-group date datetimepicker'>
+                                <dot:TextBox placeholder="To" Text="{value: StreamFilters.DurationTo}" class="form-control" />
+                                <span class="input-group-addon input-group-append">
+                                    <span class="input-group-text fas fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <dot:GridView class="table" DataSource="{value: Streams}">
+                <Columns>
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: Start}" FormatString="dd.MM.yyyy HH:mm:ss" HeaderText="Start" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: End}" FormatString="dd.MM.yyyy HH:mm:ss" HeaderText="End" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: DurationText}" HeaderText="Duration" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: From}" HeaderText="From" />
+                    <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: To}" HeaderText="To" />
+                    <dot:GridViewTemplateColumn AllowSorting="false" HeaderText="">
+                        <audio controls>
+                            <source src="{{value: WavFilePath}}" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </dot:GridViewTemplateColumn>
+                </Columns>
+            </dot:GridView>
+            <dot:DataPager class="pagination justify-content-center" DataSet="{value: Streams}" RenderLinkForCurrentPage="true">
+                <FirstPageTemplate>
+                    <span>First</span>
+                </FirstPageTemplate>
+                <LastPageTemplate>
+                    <span>Last</span>
+                </LastPageTemplate>
+                <NextPageTemplate>Next</NextPageTemplate>
+                <PreviousPageTemplate>Previous</PreviousPageTemplate>
+            </dot:DataPager>
+        </div>
+    </div>
+    <script src="/Template/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="/Template/js/moment.js" type="text/javascript"></script>
+    <script src="/Template/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+    <script>
+
+        jQuery(document).ready(function ($) {
+            $('.datetimepicker').datetimepicker({
+                format: 'DD.MM.YYYY HH:mm:ss'
+            });
+        });
+    </script>
+</dot:Content>
+

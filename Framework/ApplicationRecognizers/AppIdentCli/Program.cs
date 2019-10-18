@@ -52,13 +52,12 @@ namespace Netfox.AppIdentCli
         {
             var watch = new Stopwatch();
             watch.Start();
-            
-            var options = new Options();
-            if(!Parser.Default.ParseArguments(args, options))
-            {
+
+            Options options = null;
                 DebuggerCheckExit();
-                return;
-            }
+            Parser.Default.ParseArguments(args)
+                  .WithParsed(o => options = o as Options)
+                  .WithNotParsed(errors =>DebuggerCheckExit());
 
             //options.TrainingToVerificationRation = 0.7;
             //options.FeatureSelectionTrashold = 0.7;

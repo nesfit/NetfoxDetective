@@ -1,0 +1,53 @@
+﻿@viewModel Netfox.Web.App.ViewModels.Investigation.Export.ExportEmailViewModel, Netfox.Web.App
+@masterPage Views/Investigation/ExportBase.dotmaster
+
+<dot:Content ContentPlaceHolderID="Toolbar">
+</dot:Content>
+<dot:Content ContentPlaceHolderID="Content">
+    <div class="mod-filter">
+        <div class="row">
+            <div class="col-12 col-lg-10">
+                <dot:TextBox placeholder="Search text" Text="{value: Filters.SearchText}" class="form-control from" />
+            </div>
+            <div class="col-12 col-lg-2 filter-btn">
+                <dot:Button class="btn btn-primary" Text="Filter" Click="{command: Filter()}" />
+                <dot:Button class="btn btn-danger btn-reset" Text="Clear" Click="{command: Clear()}" />
+            </div>
+        </div>
+    </div>
+    <dot:GridView class="table" DataSource="{value: ExportObjects}">
+        <RowDecorators>
+            <dot:Decorator onClick="loadPage(this);" data-title="{value:'Email ' + From + ' -> ' + To}" data-href="{value: '/Investigation/' + _parent.InvestigationId + '/Export/EmailDetail?email_id=' + Id}" class="clickable" />
+        </RowDecorators>
+        <Columns>
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: Timestamp}" FormatString="dd.MM.yyyy HH:mm:ss" HeaderText="Date" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: From}" HeaderText="Sender" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: To}" HeaderText="Receiver" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: Subject}" HeaderText="Subject" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: Cc}" HeaderText="Cc" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: Bcc}" HeaderText="Bcc" />
+        </Columns>
+    </dot:GridView>
+    <dot:DataPager class="pagination justify-content-center" DataSet="{value: ExportObjects}" RenderLinkForCurrentPage="true">
+        <FirstPageTemplate>
+            <span>First</span>
+        </FirstPageTemplate>
+        <LastPageTemplate>
+            <span>Last</span>
+        </LastPageTemplate>
+        <NextPageTemplate>Next</NextPageTemplate>
+        <PreviousPageTemplate>Previous</PreviousPageTemplate>
+    </dot:DataPager>
+    <script src="/Template/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="/Template/js/moment.js" type="text/javascript"></script>
+    <script src="/Template/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+    <script>
+
+    jQuery(document).ready(function ($) {
+             $('.datetimepicker').datetimepicker({
+                format: 'DD.MM.YYYY HH:mm:ss'
+            });
+        });
+    </script>
+</dot:Content>
+

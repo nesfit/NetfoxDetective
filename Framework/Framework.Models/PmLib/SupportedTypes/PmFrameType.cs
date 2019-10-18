@@ -43,6 +43,12 @@ namespace Netfox.Framework.Models.PmLib.SupportedTypes
         Mnm,
 
         /// <summary>
+        ///     Physically non-existing frame in PCAP file.
+        /// </summary>
+        /// <seealso cref="Netfox.Framework.Models.PmLib.Frames.PmFrameVirtual"/>
+        Virtual,
+
+        /// <summary>
         ///     Physically non-existing frame in PCAP file, just as stuffing with content all zeros for DaR. Not intended for
         ///     parsing!
         /// </summary>
@@ -52,6 +58,12 @@ namespace Netfox.Framework.Models.PmLib.SupportedTypes
         ///     Physically non-existing frame in PCAP file, just as stuffing with content of predefined noise DaR. Not intended for
         ///     parsing!
         /// </summary>
-        VirutalNoise
+        VirutalNoise,
+
+        /// <summary>
+        ///     Physically non-existing frame in PCAP file. Frame encapsulated in one or more carrier datagrams, where carrier
+        ///     datagrams can be either base band frames or encapsulation packets (GSE, GRE, etc).
+        /// </summary>
+        Encapsulated
     }
 }

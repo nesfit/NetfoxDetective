@@ -17,12 +17,14 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Threading;
-using Netfox.SnooperWarcraft.Views;
+using Netfox.SnooperWarcraft.WPF.Views;
 using Netfox.Detective.ViewModelsDataEntity.Exports;
 using Netfox.Framework.ApplicationProtocolExport.Tests;
 using Netfox.NetfoxFrameworkAPI.Tests.Properties;
-using Netfox.SnooperWarcraft.ViewModels;
+using Netfox.SnooperWarcraft.WPF.ViewModels;
 using NUnit.Framework;
+using WarcraftConversationView = Netfox.SnooperWarcraft.WPF.Views.WarcraftConversationView;
+using WarcraftSnooperTestWindow = Netfox.SnooperWarcraft.WPF.Views.WarcraftSnooperTestWindow;
 
 namespace Netfox.SnooperWarcraft.Tests
 {

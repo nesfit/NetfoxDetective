@@ -38,7 +38,7 @@ namespace Netfox.Framework.CaptureProcessor.CoreController
 
         public void ProcessCaptures(IEnumerable<FileInfo> captureFile) { this.ProcessCapturesInternal(captureFile); }
 
-        public abstract void ProcessCapturesInternal(IEnumerable<FileInfo> captureFile);
+        public abstract void ProcessCapturesInternal(IEnumerable<FileInfo> captureFile); 
 
         #region Exceptions
         [Serializable]

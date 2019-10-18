@@ -1,0 +1,203 @@
+﻿@viewModel Netfox.SnooperHTTP.WEB.ViewModels.ExportHTTPViewModel
+@masterPage Views/Investigation/ExportBase.dotmaster
+
+
+
+<dot:Content ContentPlaceHolderID="Content">
+
+    <ul class="nav nav-tabs tab-panel" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="stat-tab" data-toggle="tab" href="#msg" role="tab" aria-controls="msg" aria-selected="true">HTTP Messages</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="files-tab" data-toggle="tab" href="#files" role="tab" aria-controls="files" aria-selected="false">Files</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="images-tab" data-toggle="tab" href="#images" role="tab" aria-controls="images" aria-selected="false">Images</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <!-- Stats Tab -->
+        <div class="tab-pane show active" id="msg" role="tabpanel" aria-labelledby="msg-tab">
+            <div class="mod-filter">
+                <div class="row">
+                    <div class="col-12 col-lg-10">
+                        <dot:TextBox placeholder="Search text" Text="{value: MessageFilter.SearchText}" class="form-control from" />
+                    </div>
+                    <div class="col-12 col-lg-2 filter-btn">
+                        <dot:Button class="btn btn-primary" Text="Filter" Click="{command: Filter("Messages")}" />
+                        <dot:Button class="btn btn-danger btn-reset" Text="Clear" Click="{command: Clear("Messages")}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="range-duration col-4">
+                        <label for="duration">Duration:</label>
+                        <div class="wr row">
+                            <div class='input-group date datetimepicker'>
+                                <dot:TextBox placeholder="From" Text="{value: MessageFilter.DurationFrom}" class="form-control" />
+                                <span class="input-group-addon input-group-append">
+                                    <span class="input-group-text fas fa-calendar"></span>
+                                </span>
+                            </div>
+                            <div class="separator">-</div>
+                            <div class='input-group date datetimepicker'>
+                                <dot:TextBox placeholder="To" Text="{value: MessageFilter.DurationTo}" class="form-control" />
+                                <span class="input-group-addon input-group-append">
+                                    <span class="input-group-text fas fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="http-messages">
+                <dot:GridView class="table" DataSource="{value: Messages}">
+                    <RowDecorators>
+                        <dot:Decorator onClick="loadPage(this);" data-href="{value: '/Investigation/' + _parent.InvestigationId + '/Export/Framework/SnooperHTTP.WEB/HTTPDetail?messageId=' + Id }" class="clickable" />
+                    </RowDecorators>
+                    <Columns>
+                        <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: TimeStamp}" SortExpression="Message.TimeStamp" FormatString="dd.MM.yyyy HH:mm:ss" HeaderText="Timestamp" />
+                        <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: SourceEndPoint}" SortExpression="SourceEndpointString" HeaderText="Source" />
+                        <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: DestinationEndPoint}" SortExpression="DestinationEndpointString" HeaderText="Destination" />
+                        <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: MessageType}" SortExpression="Message.HttpResponseHeader.Type" HeaderText="Message Type" />
+                        <dot:GridViewTextColumn AllowSorting="false" ValueBinding="{value: StatusLine}" HeaderText="Status Line" />
+                    </Columns>
+                </dot:GridView>
+                <dot:DataPager class="pagination justify-content-center" DataSet="{value: Messages}" RenderLinkForCurrentPage="true">
+                    <FirstPageTemplate>
+                        <span>First</span>
+                    </FirstPageTemplate>
+                    <LastPageTemplate>
+                        <span>Last</span>
+                    </LastPageTemplate>
+                    <NextPageTemplate>Next</NextPageTemplate>
+                    <PreviousPageTemplate>Previous</PreviousPageTemplate>
+                </dot:DataPager>
+            </div>
+        </div>
+        <div class="tab-pane" id="files" role="tabpanel" aria-labelledby="files-tab">
+            <div class="mod-filter">
+                <div class="row">
+                    <div class="col-12 col-lg-10">
+                        <dot:TextBox placeholder="Search text" Text="{value: FileFilter.SearchText}" class="form-control from" />
+                    </div>
+                    <div class="col-12 col-lg-2 filter-btn">
+                        <dot:Button class="btn btn-primary" Text="Filter" Click="{command: Filter("Files")}" />
+                        <dot:Button class="btn btn-danger btn-reset" Text="Clear" Click="{command: Clear("Files")}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="range-duration col-4">
+                        <label for="duration">Duration:</label>
+                        <div class="wr row">
+                            <div class='input-group date datetimepicker'>
+                                <dot:TextBox placeholder="From" Text="{value: FileFilter.DurationFrom}" class="form-control" />
+                                <span class="input-group-addon input-group-append">
+                                    <span class="input-group-text fas fa-calendar"></span>
+                                </span>
+                            </div>
+                            <div class="separator">-</div>
+                            <div class='input-group date datetimepicker'>
+                                <dot:TextBox placeholder="To" Text="{value: FileFilter.DurationTo}" class="form-control" />
+                                <span class="input-group-addon input-group-append">
+                                    <span class="input-group-text fas fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="http-files">
+                <dot:GridView class="table" DataSource="{value: Files}">
+                    <Columns>
+                        <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: TimeStamp}" SortExpression="Message.TimeStamp" FormatString="dd.MM.yyyy HH:mm:ss" HeaderText="Timestamp" />
+                        <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: SourceEndPoint}" SortExpression="SourceEndpointString" HeaderText="Source" />
+                        <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: DestinationEndPoint}" SortExpression="DestinationEndpointString" HeaderText="Destination" />
+                        <dot:GridViewTextColumn AllowSorting="false" ValueBinding="{value: Size}" HeaderText="Size" />
+                        <dot:GridViewTextColumn AllowSorting="false" ValueBinding="{value: ContentType}" HeaderText="Content Type" />
+                        <dot:GridViewTemplateColumn AllowSorting="false" HeaderText="">
+                            <ContentTemplate>
+                                <a href="{value: Url}">Download</a>
+                            </ContentTemplate>
+                        </dot:GridViewTemplateColumn>
+                    </Columns>
+                </dot:GridView>
+                <dot:DataPager class="pagination justify-content-center" DataSet="{value: Files}" RenderLinkForCurrentPage="true">
+                    <FirstPageTemplate>
+                        <span>First</span>
+                    </FirstPageTemplate>
+                    <LastPageTemplate>
+                        <span>Last</span>
+                    </LastPageTemplate>
+                    <NextPageTemplate>Next</NextPageTemplate>
+                    <PreviousPageTemplate>Previous</PreviousPageTemplate>
+                </dot:DataPager>
+            </div>
+        </div>
+        <div class="tab-pane" id="images" role="tabpanel" aria-labelledby="images-tab">
+            <div class="mod-filter">
+                <div class="row">
+                    <div class="col-12 col-lg-10">
+                        <dot:TextBox placeholder="Search text" Text="{value: ImageFilter.SearchText}" class="form-control from" />
+                    </div>
+                    <div class="col-12 col-lg-2 filter-btn">
+                        <dot:Button class="btn btn-primary" Text="Filter" Click="{command: Filter("Images")}" />
+                        <dot:Button class="btn btn-danger btn-reset" Text="Clear" Click="{command: Clear("Images")}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="range-duration col-4">
+                        <label for="duration">Duration:</label>
+                        <div class="wr row">
+                            <div class='input-group date datetimepicker'>
+                                <dot:TextBox placeholder="From" Text="{value: ImageFilter.DurationFrom}" class="form-control" />
+                                <span class="input-group-addon input-group-append">
+                                    <span class="input-group-text fas fa-calendar"></span>
+                                </span>
+                            </div>
+                            <div class="separator">-</div>
+                            <div class='input-group date datetimepicker'>
+                                <dot:TextBox placeholder="To" Text="{value: ImageFilter.DurationTo}" class="form-control" />
+                                <span class="input-group-addon input-group-append">
+                                    <span class="input-group-text fas fa-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="http-images">
+                <dot:Repeater DataSource="{value: Images.Items}" RenderSettings.Mode="Server" class="row">
+                    <ItemTemplate>
+                        <div class="col-2 item">
+                            <a data-fancybox="images" href="{{value: Url}}" class="image-link">
+                                <img src="{{value: Url}}" />
+                            </a>
+                        </div>
+                    </ItemTemplate>
+                </dot:Repeater>
+            </div>
+            <dot:DataPager class="pagination justify-content-center" DataSet="{value: Images}" RenderLinkForCurrentPage="true">
+                <FirstPageTemplate>
+                    <span>First</span>
+                </FirstPageTemplate>
+                <LastPageTemplate>
+                    <span>Last</span>
+                </LastPageTemplate>
+                <NextPageTemplate>Next</NextPageTemplate>
+                <PreviousPageTemplate>Previous</PreviousPageTemplate>
+            </dot:DataPager>
+        </div>
+    </div>
+    <script src="/Template/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="/Template/js/moment.js" type="text/javascript"></script>
+    <script src="/Template/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+    <script>
+
+        jQuery(document).ready(function ($) {
+            $('.datetimepicker').datetimepicker({
+                format: 'DD.MM.YYYY HH:mm:ss'
+            });
+        });
+    </script>
+</dot:Content>

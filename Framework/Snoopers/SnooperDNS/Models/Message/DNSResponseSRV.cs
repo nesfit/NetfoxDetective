@@ -12,6 +12,8 @@
 //See the License for the specific language governing permissions and
 //limitations under the License.
 
+using System;
+
 namespace Netfox.SnooperDNS.Models.Message
 {
     public class DnsResponseSRV: DnsResponse
@@ -22,5 +24,10 @@ namespace Netfox.SnooperDNS.Models.Message
         public ushort Weight { get; set; }
         public ushort Port { get; set; }
         public string Target { get; set; }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()}, {nameof(this.Service)}: {this.Service}, {nameof(this.Protocol)}: {this.Protocol}, {nameof(this.Priority)}: {this.Priority}, {nameof(this.Weight)}: {this.Weight}, {nameof(this.Port)}: {this.Port}, {nameof(this.Target)}: {this.Target}";
+        }
     }
 }

@@ -13,7 +13,7 @@
 //limitations under the License.
 
 using Netfox.Detective.Tests;
-using Netfox.SnooperPOP.Infrastructure;
+using Netfox.SnooperPOP.WPF.Infrastructure;
 using NUnit.Framework;
 
 namespace Netfox.SnooperPOP.Tests

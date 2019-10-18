@@ -12,15 +12,19 @@
 //See the License for the specific language governing permissions and
 //limitations under the License.
 
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Netfox.SnooperDNS.Models.Message
 {
+    [ComplexType]
     public class DNSBase
     {
         public string Name { get; set; }
         public DNSQType QType { get; set; }
         public DNSQClass QClass { get; set; }
 
-        public enum DNSQType
+        public enum DNSQType : int 
         {
             A = 1,
             NS,
@@ -109,7 +113,7 @@ namespace Netfox.SnooperDNS.Models.Message
             UNASSIGNED  
         }
 
-        public enum DNSQClass
+        public enum DNSQClass : int
         {
             IN = 1,
             CH = 3,
@@ -118,5 +122,7 @@ namespace Netfox.SnooperDNS.Models.Message
             QCLASSANY = 255,
             UNASSIGNED = 0
         }
+
+        public override string ToString() { return $"{nameof(this.Name)}: {this.Name}, {nameof(this.QType)}: {this.QType}, {nameof(this.QClass)}: {this.QClass}"; }
     }
 }

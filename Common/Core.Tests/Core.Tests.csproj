@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\packages\PostSharp.5.0.30\build\PostSharp.props" Condition="Exists('..\..\packages\PostSharp.5.0.30\build\PostSharp.props')" />
+  <Import Project="..\..\packages\PostSharp.6.2.10\build\PostSharp.props" Condition="Exists('..\..\packages\PostSharp.6.2.10\build\PostSharp.props')" />
+  <Import Project="..\..\packages\NUnit.3.12.0\build\NUnit.props" Condition="Exists('..\..\packages\NUnit.3.12.0\build\NUnit.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -20,6 +21,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <AssemblyVersion>1.0.3.0</AssemblyVersion>
+    <ApplicationVersion>0.0.0.1</ApplicationVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -40,33 +42,37 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="PostSharp, Version=5.0.30.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\PostSharp.Redist.5.0.30\lib\net45\PostSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="PostSharp.Patterns.Aggregation, Version=5.0.30.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\PostSharp.Patterns.Aggregation.Redist.5.0.30\lib\net45\PostSharp.Patterns.Aggregation.dll</HintPath>
-    </Reference>
-    <Reference Include="PostSharp.Patterns.Common, Version=5.0.30.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\PostSharp.Patterns.Common.Redist.5.0.30\lib\net46\PostSharp.Patterns.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="PostSharp.Patterns.Model, Version=5.0.30.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\PostSharp.Patterns.Model.Redist.5.0.30\lib\net40\PostSharp.Patterns.Model.dll</HintPath>
-    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    
+    
+    
+    <Reference Include="mscorlib" />
     <Reference Include="System" />
+    <PackageReference Include="System.Collections.Immutable" Version="1.5.0" />
+    
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <PackageReference Include="System.Reflection.Metadata" Version="1.6.0" />
+    
+    <Reference Include="System.Runtime" />
+    <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />
+    
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="PostSharp" Version="6.2.10" />
   </ItemGroup>
   <ItemGroup>
-    
+    <Compile Include="Helpers\PathHelperTests.cs" />
     <Compile Include="NotifyTaskCompletionTests.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" /><Compile Include="$(SolutionDir)SharedAssemblyInfo.cs"><Link>Properties\SharedAssemblyInfo.cs</Link></Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="$(SolutionDir)SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Core.Tests.licenseheader" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
@@ -76,12 +82,53 @@
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\PostSharp.5.0.30\build\PostSharp.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\PostSharp.5.0.30\build\PostSharp.props'))" />
-    <Error Condition="!Exists('..\..\packages\PostSharp.5.0.30\build\PostSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\PostSharp.5.0.30\build\PostSharp.targets'))" />
-  </Target>
-  <Import Project="..\..\packages\PostSharp.5.0.30\build\PostSharp.targets" Condition="Exists('..\..\packages\PostSharp.5.0.30\build\PostSharp.targets')" />
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="16.2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NUnit.Console" Version="3.10.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NUnit.ConsoleRunner" Version="3.10.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NUnit.Extension.NUnitProjectLoader" Version="3.6.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NUnit.Extension.NUnitV2Driver" Version="3.7.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NUnit.Extension.NUnitV2ResultWriter" Version="3.6.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NUnit.Extension.TeamCityEventListener" Version="1.0.6" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NUnit.Extension.VSProjectLoader" Version="3.8.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NUnit.Runners" Version="3.10.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="PostSharp.Patterns.Aggregation" Version="6.2.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="PostSharp.Patterns.Aggregation.Redist" Version="6.2.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="PostSharp.Patterns.Common" Version="6.2.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="PostSharp.Patterns.Common.Redist" Version="6.2.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="PostSharp.Patterns.Model" Version="6.2.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="PostSharp.Patterns.Model.Redist" Version="6.2.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="PostSharp.Redist" Version="6.2.10" />
+  </ItemGroup>
 </Project>

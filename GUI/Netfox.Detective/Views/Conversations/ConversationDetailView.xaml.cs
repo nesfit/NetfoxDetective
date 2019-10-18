@@ -17,8 +17,6 @@ using System.Windows;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using Netfox.Core.Interfaces.Views;
-using Netfox.Core.Messages.Exports;
-using Netfox.Core.Messages.Views;
 using Netfox.Detective.Models.Base;
 using Netfox.Detective.ViewModels.Frame;
 using Netfox.Detective.ViewModelsDataEntity.Conversations;
@@ -81,12 +79,6 @@ namespace Netfox.Detective.Views.Conversations
         private void DownFlowQualityListBox_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             this.NavigateToSelectedFrame();
-        }
-
-        private void ExportResultsListViewOnExportResultSelected(ExportVm exportResultVm, bool bringIntoView)
-        {
-            ExportResultMessage.SendExportResultMessage(exportResultVm, ExportResultMessage.MessageType.ExportResultSelected);
-            if(bringIntoView) { BringToFrontMessage.SendBringToFrontMessage("ExportResultView"); }
         }
 
         private void FramesListViewOnFrameSelected(FrameVm frameVm, bool bringIntoView)

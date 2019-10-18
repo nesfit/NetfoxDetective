@@ -13,10 +13,11 @@
 //limitations under the License.
 
 using System.IO;
+using System.IO.Abstractions;
 using Netfox.Core.Models;
 
 namespace Netfox.Core.Interfaces {
     public interface IInvestigationInfoLoader {
-        InvestigationInfo Load(FileInfo fileInfo);
+        IInvestigationInfo Load(FileInfoBase fileInfo);
     }
 }

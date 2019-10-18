@@ -16,7 +16,7 @@
     </UserControl.Resources>
     <telerik:RadGridView EnableRowVirtualization="True"
                          x:Name="EmailGridView"
-                         ItemsSource="{Binding Path=Emails}"
+                         ItemsSource="{Binding Path=Emails.Result}"
                          SelectedItem="{Binding Path=SelectedExportResult, Mode=TwoWay, Converter={StaticResource Converter.ExportObjectToExportResultVm}}"
                          AutoGenerateColumns="False" IsReadOnly="True"
                          Style="{StaticResource Style.DataGridView}">

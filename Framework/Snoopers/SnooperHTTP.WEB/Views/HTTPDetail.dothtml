@@ -1,0 +1,46 @@
+﻿@viewModel Netfox.SnooperHTTP.WEB.ViewModels.HTTPDetailViewModel
+@masterPage Views/BlankLayout.dotmaster
+
+<dot:Content ContentPlaceHolderID="Content">
+    <h4>Message Info</h4>
+    <div class="row info">
+        <div class="col-4">
+            <div class="row">
+                <div class="col-6">Timestamp:</div>
+                <div class="col-6"><dot:Literal Text="{value: Message.Info.TimeStamp}" FormatString="dd.MM.yyyy HH:mm:ss" RenderSpanElement="false" /></div>
+            </div>
+            <div class="row">
+                <div class="col-6">Source:</div>
+                <div class="col-6">{{value: Message.Info.SourceEndPoint}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Destination:</div>
+                <div class="col-6">{{value: Message.Info.DestinationEndPoint}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Message Type:</div>
+                <div class="col-6">{{value: Message.Info.MessageType}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Status Line:</div>
+                <div class="col-6">{{value: Message.Info.StatusLine}}</div>
+            </div>
+        </div>
+    </div>
+    <h4>Header</h4>
+    <div class="row http-detail-box">
+        <div class="col-12">
+            <div class="box-content">
+                {{value: Message.Header}}
+            </div>
+        </div>
+    </div>
+    <h4>Content</h4>
+    <div class="row http-detail-box">
+        <div class="col-12">
+            <div class="box-content">
+                {{value: Message.Content}}
+            </div>
+        </div>
+</dot:Content>
+

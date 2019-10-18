@@ -19,6 +19,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <AssemblyVersion>1.0.3.0</AssemblyVersion>
+    <ApplicationVersion>0.0.0.1</ApplicationVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -39,29 +40,26 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core, Version=4.1.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Castle.Core.4.1.1\lib\net45\Castle.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.Windsor, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Castle.Windsor.4.0.0\lib\net45\Castle.Windsor.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
-    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="mscorlib" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FrameworkBaseTests.cs" />
     <Compile Include="NullLogger.cs" />
     <Compile Include="PcapsSettingsFileGenerator.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" /><Compile Include="$(SolutionDir)SharedAssemblyInfo.cs"><Link>Properties\SharedAssemblyInfo.cs</Link></Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="$(SolutionDir)SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Properties\Paths.Designer.cs">
       <DependentUpon>Paths.settings</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -87,7 +85,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="NetfoxFrameworkAPI.Tests.licenseheader" />
-    <None Include="packages.config" />
     <None Include="Properties\Paths.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Paths.Designer.cs</LastGenOutput>
@@ -110,9 +107,13 @@
       <Project>{75B3E6D5-8007-4E1F-8A92-1774A5B1D7F1}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Misc\VirtualizingObservableCollection\VirtualizingObservableCollection.csproj">
-      <Project>{6026893c-a0ae-4117-8143-d1ed198a983e}</Project>
-      <Name>VirtualizingObservableCollection</Name>
+    <ProjectReference Include="..\..\Common\Persistence\Persistence.csproj">
+      <Project>{3D0D8663-1838-43B2-BAE8-7F0029EDF9E2}</Project>
+      <Name>Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Misc\VirtualizingObservableCollection\VirtualizingCollection\VirtualizingCollection.csproj">
+      <Project>{488dc774-50e3-4ea7-ae93-b6ed703d399b}</Project>
+      <Name>VirtualizingCollection</Name>
     </ProjectReference>
     <ProjectReference Include="..\Framework.Models\Framework.Models.csproj">
       <Project>{5613ce65-51d2-49e5-ba0d-7cb5d8cb94d9}</Project>
@@ -122,9 +123,69 @@
       <Project>{67297ea0-df87-42dc-9f68-957c25568d36}</Project>
       <Name>NetfoxFrameworkAPI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PacketDotNet\PacketDotNet.csproj">
+      <Project>{55ABBA4C-AAF9-4726-A592-0C92436CEC92}</Project>
+      <Name>PacketDotNet</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Infrastructure\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Castle.Core">
+      <Version>4.4.0</Version>
+    </PackageReference>
+    <PackageReference Include="Castle.Windsor">
+      <Version>4.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="EntityFramework">
+      <Version>6.2.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.TestPlatform.ObjectModel">
+      <Version>16.2.0</Version>
+    </PackageReference>
+    <PackageReference Include="NUnit">
+      <Version>3.12.0</Version>
+    </PackageReference>
+    <PackageReference Include="NUnit.Console">
+      <Version>3.10.0</Version>
+    </PackageReference>
+    <PackageReference Include="NUnit.ConsoleRunner">
+      <Version>3.10.0</Version>
+    </PackageReference>
+    <PackageReference Include="NUnit.Extension.NUnitProjectLoader">
+      <Version>3.6.0</Version>
+    </PackageReference>
+    <PackageReference Include="NUnit.Extension.NUnitV2Driver">
+      <Version>3.7.0</Version>
+    </PackageReference>
+    <PackageReference Include="NUnit.Extension.NUnitV2ResultWriter">
+      <Version>3.6.0</Version>
+    </PackageReference>
+    <PackageReference Include="NUnit.Extension.TeamCityEventListener">
+      <Version>1.0.6</Version>
+    </PackageReference>
+    <PackageReference Include="NUnit.Extension.VSProjectLoader">
+      <Version>3.8.0</Version>
+    </PackageReference>
+    <PackageReference Include="NUnit.Runners">
+      <Version>3.10.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Collections.Immutable">
+      <Version>1.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.IO.Abstractions">
+      <Version>2.0.0.144</Version>
+    </PackageReference>
+    <PackageReference Include="System.Reflection.Metadata">
+      <Version>1.6.0</Version>
+    </PackageReference>
+    <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation">
+      <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="UnitOfWork.BaseDataEntity">
+      <Version>1.0.5</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

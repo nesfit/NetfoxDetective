@@ -24,8 +24,13 @@ using Netfox.Core.Helpers;
 using Netfox.Core.Interfaces.Views;
 using Netfox.Core.Models;
 using Netfox.Core.Properties;
+using Netfox.Detective.Commands.Investigations;
+using Netfox.Detective.Commands.Workspaces;
+using Netfox.Detective.Infrastructure;
+using Netfox.Detective.Interfaces;
+using Netfox.Detective.Messages;
+using Netfox.Detective.Messages.Investigations;
 using Netfox.Detective.Models.WorkspacesAndSessions;
-using Netfox.Detective.Services;
 using Netfox.Detective.ViewModels.Investigations;
 using PostSharp.Patterns.Model;
 
@@ -44,9 +49,20 @@ namespace Netfox.Detective.ViewModels.Workspaces
         private bool _storeDatabaseWithInvestigation = NetfoxSettings.Default.StoreDatabaseWithInvestigation;
         private string _workspaceName;
         private string _workspacePath;
-
-        public NewWorkspaceInvestigationWizardVm(IWindsorContainer applicationWindsorContainer, InvestigationInfo investigationInfo) : base(applicationWindsorContainer)
+        private readonly IInvestigationFactory _investigationFactory;
+        private readonly IDirectoryInfoFactory _directoryInfoManager;
+        private readonly IDetectiveMessenger _detectiveMessenger;
+        private readonly CreateWorkspaceCommand _createWorkspaceCommand;
+        private readonly CreateInvestigationCommand _createInvestigationCommand;
+        public NewWorkspaceInvestigationWizardVm(IDirectoryInfoFactory directoryInfoManager, IWindsorContainer applicationWindsorContainer,
+            InvestigationInfo investigationInfo,IInvestigationFactory investigationFactory,
+            IDetectiveMessenger detectiveMessenger,CreateWorkspaceCommand createWorkspaceCommand, CreateInvestigationCommand createInvestigationCommand) : base(applicationWindsorContainer)
         {
+            _createInvestigationCommand = createInvestigationCommand;
+            _createWorkspaceCommand = createWorkspaceCommand;
+            _detectiveMessenger = detectiveMessenger;
+            _investigationFactory = investigationFactory;
+            _directoryInfoManager = directoryInfoManager ?? throw new ArgumentNullException(nameof(directoryInfoManager));
             this.InvestigationInfo = investigationInfo;
             this.ViewType = typeof(INewWorkspaceInvestionWizardView);
             var ts = DateTime.Now.Millisecond;
@@ -55,18 +71,24 @@ namespace Netfox.Detective.ViewModels.Workspaces
             this.WorkspaceName = $"NFX workspace - {ts}";
         }
 
-        public NewWorkspaceInvestigationWizardVm(IWindsorContainer applicationWindsorContainer, Workspace model, InvestigationInfo investigationInfo) : this(
-            applicationWindsorContainer, investigationInfo)
+        public NewWorkspaceInvestigationWizardVm(IDirectoryInfoFactory directoryInfoManager, IWindsorContainer applicationWindsorContainer, Workspace model,
+            InvestigationInfo investigationInfo, IInvestigationFactory investigationFactory, IDetectiveMessenger detectiveMessenger,
+            CreateWorkspaceCommand createWorkspaceCommand, CreateInvestigationCommand createInvestigationCommand) : this(directoryInfoManager,
+            applicationWindsorContainer, investigationInfo, investigationFactory, detectiveMessenger, createWorkspaceCommand, createInvestigationCommand)
         {
-            this.Workspace = model;
-            this.InvestigationName = "Initial investigation";
-            this.WorkspaceName = model.Name;
-            this.SqlConnectionStringBuilder = new SqlConnectionStringBuilder(model.ConnectionString);
+            // workaround: in some cases this constructor is executed even though it should not be
+            if(!string.IsNullOrEmpty(model.Name))
+            {
+                this.Workspace = model;
+                this.InvestigationName = "Initial investigation";
+                this.WorkspaceName = model.Name;
+                this.SqlConnectionStringBuilder = new SqlConnectionStringBuilder(model.ConnectionString);
+            }
         }
 
         public override string HeaderText => "New workspace wizard";
 
-        public WorkspacesManagerService WorkspacesManagerService { get; set; }
+
 
         public string WorkspaceName
         {
@@ -75,7 +97,7 @@ namespace Netfox.Detective.ViewModels.Workspaces
             {
                 this._workspaceName = value;
                 this.OnPropertyChanged();
-                this.InvestigationInfo.InvestigationsDirectoryInfo = Workspace.GetInvestigationsDirectoryInfo(value, this.WorkspaceStoragePath);
+                this.InvestigationInfo.InvestigationsDirectoryInfo = _directoryInfoManager.CreateInvestigationsDirectoryInfo(value, this.WorkspaceStoragePath);
                 this.OnPropertyChanged(nameof(this.WorkspaceStoragePath));
                 this.RegenerateConnectionString();
                 this.CreateNewWorkspace.RaiseCanExecuteChanged();
@@ -166,7 +188,7 @@ namespace Netfox.Detective.ViewModels.Workspaces
             {
                 this._workspacePath = value;
                 this.OnPropertyChanged();
-                this.InvestigationInfo.InvestigationsDirectoryInfo = Workspace.GetInvestigationsDirectoryInfo(this.WorkspaceName, value);
+                this.InvestigationInfo.InvestigationsDirectoryInfo = _directoryInfoManager.CreateInvestigationsDirectoryInfo(this.WorkspaceName, value);
                 this.RegenerateConnectionString();
                 this.CreateNewWorkspace.RaiseCanExecuteChanged();
             }
@@ -242,8 +264,18 @@ namespace Netfox.Detective.ViewModels.Workspaces
             try
             {
                 if(this.Workspace == null)
-                    await this.WorkspacesManagerService.CreateWorkspace(this.WorkspaceName, this.WorkspaceStoragePath, this.SqlConnectionStringBuilder.ConnectionString,
-                        this.InvestigationInfo);
+                    this._createWorkspaceCommand.Execute(new CreateWorkspaceCommand.CreateWorkspaceCommandParams
+                    {
+                        Name = this.WorkspaceName,
+                        StoragePath = this.WorkspaceStoragePath,
+                        ConnectionString = this.SqlConnectionStringBuilder.ConnectionString
+                    });
+
+                await this._createInvestigationCommand.ExecuteAsync(new CreateInvestigationCommand.CreateInvestigationCommandParams
+                {
+                    InvestigationInfo = this.InvestigationInfo,
+                    Name = this.InvestigationName
+                });
             }
             catch(InvalidOperationException ex)
             {
@@ -275,13 +307,21 @@ namespace Netfox.Detective.ViewModels.Workspaces
             try
             {
                 if(this.Workspace == null) return false;
-                await this.WorkspacesManagerService.CurrentWorkspace.CreateNewInvestigation(this.InvestigationInfo);
+               // await this.WorkspacesManagerService.CurrentWorkspace.CreateNewInvestigation(this.InvestigationInfo);
+                var investigation = await this._investigationFactory.Create(this.InvestigationInfo);
+                this._detectiveMessenger.Send(new CreatedInvestigationMessage
+                {
+                    Investigation = investigation
+                });
+
             }
             catch(InvalidOperationException ex)
             {
                 this.Logger?.Error("InvestigationWorkspace already exists.", ex);
                 return false;
             }
+
+
             this.NavigationService.Show(typeof(InvestigationsManagerVm));
             return true;
         }

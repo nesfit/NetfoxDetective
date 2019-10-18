@@ -48,6 +48,11 @@
                             Value="{Binding Path=Conversation.ProtocolType, Converter={StaticResource Converter.IPProtocolTypeToColorConverter}}" />
                 </Style>
             </DataGrid.Resources>
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="{Binding Conversation.ProtocolType, Converter={StaticResource Converter.IPProtocolTypeToBackgroundColorConverter}}" />
+                </Style>
+            </DataGrid.RowStyle>
 
 
             <DataGrid.Columns>

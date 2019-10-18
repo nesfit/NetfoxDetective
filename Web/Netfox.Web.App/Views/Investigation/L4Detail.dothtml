@@ -1,0 +1,143 @@
+﻿@viewModel Netfox.Web.App.ViewModels.Investigation.L4DetailViewModel, Netfox.Web.App
+@masterPage Views/BlankLayout.dotmaster
+
+<dot:Content ContentPlaceHolderID="Content">
+    <h4>Conversation Info</h4>
+    <div class="row info">
+        <div class="col-4">
+            <div class="row">
+                <div class="col-6">First Seen:</div>
+                <div class="col-6">
+                    <dot:Literal Text="{value: Conversation.FirstSeen}" FormatString="dd.MM.yyyy HH:mm:ss" RenderSpanElement="false" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">Last seen:</div>
+                <div class="col-6">
+                    <dot:Literal Text="{value: Conversation.LastSeen}" FormatString="dd.MM.yyyy HH:mm:ss" RenderSpanElement="false" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">Protocol:</div>
+                <div class="col-6">{{value: Conversation.Transport}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Client:</div>
+                <div class="col-6">{{value: Conversation.SourceEndPoint}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Server:</div>
+                <div class="col-6">{{value: Conversation.DestinationEndPoint}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Frames Up:</div>
+                <div class="col-6">{{value: Conversation.UpFlowFramesCount}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Frames Down:</div>
+                <div class="col-6">{{value: Conversation.DownFlowFramesCount}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Bytes Up:</div>
+                <div class="col-6">{{value: Conversation.UpFlowBytes}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Bytes Down:</div>
+                <div class="col-6">{{value: Conversation.DownFlowBytes}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Malformed Frames:</div>
+                <div class="col-6">{{value: Conversation.MalformedFrames}}</div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h4>L3 Conversation</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>First seen</th>
+                    <th>Last seen</th>
+                    <th>Transport</th>
+                    <th>Client</th>
+                    <th>Server</th>
+                    <th>Frames Up</th>
+                    <th>Frames Down</th>
+                    <th>Bytes Up</th>
+                    <th>Bytes Down</th>
+                    <th>Malformed Frames</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <dot:Literal Text="{value: Conversation.L3Conversation.FirstSeen}" FormatString="dd.MM.yyyy HH:mm:ss" RenderSpanElement="false" />
+                    </td>
+                    <td>
+                        <dot:Literal Text="{value: Conversation.L3Conversation.LastSeen}" FormatString="dd.MM.yyyy HH:mm:ss" RenderSpanElement="false" />
+                    </td>
+                    <td>{{value: Conversation.L3Conversation.Transport}}</td>
+                    <td>{{value: Conversation.L3Conversation.IPAddress1}}</td>
+                    <td>{{value: Conversation.L3Conversation.IPAddress2}}</td>
+                    <td>{{value: Conversation.L3Conversation.UpFlowFramesCount}}</td>
+                    <td>{{value: Conversation.L3Conversation.DownFlowFramesCount}}</td>
+                    <td>{{value: Conversation.L3Conversation.UpFlowBytes}}</td>
+                    <td>{{value: Conversation.L3Conversation.DownFlowBytes}}</td>
+                    <td>{{value: Conversation.L3Conversation.MalformedFrames}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h4>L7 Conversations</h4>
+    <dot:GridView class="table" DataSource="{value: L7Conversations}">
+        <Columns>
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: FirstSeen}" FormatString="dd.MM.yyyy HH:mm:ss" HeaderText="First seen" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: LastSeen}" FormatString="dd.MM.yyyy HH:mm:ss" HeaderText="Last seen" />
+            <dot:GridViewTextColumn ValueBinding="{value: Transport}" HeaderText="Transport" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: SourceEndPoint}" HeaderText="Client" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: DestinationEndPoint}" HeaderText="Server" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: Application}" HeaderText="Application" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: UpFlowFramesCount}" HeaderText="Frames Up" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: DownFlowFramesCount}" HeaderText="Frames Down" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: UpFlowBytes}" HeaderText="Bytes Up" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: DownFlowBytes}" HeaderText="Bytes Down" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: MalformedFrames}" HeaderText="Malformed Frames" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: ExtractedBytes}" HeaderText="Extracted Bytes" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: MissingBytes}" HeaderText="Missing Bytes" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: MissingFrames}" HeaderText="Missing Frames" />
+        </Columns>
+    </dot:GridView>
+    <dot:DataPager class="pagination justify-content-center" DataSet="{value: L7Conversations}" RenderLinkForCurrentPage="true">
+        <FirstPageTemplate>
+            <span>First</span>
+        </FirstPageTemplate>
+        <LastPageTemplate>
+            <span>Last</span>
+        </LastPageTemplate>
+        <NextPageTemplate>Next</NextPageTemplate>
+        <PreviousPageTemplate>Previous</PreviousPageTemplate>
+    </dot:DataPager>
+
+    <h4>Frames</h4>
+    <dot:GridView class="table" DataSource="{value: Frames}">
+        <Columns>
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: FrameIndex}" HeaderText="#" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: FirstSeen}" FormatString="dd.MM.yyyy HH:mm:ss" HeaderText="Time" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: SourceEndPoint}" HeaderText="Source" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: DestinationEndPoint}" HeaderText="Target" />
+            <dot:GridViewTextColumn ValueBinding="{value: IpProtocol}" HeaderText="Protocol" />
+            <dot:GridViewTextColumn AllowSorting="true" ValueBinding="{value: OriginalLength}" HeaderText="Frame Size" />
+        </Columns>
+    </dot:GridView>
+    <dot:DataPager class="pagination justify-content-center" DataSet="{value: Frames}" RenderLinkForCurrentPage="true">
+        <FirstPageTemplate>
+            <span>First</span>
+        </FirstPageTemplate>
+        <LastPageTemplate>
+            <span>Last</span>
+        </LastPageTemplate>
+        <NextPageTemplate>Next</NextPageTemplate>
+        <PreviousPageTemplate>Previous</PreviousPageTemplate>
+    </dot:DataPager>
+</dot:Content>

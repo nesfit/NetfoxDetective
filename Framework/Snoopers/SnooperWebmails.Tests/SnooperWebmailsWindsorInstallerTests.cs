@@ -14,11 +14,12 @@
 
 using Castle.Core;
 using Netfox.Detective.Tests;
-using Netfox.SnooperWebmails.Infrastructure;
 using Netfox.SnooperWebmails.Interfaces;
-using Netfox.SnooperWebmails.ViewModels;
-using Netfox.SnooperWebmails.Views;
+using Netfox.SnooperWebmails.WPF.Views;
+using Netfox.SnooperWebmails.WPF.Infrastructure;
+using Netfox.SnooperWebmails.WPF.ViewModels;
 using NUnit.Framework;
+using WebmailExportsView = Netfox.SnooperWebmails.WPF.Views.WebmailExportsView;
 
 namespace Netfox.SnooperWebmails.Tests
 {

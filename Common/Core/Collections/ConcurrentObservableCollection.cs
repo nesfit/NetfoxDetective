@@ -27,7 +27,6 @@ using System.Windows.Threading;
 using Castle.Core.Logging;
 using GalaSoft.MvvmLight.Threading;
 using Netfox.Core.Interfaces;
-using Netfox.Core.Messages;
 
 namespace Netfox.Core.Collections
 {
@@ -102,9 +101,12 @@ namespace Netfox.Core.Collections
                     {
                         this.OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
                     }
+                    catch(ArgumentOutOfRangeException ex)
+                    {
+                        this.OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
+                    }
                     catch (Exception ex) //Accessing components owned by UI
                     {
-                        //throw;
                         this.Logger?.Error($"ConcurrentObservableCollection - {ex.Message}", ex);
                         Debugger.Break();
                         throw;

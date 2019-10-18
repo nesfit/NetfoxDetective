@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\..\packages\PostSharp.5.0.30\build\PostSharp.props" Condition="Exists('..\..\..\packages\PostSharp.5.0.30\build\PostSharp.props')" />
+  <Import Project="..\..\..\packages\PostSharp.6.2.10\build\PostSharp.props" Condition="Exists('..\..\..\packages\PostSharp.6.2.10\build\PostSharp.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -21,6 +21,7 @@
     <AssemblyVersion>1.0.</AssemblyVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <ApplicationVersion>1.0.%2a</ApplicationVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -45,23 +46,12 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PostSharp, Version=5.0.30.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\PostSharp.Redist.5.0.30\lib\net45\PostSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="PostSharp.Patterns.Aggregation, Version=5.0.30.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\PostSharp.Patterns.Aggregation.Redist.5.0.30\lib\net45\PostSharp.Patterns.Aggregation.dll</HintPath>
-    </Reference>
-    <Reference Include="PostSharp.Patterns.Common, Version=5.0.30.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\PostSharp.Patterns.Common.Redist.5.0.30\lib\net46\PostSharp.Patterns.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="PostSharp.Patterns.Model, Version=5.0.30.0, Culture=neutral, PublicKeyToken=e7f631e6ce13f078, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\PostSharp.Patterns.Model.Redist.5.0.30\lib\net40\PostSharp.Patterns.Model.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <PackageReference Include="PostSharp" Version="6.2.10" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Math\Optimization\GradientDescent.cs" />
@@ -170,7 +160,7 @@
     <Folder Include="Supervised\SVM\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
@@ -178,19 +168,26 @@
       <UserProperties DocumentXCommentEditorState="&lt;HtmlEditState&gt;&#xA;  &lt;Attributes&gt;&#xA;    &lt;Attribute key=&quot;dtscrollpos&quot; valuetype=&quot;integer&quot;&gt;0&lt;/Attribute&gt;&#xA;    &lt;Attribute key=&quot;lang_VB&quot; valuetype=&quot;string&quot;&gt;on&lt;/Attribute&gt;&#xA;    &lt;Attribute key=&quot;lang_VBUsage&quot; valuetype=&quot;string&quot;&gt;on&lt;/Attribute&gt;&#xA;    &lt;Attribute key=&quot;lang_CS&quot; valuetype=&quot;string&quot;&gt;on&lt;/Attribute&gt;&#xA;    &lt;Attribute key=&quot;lang_CPP2005&quot; valuetype=&quot;string&quot;&gt;on&lt;/Attribute&gt;&#xA;    &lt;Attribute key=&quot;inheritedMembers&quot; valuetype=&quot;string&quot;&gt;on&lt;/Attribute&gt;&#xA;    &lt;Attribute key=&quot;protectedMembers&quot; valuetype=&quot;string&quot;&gt;on&lt;/Attribute&gt;&#xA;    &lt;Attribute key=&quot;SyntaxGroup_SelectedTab&quot; valuetype=&quot;string&quot;&gt;SyntaxTab_VB&lt;/Attribute&gt;&#xA;  &lt;/Attributes&gt;&#xA;&lt;/HtmlEditState&gt;" />
     </VisualStudio>
   </ProjectExtensions>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\..\..\packages\PostSharp.5.0.30\build\PostSharp.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\PostSharp.5.0.30\build\PostSharp.props'))" />
-    <Error Condition="!Exists('..\..\..\packages\PostSharp.5.0.30\build\PostSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\PostSharp.5.0.30\build\PostSharp.targets'))" />
-  </Target>
-  <Import Project="..\..\..\packages\PostSharp.5.0.30\build\PostSharp.targets" Condition="Exists('..\..\..\packages\PostSharp.5.0.30\build\PostSharp.targets')" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
+  <ItemGroup>
+    <PackageReference Include="PostSharp.Patterns.Aggregation" Version="6.2.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="PostSharp.Patterns.Aggregation.Redist" Version="6.2.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="PostSharp.Patterns.Common" Version="6.2.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="PostSharp.Patterns.Common.Redist" Version="6.2.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="PostSharp.Patterns.Model" Version="6.2.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="PostSharp.Patterns.Model.Redist" Version="6.2.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="PostSharp.Redist" Version="6.2.10" />
+  </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2017 Jan Pluskal, Martin Mares, Martin Kmet
+﻿// Copyright (c) 2017 Jan Pluskal, Martin Mares, Martin Kmet, Hana Slamova
 //
 //Licensed under the Apache License, Version 2.0 (the "License");
 //you may not use this file except in compliance with the License.
@@ -13,30 +13,34 @@
 //limitations under the License.
 
 using System;
-using System.Diagnostics;
+using System.IO.Abstractions;
 using System.Linq;
+using System.Runtime.Serialization;
 using Castle.Core.Logging;
 using Castle.Facilities.Startable;
 using Castle.Facilities.TypedFactory;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using Netfox.Core.Extensions;
 using Netfox.Core.Infrastructure;
 using Netfox.Core.Interfaces;
 using Netfox.Core.Interfaces.ViewModels;
 using Netfox.Core.Interfaces.Views.Exports;
 using Netfox.Core.Models;
 using Netfox.Core.Windsor;
+using Netfox.Detective.Commands.Investigations;
+using Netfox.Detective.Commands.Workspaces;
 using Netfox.Detective.Core.BaseTypes.Views;
 using Netfox.Detective.Interfaces;
+using Netfox.Detective.Messages;
+using Netfox.Detective.Models.Base;
 using Netfox.Detective.Models.WorkspacesAndSessions;
 using Netfox.Detective.Services;
 using Netfox.Detective.ViewModels;
-using Netfox.Detective.ViewModels.Workspaces;
 using Netfox.Detective.ViewModelsDataEntity.BkTasks;
 using Netfox.Detective.Views;
 using Netfox.Logger;
+using DirectoryWrapper = Netfox.Detective.Wrappers.DirectoryWrapper;
 
 namespace Netfox.Detective.Infrastructure
 {
@@ -67,8 +71,9 @@ namespace Netfox.Detective.Infrastructure
         {
             container.Register(Component.For<IInvestigationFactory, InvestigationFactory>());
             container.Register(Component.For<ICrossContainerHierarchyResolver, CrossContainerHierarchyResolver>());
-            container.Register(Component.For<IWorkspaceFactory>().AsFactory());
             container.Register(Component.For<IBgTaskFactory>().AsFactory());
+            container.Register(Component.For<ISerializerFactory>().AsFactory());
+
         }
 
         protected internal void AddFacilities(IWindsorContainer container)
@@ -84,11 +89,25 @@ namespace Netfox.Detective.Infrastructure
             container.Register(Component.For<NetfoxFileAppender>().LifestyleSingleton());
             container.Register(Component.For<NetfoxOutputAppender>().LifestyleSingleton());
             container.Register(Component.For<ILogger, NetfoxLogger>().LifestyleSingleton().Start());
-            container.Register(Component.For<InvestigationInfo>().LifestyleTransient());
+            container.Register(Component.For<IInvestigationInfo, InvestigationInfo>().LifestyleTransient());
             container.Register(Component.For<IInvestigationInfoLoader,InvestigationInfoLoader>().LifestyleSingleton());
-            container.Register(Component.For<WorkspaceVm>().LifestyleTransient());
             container.Register(Component.For<Workspace>().LifestyleTransient());
             container.Register(Component.For<BgTaskVm>().LifestyleTransient());
+            container.Register(Component.For<IDirectoryWrapper,DirectoryWrapper>().LifestyleTransient());
+            container.Register(Component.For<CreateWorkspaceCommand>().LifestyleTransient());
+            container.Register(Component.For<CreateInvestigationCommand>().LifestyleTransient());
+
+            container.Register(Component.For<IFileSystem,FileSystem>());
+            container.Register(Component.For<INetfoxSettings,NetfoxSettingsWrapper>());
+            container.Register(Component.For<XmlObjectSerializer, DataContractSerializer>().LifestyleTransient());
+            container.Register(Component.For<IDirectoryInfoFactory, DirectoryInfoFactory>());
+            container.Register(Component.For<IDetectiveMessenger,DetectiveMvvmLightMessenger>());
+            container.Register(Component.For<IWorkspaceFactory, WorkspaceFactory>().LifestyleTransient());
+            container.Register(Component.For<ISerializationPersistor<Workspace>,WorkspaceSerializationPersistor>());
+            container.Register(Component.For<ISerializationPersistor<Investigation>,InvestigationSerializationPersistor>());
+            container.Register(Component.For<IWorkspacePathSerializationPersistor,WorkspacePathSerializationPersistor>());
+            container.Register(Component.For<WorkspacePathMapper>());
+
         }
 
         protected internal void ServicesRegister(IWindsorContainer container)

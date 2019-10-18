@@ -1,0 +1,12 @@
+D:\temp>xsd test.xml
+Microsoft (R) Xml Schemas/DataTypes support utility
+[Microsoft (R) .NET Framework, Version 4.0.30319.1]
+Copyright (C) Microsoft Corporation. All rights reserved.
+Writing file 'D:\temp\test.xsd'.
+
+D:\temp>xsd test.xsd /classes
+Microsoft (R) Xml Schemas/DataTypes support utility
+[Microsoft (R) .NET Framework, Version 4.0.30319.1]
+Copyright (C) Microsoft Corporation. All rights reserved.
+Writing file 'D:\temp\test.cs'.
+

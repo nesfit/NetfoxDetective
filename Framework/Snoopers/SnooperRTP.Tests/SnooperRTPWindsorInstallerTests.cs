@@ -13,7 +13,7 @@
 //limitations under the License.
 
 using Netfox.Detective.Tests;
-using Netfox.SnooperRTP.Infrastructure;
+using Netfox.SnooperRTP.WPF.Infrastructure;
 using NUnit.Framework;
 
 namespace Netfox.SnooperRTP.Tests

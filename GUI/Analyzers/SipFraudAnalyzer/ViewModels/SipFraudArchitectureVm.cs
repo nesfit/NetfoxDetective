@@ -189,11 +189,14 @@ namespace Netfox.AnalyzerSIPFraud.ViewModels
         private BlockingCollection<IEnumerable<string>> _incidentPcapFileUries { get; } = new BlockingCollection<IEnumerable<string>>();
         private BlockingCollection<ConversationsGroup> _conversationGroupsForAlert { get; } = new BlockingCollection<ConversationsGroup>();
 
+        [SafeForDependencyAnalysis]
         private ExportService ExportService
             => this._exportService ?? (this._exportService = this.ApplicationOrInvestigationWindsorContainer.Resolve<ExportService>(this.ApplicationOrInvestigationWindsorContainer));
 
+        [SafeForDependencyAnalysis]
         private SnooperSIP.SnooperSIP SnooperSIP => this._snooperSIP ?? (this._snooperSIP = this.ApplicationOrInvestigationWindsorContainer.Resolve<SnooperSIP.SnooperSIP>());
 
+        [SafeForDependencyAnalysis]
         private SSHFileDownloadService SSHFileDownloadService { get; } = new SSHFileDownloadService();
 
         #region Overrides of DetectivePaneViewModelBase
@@ -248,9 +251,9 @@ namespace Netfox.AnalyzerSIPFraud.ViewModels
             foreach(var exportGroup in this.ApplicationShell.CurrentInvestigationVm.ExportGroups)
             {
                 exportGroup.ExportGroup.Exports.Clear();
-                exportGroup.Calls.Clear();
-                exportGroup.Emails.Clear();
-                exportGroup.ChatMessages.Clear();
+                exportGroup.Calls.Result.Clear();
+                exportGroup.Emails.Result.Clear();
+                exportGroup.ChatMessages.Result.Clear();
             }
             this.SipFraudAnalyzerVm.Init();
         }

@@ -55,6 +55,11 @@ namespace Netfox.Framework.Models
 
         public Guid? L7ConversationRefId { get; set; }
 
+        public override string ToString()
+        {
+            return $"{base.ToString()}, {nameof(this.ExtractedBytes)}: {this.ExtractedBytes}, {nameof(this.MissingBytes)}: {this.MissingBytes}, {nameof(this.MissingFrames)}: {this.MissingFrames}";
+        }
+
         [ForeignKey(nameof(L7ConversationRefId))]
         public virtual L7Conversation L7Conversation { get; set; }
 

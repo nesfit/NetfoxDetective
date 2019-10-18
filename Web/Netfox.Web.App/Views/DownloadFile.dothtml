@@ -1,0 +1,9 @@
+﻿@viewModel Netfox.Web.App.ViewModels.DownloadFileViewModel, Netfox.Web.App
+@masterPage Views/BlankLayout.dotmaster
+
+<dot:Content ContentPlaceHolderID="Content">
+Error
+</dot:Content>
+
+
+

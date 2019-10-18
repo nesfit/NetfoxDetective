@@ -28,4 +28,6 @@
     <converters:IsNullOrEmptyToBoolInvertedConverter x:Key="IsNullOrEmptyToBoolInvertedConverter" />
     <converters:ByteArrayToHexString x:Key="Converter.ByteArrayToHexString" />
     <converters:EnumToBoolConverter  x:Key="Converter.EnumToBoolConverter" />
+    <converters:PmFrameBaseToBackgroundColorConverter  x:Key="Converter.PmFrameBaseToBackgroundColorConverter" />
+    <converters:IPProtocolTypeToBackgroundColorConverter  x:Key="Converter.IPProtocolTypeToBackgroundColorConverter" />
 </ResourceDictionary>

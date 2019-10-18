@@ -14,11 +14,12 @@
 
 using Castle.Core;
 using Netfox.Detective.Tests;
-using Netfox.SnooperFacebook.Infrastructure;
-using Netfox.SnooperFacebook.ViewModels;
-using Netfox.SnooperFacebook.Views;
-using Netfox.SnooperFacebook.Views.Interface;
+using Netfox.SnooperFacebook.WPF.Views;
+using Netfox.SnooperFacebook.WPF.Infrastructure;
+using Netfox.SnooperFacebook.WPF.ViewModels;
+using Netfox.SnooperFacebook.WPF.Views.Interface;
 using NUnit.Framework;
+using FacebookView = Netfox.SnooperFacebook.WPF.Views.FacebookView;
 
 namespace Netfox.SnooperFacebook.Tests
 {

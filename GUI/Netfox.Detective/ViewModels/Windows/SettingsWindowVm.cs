@@ -54,9 +54,21 @@ namespace Netfox.Detective.ViewModels.Windows
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
             foreach(var currentAssembly in assemblies)
             {
-                var paneViews = currentAssembly.GetTypes().Where(a => a.IsClass && a.IsPublic && !a.IsInterface && !a.IsAbstract && typeof(SettingsTabBase).IsAssignableFrom(a));
-
-                foreach(var paneViewType in paneViews)
+                IEnumerable<Type> currentAssemblyTypes;
+                try
+                {
+                    currentAssemblyTypes = currentAssembly.GetTypes();
+                }
+                catch(System.Reflection.ReflectionTypeLoadException e)
+                {
+                    this.ApplicationOrInvestigationWindsorContainer.Resolve<ILogger>()
+                        .Warn($"Exception caught during settings discovery. Current assembly contains one or more types that cannot be loaded.\ncurrentAssembly={currentAssembly},\nException: {e}", e);
+                    // use at least those types that were loaded
+                    currentAssemblyTypes = e.Types.Where(a => a != null);
+                }
+                var paneViews = currentAssemblyTypes.Where(a => a.IsClass && a.IsPublic && !a.IsInterface && !a.IsAbstract && typeof(SettingsTabBase).IsAssignableFrom(a));
+                
+                foreach (var paneViewType in paneViews)
                 {
                     try
                     {
@@ -79,7 +91,7 @@ namespace Netfox.Detective.ViewModels.Windows
                     }
                 }
 
-                var paneVms = currentAssembly.GetTypes().Where(a => a.IsClass && a.IsPublic && !a.IsInterface && !a.IsAbstract && typeof(SettingsBaseVm).IsAssignableFrom(a));
+                var paneVms = currentAssemblyTypes.Where(a => a.IsClass && a.IsPublic && !a.IsInterface && !a.IsAbstract && typeof(SettingsBaseVm).IsAssignableFrom(a));
 
                 foreach(var paneVm in paneVms)
                 {

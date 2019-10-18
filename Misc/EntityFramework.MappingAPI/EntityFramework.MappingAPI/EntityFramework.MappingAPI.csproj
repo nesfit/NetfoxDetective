@@ -151,131 +151,80 @@
   <Choose>
     <When Condition=" '$(Configuration)'=='Debug' ">
       <ItemGroup>
-        <Reference Include="EntityFramework">
-          <SpecificVersion>False</SpecificVersion>
-          <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.dll</HintPath>
-        </Reference>
-        <Reference Include="EntityFramework.SqlServer">
-          <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
-        </Reference>
+        
+        
       </ItemGroup>
     </When>
     <When Condition=" '$(Configuration)'=='NET40_EF4.1.10311' ">
       <ItemGroup>
-        <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-          <SpecificVersion>False</SpecificVersion>
-          <HintPath>..\packages\EntityFramework.4.1.10311.0\lib\EntityFramework.dll</HintPath>
-        </Reference>
+        
         <Reference Include="System.Data.Entity" />
       </ItemGroup>
     </When>
     <When Condition=" '$(Configuration)'=='NET40_EF4.1.10331' ">
       <ItemGroup>
-        <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-          <SpecificVersion>False</SpecificVersion>
-          <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
-        </Reference>
+        
         <Reference Include="System.Data.Entity" />
       </ItemGroup>
     </When>
     <When Condition=" '$(Configuration)'=='NET40_EF4.1.10715' ">
       <ItemGroup>
-        <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-          <SpecificVersion>False</SpecificVersion>
-          <HintPath>..\packages\EntityFramework.4.1.10715.0\lib\EntityFramework.dll</HintPath>
-        </Reference>
+        
         <Reference Include="System.Data.Entity" />
       </ItemGroup>
     </When>
     <When Condition=" '$(Configuration)'=='NET40_EF4.2.0' ">
       <ItemGroup>
-        <Reference Include="EntityFramework, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-          <SpecificVersion>False</SpecificVersion>
-          <HintPath>..\packages\EntityFramework.4.2.0.0\lib\net40\EntityFramework.dll</HintPath>
-        </Reference>
+        
         <Reference Include="System.Data.Entity" />
       </ItemGroup>
     </When>
     <When Condition=" '$(Configuration)'=='NET40_EF4.3.0' ">
       <ItemGroup>
-        <Reference Include="EntityFramework, Version=4.3.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-          <SpecificVersion>False</SpecificVersion>
-          <HintPath>..\packages\EntityFramework.4.3.0\lib\net40\EntityFramework.dll</HintPath>
-        </Reference>
+        
         <Reference Include="System.Data.Entity" />
       </ItemGroup>
     </When>
     <When Condition=" '$(Configuration)'=='NET40_EF4.3.1' ">
       <ItemGroup>
-        <Reference Include="EntityFramework, Version=4.3.1.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-          <SpecificVersion>False</SpecificVersion>
-          <HintPath>..\packages\EntityFramework.4.3.1\lib\net40\EntityFramework.dll</HintPath>
-        </Reference>
+        
         <Reference Include="System.Data.Entity" />
       </ItemGroup>
     </When>
     <When Condition=" '$(Configuration)'=='NET40_EF5.0.0' ">
       <ItemGroup>
-        <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-          <SpecificVersion>False</SpecificVersion>
-          <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
-        </Reference>
+        
         <Reference Include="System.Data.Entity" />
       </ItemGroup>
     </When>
     <When Condition=" '$(Configuration)'=='NET40_EF6.0.0' ">
       <ItemGroup>
-        <Reference Include="EntityFramework">
-          <SpecificVersion>False</SpecificVersion>
-          <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.dll</HintPath>
-        </Reference>
-        <Reference Include="EntityFramework.SqlServer">
-          <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
-        </Reference>
+        
+        
       </ItemGroup>
     </When>
     <When Condition=" '$(Configuration)'=='NET40_EF6.0.1' ">
       <ItemGroup>
-        <Reference Include="EntityFramework">
-          <SpecificVersion>False</SpecificVersion>
-          <HintPath>..\packages\EntityFramework.6.0.1\lib\net40\EntityFramework.dll</HintPath>
-        </Reference>
-        <Reference Include="EntityFramework.SqlServer">
-          <HintPath>..\packages\EntityFramework.6.0.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
-        </Reference>
+        
+        
       </ItemGroup>
     </When>
     <When Condition=" '$(Configuration)'=='NET40_EF6.0.2' ">
       <ItemGroup>
-        <Reference Include="EntityFramework">
-          <SpecificVersion>False</SpecificVersion>
-          <HintPath>..\packages\EntityFramework.6.0.2\lib\net40\EntityFramework.dll</HintPath>
-        </Reference>
-        <Reference Include="EntityFramework.SqlServer">
-          <HintPath>..\packages\EntityFramework.6.0.2\lib\net40\EntityFramework.SqlServer.dll</HintPath>
-        </Reference>
+        
+        
       </ItemGroup>
     </When>
     <When Condition=" '$(Configuration)'=='NET40_EF6.1.0' ">
       <ItemGroup>
-        <Reference Include="EntityFramework">
-          <SpecificVersion>False</SpecificVersion>
-          <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.dll</HintPath>
-        </Reference>
-        <Reference Include="EntityFramework.SqlServer">
-          <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
-        </Reference>
+        
+        
       </ItemGroup>
     </When>
     <When Condition=" '$(Configuration)'=='NET40_EF6.1.1' ">
       <ItemGroup>
-        <Reference Include="EntityFramework">
-          <SpecificVersion>False</SpecificVersion>
-          <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
-        </Reference>
-        <Reference Include="EntityFramework.SqlServer">
-          <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
-        </Reference>
+        
+        
       </ItemGroup>
     </When>
   </Choose>

@@ -1,0 +1,47 @@
+﻿@viewModel Netfox.Web.App.ViewModels.Settings.UserManagementViewModel, Netfox.Web.App
+@masterPage Views/Settings/Settings.dotmaster
+
+<dot:Content ContentPlaceHolderID="Toolbar">
+    <dot:RouteLink class="btn" Text="New user" RouteName="Settings_User" />
+    <dot:Button class="btn" Text="Remove" Click="{command: RemoveSelectedUsers()}" />
+    <div class="right-box">
+        <dot:TextBox style="width: 200px;" class="form-control" Text="{value: Helper.Filter.SearchText}" />
+        <dot:Button class="btn" Text="Filter" Click="{command: Helper.ApplyFilter()}" />
+    </div>
+</dot:Content>
+
+<dot:Content ContentPlaceHolderID="Content">
+    <dot:GridView DataSource="{value: Helper.Items}" class="table" >
+        <Columns>
+            <dot:GridViewTemplateColumn HeaderCssClass="select-item">
+                <HeaderTemplate> 
+                    <dot:CheckBox Checked="{value: IsAllSelected}"  />
+                </HeaderTemplate>
+                <ContentTemplate>
+                    <dot:CheckBox CheckedItems="{value: _parent.UserIDs}" CheckedValue="{value: Id}" />
+                </ContentTemplate>
+            </dot:GridViewTemplateColumn>
+            <dot:GridViewTextColumn ValueBinding="{value: Id}" HeaderText="ID" />
+            <dot:GridViewTextColumn ValueBinding="{value: Firstname + " " + Surname}" HeaderText="Name" />
+            <dot:GridViewTextColumn ValueBinding="{value: Username}" HeaderText="Username" />
+            <dot:GridViewTextColumn ValueBinding="{value: Role.Name}" HeaderText="Role" />
+            <dot:GridViewTemplateColumn HeaderText="Actions">
+                <ContentTemplate>
+                    <dot:RouteLink class="btn-action" RouteName="Settings_User" Param-UserId="{value: Id}" Text="Edit"><span class="fas fa-pen"></span></dot:RouteLink>
+                    <dot:LinkButton class="btn-action" Click="{command: _parent.RemoveUser(Id)}" ><span class="far fa-trash-alt"></span></dot:LinkButton>
+                </ContentTemplate>
+            </dot:GridViewTemplateColumn>
+        </Columns>
+    </dot:GridView>
+    <dot:DataPager DataSet="{value: Helper.Items}" RenderLinkForCurrentPage="true">
+        <FirstPageTemplate>
+            <span>First</span>
+        </FirstPageTemplate>
+        <LastPageTemplate>
+            <span>Last</span>
+        </LastPageTemplate>
+        <NextPageTemplate>Next</NextPageTemplate>
+        <PreviousPageTemplate>Previous</PreviousPageTemplate>
+    </dot:DataPager>
+</dot:Content>
+

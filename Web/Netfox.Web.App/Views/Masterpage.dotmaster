@@ -1,0 +1,23 @@
+﻿@viewModel Netfox.Web.App.ViewModels.MasterpageViewModel, Netfox.Web.App
+@masterPage Views/BaseLayout.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <div class="{value: ColumnCSSClass}">
+        <div id="left">
+            <h1>
+                <span class="com-title">{{value: ColumnName}}</span>
+                <dot:ContentPlaceHolder ID="TitleButton" />
+            </h1>
+            <dot:ContentPlaceHolder ID="ColumnLeft" />
+        </div>
+        <div id="content" style="display: table-cell">
+            <h3 >{{value: Title}}</h3>
+            <div class="{value: ShowToolbar ? 'toolbar': 'toolbar d-none'}">
+                <dot:ContentPlaceHolder ID="Toolbar" />
+            </div>
+            <div class="content-wrapper">
+                <dot:ContentPlaceHolder ID="Content" />
+            </div>
+        </div>
+    </div>
+</dot:Content>

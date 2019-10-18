@@ -13,6 +13,7 @@
 //limitations under the License.
 
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using Netfox.Core.Database.PersistableJsonSeializable;
 using Netfox.Framework.Models.Snoopers;
 using Netfox.SnooperDNS.Models.Message;
@@ -21,7 +22,7 @@ namespace Netfox.SnooperDNS.Models
 {
    public class SnooperExportedDataObjectDNS : SnooperExportedObjectBase
     {
-        public enum DNSQueryType
+        public enum DNSQueryType : int
         {
             QUERY = 0,
             IQUERY = 1,
@@ -31,7 +32,7 @@ namespace Netfox.SnooperDNS.Models
             UNASSIGNED = 3
         }
 
-        public enum DNSResponseCode
+        public enum DNSResponseCode : int
         {
             NOERROR = 0,
             FORMERR = 1,
@@ -47,8 +48,46 @@ namespace Netfox.SnooperDNS.Models
             UNASSIGNED = 11
         }
 
-        public ushort MessageId { get; set; }
-        public ushort Flags { get; set; }
+        public int __MessageId { get; set; }
+        public int __Flags { get; set; }
+
+        [NotMapped]
+        public ushort MessageId
+        {
+            get
+            {
+                unchecked
+                {
+                    return (ushort)__MessageId;
+                }
+            }
+            set
+            {
+                unchecked
+                {
+                    __MessageId = (int)value;
+                }
+            }
+        }
+
+        [NotMapped]
+        public ushort Flags
+        {
+            get
+            {
+                unchecked
+                {
+                    return (ushort)__Flags;
+                }
+            }
+            set
+            {
+                unchecked
+                {
+                    __Flags = (int)value;
+                }
+            }
+        }
         public bool IsAuthoritativeAnswer => (this.Flags & 32) == 32;
         public bool IsTrunCation => (this.Flags & 64) == 64;
         public bool IsRecursionDesired => (this.Flags & 128) == 128;
@@ -61,11 +100,12 @@ namespace Netfox.SnooperDNS.Models
                 var code = this.Flags >> 12;
                 return Enum.IsDefined(typeof(DNSResponseCode), code) ? (DNSResponseCode) code : DNSResponseCode.UNASSIGNED;
             }
-        } 
-        public PersistableJsonSerializable<DNSBase> Queries { get; set; }
-        public PersistableJsonSerializable<DnsResponse> Answer { get; set; }
-        public PersistableJsonSerializable<DnsResponse> Authority { get; set; }
-        public PersistableJsonSerializable<DnsResponse> Additional { get; set; }
+        }
+
+        public PersistableJsonSerializableDNSBase Queries { get; set; }
+        public PersistableJsonSerializableDNSResponse Answer { get; set; }
+        public PersistableJsonSerializableDNSResponse Authority { get; set; }
+        public PersistableJsonSerializableDNSResponse Additional { get; set; }
 
         private SnooperExportedDataObjectDNS() : base() { } //EF
 

@@ -24,7 +24,8 @@ using GalaSoft.MvvmLight.Command;
 using Netfox.Core.Collections;
 using Netfox.Core.Enums;
 using Netfox.Core.Interfaces.ViewModels;
-using Netfox.Core.Messages.Base;
+using Netfox.Detective.Messages;
+using Netfox.Detective.Messages.Frames;
 using Netfox.Detective.Models.Base;
 using Netfox.Detective.ViewModels.Frame;
 using Netfox.Detective.ViewModelsDataEntity.Exports;
@@ -39,12 +40,14 @@ namespace Netfox.Detective.ViewModelsDataEntity.Conversations
     {
         #region Memebers
         private QualityFrameVm _selectedQualityFrame;
+        private readonly IDetectiveMessenger _messenger;
         #endregion
 
         #region Constructor
         public ConversationVm(WindsorContainer applicationWindsorContainer, ILxConversation model) : base(applicationWindsorContainer, model)
         {
             this.Conversation = model;
+            this._messenger = applicationWindsorContainer.Resolve<IDetectiveMessenger>();
         }
         #endregion
 
@@ -90,7 +93,11 @@ namespace Netfox.Detective.ViewModelsDataEntity.Conversations
                 this._currentPacket = value;
                 this.OnPropertyChanged();
 
-                FrameMessage.SendFrameMessage(this._currentPacket, FrameMessage.MessageType.CurrentFrameChanged, false);
+                this._messenger.AsyncSend(new ChangedFrameMessage
+                {
+                    Frame = this._currentPacket,
+                    BringToFront = false
+                });
             }
         }
         #endregion

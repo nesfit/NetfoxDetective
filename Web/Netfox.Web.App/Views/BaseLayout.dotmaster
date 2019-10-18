@@ -1,0 +1,10 @@
+﻿@viewModel Netfox.Web.App.ViewModels.BaseLayoutViewModel, Netfox.Web.App
+@masterPage Views/Layout.dotmaster
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <cc:Menu />
+    <div id="main" class="loading">
+        <dot:ContentPlaceHolder ID="MainContent" />
+    </div>
+</dot:Content>
+

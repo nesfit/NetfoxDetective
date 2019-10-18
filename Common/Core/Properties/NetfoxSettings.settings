@@ -14,10 +14,10 @@
     <Setting Name="SkipEmtpyExportResults" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="WorkspaceFileExtension" Type="System.String" Scope="User">
+    <Setting Name="WorkspaceFileExtension" Type="System.String" Scope="Application">
       <Value Profile="(Default)">nfw</Value>
     </Setting>
-    <Setting Name="InvestigationFileExtension" Type="System.String" Scope="User">
+    <Setting Name="InvestigationFileExtension" Type="System.String" Scope="Application">
       <Value Profile="(Default)">nfi</Value>
     </Setting>
     <Setting Name="AppDataLogPath" Type="System.String" Scope="User">
@@ -26,16 +26,16 @@
     <Setting Name="ConnectionString" Type="System.String" Scope="User">
       <Value Profile="(Default)">Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=NetfoxDetective;Integrated Security=SSPI;MultipleActiveResultSets=True;</Value>
     </Setting>
-    <Setting Name="DatabaseFileExtension" Type="System.String" Scope="User">
+    <Setting Name="DatabaseFileExtension" Type="System.String" Scope="Application">
       <Value Profile="(Default)">mdf</Value>
     </Setting>
-    <Setting Name="DefaultWorkspaceStoragePath" Type="System.String" Scope="User">
+    <Setting Name="DefaultWorkspaceStoragePath" Type="System.String" Scope="Application">
       <Value Profile="(Default)">%userprofile%\Netfox Detective Workspaces</Value>
     </Setting>
     <Setting Name="StoreDatabaseWithInvestigation" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="DefaultInMemoryConnectionString" Type="System.String" Scope="User">
+    <Setting Name="DefaultInMemoryConnectionString" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Data Source=:memory:;</Value>
     </Setting>
     <Setting Name="ExplicitNotifications" Type="System.String" Scope="User">
@@ -43,6 +43,9 @@
     </Setting>
     <Setting Name="ToLogMessages" Type="System.String" Scope="User">
       <Value Profile="(Default)">Info</Value>
+    </Setting>
+    <Setting Name="DecapsulateGseOverUdp" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

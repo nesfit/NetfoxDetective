@@ -14,11 +14,12 @@
 
 using Castle.Core;
 using Netfox.Detective.Tests;
-using Netfox.SnooperMinecraft.Infrastructure;
 using Netfox.SnooperMinecraft.Interfaces;
-using Netfox.SnooperMinecraft.ViewModels;
-using Netfox.SnooperMinecraft.Views;
+using Netfox.SnooperMinecraft.WPF.Views;
+using Netfox.SnooperMinecraft.WPF.Infrastructure;
+using Netfox.SnooperMinecraft.WPF.ViewModels;
 using NUnit.Framework;
+using MinecraftMsgView = Netfox.SnooperMinecraft.WPF.Views.MinecraftMsgView;
 
 namespace Netfox.SnooperMinecraft.Tests
 {

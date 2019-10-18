@@ -12,14 +12,10 @@
 //See the License for the specific language governing permissions and
 //limitations under the License.
 
-using Castle.MicroKernel.Registration;
-using Netfox.Detective.Infrastructure;
-
 namespace Netfox.SnooperBTC.Infrastructure
 {
-    public class SnooperBTCWindsorInstaller: DetectiveIvestigationWindsorInstallerBase
-    {
-        public SnooperBTCWindsorInstaller() : base(Classes.FromAssemblyContaining<SnooperBTCWindsorInstaller>()) { }
+    public class SnooperBTCWindsorInstaller
+    { 
     }
 
 }

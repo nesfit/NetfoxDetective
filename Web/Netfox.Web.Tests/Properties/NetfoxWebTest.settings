@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Netfox.Web.Tests.Properties" GeneratedClassName="NetfoxWebTest">
+  <Profiles />
+  <Settings>
+    <Setting Name="FTPPcap" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\..\..\..\TestingData\ftp\ftp_xkarpi03_02.pcap</Value>
+    </Setting>
+    <Setting Name="CallPcap" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\..\..\..\TestingData\sip_caps\sip-rtcp.pcap</Value>
+    </Setting>
+    <Setting Name="HTTPPcap" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\..\..\..\TestingData\http_caps\malyweb2.pcapng</Value>
+    </Setting>
+    <Setting Name="MessagePcap" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\..\..\..\TestingData\pcap_mix\ymsg_without_file.cap</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

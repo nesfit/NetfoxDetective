@@ -46,14 +46,11 @@ namespace Netfox.Framework.Models.PmLib.Frames
             Int64 oriLength,
             Int64 incLength,
             FrameBLockType type,
-            PcapNgInterface iface) : base(pmCapture, pmLinkType, timeStamp, incLength)
+            PcapNgInterface iface) : base(pmCapture, pmLinkType, timeStamp, incLength, PmFrameType.PcapNg, fraIndex, oriLength)
         {
-            this.FrameIndex = fraIndex;
             this.FrameOffset = fraOffset;
-            this.OriginalLength = oriLength;
             this._blockType = type;
             this._iface = iface;
-            this.PmFrameType = PmFrameType.PcapNg;
 
             UInt32 startOffset = 0;
             switch(this._blockType)

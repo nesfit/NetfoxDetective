@@ -17,7 +17,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
-using AlphaChiTech.Virtualization.Interfaces;
+
+using AlphaChiTech.VirtualizingCollection.Interfaces;
 
 namespace Netfox.Core.Collections
 {

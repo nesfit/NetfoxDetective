@@ -14,11 +14,11 @@
 
 using Castle.Core;
 using Netfox.Detective.Tests;
-using Netfox.SnooperBTC.Infrastructure;
+using Netfox.SnooperBTC.WPF.Infrastructure;
 using Netfox.SnooperBTC.Interfaces;
-using Netfox.SnooperBTC.ViewModels;
-using Netfox.SnooperBTC.Views;
 using NUnit.Framework;
+using Netfox.SnooperBTC.WPF.Views;
+using Netfox.SnooperBTC.WPF.ViewModels;
 
 namespace Netfox.SnooperBTC.Tests
 {
