@@ -43,7 +43,7 @@ To demonstrate Netfox Detective analysis capcabilitie, you may analyze PCAP file
 
 # Download
 
-Netfox Detective can be installed from release builds available on [FourceForge](https://sourceforge.net/projects/netfox-detective/).
+Netfox Detective can be installed from release builds available on [SourceForge](https://sourceforge.net/projects/netfox-detective/).
 
 # Before you start
 Before you start installing NFX Detective, please check that your system meets the requirements. Microsoft Windows Vista SP2 and newer is reauired to run Netfox Detective.
