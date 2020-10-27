@@ -1045,7 +1045,7 @@
       <Version>73.1.130</Version>
     </PackageReference>
     <PackageReference Include="CefSharp.Wpf">
-      <Version>73.1.130</Version>
+      <Version>85.3.130</Version>
     </PackageReference>
     <PackageReference Include="CommandLineParser">
       <Version>2.6.0</Version>
