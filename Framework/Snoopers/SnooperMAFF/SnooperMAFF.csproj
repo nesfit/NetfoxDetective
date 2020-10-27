@@ -133,7 +133,7 @@
     <PackageReference Include="CefSharp.Common" Version="73.1.130" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="CefSharp.Wpf" Version="73.1.130" />
+    <PackageReference Include="CefSharp.Wpf" Version="85.3.130" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
