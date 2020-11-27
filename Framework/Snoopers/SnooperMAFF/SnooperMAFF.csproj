@@ -130,7 +130,7 @@
     <PackageReference Include="cef.redist.x86" Version="73.1.13" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="CefSharp.Common" Version="73.1.130" />
+    <PackageReference Include="CefSharp.Common" Version="86.0.241" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CefSharp.Wpf" Version="73.1.130" />
