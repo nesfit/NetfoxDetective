@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <DefineConstants>EF6;EF61</DefineConstants>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="EntityFramework" Version="6.4.4" />
+        <PackageReference Include="EntityFramework.SqlServerCompact" Version="6.4.4" />
+        <PackageReference Include="NUnit" Version="3.12.0" />
+        <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\EntityFramework.BulkInsert.SqlServerCe\EntityFramework.BulkInsert.SqlServerCe.csproj" />
+      <ProjectReference Include="..\EntityFramework.BulkInsert\EntityFramework.BulkInsert.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="DatabaseFirst\TestDataModel.tt">
+        <DependentUpon>TestDataModel.edmx</DependentUpon>
+      </None>
+      <None Update="DatabaseFirst\TestDataModel.Context.tt">
+        <DependentUpon>TestDataModel.edmx</DependentUpon>
+      </None>
+      <None Update="DatabaseFirst\TestDataModel.edmx.diagram">
+        <DependentUpon>TestDataModel.edmx</DependentUpon>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="DatabaseFirst\Books.cs">
+        <DependentUpon>TestDataModel.tt</DependentUpon>
+      </Compile>
+      <Compile Update="DatabaseFirst\Authors.cs">
+        <DependentUpon>TestDataModel.tt</DependentUpon>
+      </Compile>
+      <Compile Update="DatabaseFirst\Publishers.cs">
+        <DependentUpon>TestDataModel.tt</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+</Project>

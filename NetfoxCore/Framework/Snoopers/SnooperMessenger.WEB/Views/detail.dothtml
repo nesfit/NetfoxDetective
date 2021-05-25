@@ -1,0 +1,4 @@
+﻿@viewModel Netfox.Snoopers.SnooperMessenger.WEB.ViewModels.ExportDetailMessengerViewModel
+@masterPage Views/Investigation/ExportDetail.dotmaster
+
+

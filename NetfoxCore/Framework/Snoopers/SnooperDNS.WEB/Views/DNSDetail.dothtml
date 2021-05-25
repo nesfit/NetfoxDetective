@@ -1,0 +1,81 @@
+﻿@viewModel Netfox.Snoopers.SnooperDNS.WEB.ViewModels.DNSDetailViewModel
+@masterPage Views/BlankLayout.dotmaster
+
+<dot:Content ContentPlaceHolderID="Content">
+    <h4>Message Info</h4>
+    <div class="row info">
+        <div class="col-4">
+            <div class="row">
+                <div class="col-6">Timestamp:</div>
+                <div class="col-6"><dot:Literal Text="{value: ExportedObject.Info.FirstSeen}" FormatString="dd.MM.yyyy HH:mm:ss" RenderSpanElement="false" /></div>
+            </div>
+            <div class="row">
+                <div class="col-6">Source:</div>
+                <div class="col-6">{{value: ExportedObject.Info.SourceEndPoint}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Destination:</div>
+                <div class="col-6">{{value: ExportedObject.Info.DestinationEndPoint}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Query Type:</div>
+                <div class="col-6">{{value: ExportedObject.Info.QueryType}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Response Code:</div>
+                <div class="col-6">{{value: ExportedObject.Info.ResponseCode}}</div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="row">
+                <div class="col-6">Authoritative Answer:</div>
+                <div class="col-6">{{value: (ExportedObject.Info.IsAuthoritativeAnswer) ? 'Yes' : 'No'}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Truncation:</div>
+                <div class="col-6">{{value: (ExportedObject.Info.IsTrunCation) ? 'Yes' : 'No'}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Recursion Desired:</div>
+                <div class="col-6">{{value: (ExportedObject.Info.IsRecursionDesired) ? 'Yes' : 'No'}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Recursion Available:</div>
+                <div class="col-6">{{value:(ExportedObject.Info.IsRecursionAvailable) ? 'Yes' : 'No'}}</div>
+            </div>
+        </div>
+    </div>
+    <h4>Queries</h4>
+    <div class="row dns-detail-box">
+        <div class="col-12">
+            <div class="box-content">
+                {{value: ExportedObject.Queries}}
+            </div>
+        </div>
+    </div>
+    <h4>Answer</h4>
+    <div class="row dns-detail-box">
+        <div class="col-12">
+            <div class="box-content">
+                {{value: ExportedObject.Answer}}
+            </div>
+        </div>
+    </div>
+    <h4>Authority</h4>
+    <div class="row dns-detail-box">
+        <div class="col-12">
+            <div class="box-content">
+                {{value: ExportedObject.Authority}}
+            </div>
+        </div>
+    </div>
+    <h4>Additional</h4>
+    <div class="row dns-detail-box">
+        <div class="col-12">
+            <div class="box-content">
+                {{value: ExportedObject.Additional}}
+            </div>
+        </div>
+    </div>
+</dot:Content>
+

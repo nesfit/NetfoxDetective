@@ -1,4 +1,0 @@
-﻿@viewModel Netfox.SnooperFTP.WEB.ViewModels.ExportDetailFTPViewModel
-@masterPage Views/Investigation/ExportDetail.dotmaster
-
-

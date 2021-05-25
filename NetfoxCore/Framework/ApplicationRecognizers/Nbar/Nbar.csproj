@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <RootNamespace>Netfox.Nbar</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Framework.Models\Framework.Models.csproj" />
+      <ProjectReference Include="..\NBARDatabase\NBARDatabase.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="PacketDotNet" Version="1.0.0.1" />
+    </ItemGroup>
+
+</Project>

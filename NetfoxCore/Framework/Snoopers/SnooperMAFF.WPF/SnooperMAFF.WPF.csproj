@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <AssemblyName>Netfox.Snoopers.SnooperMAFF.WPF</AssemblyName>
+        <RootNamespace>Netfox.Snoopers.SnooperMAFF.WPF</RootNamespace>
+        <CefSharpAnyCpuSupport>true</CefSharpAnyCpuSupport>
+        <PlatformTarget>x64</PlatformTarget>
+        <UseWpf>true</UseWpf>
+        <OutDir>$(SolutionDir)\Detective\App\Netfox.Detective\bin\$(Configuration)\$(TargetFramework)</OutDir>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Detective\App\Netfox.Detective\Netfox.Detective.csproj" />
+      <ProjectReference Include="..\SnooperMAFF\SnooperMAFF.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Castle.Windsor" Version="5.1.1" />
+      <PackageReference Include="CefSharp.Common" Version="89.0.170" />
+      <PackageReference Include="CefSharp.Wpf" Version="89.0.170" />
+    </ItemGroup>
+
+</Project>

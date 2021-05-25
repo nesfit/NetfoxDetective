@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <AssemblyName>Netfox.Framework.Models</AssemblyName>
+        <RootNamespace>Netfox.Framework.Models</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\Common\Core\Core.csproj"/>
+        <ProjectReference Include="..\..\Misc\VirtualizingCollection\VirtualizingCollection.csproj"/>
+        <ProjectReference Include="..\ApplicationRecognizers\NBARDatabase\NBARDatabase.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Castle.Windsor" Version="5.1.1"/>
+        <PackageReference Include="PacketDotNet" Version="1.0.0.1"/>
+        <PackageReference Include="PostSharp" Version="6.9.4"/>
+        <PackageReference Include="PostSharp.Patterns.Aggregation" Version="6.9.4"/>
+        <PackageReference Include="PostSharp.Patterns.Aggregation.Redist" Version="6.9.4"/>
+        <PackageReference Include="PostSharp.Patterns.Common" Version="6.9.4"/>
+        <PackageReference Include="PostSharp.Patterns.Common.Redist" Version="6.9.4"/>
+        <PackageReference Include="PostSharp.Patterns.Model" Version="6.9.4"/>
+        <PackageReference Include="PostSharp.Patterns.Model.Redist" Version="6.9.4"/>
+        <PackageReference Include="PostSharp.Redist" Version="6.9.4"/>
+        <PackageReference Include="UnitOfWork.BaseDataEntity" Version="1.0.6.4"/>
+    </ItemGroup>
+
+</Project>

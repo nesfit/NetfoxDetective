@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <AssemblyName>Netfox.Snoopers.SnooperHangouts.WEB</AssemblyName>
+        <RootNamespace>Netfox.Snoopers.SnooperHangouts.WEB</RootNamespace>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <OutDir>$(SolutionDir)\Detective\Web\Netfox.Web.App\bin\$(Configuration)\$(TargetFramework)</OutDir>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Detective\Web\Netfox.Web.App\Netfox.Web.App.csproj" />
+      <ProjectReference Include="..\SnooperHangouts\SnooperHangouts.csproj" />
+    </ItemGroup>
+
+</Project>

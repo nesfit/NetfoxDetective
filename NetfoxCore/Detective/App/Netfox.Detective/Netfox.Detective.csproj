@@ -1,0 +1,211 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <UseWPF>true</UseWPF>
+        <PlatformTarget>x64</PlatformTarget>
+        <ApplicationIcon>Views\Resources\Netfox128x128.ico</ApplicationIcon>
+        <Version>3.0.0</Version>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageProjectUrl>http://netfox.fit.vutbr.cz/</PackageProjectUrl>
+        <PackageIcon>Netfox128x128.ico</PackageIcon>
+        <RepositoryUrl>https://gitlab.nesad.fit.vutbr.cz/netfox/netfoxcore</RepositoryUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="Infrastructure\NewFile1.txt" />
+        <None Include="..\..\..\..\LICENSE">
+          <Pack>True</Pack>
+          <PackagePath></PackagePath>
+        </None>
+        <None Include="Views\Resources\Netfox128x128.ico">
+          <Pack>True</Pack>
+          <PackagePath></PackagePath>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Castle.Windsor" Version="5.1.1" />
+        <PackageReference Include="CommonServiceLocator" Version="2.0.6" />
+        <PackageReference Include="Extended.Wpf.Toolkit" Version="4.0.2" />
+        <PackageReference Include="Infragistics.WPF.Controls.Maps.XamMap.Trial" Version="20.2.27" />
+        <PackageReference Include="Infragistics.WPF.NetworkNode.Trial" Version="20.2.27" />
+        <PackageReference Include="NAudio" Version="2.0.0" />
+        <PackageReference Include="Numl" Version="1.0.0.7" />
+		
+        <PackageReference Include="PostSharp" Version="6.9.4" />
+		<PackageReference Include="PostSharp.Redist" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Aggregation" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Aggregation.Redist" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Common" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Common.Redist" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Model" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Model.Redist" Version="6.9.4" />
+        
+		<PackageReference Include="PostSharp.Patterns.Diagnostics" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Diagnostics.Redist" Version="6.9.4" />
+        <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
+		
+        <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.9" />
+        <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
+        <PackageReference Include="Telerik.Documents.Core.Trial" Version="2021.1.322" />
+        <PackageReference Include="Telerik.Documents.Fixed.Trial" Version="2021.1.322" />
+        <PackageReference Include="Telerik.Documents.Flow.FormatProviders.Pdf.Trial" Version="2021.1.322" />
+        <PackageReference Include="Telerik.Documents.Flow.Trial" Version="2021.1.322" />
+        <PackageReference Include="Telerik.Windows.Controls.Chart.for.Wpf.Xaml.Trial" Version="2021.1.325" />
+        <PackageReference Include="Telerik.Windows.Controls.DataVisualization.for.Wpf.Xaml.Trial" Version="2021.1.325" />
+        <PackageReference Include="Telerik.Windows.Controls.Docking.for.Wpf.Xaml.Trial" Version="2021.1.325" />
+        <PackageReference Include="Telerik.Windows.Controls.for.Wpf.Xaml.Trial" Version="2021.1.325" />
+        <PackageReference Include="Telerik.Windows.Controls.GridView.for.Wpf.Xaml.Trial" Version="2021.1.325" />
+        <PackageReference Include="Telerik.Windows.Controls.Input.for.Wpf.Xaml.Trial" Version="2021.1.325" />
+        <PackageReference Include="Telerik.Windows.Controls.Navigation.for.Wpf.Xaml.Trial" Version="2021.1.325" />
+        <PackageReference Include="Telerik.Windows.Data.for.Wpf.Xaml.Trial" Version="2021.1.325" />
+        <PackageReference Include="Thrift" Version="1.0.0.1" />
+        <PackageReference Include="UnitOfWork" Version="1.0.5" />
+        <PackageReference Include="WPFSoundVisualizationLib" Version="1.0.0.1" />
+        <PackageReference Include="Zlib.net" Version="1.0.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\Common\Core\Core.csproj" />
+        <ProjectReference Include="..\..\..\Common\Logger\Logger.csproj" />
+        <ProjectReference Include="..\..\..\Common\Persistence\Persistence.csproj" />
+        <ProjectReference Include="..\..\..\Framework\ApplicationProtocolExport\ApplicationProtocolExport.csproj" />
+        <ProjectReference Include="..\..\..\Framework\Framework.Models\Framework.Models.csproj" />
+        <ProjectReference Include="..\..\..\Framework\FrameworkAPI\FrameworkAPI.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Views\Resources\Netfox_splash.png" />
+        <Resource Include="Views\Resources\Netfox_splash.png" />
+        <None Remove="Views\Resources\Netfox128x128.ico" />
+        <Resource Include="Views\Resources\Netfox128x128.ico" />
+        <None Remove="Views\Resources\Netfox.ico" />
+        <Resource Include="Views\Resources\Netfox.ico" />
+        <None Remove="Views\Resources\Tasks\error.png" />
+        <Resource Include="Views\Resources\Tasks\error.png" />
+        <None Remove="Views\Resources\Tasks\ok.png" />
+        <Resource Include="Views\Resources\Tasks\ok.png" />
+        <None Remove="Views\Resources\Tasks\running.png" />
+        <Resource Include="Views\Resources\Tasks\running.png" />
+        <None Remove="Views\Resources\RadMessageBoxResources\asterisk.png" />
+        <Resource Include="Views\Resources\RadMessageBoxResources\asterisk.png" />
+        <None Remove="Views\Resources\RadMessageBoxResources\error.png" />
+        <Resource Include="Views\Resources\RadMessageBoxResources\error.png" />
+        <None Remove="Views\Resources\RadMessageBoxResources\exclamation.png" />
+        <Resource Include="Views\Resources\RadMessageBoxResources\exclamation.png" />
+        <None Remove="Views\Resources\RadMessageBoxResources\hand.png" />
+        <Resource Include="Views\Resources\RadMessageBoxResources\hand.png" />
+        <None Remove="Views\Resources\RadMessageBoxResources\information.png" />
+        <Resource Include="Views\Resources\RadMessageBoxResources\information.png" />
+        <None Remove="Views\Resources\RadMessageBoxResources\none.png" />
+        <Resource Include="Views\Resources\RadMessageBoxResources\none.png" />
+        <None Remove="Views\Resources\RadMessageBoxResources\question.png" />
+        <Resource Include="Views\Resources\RadMessageBoxResources\question.png" />
+        <None Remove="Views\Resources\RadMessageBoxResources\stop.png" />
+        <Resource Include="Views\Resources\RadMessageBoxResources\stop.png" />
+        <None Remove="Views\Resources\RadMessageBoxResources\Warning.png" />
+        <Resource Include="Views\Resources\RadMessageBoxResources\Warning.png" />
+        <None Remove="Views\Resources\Icons\arr_r.png" />
+        <Resource Include="Views\Resources\Icons\arr_r.png" />
+        <None Remove="Views\Resources\Icons\arrow_two_head_2.png" />
+        <Resource Include="Views\Resources\Icons\arrow_two_head_2.png" />
+        <None Remove="Views\Resources\Icons\attention.png" />
+        <Resource Include="Views\Resources\Icons\attention.png" />
+        <None Remove="Views\Resources\Icons\clipboard_copy.png" />
+        <Resource Include="Views\Resources\Icons\clipboard_copy.png" />
+        <None Remove="Views\Resources\Icons\collapsing.png" />
+        <Resource Include="Views\Resources\Icons\collapsing.png" />
+        <None Remove="Views\Resources\Icons\cube.png" />
+        <Resource Include="Views\Resources\Icons\cube.png" />
+        <None Remove="Views\Resources\Icons\db.png" />
+        <Resource Include="Views\Resources\Icons\db.png" />
+        <None Remove="Views\Resources\Icons\doc_delete.png" />
+        <Resource Include="Views\Resources\Icons\doc_delete.png" />
+        <None Remove="Views\Resources\Icons\doc_lines_stright.png" />
+        <Resource Include="Views\Resources\Icons\doc_lines_stright.png" />
+        <None Remove="Views\Resources\Icons\doc_minus.png" />
+        <Resource Include="Views\Resources\Icons\doc_minus.png" />
+        <None Remove="Views\Resources\Icons\doc_plus.png" />
+        <Resource Include="Views\Resources\Icons\doc_plus.png" />
+        <None Remove="Views\Resources\Icons\document.png" />
+        <Resource Include="Views\Resources\Icons\document.png" />
+        <None Remove="Views\Resources\Icons\download.png" />
+        <Resource Include="Views\Resources\Icons\download.png" />
+        <None Remove="Views\Resources\Icons\expanding.png" />
+        <Resource Include="Views\Resources\Icons\expanding.png" />
+        <None Remove="Views\Resources\Icons\folder.png" />
+        <Resource Include="Views\Resources\Icons\folder.png" />
+        <None Remove="Views\Resources\Icons\folder_arrow.png" />
+        <Resource Include="Views\Resources\Icons\folder_arrow.png" />
+        <None Remove="Views\Resources\Icons\folder_delete.png" />
+        <Resource Include="Views\Resources\Icons\folder_delete.png" />
+        <None Remove="Views\Resources\Icons\folder_minus.png" />
+        <Resource Include="Views\Resources\Icons\folder_minus.png" />
+        <None Remove="Views\Resources\Icons\folder_open.png" />
+        <Resource Include="Views\Resources\Icons\folder_open.png" />
+        <None Remove="Views\Resources\Icons\folder_plus.png" />
+        <Resource Include="Views\Resources\Icons\folder_plus.png" />
+        <None Remove="Views\Resources\Icons\mht.png" />
+        <Resource Include="Views\Resources\Icons\mht.png" />
+        <None Remove="Views\Resources\Icons\notepad_2.png" />
+        <Resource Include="Views\Resources\Icons\notepad_2.png" />
+        <None Remove="Views\Resources\Icons\paper_clip.png" />
+        <Resource Include="Views\Resources\Icons\paper_clip.png" />
+        <None Remove="Views\Resources\Icons\pause-circle-outline-128.png" />
+        <Resource Include="Views\Resources\Icons\pause-circle-outline-128.png" />
+        <None Remove="Views\Resources\Icons\play-circle-outline-128.png" />
+        <Resource Include="Views\Resources\Icons\play-circle-outline-128.png" />
+        <None Remove="Views\Resources\Icons\round_minus.png" />
+        <Resource Include="Views\Resources\Icons\round_minus.png" />
+        <None Remove="Views\Resources\Icons\round_plus.png" />
+        <Resource Include="Views\Resources\Icons\round_plus.png" />
+        <None Remove="Views\Resources\Icons\skip-previous-128.png" />
+        <Resource Include="Views\Resources\Icons\skip-previous-128.png" />
+        <None Remove="Views\Resources\Icons\sq_next.png" />
+        <Resource Include="Views\Resources\Icons\sq_next.png" />
+        <None Remove="Views\Resources\Icons\sq_prev.png" />
+        <Resource Include="Views\Resources\Icons\sq_prev.png" />
+        <None Remove="Views\Resources\Files\_blank.png" />
+        <Resource Include="Views\Resources\Files\_blank.png" />
+        <None Remove="Views\Resources\Files\doc.png" />
+        <Resource Include="Views\Resources\Files\doc.png" />
+        <None Remove="Views\Resources\Files\gif.png" />
+        <Resource Include="Views\Resources\Files\gif.png" />
+        <None Remove="Views\Resources\Files\jpg.png" />
+        <Resource Include="Views\Resources\Files\jpg.png" />
+        <None Remove="Views\Resources\Files\mht.png" />
+        <Resource Include="Views\Resources\Files\mht.png" />
+        <None Remove="Views\Resources\Files\paper_clip.png" />
+        <Resource Include="Views\Resources\Files\paper_clip.png" />
+        <None Remove="Views\Resources\Files\pdf.png" />
+        <Resource Include="Views\Resources\Files\pdf.png" />
+        <None Remove="Views\Resources\Files\png.png" />
+        <Resource Include="Views\Resources\Files\png.png" />
+        <None Remove="Views\Resources\Files\rar.png" />
+        <Resource Include="Views\Resources\Files\rar.png" />
+        <None Remove="Views\Resources\Files\rtf.png" />
+        <Resource Include="Views\Resources\Files\rtf.png" />
+        <None Remove="Views\Resources\Files\tiff.png" />
+        <Resource Include="Views\Resources\Files\tiff.png" />
+        <None Remove="Views\Resources\Files\txt.png" />
+        <Resource Include="Views\Resources\Files\txt.png" />
+        <None Remove="Views\Resources\Files\zip.png" />
+        <Resource Include="Views\Resources\Files\zip.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Views\Exports\ExportObjectDetailViews\ChatConversationDetailView.cs">
+        <DependentUpon>ChatConversationDetailView.xaml</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Telerik.Windows.Controls.RichTextBox, Version=2021.1.325.50, Culture=neutral, PublicKeyToken=5803cfa389c90ce7">
+        <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for WPF R1 2021\Binaries\WPF50\Telerik.Windows.Controls.RichTextBox.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+</Project>

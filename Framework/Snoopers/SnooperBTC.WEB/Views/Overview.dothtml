@@ -1,4 +1,0 @@
-﻿@viewModel Netfox.SnooperBTC.WEB.ViewModels.ExportOverviewBTCViewModel
-@masterPage Views/Investigation/ExportOverview.dotmaster
-
-

@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+
+        <IsPackable>false</IsPackable>
+
+        <AssemblyName>Netfox.Snoopers.SnooperTwitter.Tests</AssemblyName>
+
+        <RootNamespace>Netfox.Snoopers.SnooperTwitter.Tests</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="NUnit" Version="3.12.0" />
+        <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Detective\App\Netfox.Detective.Tests\Netfox.Detective.Tests.csproj" />
+      <ProjectReference Include="..\..\ApplicationProtocolExport.Tests\ApplicationProtocolExport.Tests.csproj" />
+      <ProjectReference Include="..\SnooperSPDY\SnooperSPDY.csproj" />
+      <ProjectReference Include="..\SnooperTwitter.WPF\SnooperTwitter.WPF.csproj" />
+      <ProjectReference Include="..\SnooperTwitter\SnooperTwitter.csproj" />
+    </ItemGroup>
+
+</Project>

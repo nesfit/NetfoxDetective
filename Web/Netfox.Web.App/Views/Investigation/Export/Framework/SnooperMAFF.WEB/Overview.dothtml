@@ -1,4 +1,0 @@
-﻿@viewModel Netfox.SnooperMAFF.WEB.ViewModels.ExportOverviewMAFFViewModel
-@masterPage Views/Investigation/ExportOverview.dotmaster
-
-
