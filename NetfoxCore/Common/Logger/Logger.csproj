@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <RootNamespace>Netfox.Logger</RootNamespace>
+        <AssemblyName>Netfox.Logger</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Castle.Core-log4net" Version="4.4.1" />
+      <PackageReference Include="Castle.Windsor" Version="5.1.1" />
+      <PackageReference Include="log4net" Version="2.0.12" />
+      <PackageReference Include="PresentationFramework" Version="4.6.0" />
+	  
+        <PackageReference Include="PostSharp.Patterns.Aggregation" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Aggregation.Redist" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Common" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Common.Redist" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Model" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Model.Redist" Version="6.9.4" />
+		<PackageReference Include="PostSharp" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Redist" Version="6.9.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Core\Core.csproj" />
+    </ItemGroup>
+
+</Project>

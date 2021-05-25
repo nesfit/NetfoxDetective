@@ -1,1 +1,1 @@
-﻿Get-ChildItem .\ -include bin,obj -recu -Force | remove-item -force -recurse
+﻿Get-ChildItem .\ -Include bin,obj -Recurse -Force | Remove-Item -Force -Recurse

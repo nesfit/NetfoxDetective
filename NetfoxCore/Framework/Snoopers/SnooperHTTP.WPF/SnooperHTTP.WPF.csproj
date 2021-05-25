@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <AssemblyName>Netfox.Snoopers.SnooperHTTP.WPF</AssemblyName>
+        <RootNamespace>Netfox.Snoopers.SnooperHTTP.WPF</RootNamespace>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <PlatformTarget>x64</PlatformTarget>
+        <UseWpf>true</UseWpf>
+        <OutDir>$(SolutionDir)\Detective\App\Netfox.Detective\bin\$(Configuration)\$(TargetFramework)</OutDir>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="PostSharp" Version="6.9.4" />
+		<PackageReference Include="PostSharp.Redist" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Aggregation" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Aggregation.Redist" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Common" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Common.Redist" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Model" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Model.Redist" Version="6.9.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Detective\App\Netfox.Detective\Netfox.Detective.csproj" />
+      <ProjectReference Include="..\SnooperHTTP\SnooperHTTP.csproj" />
+    </ItemGroup>
+
+</Project>

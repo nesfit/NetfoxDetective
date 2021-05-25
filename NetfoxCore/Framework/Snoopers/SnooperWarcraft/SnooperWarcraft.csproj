@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <AssemblyName>Netfox.Snoopers.SnooperWarcraft</AssemblyName>
+        <RootNamespace>Netfox.Snoopers.SnooperWarcraft</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Common\Core\Core.csproj" />
+      <ProjectReference Include="..\..\ApplicationProtocolExport\ApplicationProtocolExport.csproj" />
+      <ProjectReference Include="..\..\Framework.Models\Framework.Models.csproj" />
+    </ItemGroup>
+
+</Project>

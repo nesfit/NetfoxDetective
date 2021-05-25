@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <AssemblyName>Netfox.Snoopers.SnooperWebmails</AssemblyName>
+        <RootNamespace>Netfox.Snoopers.SnooperWebmails</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Common\Core\Core.csproj" />
+      <ProjectReference Include="..\SnooperHTTP\SnooperHTTP.csproj" />
+    </ItemGroup>
+
+</Project>

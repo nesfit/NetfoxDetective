@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Framework.Models\Framework.Models.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Accord.MachineLearning" Version="3.8.0" />
+      <PackageReference Include="LinqStatistics" Version="2.3.0" />
+      <PackageReference Include="numl" Version="1.0.0.7" />
+    </ItemGroup>
+
+</Project>

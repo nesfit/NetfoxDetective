@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <AssemblyName>Netfox.Snoopers.SnooperIMAP</AssemblyName>
+        <RootNamespace>Netfox.Snoopers.SnooperIMAP</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\ApplicationProtocolExport\ApplicationProtocolExport.csproj" />
+      <ProjectReference Include="..\..\Framework.Models\Framework.Models.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="PostSharp" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Common" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Common.Redist" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Redist" Version="6.9.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="UnitOfWork" Version="1.0.5" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <AssemblyName>Netfox.Snoopers.SnooperMessenger</AssemblyName>
+        <RootNamespace>Netfox.Snoopers.SnooperMessenger</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\ApplicationProtocolExport\ApplicationProtocolExport.csproj" />
+      <ProjectReference Include="..\..\Framework.Models\Framework.Models.csproj" />
+      <ProjectReference Include="..\SnooperMQTT\SnooperMQTT.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Thrift" Version="1.0.0.1" />
+    </ItemGroup>
+
+</Project>

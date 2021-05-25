@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.SqlServer.Compact" Version="4.0.8876.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\EntityFramework.BulkInsert\EntityFramework.BulkInsert.csproj" />
+    </ItemGroup>
+
+</Project>

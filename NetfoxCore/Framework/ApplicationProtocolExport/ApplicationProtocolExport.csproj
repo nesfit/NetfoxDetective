@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <AssemblyName>Netfox.Framework.ApplicationProtocolExport</AssemblyName>
+        <RootNamespace>Netfox.Framework.ApplicationProtocolExport</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Common\Core\Core.csproj" />
+      <ProjectReference Include="..\Framework.Models\Framework.Models.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="BouncyCastle" Version="1.8.9" />
+        <PackageReference Include="PostSharp" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Redist" Version="6.9.4" />
+    </ItemGroup>
+
+</Project>

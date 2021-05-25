@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+		<AssemblyName>Netfox.Core</AssemblyName>
+        <RootNamespace>Netfox.Core</RootNamespace>
+		<UseWpf>true</UseWpf>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <PlatformTarget>x64</PlatformTarget>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Castle.Core" Version="4.4.1" />
+      <PackageReference Include="Castle.Windsor" Version="5.1.1" />
+      <PackageReference Include="EntityFramework" Version="6.4.4" />
+      <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.2" />
+      <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
+      <PackageReference Include="PostSharp" Version="6.9.4" />
+      <PackageReference Include="System.IO.Abstractions" Version="13.2.28" />
+      <PackageReference Include="System.Reactive.Interfaces" Version="5.0.0" />
+        <PackageReference Include="PostSharp" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Redist" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Aggregation" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Aggregation.Redist" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Common" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Common.Redist" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Model" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Model.Redist" Version="6.9.4" />
+        
+      <PackageReference Include="UnitOfWork.BaseDataEntity" Version="1.0.6.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Misc\VirtualizingCollection\VirtualizingCollection.csproj" />
+    </ItemGroup>
+
+</Project>

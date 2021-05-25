@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <AssemblyName>Netfox.Snoopers.SnooperTwitter</AssemblyName>
+        <RootNamespace>Netfox.Snoopers.SnooperTwitter</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\ApplicationProtocolExport\ApplicationProtocolExport.csproj" />
+      <ProjectReference Include="..\..\Framework.Models\Framework.Models.csproj" />
+      <ProjectReference Include="..\SnooperSPDY\SnooperSPDY.csproj" />
+    </ItemGroup>
+
+</Project>

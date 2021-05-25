@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <AssemblyName>Netfox.Snoopers.SnooperFacebook</AssemblyName>
+        <RootNamespace>Netfox.Snoopers.SnooperFacebook</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\ApplicationProtocolExport\ApplicationProtocolExport.csproj" />
+      <ProjectReference Include="..\..\Framework.Models\Framework.Models.csproj" />
+      <ProjectReference Include="..\SnooperHTTP\SnooperHTTP.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="PhantomJS" Version="2.1.1" />
+      <PackageReference Include="Selenium.WebDriver" Version="3.11.2" />
+      <PackageReference Include="Selenium.WebDriver.PhantomJS.Xplatform" Version="2.45.0.1" />
+    </ItemGroup>
+
+</Project>

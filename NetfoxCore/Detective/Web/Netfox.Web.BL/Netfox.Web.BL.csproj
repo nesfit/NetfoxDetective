@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="8.1.1" />
+      <PackageReference Include="DotVVM.Core" Version="2.5.0" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+      <PackageReference Include="Riganti.Utils.Infrastructure.AutoMapper" Version="2.3.0" />
+      <PackageReference Include="Riganti.Utils.Infrastructure.Core" Version="2.3.0" />
+      <PackageReference Include="Riganti.Utils.Infrastructure.DotVVM" Version="2.3.0" />
+      <PackageReference Include="Riganti.Utils.Infrastructure.EntityFramework" Version="2.3.0" />
+      <PackageReference Include="Riganti.Utils.Infrastructure.Services" Version="2.3.0" />
+      <PackageReference Include="UnitOfWork" Version="1.0.5" />
+      <PackageReference Include="UnitOfWork.BaseDataEntity" Version="1.0.6.4" />
+      <PackageReference Include="UnitOfWork.EF6Repository" Version="1.0.5" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Common\Core\Core.csproj" />
+      <ProjectReference Include="..\..\..\Framework\ApplicationProtocolExport\ApplicationProtocolExport.csproj" />
+      <ProjectReference Include="..\..\..\Framework\Framework.Models\Framework.Models.csproj" />
+      <ProjectReference Include="..\..\..\Framework\FrameworkAPI\FrameworkAPI.csproj" />
+      <ProjectReference Include="..\Netfox.Web.DAL\Netfox.Web.DAL.csproj" />
+    </ItemGroup>
+
+</Project>

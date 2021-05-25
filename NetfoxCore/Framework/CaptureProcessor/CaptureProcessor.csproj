@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <AssemblyName>Netfox.Framework.CaptureProcessor</AssemblyName>
+        <RootNamespace>Netfox.Framework.CaptureProcessor</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Castle.Windsor" Version="5.1.1" />
+      <PackageReference Include="numl" Version="1.0.0.7" />
+        <PackageReference Include="PostSharp" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Aggregation" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Aggregation.Redist" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Common" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Common.Redist" Version="6.9.4" />
+
+        <PackageReference Include="PostSharp.Patterns.Model" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Model.Redist" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Redist" Version="6.9.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Common\Persistence\Persistence.csproj" />
+      <ProjectReference Include="..\ApplicationProtocolExport\ApplicationProtocolExport.csproj" />
+      <ProjectReference Include="..\ApplicationRecognizers\Nbar\Nbar.csproj" />
+      <ProjectReference Include="..\ApplicationRecognizers\RTP\RTP.csproj" />
+      <ProjectReference Include="..\Framework.Models\Framework.Models.csproj" />
+    </ItemGroup>
+
+</Project>

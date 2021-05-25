@@ -1,0 +1,50 @@
+﻿<views:DetectiveExportDetailPaneViewBase x:Class="Netfox.Snoopers.SnooperXchat.WPF.Views.XChatView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             d:DataContext="{d:DesignInstance viewModels:XchatViewModel}"
+                                         xmlns:views="clr-namespace:Netfox.Detective.Views;assembly=Netfox.Detective"
+                                         xmlns:viewModels="clr-namespace:Netfox.Snoopers.SnooperXchat.WPF.ViewModels"
+                                         mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TabControl>
+            <TabItem Header="Messages">
+                <DataGrid ItemsSource="{Binding Path=PrivateMessages}"
+                          SelectedItem="{Binding Path=ExportVm.SelectedSnooperExportObject, Mode=TwoWay}"
+                          IsReadOnly="True"
+                  Name="MessageGrid" SelectionMode="Single" ColumnWidth="Auto"
+                  AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Time Stamp" Binding="{Binding Path=Time}" />
+                        <DataGridTextColumn Header="Sender" Binding="{Binding Path=Source}" />
+                        <DataGridTextColumn Header="Receiver" Binding="{Binding Path=Target}" />
+                        <DataGridTextColumn Header="Subject" Binding="{Binding Path=Subject}" />
+                        <DataGridTextColumn Header="Text" Binding="{Binding Path=Text}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="GroupMessages">
+                <DataGrid ItemsSource="{Binding Path=RoomMessages}"
+                  Name="GroupMessagesGrid" SelectionMode="Single" ColumnWidth="Auto"
+                  AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Time Stamp" Binding="{Binding Path=Time}" />
+                        <DataGridTextColumn Header="Sender" Binding="{Binding Path=Source}" />
+                        <DataGridTextColumn Header="Text" Binding="{Binding Path=Text}" />
+                        <DataGridTextColumn Header="Room Name" Binding="{Binding Path=RoomName}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</views:DetectiveExportDetailPaneViewBase>

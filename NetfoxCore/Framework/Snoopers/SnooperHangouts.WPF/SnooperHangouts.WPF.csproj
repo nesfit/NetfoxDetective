@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <AssemblyName>Netfox.Snoopers.SnooperHangouts.WPF</AssemblyName>
+        <RootNamespace>Netfox.Snoopers.SnooperHangouts.WPF</RootNamespace>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <PlatformTarget>x64</PlatformTarget>
+        <UseWpf>true</UseWpf>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <OutDir>$(SolutionDir)\Detective\App\Netfox.Detective\bin\$(Configuration)\$(TargetFramework)</OutDir>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Detective\App\Netfox.Detective\Netfox.Detective.csproj" />
+      <ProjectReference Include="..\SnooperHangouts\SnooperHangouts.csproj" />
+    </ItemGroup>
+
+</Project>

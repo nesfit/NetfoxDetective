@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <AssemblyName>Netfox.Snoopers.SnooperDNS.WPF</AssemblyName>
+        <RootNamespace>Netfox.Snoopers.SnooperDNS.WPF</RootNamespace>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <PlatformTarget>x64</PlatformTarget>
+        <UseWpf>true</UseWpf>
+        <OutDir>$(SolutionDir)\Detective\App\Netfox.Detective\bin\$(Configuration)\$(TargetFramework)</OutDir>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Detective\App\Netfox.Detective\Netfox.Detective.csproj" />
+      <ProjectReference Include="..\SnooperDNS\SnooperDNS.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Castle.Windsor" Version="5.1.1" />
+    </ItemGroup>
+
+</Project>

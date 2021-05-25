@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <AssemblyName>Netfox.Snoopers.SnooperWebmails.WEB</AssemblyName>
+        <RootNamespace>Netfox.Snoopers.SnooperWebmails.WEB</RootNamespace>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <OutDir>$(SolutionDir)\Detective\Web\Netfox.Web.App\bin\$(Configuration)\$(TargetFramework)</OutDir>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Detective\Web\Netfox.Web.App\Netfox.Web.App.csproj" />
+      <ProjectReference Include="..\..\..\Detective\Web\Netfox.Web.BL\Netfox.Web.BL.csproj" />
+      <ProjectReference Include="..\SnooperWebmails\SnooperWebmails.csproj" />
+    </ItemGroup>
+
+</Project>

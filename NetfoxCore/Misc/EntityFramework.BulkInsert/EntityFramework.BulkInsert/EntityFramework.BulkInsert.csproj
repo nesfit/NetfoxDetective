@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <DefineConstants>EFCORE</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="EntityFramework" Version="6.4.4" />
+      <PackageReference Include="Microsoft.SqlServer.Types" Version="14.0.1016.290" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\EntityFramework.MappingAPI\EntityFramework.MappingAPI.Net45\EntityFramework.MappingAPI.Net45.csproj" />
+    </ItemGroup>
+
+</Project>

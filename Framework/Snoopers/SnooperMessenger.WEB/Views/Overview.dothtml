@@ -1,3 +1,0 @@
-﻿@viewModel Netfox.SnooperMessenger.WEB.ViewModels.ExportOverviewMessengerViewModel
-@masterPage Views/Investigation/ExportOverview.dotmaster
-

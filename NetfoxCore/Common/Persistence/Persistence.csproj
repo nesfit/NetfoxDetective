@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <AssemblyName>Netfox.Persistence</AssemblyName>
+        <RootNamespace>Netfox.Persistence</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Castle.Windsor" Version="5.1.1" />
+      <PackageReference Include="EntityFramework" Version="6.4.4" />
+      <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+	  <PackageReference Include="PostSharp.Patterns.Aggregation" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Aggregation.Redist" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Common" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Common.Redist" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Model" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Model.Redist" Version="6.9.4" />
+		<PackageReference Include="PostSharp" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Redist" Version="6.9.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Framework\Framework.Models\Framework.Models.csproj" />
+      <ProjectReference Include="..\..\Misc\EntityFramework.BulkInsert\EntityFramework.BulkInsert\EntityFramework.BulkInsert.csproj" />
+      <ProjectReference Include="..\..\Misc\EntityFramework.InMemory\EntityFramework.InMemory\EntityFramework.InMemory.csproj" />
+      <ProjectReference Include="..\Core\Core.csproj" />
+    </ItemGroup>
+
+
+</Project>

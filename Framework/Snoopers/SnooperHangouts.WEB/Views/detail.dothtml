@@ -1,4 +1,0 @@
-﻿@viewModel Netfox.SnooperHangouts.WEB.ViewModels.ExportDetailHangoutsViewModel
-@masterPage Views/Investigation/ExportDetail.dotmaster
-
-

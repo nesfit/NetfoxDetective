@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+	<UseWPF>true</UseWPF>
+	<AssemblyName>AlphaChiTech.VirtualizingCollection</AssemblyName>
+	<RootNamespace>AlphaChiTech.VirtualizingCollection</RootNamespace>
+  </PropertyGroup>
+
+</Project>

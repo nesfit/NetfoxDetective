@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <AssemblyName>Netfox.Snoopers.SnooperBTC.WPF</AssemblyName>
+        <RootNamespace>Netfox.Snoopers.SnooperBTC.WPF</RootNamespace>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <PlatformTarget>x64</PlatformTarget>
+        <UseWpf>true</UseWpf>
+        <OutDir>$(SolutionDir)\Detective\App\Netfox.Detective\bin\$(Configuration)\$(TargetFramework)</OutDir>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\Detective\App\Netfox.Detective\Netfox.Detective.csproj"/>
+        <ProjectReference Include="..\SnooperBTC\SnooperBTC.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Castle.Windsor" Version="5.1.1"/>
+		<PackageReference Include="PostSharp" Version="6.9.4" />
+		<PackageReference Include="PostSharp.Redist" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Aggregation" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Aggregation.Redist" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Common" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Common.Redist" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Model" Version="6.9.4" />
+        <PackageReference Include="PostSharp.Patterns.Model.Redist" Version="6.9.4" />
+    </ItemGroup>
+
+
+</Project>
