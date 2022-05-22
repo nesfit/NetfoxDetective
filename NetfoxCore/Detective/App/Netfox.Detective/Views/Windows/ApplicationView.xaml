@@ -1,0 +1,200 @@
+﻿<views:DetectiveWindowBase
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:command="http://www.galasoft.ch/mvvmlight"
+    
+    x:Class="Netfox.Detective.Views.Windows.ApplicationView"
+    d:DesignHeight="850" d:DesignWidth="1600"
+    WindowStartupLocation="CenterScreen" WindowState="Maximized"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:Netfox.Detective.Core.BaseTypes.Views"
+    xmlns:windows="clr-namespace:Netfox.Detective.Views.Windows"
+    xmlns:viewModels="clr-namespace:Netfox.Detective.ViewModels"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance viewModels:ApplicationShell, IsDesignTimeCreatable=False}"
+    Header="Netfox Detective">
+    <!-- Header="{Binding HeaderText}" -->
+    
+    
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closed">
+            <command:EventToCommand Command="{Binding ApplicationExit}"
+                                    CommandParameter="{Binding ElementName=ApplicationView}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <!-- RESOURCES -->
+    <telerik:RadWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- LOCAL STYLES -->
+                <ResourceDictionary x:Name="LocalStyles" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </telerik:RadWindow.Resources>
+    <telerik:RadWindow.Icon>
+        <Image Source="pack://application:,,,/Netfox.Detective;component/Views/Resources/Netfox.ico" Height="20" />
+    </telerik:RadWindow.Icon>
+    <Grid x:Name="MainApplicationGrid">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="35" />
+        </Grid.RowDefinitions>
+        <!-- MAIN MENU -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <telerik:RadMenu VerticalAlignment="Center" Width="Auto">
+                    <telerik:RadMenuItem Header="DETECTIVE">
+                        <telerik:RadMenuItem Header="New Workspace..."
+                                             Command="{Binding Path=WorkspacesManagerVm.CCreateWorksCommand, FallbackValue={StaticResource NullCommand}}" />
+                        <telerik:RadMenuItem Header="Remove Workspace"
+                                             Command="{Binding Path=WorkspacesManagerVm.CDeleteWorksCommand, FallbackValue={StaticResource NullCommand}}" />
+                        <telerik:RadMenuSeparatorItem />
+                        <telerik:RadMenuItem Header="New Investigation..."
+                                             Command="{Binding Path=InvestigationsManagerVm.CNewToCreateInvestigation, FallbackValue={StaticResource NullCommand}}" />
+                        <telerik:RadMenuItem Header="Remove Investigation"
+                                             Command="{Binding Path=InvestigationsManagerVm.CDeleteInvestigation, FallbackValue={StaticResource NullCommand}}" />
+                        <telerik:RadMenuSeparatorItem />
+                        <telerik:RadMenuItem Header="Exit" Command="{Binding ApplicationExit}" />
+                    </telerik:RadMenuItem>
+                    <telerik:RadMenuItem Header="INVESTIGATION">
+                        <telerik:RadMenuItem Header="Add Capture"
+                                             Command="{Binding Path=CurrentInvestigationVm.CAddCapture, FallbackValue={StaticResource NullCommand}}" />
+                        <telerik:RadMenuItem Header="Remove Capture"
+                                             Command="{Binding Path=CurrentInvestigationVm.CRemoveCapture, FallbackValue={StaticResource NullCommand}}" />
+                    </telerik:RadMenuItem>
+                    <telerik:RadMenuItem Header="VIEW">
+                        <telerik:RadMenuItem Header="Workspace Manager" Command="{Binding CShowWorkspaceManager, FallbackValue={StaticResource NullCommand}}" />
+                        <telerik:RadMenuItem Header="Investigation Manager"
+                                             Command="{Binding CShowInvestigationManager, FallbackValue={StaticResource NullCommand}}" />
+                        <telerik:RadMenuSeparatorItem />
+                        <telerik:RadMenuItem Header="Capture overview"
+                                             IsEnabled="False"
+                                             Command="{Binding CShowCaptureOverview, FallbackValue={StaticResource NullCommand}}" />
+                        <telerik:RadMenuItem Header="Conversations group"
+                                             IsEnabled="False"
+                                             Command="{Binding CShowConversationsGroupOverview, FallbackValue={StaticResource NullCommand}}" />
+                        <telerik:RadMenuItem Header="Conversations group - Content"
+                                             IsEnabled="False"
+                                             Command="{Binding CShowConversationsGroupContent, FallbackValue={StaticResource NullCommand}}" />
+                        <telerik:RadMenuItem Header="Conversation" 
+                                             IsEnabled="False"
+                                             Command="{Binding CShowConversation, FallbackValue={StaticResource NullCommand}}" />
+                        <telerik:RadMenuSeparatorItem />
+                        <telerik:RadMenuItem Header="Selective Export"
+                                             IsEnabled="False"
+                                             Command="{Binding CShowSelectiveExport, FallbackValue={StaticResource NullCommand}}" />
+                        <telerik:RadMenuItem Header="Export overview" 
+                                             IsEnabled="False"
+                                             Command="{Binding CShowExportOverview, FallbackValue={StaticResource NullCommand}}" />
+                        <telerik:RadMenuItem Header="Export content explorer"
+                                             IsEnabled="False"
+                                             Command="{Binding CShowExportContentExplorer, FallbackValue={StaticResource NullCommand}}" />
+                        <telerik:RadMenuSeparatorItem />
+                        <telerik:RadMenuItem Header="Fulltext Search" 
+                                             IsEnabled="False"
+                                             Command="{Binding CShowFullTextSearch, FallbackValue={StaticResource NullCommand}}" />
+                        <telerik:RadMenuItem Header="Query" 
+                                             IsEnabled="False"
+                                             Command="{Binding CShowQuery, FallbackValue={StaticResource NullCommand}}" />
+                        <telerik:RadMenuSeparatorItem />
+                        <telerik:RadMenuItem Header="Error List" IsEnabled="False" />
+                        <telerik:RadMenuItem Header="Output" IsEnabled="False" />
+                        <telerik:RadMenuSeparatorItem />
+                        <telerik:RadMenuItem Header="Tasks" Command="{Binding CShowTasks, FallbackValue={StaticResource NullCommand}}" />
+                        <telerik:RadMenuItem Header="Settings" Command="{Binding CShowSettings, FallbackValue={StaticResource NullCommand}}" />
+                    </telerik:RadMenuItem>
+
+                    <telerik:RadMenuItem Header="ANALYZERS" x:Name="AnalyzersMenu"  IsEnabled="{Binding AvailableAnalyzers, Converter={StaticResource IsNullOrEmptyToBoolInvertedConverter}}"
+                                         ItemsSource="{Binding AvailableAnalyzers, FallbackValue={StaticResource NullCommand}}">
+                        <telerik:RadMenuItem.ItemTemplate>
+                            <DataTemplate>
+                                <telerik:RadMenuItem
+                                    Header="{Binding HeaderText}"
+                                    Command="{Binding Path=DataContext.NavigationService.CShowByVm, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type windows:ApplicationView}}}" 
+                                    CommandParameter="{Binding }"/>
+                            </DataTemplate>
+                        </telerik:RadMenuItem.ItemTemplate>
+
+                    </telerik:RadMenuItem>
+                    <telerik:RadMenuItem Header="HELP" x:Name="HelpMenu">
+                        <telerik:RadMenuItem Header="About Netfox Detective" Command="{Binding CShowHelp, FallbackValue={StaticResource NullCommand}}"  />
+                    </telerik:RadMenuItem>
+                </telerik:RadMenu>
+            </StackPanel>
+        </Grid>
+        <telerik:RadDocking x:Name="MainDocking"
+                            PreviewShowCompass="OnPreviewShowCompass"
+                            PanesSource="{Binding ViewPanesVMs}"
+                            Close="OnClose"
+                            Grid.Row="1" Margin="0 0 0 10"
+                            BorderThickness="0"
+                            Padding="0" Background="{StaticResource LightGrayBrush}">
+
+            <telerik:RadDocking.DockingPanesFactory>
+                <windows:DetectiveDockingPanesFactory />
+            </telerik:RadDocking.DockingPanesFactory>
+            <telerik:RadDocking.CurrentSaveLoadLayoutHelper>
+                <windows:DockingSaveLoadLayoutHelper />
+            </telerik:RadDocking.CurrentSaveLoadLayoutHelper>
+
+            <telerik:RadDocking.DocumentHost>
+                <telerik:RadSplitContainer>
+                    <telerik:RadPaneGroup x:Name="DockedDocument" telerik:RadDocking.SerializationTag="DockedDocument" />
+                </telerik:RadSplitContainer>
+            </telerik:RadDocking.DocumentHost>
+            <telerik:RadSplitContainer InitialPosition="DockedLeft" MinWidth="220" Width="300" MaxWidth="600"
+                                       telerik:DockingPanel.InitialSize="210,150">
+                <telerik:RadPaneGroup Name="DockedLeft" telerik:RadDocking.SerializationTag="DockedLeft" />
+            </telerik:RadSplitContainer>
+
+
+            <telerik:RadSplitContainer InitialPosition="DockedRight" MinWidth="60" Width="300" MaxWidth="600"
+                                       telerik:DockingPanel.InitialSize="210,150">
+                <telerik:RadPaneGroup x:Name="DockedRight" telerik:RadDocking.SerializationTag="DockedRight" />
+            </telerik:RadSplitContainer>
+
+            <telerik:RadSplitContainer InitialPosition="DockedBottom" telerik:DockingPanel.InitialSize="200,200">
+                <telerik:RadPaneGroup x:Name="DockedBottom" telerik:RadDocking.SerializationTag="DockedBottom" />
+            </telerik:RadSplitContainer>
+        </telerik:RadDocking>
+        <Grid Grid.Row="2" Margin="0 0 0 5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="25" />
+                <ColumnDefinition Width="300" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="1"
+                       Text="Running tasks : "
+                       VerticalAlignment="Center" />
+
+            <TextBlock Grid.Column="2"
+                       Text="{Binding Path=BgTasksManagerVm.WholeRunning}"
+                       Width="20"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center" />
+
+            <telerik:RadProgressBar Grid.Column="3" Minimum="0" Margin="10 0 10 0" Name="TasksProgressBar"
+                                    VerticalAlignment="Center" Height="20"
+                                    IsIndeterminate="{Binding Path=BgTasksManagerVm.WholeIsIndeterminate, Mode=OneWay}"
+                                    Value="{Binding Path=BgTasksManagerVm.WholeProgress, Mode=OneWay}"
+                                    Maximum="{Binding Path=BgTasksManagerVm.WholeTarget, Mode=OneWay}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <command:EventToCommand Command="{Binding CShowTaskManager}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </telerik:RadProgressBar>
+        </Grid>
+    </Grid>
+
+</views:DetectiveWindowBase>

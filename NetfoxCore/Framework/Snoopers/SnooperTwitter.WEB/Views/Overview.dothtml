@@ -1,0 +1,4 @@
+﻿@viewModel Netfox.Snoopers.SnooperTwitter.WEB.ViewModels.ExportOverviewTwitterViewModel
+@masterPage Views/Investigation/ExportOverview.dotmaster
+
+

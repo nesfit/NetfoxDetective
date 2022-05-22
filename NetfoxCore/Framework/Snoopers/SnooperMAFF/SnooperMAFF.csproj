@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <AssemblyName>Netfox.Snoopers.SnooperMAFF</AssemblyName>
+        <RootNamespace>Netfox.Snoopers.SnooperMAFF</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Common\Core\Core.csproj" />
+      <ProjectReference Include="..\..\Framework.Models\Framework.Models.csproj" />
+      <ProjectReference Include="..\SnooperHTTP\SnooperHTTP.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Jint" Version="2.11.58" />
+    </ItemGroup>
+
+</Project>

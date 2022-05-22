@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <AssemblyName>Netfox.Snoopers.SnooperRTP</AssemblyName>
+        <RootNamespace>Netfox.Snoopers.SnooperRTP</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\ApplicationProtocolExport\ApplicationProtocolExport.csproj" />
+      <ProjectReference Include="..\..\ApplicationRecognizers\NBARDatabase\NBARDatabase.csproj" />
+      <ProjectReference Include="..\..\ApplicationRecognizers\RTP\RTP.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <AssemblyName>Netfox.Snoopers.SnooperHTTP.WEB</AssemblyName>
+        <RootNamespace>Netfox.Snoopers.SnooperHTTP.WEB</RootNamespace>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <OutDir>$(SolutionDir)\Detective\Web\Netfox.Web.App\bin\$(Configuration)\$(TargetFramework)</OutDir>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Detective\Web\Netfox.Web.App\Netfox.Web.App.csproj" />
+      <ProjectReference Include="..\..\..\Detective\Web\Netfox.Web.BL\Netfox.Web.BL.csproj" />
+      <ProjectReference Include="..\SnooperHTTP\SnooperHTTP.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="DotVVM" Version="2.5.0" />
+      <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.9" />
+    </ItemGroup>
+
+</Project>

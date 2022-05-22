@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <UseWpf>true</UseWpf>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <OutDir>$(SolutionDir)\Detective\App\Netfox.Detective\bin\$(Configuration)\$(TargetFramework)</OutDir>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <AssemblyName>Netfox.AnalyzerAppIdent</AssemblyName>
+        <RootNamespace>Netfox.AnalyzerAppIdent</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\..\Framework\ApplicationRecognizers\AppIdent\AppIdent.csproj" />
+      <ProjectReference Include="..\..\Netfox.Detective\Netfox.Detective.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Castle.Windsor" Version="5.1.1" />
+      <PackageReference Include="Telerik.Windows.Controls.Charting.for.Wpf.Xaml.Trial" Version="2021.1.325" />
+      <PackageReference Include="Telerik.Windows.Controls.for.Wpf.Xaml.Trial" Version="2021.1.325" />
+      <PackageReference Include="Telerik.Windows.Data.for.Wpf.Xaml.Trial" Version="2021.1.325" />
+    </ItemGroup>
+
+</Project>
