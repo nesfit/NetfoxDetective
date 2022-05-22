@@ -89,11 +89,7 @@ To demonstrate Netfox Detective analysis capcabilitie, you may analyze PCAP file
 
 # Download
 
-  
-
-Netfox Detective can be installed from release builds available on [FourceForge](https://sourceforge.net/projects/netfox-detective/).
-
-  
+Netfox Detective can be installed from release builds available on [SourceForge](https://sourceforge.net/projects/netfox-detective/).
 
 # Before you start
 
